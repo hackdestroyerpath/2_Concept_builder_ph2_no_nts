@@ -20,3 +20,4 @@
 {"protocol_id":"linked_issue","path":"Protocols/linked_issue_protocol.md","mode":"common","stage":"dependency","next":["issue_prioritization","execution"]}
 {"protocol_id":"closure_cleanup","path":"Protocols/closure_cleanup_protocol.md","mode":"common","stage":"closure","next":["issue_prioritization","response_marker"]}
 {"protocol_id":"concept_network_export","path":"Protocols/concept_network_export_protocol.md","mode":"Execution Mode","stage":"concept_export","next":["navigation_validation","response_marker"]}
+{"protocol_id":"script_policy","path":"Protocols/script_policy_protocol.md","mode":"Service Mode","stage":"script_decision","next":["issue_intake","response_marker"]}
