@@ -1,0 +1,7 @@
+{"path":"README.md","title":"Вход концепции","parent":null,"children":["about.md","requirements.md","operating_model.md","process.md","structure.md","page_registry.jsonl"],"description":"Главная страница конкретной концепции."}
+{"path":"about.md","title":"About","parent":"README.md","children":[],"backlinks":["README.md"],"description":"Назначение и границы концепции."}
+{"path":"requirements.md","title":"Requirements","parent":"README.md","children":[],"backlinks":["README.md"],"description":"Требования и provenance."}
+{"path":"operating_model.md","title":"Operating model","parent":"README.md","children":[],"backlinks":["README.md"],"description":"Рабочая модель концепции."}
+{"path":"process.md","title":"Process","parent":"README.md","children":[],"backlinks":["README.md"],"description":"Процесс развития концепции."}
+{"path":"structure.md","title":"Structure","parent":"README.md","children":["page_registry.jsonl"],"backlinks":["README.md"],"description":"Карта файлов концепции."}
+{"path":"page_registry.jsonl","title":"Page registry","parent":"README.md","children":[],"backlinks":["README.md","structure.md"],"description":"Реестр страниц концепции."}
