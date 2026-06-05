@@ -1,0 +1,22 @@
+{"protocol_id":"bootstrap_context","path":"Protocols/bootstrap_context_protocol.md","mode":"common","stage":"bootstrap","next":["context_loading","mode_boundary","command_parsing"]}
+{"protocol_id":"context_loading","path":"Protocols/context_loading_protocol.md","mode":"common","stage":"context","next":["state_transition","response_marker"]}
+{"protocol_id":"mode_boundary","path":"Protocols/mode_boundary_protocol.md","mode":"common","stage":"scope_check","next":["command_parsing","issue_intake","concept_network_export"]}
+{"protocol_id":"command_parsing","path":"Protocols/command_parsing_protocol.md","mode":"common","stage":"command","next":["issue_intake","issue_focus","issue_registry_decision"]}
+{"protocol_id":"persistence_event","path":"Protocols/persistence_event_protocol.md","mode":"common","stage":"save_event","next":["github_write","state_transition","response_marker"]}
+{"protocol_id":"state_transition","path":"Protocols/state_transition_protocol.md","mode":"common","stage":"state_change","next":["persistence_event","response_marker"]}
+{"protocol_id":"github_write","path":"Protocols/github_write_protocol.md","mode":"common","stage":"write","next":["navigation_validation","response_marker"]}
+{"protocol_id":"navigation_validation","path":"Protocols/navigation_validation_protocol.md","mode":"common","stage":"validation","next":["response_marker"]}
+{"protocol_id":"response_marker","path":"Protocols/response_marker_protocol.md","mode":"common","stage":"answer","next":[]}
+{"protocol_id":"issue_lifecycle","path":"Protocols/issue_lifecycle_protocol.md","mode":"common","stage":"issue_overview","next":["issue_intake","issue_registry_decision","issue_focus"]}
+{"protocol_id":"issue_intake","path":"Protocols/issue_intake_protocol.md","mode":"common","stage":"issue_create","next":["issue_registry_decision"]}
+{"protocol_id":"issue_registry_decision","path":"Protocols/issue_registry_decision_protocol.md","mode":"common","stage":"issue_decision","next":["issue_focus","issue_prioritization"]}
+{"protocol_id":"issue_focus","path":"Protocols/issue_focus_protocol.md","mode":"common","stage":"issue_focus","next":["qa","requirements","linked_issue"]}
+{"protocol_id":"issue_prioritization","path":"Protocols/issue_prioritization_protocol.md","mode":"common","stage":"issue_queue","next":["issue_focus"]}
+{"protocol_id":"qa","path":"Protocols/qa_protocol.md","mode":"common","stage":"questioning","next":["requirements"]}
+{"protocol_id":"requirements","path":"Protocols/requirements_protocol.md","mode":"common","stage":"requirements","next":["solution_contract"]}
+{"protocol_id":"solution_contract","path":"Protocols/solution_contract_protocol.md","mode":"common","stage":"solution","next":["execution","complex_issue"]}
+{"protocol_id":"execution","path":"Protocols/execution_protocol.md","mode":"common","stage":"execution","next":["closure_cleanup"]}
+{"protocol_id":"complex_issue","path":"Protocols/complex_issue_protocol.md","mode":"common","stage":"decomposition","next":["issue_focus","closure_cleanup"]}
+{"protocol_id":"linked_issue","path":"Protocols/linked_issue_protocol.md","mode":"common","stage":"dependency","next":["issue_prioritization","execution"]}
+{"protocol_id":"closure_cleanup","path":"Protocols/closure_cleanup_protocol.md","mode":"common","stage":"closure","next":["issue_prioritization","response_marker"]}
+{"protocol_id":"concept_network_export","path":"Protocols/concept_network_export_protocol.md","mode":"Execution Mode","stage":"concept_export","next":["navigation_validation","response_marker"]}
