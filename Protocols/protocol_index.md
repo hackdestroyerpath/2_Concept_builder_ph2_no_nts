@@ -30,6 +30,7 @@
 | `linked_issue` | [`linked_issue_protocol.md`](linked_issue_protocol.md) | общий | dependency между issue | relation record и unblock route |
 | `closure_cleanup` | [`closure_cleanup_protocol.md`](closure_cleanup_protocol.md) | общий | закрытие issue и cleanup | closed issue, roll-up, cleanup candidates |
 | `concept_network_export` | [`concept_network_export_protocol.md`](concept_network_export_protocol.md) | `Execution Mode` | развитие или export концепции | связанная MD-сеть или export |
+| `script_policy` | [`script_policy_protocol.md`](script_policy_protocol.md) | `Service Mode` | решение о production-скриптах | `no_scripts_required`, `script_issue_needed` или `script_approved` |
 
 ## Минимальная маршрутизация
 
@@ -51,6 +52,7 @@
 | Dependency | `linked_issue` | relation summary и required output | полная история другого issue |
 | Закрытие | `closure_cleanup` | output, report, registry, parent-chain | cleanup без provenance |
 | Export концепции | `concept_network_export` | concept README, local registry, state | рабочий state в production export |
+| Решение о production-скриптах | `script_policy` | request, requirements, script contract | скрипт без отдельного issue |
 | Ответ пользователю | `response_marker` | текущий state и sync status | лишний локальный контекст |
 
 ## Машинный registry
