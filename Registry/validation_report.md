@@ -6,7 +6,7 @@
 
 ```yaml
 validation_status: completed_with_notes
-validated_scope: stages_1_to_7
+validated_scope: stages_1_to_8
 checked_at: 2026-06-05
 persistence_status: synced
 ```
@@ -21,7 +21,7 @@ persistence_status: synced
 | Issue lifecycle | ok | Есть intake, registry decisions, focus, prioritization, QA, requirements, solution/contract, execution, complex, linked и closure/cleanup protocols. |
 | Templates | ok | Созданы шаблоны issue artifacts и concept files. |
 | Concept export | ok | Есть protocol и templates для MD-сети концепции и production export. |
-| Scripts | ok | `Scripts/` не создан; политика production-скриптов вынесена в отдельный protocol. |
+| Script policy | ok | `Scripts/` не создан; решение вынесено в отдельный protocol. |
 | Development materials | ok | Архив задания, checkpoint-и и рабочие материалы не добавлялись в production repository. |
 
 ## Навигация
@@ -33,7 +33,7 @@ persistence_status: synced
 | Issue templates достижимы | ok | `Issues/README.md` ведёт к `Issues/templates/README.md`. |
 | Concept templates достижимы | ok | `Concepts/README.md` ведёт к `Concepts/templates/README.md`. |
 | Registry structure актуализирован | ok | `Registry/structure.md` отражает расширенную структуру. |
-| Page registry | note | `Registry/page_registry.jsonl` нужен как compact registry; глубокий скриптовый прогон не создавался, потому что production scripts требуют отдельного issue. |
+| Page registry | ok | `Registry/page_registry.jsonl` обновлён как compact production registry. |
 
 ## Контракт готовности
 
@@ -49,8 +49,8 @@ persistence_status: synced
 | GitHub write protocol описывает preflight, перечитывание и sync-report | ok |
 | Concept files и export описаны | ok |
 | Development/task материалы не загружены | ok |
-| Scripts | no_scripts_required |
+| Script policy | no_scripts_required |
 
 ## Notes
 
-Проверка выполнена по production-файлам и перечитыванию ключевых документов из GitHub. Автоматический валидатор не создавался: stage 7 требует отдельный issue и contract для любого production script.
+Проверка выполнена по production-файлам и перечитыванию ключевых документов из GitHub. Автоматический валидатор не создавался, потому что production script требует отдельный issue и contract.
