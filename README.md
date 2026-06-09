@@ -8,7 +8,7 @@
 |---|---|
 | Контур | `production repository` |
 | Активный режим | `Service Mode` |
-| Активный этап | сервисное ядро протоколов синхронизировано |
+| Активный этап | рабочий контур `issue` синхронизирован |
 | Источник правил | production-файлы этого репозитория |
 | Рабочие материалы реализации | не хранятся в репозитории |
 
@@ -43,6 +43,15 @@
 | [`mode_routing`](Protocols/mode_routing.md) | Выбор между `Service Mode` и `Execution Mode`. |
 | [`response_marker`](Protocols/response_marker.md) | Стандартный маркер ответа агента. |
 | [`github_write_protocol`](Protocols/github_write_protocol.md) | Правила записи и проверки файлов в `GitHub`. |
+
+## Контур issue
+
+| Протокол | Назначение |
+|---|---|
+| [`issue_lifecycle`](Protocols/issue_lifecycle.md) | Статусы, переходы и закрытие `issue`. |
+| [`question_answer`](Protocols/question_answer.md) | Уточняющие вопросы перед выполнением. |
+| [`requirements_protocol`](Protocols/requirements_protocol.md) | Сбор требований и критериев готовности. |
+| [`issue_execution`](Protocols/issue_execution.md) | Выполнение, проверка и report. |
 
 ## Правила работы
 
