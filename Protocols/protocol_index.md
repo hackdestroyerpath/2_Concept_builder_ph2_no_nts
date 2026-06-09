@@ -16,16 +16,16 @@
 - `Protocols/question_answer.md`
 - `Protocols/requirements_protocol.md`
 - `Protocols/issue_execution.md`
-
-## Следующие протоколы
-
 - `Protocols/complex_and_linked_issues.md`
+
+## Concept and validation
+
 - `Protocols/concept_export.md`
 - `Protocols/validation_protocol.md`
 
 ## Правило маршрутизации
 
-Агент читает state активного режима и загружает только протоколы, нужные для текущего действия.
+Агент читает state активного режима и загружает только протоколы, нужные для текущего действия. После записи агент запускает validation protocol.
 
 ## Минимальный маркер ответа
 
