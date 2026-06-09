@@ -8,7 +8,7 @@
 |---|---|
 | Контур | `production repository` |
 | Активный режим | `Service Mode` |
-| Активный этап | финальные сервисные протоколы синхронизированы |
+| Активный этап | Execution Mode bootstrap синхронизирован |
 | Источник правил | production-файлы этого репозитория |
 | Рабочие материалы реализации | не хранятся в репозитории |
 
@@ -30,6 +30,7 @@
 | [`Issues/issue_registry.jsonl`](Issues/issue_registry.jsonl) | Машинный реестр `issue`. |
 | [`Issues/issue_events.jsonl`](Issues/issue_events.jsonl) | Журнал событий `issue` и сервисных переходов. |
 | [`Concepts/README.md`](Concepts/README.md) | Входная страница пространства концепций. |
+| [`Templates/README.md`](Templates/README.md) | Production-шаблоны для создания концепций. |
 | [`Inbox/README.md`](Inbox/README.md) | Временное хранилище входных материалов до их обработки. |
 | [`Registry/structure.md`](Registry/structure.md) | Человекочитаемая карта файлов. |
 | [`Registry/page_registry.jsonl`](Registry/page_registry.jsonl) | Машинный реестр страниц и связей. |
@@ -53,6 +54,13 @@
 | [`requirements_protocol`](Protocols/requirements_protocol.md) | Сбор требований и критериев готовности. |
 | [`issue_execution`](Protocols/issue_execution.md) | Выполнение, проверка и report. |
 | [`complex_and_linked_issues`](Protocols/complex_and_linked_issues.md) | Родительские, дочерние и зависимые `issue`. |
+
+## Execution bootstrap
+
+| Компонент | Назначение |
+|---|---|
+| [`execution_bootstrap`](Protocols/execution_bootstrap.md) | Выбор или создание концепции в `Execution Mode`. |
+| [`Templates/concept`](Templates/concept/README.md) | Базовый production-шаблон новой концепции. |
 
 ## Export и validation
 
