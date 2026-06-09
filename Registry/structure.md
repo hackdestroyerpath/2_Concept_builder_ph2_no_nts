@@ -19,6 +19,9 @@
   - question_answer.md
   - requirements_protocol.md
   - issue_execution.md
+  - complex_and_linked_issues.md
+  - concept_export.md
+  - validation_protocol.md
 - State/
   - service_state.md
   - execution_state.md
