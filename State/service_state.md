@@ -6,16 +6,16 @@
 active_mode: Service Mode
 active_object: Concept Builder
 active_issue: none
-current_stage: final_service_protocols_synced
-loaded_context: README.md; State/service_state.md; Protocols/protocol_index.md; Protocols/complex_and_linked_issues.md; Protocols/concept_export.md; Protocols/validation_protocol.md; Registry/page_registry.jsonl; Issues/issue_registry.jsonl; Issues/issue_events.jsonl
-loaded_protocols: protocol_index; complex_and_linked_issues; concept_export; validation_protocol
-allowed_read_scope: README.md; Instructions/; Protocols/; State/; Issues/; Inbox/; Registry/
-allowed_write_scope: service production files only
-next_step: CB-005 — подготовить Execution Mode bootstrap для создания первой концепции и расширить page_registry metadata
-return_anchor: Protocols/protocol_index.md
-persistence_status: synced_final_service_protocols
+current_stage: execution_bootstrap_synced
+loaded_context: README.md; State/service_state.md; State/execution_state.md; Protocols/protocol_index.md; Protocols/execution_bootstrap.md; Templates/README.md; Templates/concept/README.md; Registry/page_registry.jsonl; Registry/page_registry_schema.md; Issues/issue_registry.jsonl; Issues/issue_events.jsonl
+loaded_protocols: protocol_index; execution_bootstrap; validation_protocol
+allowed_read_scope: README.md; Instructions/; Protocols/; State/; Issues/; Inbox/; Registry/; Templates/; Concepts/
+allowed_write_scope: service production files only; execution bootstrap template files
+next_step: создать первую концепцию через Execution Mode или расширить template-specific validation при необходимости
+return_anchor: Protocols/execution_bootstrap.md
+persistence_status: synced_execution_bootstrap
 ```
 
 ## Примечание
 
-Финальные сервисные протоколы созданы: linked issues, concept export и validation. `CB-004` закрыт в `Issues/issue_registry.jsonl`.
+`Execution Mode bootstrap`, production-шаблон концепции и расширенная metadata `Registry/page_registry.jsonl` созданы. `CB-005` закрыт в `Issues/issue_registry.jsonl`.
