@@ -15,6 +15,10 @@
   - mode_routing.md
   - response_marker.md
   - github_write_protocol.md
+  - issue_lifecycle.md
+  - question_answer.md
+  - requirements_protocol.md
+  - issue_execution.md
 - State/
   - service_state.md
   - execution_state.md
