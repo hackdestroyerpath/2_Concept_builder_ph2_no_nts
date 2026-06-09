@@ -8,7 +8,7 @@
 |---|---|
 | Контур | `production repository` |
 | Активный режим | `Service Mode` |
-| Активный этап | начальный скелет репозитория |
+| Активный этап | сервисное ядро протоколов синхронизировано |
 | Источник правил | production-файлы этого репозитория |
 | Рабочие материалы реализации | не хранятся в репозитории |
 
@@ -33,6 +33,16 @@
 | [`Inbox/README.md`](Inbox/README.md) | Временное хранилище входных материалов до их обработки. |
 | [`Registry/structure.md`](Registry/structure.md) | Человекочитаемая карта файлов. |
 | [`Registry/page_registry.jsonl`](Registry/page_registry.jsonl) | Машинный реестр страниц и связей. |
+
+## Ядро протоколов
+
+| Протокол | Назначение |
+|---|---|
+| [`state_architecture`](Protocols/state_architecture.md) | Модель state и правила его обновления. |
+| [`context_loading`](Protocols/context_loading.md) | Порядок загрузки минимального контекста. |
+| [`mode_routing`](Protocols/mode_routing.md) | Выбор между `Service Mode` и `Execution Mode`. |
+| [`response_marker`](Protocols/response_marker.md) | Стандартный маркер ответа агента. |
+| [`github_write_protocol`](Protocols/github_write_protocol.md) | Правила записи и проверки файлов в `GitHub`. |
 
 ## Правила работы
 
