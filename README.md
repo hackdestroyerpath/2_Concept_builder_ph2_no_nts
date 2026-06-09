@@ -8,7 +8,7 @@
 |---|---|
 | Контур | `production repository` |
 | Активный режим | `Service Mode` |
-| Активный этап | рабочий контур `issue` синхронизирован |
+| Активный этап | финальные сервисные протоколы синхронизированы |
 | Источник правил | production-файлы этого репозитория |
 | Рабочие материалы реализации | не хранятся в репозитории |
 
@@ -52,6 +52,14 @@
 | [`question_answer`](Protocols/question_answer.md) | Уточняющие вопросы перед выполнением. |
 | [`requirements_protocol`](Protocols/requirements_protocol.md) | Сбор требований и критериев готовности. |
 | [`issue_execution`](Protocols/issue_execution.md) | Выполнение, проверка и report. |
+| [`complex_and_linked_issues`](Protocols/complex_and_linked_issues.md) | Родительские, дочерние и зависимые `issue`. |
+
+## Export и validation
+
+| Протокол | Назначение |
+|---|---|
+| [`concept_export`](Protocols/concept_export.md) | Подготовка проверяемого export-результата концепции. |
+| [`validation_protocol`](Protocols/validation_protocol.md) | Финальная проверка production-состояния после изменений. |
 
 ## Правила работы
 
