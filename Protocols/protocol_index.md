@@ -18,6 +18,12 @@
 - `Protocols/issue_execution.md`
 - `Protocols/complex_and_linked_issues.md`
 
+## Execution bootstrap
+
+- `Protocols/execution_bootstrap.md`
+- `Templates/README.md`
+- `Templates/concept/README.md`
+
 ## Concept and validation
 
 - `Protocols/concept_export.md`
@@ -25,7 +31,7 @@
 
 ## Правило маршрутизации
 
-Агент читает state активного режима и загружает только протоколы, нужные для текущего действия. После записи агент запускает validation protocol.
+Агент читает state активного режима и загружает только протоколы, нужные для текущего действия. Для создания или выбора концепции используется `execution_bootstrap`. После записи агент запускает validation protocol.
 
 ## Минимальный маркер ответа
 
