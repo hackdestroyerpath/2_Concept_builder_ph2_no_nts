@@ -10,6 +10,11 @@
   - concept_builder_execution_instructions.md
 - Protocols/
   - protocol_index.md
+  - state_architecture.md
+  - context_loading.md
+  - mode_routing.md
+  - response_marker.md
+  - github_write_protocol.md
 - State/
   - service_state.md
   - execution_state.md
