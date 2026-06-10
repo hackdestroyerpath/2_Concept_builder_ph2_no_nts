@@ -7,11 +7,13 @@
 {"path":"Protocols/mode_routing.md","kind":"md","role":"protocol","parent":"Protocols/protocol_index.md"}
 {"path":"Protocols/response_marker.md","kind":"md","role":"protocol","parent":"Protocols/protocol_index.md"}
 {"path":"Protocols/github_write_protocol.md","kind":"md","role":"protocol","parent":"Protocols/protocol_index.md"}
+{"path":"Protocols/github_conflict_recovery.md","kind":"md","role":"protocol","parent":"Protocols/protocol_index.md"}
 {"path":"Protocols/issue_lifecycle.md","kind":"md","role":"protocol","parent":"Protocols/protocol_index.md"}
 {"path":"Protocols/question_answer.md","kind":"md","role":"protocol","parent":"Protocols/protocol_index.md"}
 {"path":"Protocols/requirements_protocol.md","kind":"md","role":"protocol","parent":"Protocols/protocol_index.md"}
 {"path":"Protocols/issue_execution.md","kind":"md","role":"protocol","parent":"Protocols/protocol_index.md"}
 {"path":"Protocols/complex_and_linked_issues.md","kind":"md","role":"protocol","parent":"Protocols/protocol_index.md"}
+{"path":"Protocols/task_flow_hardening.md","kind":"md","role":"protocol","parent":"Protocols/protocol_index.md"}
 {"path":"Protocols/concept_export.md","kind":"md","role":"protocol","parent":"Protocols/protocol_index.md"}
 {"path":"Protocols/validation_protocol.md","kind":"md","role":"protocol","parent":"Protocols/protocol_index.md"}
 {"path":"Protocols/execution_bootstrap.md","kind":"md","role":"protocol","parent":"Protocols/protocol_index.md"}
