@@ -1,0 +1,3 @@
+# Result
+
+Smoke files created.
