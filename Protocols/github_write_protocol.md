@@ -1,6 +1,6 @@
 # Протокол записи в GitHub
 
-[← Реестр протоколов](protocol_index.md) | [Загрузка контекста](context_loading.md) | [Маркер ответа](response_marker.md)
+[← Реестр протоколов](protocol_index.md) | [Загрузка контекста](context_loading.md) | [Recovery](github_conflict_recovery.md)
 
 ## Назначение
 
@@ -35,6 +35,10 @@ validation_plan:
 3. Проверить, что ссылки указывают на существующие production-файлы или явно планируемые файлы.
 4. Обновить `persistence_status`.
 5. Вернуть sync-report пользователю.
+
+## Conflict / recovery
+
+Если `update_file` возвращает conflict или странный результат, агент не повторяет запись вслепую. Он перечитывает файл, берёт свежий `sha`, сравнивает фактическое содержимое с ожидаемым и действует по `Protocols/github_conflict_recovery.md`.
 
 ## Статусы persistence
 
