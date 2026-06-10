@@ -9,6 +9,7 @@
 - `Protocols/mode_routing.md`
 - `Protocols/response_marker.md`
 - `Protocols/github_write_protocol.md`
+- `Protocols/github_conflict_recovery.md`
 
 ## Issue workflow
 
@@ -17,6 +18,7 @@
 - `Protocols/requirements_protocol.md`
 - `Protocols/issue_execution.md`
 - `Protocols/complex_and_linked_issues.md`
+- `Protocols/task_flow_hardening.md`
 
 ## Templates
 
