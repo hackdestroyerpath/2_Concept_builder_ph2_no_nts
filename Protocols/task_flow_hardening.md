@@ -2,11 +2,11 @@
 
 [← Реестр протоколов](protocol_index.md)
 
-## Scope
+## Назначение
 
-This protocol covers task approval, discussion, rejection, cleanup, priority, and provenance.
+Протокол описывает усиление потока задач.
 
-## Records
+## Поля
 
 ```text
 priority:
@@ -15,6 +15,28 @@ provenance:
 cleanup_required:
 ```
 
+## Decisions
+
+```text
+approval requested
+approved
+rejected
+cleanup required
+```
+
+## Priority
+
+```text
+low
+normal
+high
+urgent
+```
+
+## Provenance
+
+Источник задачи фиксируется как user request, transfer, validation finding или checkpoint follow-up.
+
 ## Result
 
-The task registry and event log must show each decision that changes task state.
+Task registry и event log показывают каждое решение, которое меняет состояние задачи.
