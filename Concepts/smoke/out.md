@@ -1,0 +1,3 @@
+# Out
+
+Smoke files.
