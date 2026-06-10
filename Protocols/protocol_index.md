@@ -18,11 +18,16 @@
 - `Protocols/issue_execution.md`
 - `Protocols/complex_and_linked_issues.md`
 
+## Templates
+
+- `Protocols/template_validation.md`
+- `Templates/concept/README.md`
+- `Templates/task/README.md`
+
 ## Execution bootstrap
 
 - `Protocols/execution_bootstrap.md`
 - `Templates/README.md`
-- `Templates/concept/README.md`
 
 ## Concept and validation
 
