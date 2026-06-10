@@ -2,7 +2,7 @@
 
 ## Status
 
-closed_with_notes
+closed
 
 ## Passed
 
@@ -11,9 +11,9 @@ closed_with_notes
 - GitHub recovery synced
 - event log synced through service-event-000007
 - CB-008 dry run synced
-- smoke concept core synced
+- smoke concept strict pages synced
 - closure status synced
 
 ## Notes
 
-Smoke concept uses `output.txt` and `e.txt` as safe alternate files. `Concepts/smoke/structure.md` still mentions template names and needs a later cleanup patch if strict name matching is required.
+none
