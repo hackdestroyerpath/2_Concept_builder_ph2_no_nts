@@ -2,4 +2,4 @@
 {"issue_id":"CB-003","mode":"Service Mode","status":"done","title":"Issue workflow protocols","stage":"issue_workflow_synced"}
 {"issue_id":"CB-004","mode":"Service Mode","status":"done","title":"Final service protocols","stage":"final_service_protocols_synced"}
 {"issue_id":"CB-005","mode":"Service Mode","status":"done","title":"Execution bootstrap and concept template","stage":"execution_bootstrap_synced"}
-{"id":"CB006","status":"done"}
+{"issue_id":"CB006","mode":"Service Mode","status":"done","title":"Templates","stage":"template_validation_synced"}
