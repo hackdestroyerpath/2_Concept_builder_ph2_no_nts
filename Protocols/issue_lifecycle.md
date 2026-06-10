@@ -1,22 +1,24 @@
 # Жизненный цикл issue
 
-[← Реестр протоколов](protocol_index.md) | [State](../State/service_state.md)
+[← Реестр протоколов](protocol_index.md) | [State](../State/service_state.md) | [Task flow hardening](task_flow_hardening.md)
 
 ## Назначение
 
-Протокол описывает путь задачи от появления до закрытия. `issue` — единица управляемой работы, а не декоративная наклейка на хаосе.
+Протокол описывает путь задачи от появления до закрытия. `issue` — единица управляемой работы.
 
 ## Статусы
 
 | Статус | Значение |
 |---|---|
 | `draft` | Задача зафиксирована, но ещё не готова к работе. |
-| `question_answer` | Требуется уточнение через `Question Answer`. |
+| `approval_requested` | Требуется утверждение перед записью. |
+| `question_answer` | Требуется уточнение. |
 | `requirements` | Собираются и проверяются требования. |
 | `ready` | Есть достаточно данных для решения. |
 | `in_progress` | Задача выполняется. |
 | `review` | Результат записан и ожидает проверки. |
 | `done` | Задача закрыта и синхронизирована. |
+| `rejected` | Задача отклонена. |
 | `blocked` | Продолжение остановлено с причиной. |
 
 ## Обязательные поля записи
@@ -25,20 +27,21 @@
 {"issue_id":"CB-000","mode":"Service Mode","status":"draft","title":"...","stage":"..."}
 ```
 
-Минимальные поля: `issue_id`, `mode`, `status`, `title`, `stage`. Дополнительные поля допустимы, если они остаются JSONL-совместимыми.
+Минимальные поля: `issue_id`, `mode`, `status`, `title`, `stage`.
 
 ## Переходы
 
 ```text
-draft -> question_answer -> requirements -> ready -> in_progress -> review -> done
-draft -> ready
+draft -> approval_requested -> requirements -> ready -> in_progress -> review -> done
+draft -> question_answer -> requirements
 any -> blocked
+any -> rejected
 blocked -> draft
 ```
 
 ## События
 
-Каждое значимое изменение пишется в `Issues/issue_events.jsonl`: создание, смена статуса, запись решения, блокировка, закрытие.
+Каждое значимое изменение пишется в `Issues/issue_events.jsonl`: создание, смена статуса, approval, discussion, rejection, запись решения, cleanup, блокировка, закрытие.
 
 ## Правила закрытия
 
