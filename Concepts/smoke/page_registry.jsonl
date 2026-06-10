@@ -1,10 +1,11 @@
 {"path":"README.md"}
 {"path":"concept_state.md"}
 {"path":"structure.md"}
-{"path":"page_registry.jsonl"}
 {"path":"purpose.md"}
 {"path":"requirements.md"}
 {"path":"operating_model.md"}
 {"path":"process.md"}
-{"path":"output.md"}
-{"path":"export.md"}
+{"path":"result.md"}
+{"path":"out.md"}
+{"path":"output.txt"}
+{"path":"e.txt"}
