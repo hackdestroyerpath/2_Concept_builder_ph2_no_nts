@@ -15,6 +15,7 @@
 {"path":"Protocols/concept_export.md","kind":"md","role":"protocol","parent":"Protocols/protocol_index.md"}
 {"path":"Protocols/validation_protocol.md","kind":"md","role":"protocol","parent":"Protocols/protocol_index.md"}
 {"path":"Protocols/execution_bootstrap.md","kind":"md","role":"protocol","parent":"Protocols/protocol_index.md"}
+{"path":"Protocols/template_validation.md","kind":"md","role":"protocol","parent":"Protocols/protocol_index.md"}
 {"path":"State/service_state.md","kind":"md","role":"state","parent":"README.md"}
 {"path":"State/execution_state.md","kind":"md","role":"state","parent":"README.md"}
 {"path":"Issues/issue_registry.jsonl","kind":"jsonl","role":"issue_registry","parent":"README.md"}
@@ -31,6 +32,15 @@
 {"path":"Templates/concept/process.md","kind":"template","role":"concept_template_page","parent":"Templates/concept/README.md"}
 {"path":"Templates/concept/output.md","kind":"template","role":"concept_template_page","parent":"Templates/concept/README.md"}
 {"path":"Templates/concept/export.md","kind":"template","role":"concept_template_page","parent":"Templates/concept/README.md"}
+{"path":"Templates/task/README.md"}
+{"path":"Templates/task/item_state.md"}
+{"path":"Templates/task/question_answer.md"}
+{"path":"Templates/task/requirements.md"}
+{"path":"Templates/task/solution.md"}
+{"path":"Templates/task/contract.md"}
+{"path":"Templates/task/report.md"}
+{"path":"Templates/task/linked_files.md"}
+{"path":"Templates/task/page_registry.jsonl"}
 {"path":"Inbox/README.md","kind":"md","role":"inbox_entry","parent":"README.md"}
 {"path":"Registry/structure.md","kind":"md","role":"structure_map","parent":"README.md"}
 {"path":"Registry/page_registry.jsonl","kind":"jsonl","role":"page_registry","parent":"README.md"}
