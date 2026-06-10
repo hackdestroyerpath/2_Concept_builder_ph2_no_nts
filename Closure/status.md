@@ -1,5 +1,11 @@
 # Closure status
 
-Status: in review.
+Status: closed_with_notes.
 
-Smoke concept core is synced. Some template page names are blocked by connector safety and are tracked as notes.
+## Result
+
+Production system is implemented through Service Mode, Execution Mode bootstrap, task template, smoke concept and final validation.
+
+## Notes
+
+Smoke concept uses safe alternate files `output.txt` and `e.txt` where connector safety blocked strict template names. `Validation/final_check.md` records this as `passed_with_notes`.
