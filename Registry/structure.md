@@ -23,6 +23,7 @@
   - concept_export.md
   - validation_protocol.md
   - execution_bootstrap.md
+  - template_validation.md
 - State/
   - service_state.md
   - execution_state.md
@@ -34,16 +35,7 @@
 - Templates/
   - README.md
   - concept/
-    - README.md
-    - concept_state.md
-    - structure.md
-    - page_registry.jsonl
-    - purpose.md
-    - requirements.md
-    - operating_model.md
-    - process.md
-    - output.md
-    - export.md
+  - task/
 - Inbox/
   - README.md
 - Registry/
@@ -51,5 +43,3 @@
   - page_registry.jsonl
   - page_registry_schema.md
 ```
-
-`Scripts/` не создана: production-скрипты требуют отдельного утверждённого `issue`, контракта входов и выходов, проверки безопасности и связи с протоколом.
