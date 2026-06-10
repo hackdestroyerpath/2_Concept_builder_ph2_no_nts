@@ -8,7 +8,7 @@
 |---|---|
 | Контур | `production repository` |
 | Активный режим | `Service Mode` |
-| Активный этап | template validation и task template синхронизированы |
+| Активный этап | task flow hardening синхронизирован |
 | Источник правил | production-файлы этого репозитория |
 | Рабочие материалы реализации | не хранятся в репозитории |
 
@@ -31,45 +31,21 @@
 | [`Issues/issue_events.jsonl`](Issues/issue_events.jsonl) | Журнал событий `issue` и сервисных переходов. |
 | [`Concepts/README.md`](Concepts/README.md) | Входная страница пространства концепций. |
 | [`Templates/README.md`](Templates/README.md) | Production-шаблоны для концепций и задач. |
-| [`Inbox/README.md`](Inbox/README.md) | Временное хранилище входных материалов до их обработки. |
 | [`Registry/structure.md`](Registry/structure.md) | Человекочитаемая карта файлов. |
 | [`Registry/page_registry.jsonl`](Registry/page_registry.jsonl) | Машинный реестр страниц и связей. |
 
-## Ядро протоколов
+## Основные протоколы
 
 | Протокол | Назначение |
 |---|---|
-| [`state_architecture`](Protocols/state_architecture.md) | Модель state и правила его обновления. |
-| [`context_loading`](Protocols/context_loading.md) | Порядок загрузки минимального контекста. |
-| [`mode_routing`](Protocols/mode_routing.md) | Выбор между `Service Mode` и `Execution Mode`. |
-| [`response_marker`](Protocols/response_marker.md) | Стандартный маркер ответа агента. |
-| [`github_write_protocol`](Protocols/github_write_protocol.md) | Правила записи и проверки файлов в `GitHub`. |
-
-## Контур issue
-
-| Протокол | Назначение |
-|---|---|
+| [`github_write_protocol`](Protocols/github_write_protocol.md) | Запись и проверка файлов в `GitHub`. |
+| [`github_conflict_recovery`](Protocols/github_conflict_recovery.md) | Conflict / recovery для `GitHub`-записей. |
 | [`issue_lifecycle`](Protocols/issue_lifecycle.md) | Статусы, переходы и закрытие `issue`. |
-| [`question_answer`](Protocols/question_answer.md) | Уточняющие вопросы перед выполнением. |
-| [`requirements_protocol`](Protocols/requirements_protocol.md) | Сбор требований и критериев готовности. |
-| [`issue_execution`](Protocols/issue_execution.md) | Выполнение, проверка и report. |
-| [`complex_and_linked_issues`](Protocols/complex_and_linked_issues.md) | Родительские, дочерние и зависимые `issue`. |
-
-## Templates и bootstrap
-
-| Компонент | Назначение |
-|---|---|
-| [`execution_bootstrap`](Protocols/execution_bootstrap.md) | Выбор или создание концепции в `Execution Mode`. |
+| [`task_flow_hardening`](Protocols/task_flow_hardening.md) | Approval, rejection, cleanup, priority и provenance. |
 | [`template_validation`](Protocols/template_validation.md) | Проверка production-шаблонов перед использованием. |
-| [`Templates/concept`](Templates/concept/README.md) | Базовый production-шаблон новой концепции. |
-| [`Templates/task`](Templates/task/README.md) | Базовые артефакты управляемой задачи. |
-
-## Export и validation
-
-| Протокол | Назначение |
-|---|---|
-| [`concept_export`](Protocols/concept_export.md) | Подготовка проверяемого export-результата концепции. |
-| [`validation_protocol`](Protocols/validation_protocol.md) | Финальная проверка production-состояния после изменений. |
+| [`execution_bootstrap`](Protocols/execution_bootstrap.md) | Выбор или создание концепции в `Execution Mode`. |
+| [`concept_export`](Protocols/concept_export.md) | Подготовка export-результата концепции. |
+| [`validation_protocol`](Protocols/validation_protocol.md) | Финальная проверка production-состояния. |
 
 ## Правила работы
 
