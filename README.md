@@ -8,7 +8,7 @@
 |---|---|
 | Контур | `production repository` |
 | Активный режим | `Service Mode` |
-| Активный этап | Execution Mode bootstrap синхронизирован |
+| Активный этап | template validation и task template синхронизированы |
 | Источник правил | production-файлы этого репозитория |
 | Рабочие материалы реализации | не хранятся в репозитории |
 
@@ -30,7 +30,7 @@
 | [`Issues/issue_registry.jsonl`](Issues/issue_registry.jsonl) | Машинный реестр `issue`. |
 | [`Issues/issue_events.jsonl`](Issues/issue_events.jsonl) | Журнал событий `issue` и сервисных переходов. |
 | [`Concepts/README.md`](Concepts/README.md) | Входная страница пространства концепций. |
-| [`Templates/README.md`](Templates/README.md) | Production-шаблоны для создания концепций. |
+| [`Templates/README.md`](Templates/README.md) | Production-шаблоны для концепций и задач. |
 | [`Inbox/README.md`](Inbox/README.md) | Временное хранилище входных материалов до их обработки. |
 | [`Registry/structure.md`](Registry/structure.md) | Человекочитаемая карта файлов. |
 | [`Registry/page_registry.jsonl`](Registry/page_registry.jsonl) | Машинный реестр страниц и связей. |
@@ -55,12 +55,14 @@
 | [`issue_execution`](Protocols/issue_execution.md) | Выполнение, проверка и report. |
 | [`complex_and_linked_issues`](Protocols/complex_and_linked_issues.md) | Родительские, дочерние и зависимые `issue`. |
 
-## Execution bootstrap
+## Templates и bootstrap
 
 | Компонент | Назначение |
 |---|---|
 | [`execution_bootstrap`](Protocols/execution_bootstrap.md) | Выбор или создание концепции в `Execution Mode`. |
+| [`template_validation`](Protocols/template_validation.md) | Проверка production-шаблонов перед использованием. |
 | [`Templates/concept`](Templates/concept/README.md) | Базовый production-шаблон новой концепции. |
+| [`Templates/task`](Templates/task/README.md) | Базовые артефакты управляемой задачи. |
 
 ## Export и validation
 
@@ -78,8 +80,6 @@
 5. Все читаемые тексты ведутся на русском языке, кроме имён файлов, папок, сервисов, программ, проектов и технических идентификаторов.
 
 ## Маркер ответа агента
-
-Каждый рабочий ответ агента показывает:
 
 ```text
 mode:
