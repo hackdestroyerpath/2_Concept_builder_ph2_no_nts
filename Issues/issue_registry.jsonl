@@ -4,3 +4,5 @@
 {"issue_id":"CB-005","mode":"Service Mode","status":"done","title":"Execution bootstrap and concept template","stage":"execution_bootstrap_synced"}
 {"issue_id":"CB-006","mode":"Service Mode","status":"done","title":"Templates","stage":"template_validation_synced"}
 {"issue_id":"CB-007","mode":"Service Mode","status":"done","title":"Task flow hardening","stage":"task_flow_hardening_synced"}
+{"issue_id":"CB-008","mode":"Service Mode","status":"done","title":"Dry run","stage":"dry_run_synced"}
+{"issue_id":"CB-009","mode":"Execution Mode","status":"done","title":"Smoke concept","stage":"final_validation_passed"}
