@@ -4,22 +4,24 @@
 
 ## Provenance
 
-Status is `reconstructed_with_evidence`. The page records the production template library as a retained service artifact.
+Статус: `reconstructed_with_evidence`. Эта страница фиксирует production template library как retained service artifact.
 
-## Reconstructed scope
+## Scope
 
-- concept template network;
+- сеть concept template;
 - task artifact chain templates;
 - local page registries;
-- semantic compatibility check before instantiation.
+- semantic compatibility check перед instantiation.
 
 ## Evidence
 
-- `Templates/README.md`
-- `Templates/concept/README.md`
-- `Templates/task/README.md`
-- `Protocols/template_validation.md`
+| Evidence | Роль |
+|---|---|
+| `Templates/README.md` | template library entrypoint |
+| `Templates/concept/README.md` | concept template route |
+| `Templates/task/README.md` | task template route |
+| `Protocols/template_validation.md` | semantic validation protocol |
 
 ## Closure rule
 
-A template is usable only when its README routes every child file and the local registry is not path-only.
+Template считается пригодным только если README ведёт ко всем child files, а local registry содержит owner, source, backlinks и navigation status.
