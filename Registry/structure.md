@@ -124,4 +124,12 @@
 - Root README содержит route graph ко всем top-level узлам.
 - `Plans/` и `Closure/` не входят в утверждённое production-дерево.
 - `Concepts/smoke` сохранён только как validation fixture; orphan/stub `o2.md` не является частью дерева.
-- Подробная metadata-навигация `page_registry.jsonl` добирается на `P2-002`; этот файл фиксирует structure/governance baseline для P2-001.
+
+## P2-002 navigation contract notes
+
+- `Registry/page_registry_schema.md` задаёт обязательные поля `title`, `type`, `owner`, `parent`, `children`, `cross_links`, `backlinks`, `description`, `source_of_truth`, `navigation_status`.
+- `Registry/page_registry.jsonl` является глобальным navigation contract для active production tree.
+- `Concepts/smoke/page_registry.jsonl`, `Templates/concept/page_registry.jsonl` и `Templates/task/page_registry.jsonl` являются local registry и используют локальные `README.md` как parent/root.
+- `Templates/task/README.md` содержит кликабельную цепочку task artifacts, а не path-only перечисление.
+- `Issues/cb89.md` и `Concepts/smoke/o2.md` не регистрируются как active production pages; их удаление/невосстановление фиксируется через `Validation/final_check.md`, `Validation/sync_report.md` и `Issues/issue_events.jsonl`.
+- Полная финальная приёмка остаётся заблокированной до P2-010; P2-002 фиксирует только registry/navigation evidence, потому что навигационная карта — это не магический талисман, как бы ни хотелось.
