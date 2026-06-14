@@ -69,6 +69,18 @@
 | Open risk | Full protocol routing/state dry-run continues in `P2-003` and `P2-004`; final acceptance remains blocked until `P2-010`. |
 | Next safe step | `P2-003` |
 
+## P2-003 report
+
+| Поле | Значение |
+|---|---|
+| Task | `P2-003 — Canonicalize modes, state architecture, context loading and response marker` |
+| Defects | `D-018`, `D-019`, `D-020`, `D-021`, `D-022`, `D-024`, `D-025`, `D-026`, `D-027`, `D-028` |
+| Branch | `agent/phase2-patch-20260614T000000Z` |
+| Operation scope | update `README.md`, `Protocols/state_architecture.md`, `Protocols/context_loading.md`, `Protocols/mode_routing.md`, `Protocols/response_marker.md`, `State/service_state.md`, `State/execution_state.md`, `Instructions/concept_builder_service_instructions.md`, `Instructions/concept_builder_execution_instructions.md`, `Issues/issue_registry.jsonl`, `Issues/issue_events.jsonl`, `Issues/CB-P2/README.md`, `Validation/final_check.md`, `Validation/sync_report.md` |
+| Acceptance evidence | canonical state schema; lossless state-to-marker mapping; Service/Execution context dry-run; instruction char counts under 8000; mode boundary matrix |
+| Open risk | Protocol routing card depth continues in `P2-004`; concept state/output/export final repair continues in `P2-009`; final acceptance remains blocked until `P2-010`. |
+| Next safe step | `P2-004` |
+
 ## Status
 
-`executing_with_evidence`: P2-002 navigation contract is recorded with readback requirements. Финальный статус меняется только после GitHub readback, PR diff gate и merge verification. Закрытие не объявляется.
+`executing_with_evidence`: P2-003 state/context/marker contract is recorded with readback requirements. Финальный статус меняется только после GitHub readback, PR diff gate и merge verification. Закрытие не объявляется.
