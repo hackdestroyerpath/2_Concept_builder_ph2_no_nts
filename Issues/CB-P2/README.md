@@ -45,6 +45,18 @@
 | Open risk | Full D-001…D-063 matrix is not final until P2-010. |
 | Next safe step | `P2-001` |
 
+## P2-001 report
+
+| Поле | Значение |
+|---|---|
+| Task | `P2-001 — Restore root README and top-level production governance` |
+| Defects | `D-001`, `D-003`, `D-004`, `D-005`, `D-009`, `D-010`, `D-011`, `D-016`, `D-028` |
+| Branch | `agent/phase2-patch-20260614T000000Z` |
+| Operation scope | update `README.md`, `Registry/structure.md`, `Concepts/README.md`, `Templates/README.md`, `Inbox/README.md`, `Validation/final_check.md`, `Issues/issue_registry.jsonl`, `Issues/issue_events.jsonl`, `State/service_state.md`, `Issues/CB-P2/README.md`, `Validation/sync_report.md`; absent/no-write `Plans/cb008.md`, `Closure/status.md` |
+| Acceptance evidence | README route graph; structure governance table; Concepts smoke decision; Templates/Inbox owner/source policy; registry/state/events/sync coupling |
+| Open risk | Full global/local registry metadata is intentionally deferred to `P2-002`; final acceptance remains blocked until `P2-010`. |
+| Next safe step | `P2-002` |
+
 ## Status
 
-`executing_with_evidence`: финальный статус меняется только после GitHub readback, PR diff gate и merge verification. На P2-000 issue остаётся активным; закрытие не объявляется.
+`executing_with_evidence`: финальный статус меняется только после GitHub readback, PR diff gate и merge verification. На P2-001 issue остаётся активным; закрытие не объявляется.
