@@ -64,12 +64,11 @@
 | Task | `P2-002 — Rebuild global and local page registries as navigation contract` |
 | Defects | `D-002`, `D-011`, `D-012`, `D-014`, `D-015`, `D-016`, `D-023`, `D-041`, `D-061` |
 | Branch | `agent/phase2-patch-20260614T000000Z` |
-| Successful writes in this segment | `Registry/page_registry_schema.md`, `Templates/task/README.md`, `State/service_state.md`, `Issues/CB-P2/README.md`, `Validation/sync_report.md` |
-| Pending writes | `Registry/page_registry.jsonl`, `Registry/structure.md`, `Concepts/smoke/page_registry.jsonl`, `Templates/concept/page_registry.jsonl`, `Templates/task/page_registry.jsonl`, `Issues/issue_registry.jsonl`, `Issues/issue_events.jsonl`, `Validation/final_check.md` |
-| Partial evidence | schema expanded; task template route table is Russian-readable and clickable; service state and sync-report explicitly mark P2-002 as partial |
-| Open risk | Registry/local-registry writes and registry/event/final-check coupling are not complete yet; P2-003 is blocked until P2-002 readback is coherent. |
-| Next safe step | complete pending P2-002 writes |
+| Operation scope | update `Registry/page_registry_schema.md`, `Registry/structure.md`, `Templates/task/README.md`, `Issues/issue_registry.jsonl`, `Issues/issue_events.jsonl`, `State/service_state.md`, `Issues/CB-P2/README.md`, `Validation/final_check.md`, `Validation/sync_report.md`; read/verify `Registry/page_registry.jsonl`, `Concepts/smoke/page_registry.jsonl`, `Templates/concept/page_registry.jsonl`, `Templates/task/page_registry.jsonl`; absent/no-write `Issues/cb89.md`, `Concepts/smoke/o2.md` |
+| Acceptance evidence | schema contains required navigation fields; global registry contains owner/source/backlink metadata; local registries are not path-only; task template has clickable artifact routes; debris paths are not active registry entries |
+| Open risk | Full protocol routing/state dry-run continues in `P2-003` and `P2-004`; final acceptance remains blocked until `P2-010`. |
+| Next safe step | `P2-003` |
 
 ## Status
 
-`executing_with_evidence`: P2-002 is partial. Финальный статус меняется только после GitHub readback, PR diff gate и merge verification. Закрытие не объявляется.
+`executing_with_evidence`: P2-002 navigation contract is recorded with readback requirements. Финальный статус меняется только после GitHub readback, PR diff gate и merge verification. Закрытие не объявляется.
