@@ -1,39 +1,50 @@
 # Sync report
 
-[← Final check](final_check.md) | [Events](../Issues/issue_events.jsonl) | [Write protocol](../Protocols/github_write_protocol.md)
+[← Final check](final_check.md) | [Events](../Issues/issue_events.jsonl) | [Write protocol](../Protocols/github_write_protocol.md) | [CB-P2](../Issues/CB-P2/README.md)
 
 ```text
 repo: hackdestroyerpath/2_Concept_builder_ph2_no_nts
 base_branch: main
-working_branch: agent/20260614-phase2-patch-b7c9
-active_write_target: agent/20260614-phase2-patch-b7c9
+working_branch: agent/phase2-patch-20260614T000000Z
+active_write_target: agent/phase2-patch-20260614T000000Z
 active_issue: CB-P2
-validation_ref: agent/20260614-phase2-patch-b7c9
-persistence_status: written_unverified_until_final_readback
+active_task: P2-000
+validation_ref: agent/phase2-patch-20260614T000000Z
+base_sha_at_turn_start: 05607f14d3baa10fdb9427f5810bda4d47e2cb4e
+persistence_status: p2_000_write_segment_requires_github_readback
 merge_state: not_started
-cleanup_status: pending_delete_readback
+cleanup_status: no_cleanup_write_in_P2-000
 ```
 
-## Written checkpoints
+## P2-000 changed paths planned in this write segment
 
-| Area | Evidence |
+| Path | Operation | Classifier | Readback requirement |
+|---|---|---|---|
+| `Validation/final_check.md` | update | production validation evidence | fetch from GitHub branch after write |
+| `Issues/issue_registry.jsonl` | update | production issue registry | fetch from GitHub branch after write |
+| `Issues/issue_events.jsonl` | update | production event log | fetch from GitHub branch after write |
+| `State/service_state.md` | update | production service state | fetch from GitHub branch after write |
+| `Issues/CB-P2/README.md` | update | production active issue artifact | fetch from GitHub branch after write |
+| `Validation/sync_report.md` | update | production sync-report | fetch from GitHub branch after write |
+
+## Read-before-write evidence
+
+| Path | Evidence |
 |---|---|
-| Root entry | `README.md` rewritten and read back on branch |
-| State | `State/service_state.md`, `State/execution_state.md` rewritten |
-| Registry | `Registry/structure.md`, `Registry/page_registry_schema.md`, `Registry/page_registry.jsonl` rebuilt |
-| Issues | `Issues/README.md`, `issue_registry.jsonl`, `issue_events.jsonl`, `CB-P2`, `CB-002`…`CB-009` artifacts written |
-| Protocols | protocol index, write, conflict, rollback, validation, lifecycle, task flow, linked issues updated |
-| Templates | task and concept template registries and gates updated |
-| Smoke | `Concepts/smoke` entry, state, registry, output and export repaired |
-| Validation | dry-run, closure plan, navigation check, language check and final check planned |
+| `README.md` | service map already restored; no P2-000 write needed |
+| `Validation/final_check.md` | assertion-only content found and replaced |
+| `Closure/status.md` | GitHub returned not found; no delete issued in P2-000 |
+| `Issues/issue_registry.jsonl` | `CB-P2` row existed and was kept active |
+| `Issues/issue_events.jsonl` | Phase 2 events existed; P2-000 event appended |
+| `State/service_state.md` | canonical state existed; branch/current stage updated |
+| `Issues/CB-P2/README.md` | active issue artifact existed; P2-000 report added |
 
-## Workaround log
+## Verification status
 
-- `Protocols/protocol_index.md`: one long update payload was blocked by OpenAI safety; shorter payload succeeded through the same GitHub write route.
-- `Validation/language_check.md`: first payload was blocked by OpenAI safety; shorter payload succeeded.
+This report intentionally does not self-certify final acceptance. The required evidence is: GitHub fetch/readback for each changed path after the write, branch diff against `main`, and connector state JSON for the exact branch head. That is the least ridiculous way to avoid turning the word “verified” into incense smoke.
 
-## Next write step
+## Next safe step
 
-1. Delete migrated debris paths.
-2. Update final check with readback and D-001…D-063 matrix.
-3. Create PR, verify diff, merge, verify base branch.
+1. Read back all paths listed above from `agent/phase2-patch-20260614T000000Z`.
+2. Compare `main...agent/phase2-patch-20260614T000000Z`.
+3. Start `P2-001` only if P2-000 readback is coherent.
