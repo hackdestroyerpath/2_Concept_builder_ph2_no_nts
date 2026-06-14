@@ -100,21 +100,36 @@
 
 | Путь | Решение | Evidence |
 |---|---|---|
-| `Plans/cb008.md` | мигрировать валидные сведения в `Issues/CB-008/README.md` и `Validation/cb008_closure_plan.md`, затем удалить | `Validation/final_check.md` |
-| `Closure/status.md` | заменить evidence-backed финальной проверкой в `Validation/final_check.md`, затем удалить | `Validation/final_check.md` |
-| `Issues/cb89.md` | заменить proper issue folders `CB-008` и `CB-009`, затем удалить | `Issues/issue_events.jsonl` |
-| `Concepts/smoke/o2.md` | удалить как orphan/stub; strict output page — `Concepts/smoke/output.md` | `Concepts/smoke/page_registry.jsonl` |
+| `Plans/cb008.md` | сведения мигрированы в `Issues/CB-008/README.md` и `Validation/cb008_closure_plan.md`; файл не восстанавливается | `Validation/final_check.md`, `Validation/sync_report.md` |
+| `Closure/status.md` | assertion-only closure заменён evidence-backed финальной проверкой; файл не восстанавливается | `Validation/final_check.md` |
+| `Issues/cb89.md` | заменён proper issue folders `CB-008` и `CB-009`; файл-debris не восстанавливается | `Issues/issue_events.jsonl` |
+| `Concepts/smoke/o2.md` | удалён как orphan/stub; strict output page — `Concepts/smoke/output.md` | `Concepts/smoke/page_registry.jsonl` |
 
-## Top-level governance
+## Governance верхнего уровня
 
-| Узел | Production-роль | Владелец | Source of truth |
-|---|---|---|---|
-| `Instructions/` | bootstrap-инструкции проекта `ChatGPT` | `Service Mode` | state + validation |
-| `Protocols/` | исполнимые правила mode/issue/write/export/validation | `Service Mode` | `protocol_index.md` |
-| `State/` | текущая state model | режим-владелец | state-файлы |
-| `Issues/` | lifecycle, provenance, decisions, events | `Service Mode` | registry + events |
-| `Concepts/` | execution objects | `Execution Mode` | local concept registry |
-| `Templates/` | production template library | `Service Mode` | local template registries |
-| `Inbox/` | input staging policy | `Service Mode` | `Issues/README.md` |
-| `Registry/` | navigation contract | `Service Mode` | schema + JSONL |
-| `Validation/` | evidence reports | `Service Mode` | final check + sync report |
+| Узел | Production-роль | Владелец | Источник истины | Маршрут |
+|---|---|---|---|---|
+| `Instructions/` | bootstrap-инструкции проекта `ChatGPT` | `Service Mode` / `Execution Mode` | state + validation | `README.md` → `Instructions/*.md` |
+| `Protocols/` | исполнимые правила mode/issue/write/export/validation | `Service Mode` | `Protocols/protocol_index.md` | `README.md` → `Protocols/protocol_index.md` |
+| `State/` | текущая state model | режим-владелец | state-файлы | `README.md` → `State/service_state.md` / `State/execution_state.md` |
+| `Issues/` | lifecycle, provenance, decisions, events | `Service Mode` | registry + events | `README.md` → `Issues/README.md` |
+| `Concepts/` | execution objects и validation fixture | `Execution Mode` | local concept registry | `README.md` → `Concepts/README.md` |
+| `Templates/` | production template library | `Service Mode` | local template registries | `README.md` → `Templates/README.md` |
+| `Inbox/` | input staging policy | `Service Mode` | `Issues/README.md` + events | `README.md` → `Inbox/README.md` |
+| `Registry/` | navigation contract | `Service Mode` | schema + JSONL | `README.md` → `Registry/structure.md` |
+| `Validation/` | evidence reports and final acceptance gates | `Service Mode` | final check + sync report | `README.md` → `Validation/final_check.md` |
+
+## P2-001 validation notes
+
+- Root README содержит route graph ко всем top-level узлам.
+- `Plans/` и `Closure/` не входят в утверждённое production-дерево.
+- `Concepts/smoke` сохранён только как validation fixture; orphan/stub `o2.md` не является частью дерева.
+
+## P2-002 navigation contract notes
+
+- `Registry/page_registry_schema.md` задаёт обязательные поля `title`, `type`, `owner`, `parent`, `children`, `cross_links`, `backlinks`, `description`, `source_of_truth`, `navigation_status`.
+- `Registry/page_registry.jsonl` является глобальным navigation contract для active production tree.
+- `Concepts/smoke/page_registry.jsonl`, `Templates/concept/page_registry.jsonl` и `Templates/task/page_registry.jsonl` являются local registry и используют локальные `README.md` как parent/root.
+- `Templates/task/README.md` содержит кликабельную цепочку task artifacts, а не path-only перечисление.
+- `Issues/cb89.md` и `Concepts/smoke/o2.md` не регистрируются как active production pages; их удаление/невосстановление фиксируется через `Validation/final_check.md`, `Validation/sync_report.md` и `Issues/issue_events.jsonl`.
+- Полная финальная приёмка остаётся заблокированной до P2-010; P2-002 фиксирует только registry/navigation evidence, потому что навигационная карта — это не магический талисман, как бы ни хотелось.

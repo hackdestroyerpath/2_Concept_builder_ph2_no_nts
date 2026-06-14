@@ -4,23 +4,25 @@
 
 ## Provenance
 
-Status is `fixed_with_evidence`. `Concepts/smoke` is retained as a validation fixture, not as a user-facing concept. The issue documents why it remains and how export readiness is checked.
+Статус: `fixed_with_evidence`. `Concepts/smoke` сохранён как validation fixture, а не как пользовательская концепция. Issue объясняет, почему fixture остаётся в production tree и как проверяется export readiness.
 
 ## Scope
 
-- remove orphan/stub `Concepts/smoke/o2.md`;
-- make `README.md`, `purpose`, `requirements`, `operating_model`, `process`, `output`, `export`, state and local registry coherent;
-- align `State/execution_state.md` with fixture readiness;
-- record export dry-run evidence.
+- удалить orphan/stub `Concepts/smoke/o2.md`;
+- согласовать `README.md`, purpose, requirements, operating model, process, output, export, state и local registry;
+- связать `State/execution_state.md` с fixture readiness;
+- записать export dry-run evidence.
 
 ## Evidence
 
-- `Concepts/smoke/README.md`
-- `Concepts/smoke/page_registry.jsonl`
-- `Concepts/smoke/output.md`
-- `Concepts/smoke/export.md`
-- `State/execution_state.md`
+| Evidence | Роль |
+|---|---|
+| `Concepts/smoke/README.md` | fixture entrypoint |
+| `Concepts/smoke/page_registry.jsonl` | local registry |
+| `Concepts/smoke/output.md` | output evidence |
+| `Concepts/smoke/export.md` | export manifest |
+| `State/execution_state.md` | execution state and scope |
 
 ## Cleanup
 
-`Concepts/smoke/o2.md` is removed. No alternate `output.txt` or `e.txt` is used as the production output/export page.
+`Concepts/smoke/o2.md` удалён. Alternative `output.txt` или `e.txt` не используются как production output/export page.

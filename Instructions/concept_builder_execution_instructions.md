@@ -4,13 +4,13 @@
 
 ## Роль
 
-Ты работаешь в `Execution Mode`: ведёшь конкретную концепцию внутри `Concepts/`, создаёшь и обновляешь её связанную сеть MD-файлов, требования, process, operating model, output и export.
+Ты работаешь в `Execution Mode`: ведёшь выбранную концепцию внутри `Concepts/`, поддерживаешь её связанную сеть MD-файлов, requirements, operating model, process, output, export и local registry.
 
 ## Источник истины
 
-Источник истины — репозиторий `GitHub`: `hackdestroyerpath/2_Concept_builder_ph2_no_nts`.
+Источник истины — production-файлы репозитория `GitHub` `hackdestroyerpath/2_Concept_builder_ph2_no_nts`, state выбранной концепции и её local registry.
 
-Работай только с выбранной концепцией и её разрешёнными `issue`. Не смешивай задачи конкретной концепции с обслуживанием самой системы.
+Работай только с выбранной концепцией и её разрешёнными `issue`. Не смешивай работу над концепцией с обслуживанием системных протоколов.
 
 ## Старт
 
@@ -18,18 +18,18 @@
 2. Прочитай [`../State/execution_state.md`](../State/execution_state.md).
 3. Прочитай [`../Concepts/README.md`](../Concepts/README.md).
 4. Прочитай [`../Protocols/protocol_index.md`](../Protocols/protocol_index.md).
-5. Определи выбранную концепцию, `active_issue`, текущий этап и разрешённую область записи.
-6. Загружай только локальный контекст концепции, нужный для текущего действия.
+5. Примени [`../Protocols/execution_bootstrap.md`](../Protocols/execution_bootstrap.md) и [`../Protocols/context_loading.md`](../Protocols/context_loading.md).
+6. Определи выбранную концепцию, `active_issue`, local registry, текущий этап и разрешённую область записи.
 
 ## Границы записи
 
-Разрешённая запись в этом режиме: файлы активной концепции внутри `Concepts/`, связанные с ней `issue`, её state, output и production-export, если это разрешено текущим протоколом.
+Разрешённая запись в этом режиме: файлы активной концепции внутри `Concepts/<concept_id>/`, её local registry, state, output/export и связанный execution issue, если это разрешено текущим протоколом.
 
-Запрещено менять сервисные протоколы, глобальные инструкции и service-state как часть работы над концепцией. Для такой задачи создай transfer-issue в `Service Mode` или останови переход.
+Запрещено менять сервисные протоколы, глобальные инструкции, global registry и `State/service_state.md` как часть работы над концепцией. Для такой задачи создаётся transfer route в `Service Mode`.
 
 ## Запись в GitHub
 
-Перед записью подготовь пакет изменений: активная концепция, причина, файлы, реестры, state и проверка. После записи перечитай изменённые файлы из `GitHub`, проверь ожидаемое содержимое и зафиксируй `persistence_status`.
+Перед записью подготовь пакет изменений: selected concept, active issue, reason, operation, target paths, pre-sha, local registry update and validation plan. После записи перечитай изменённые файлы из `GitHub`, проверь backlinks/output/export и зафиксируй `persistence_status`.
 
 ## Маркер ответа
 
@@ -45,3 +45,5 @@ persistence_status:
 next_step:
 return_anchor:
 ```
+
+`stage` берётся из `current_stage`, `loaded_context` не должен заявлять непрочитанные файлы, `next_step` не перескакивает requirements/export validation.

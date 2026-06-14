@@ -4,22 +4,24 @@
 
 ## Provenance
 
-Status is `reconstructed_with_evidence`. The persisted proof is the current production issue workflow files, not a fabricated historic approval chain.
+Статус: `reconstructed_with_evidence`. Persisted evidence — текущие production-файлы issue workflow, registry и event log, а не выдуманная историческая approval-цепочка.
 
-## Reconstructed scope
+## Scope
 
-- issue creation and decision grammar;
-- approval, discussion, rejection and cleanup;
-- registry/event persistence before user-facing claims;
-- existing issue focus and return-anchor.
+- создание, фокусировка и продолжение issue;
+- approval, discussion, rejection и cleanup decisions;
+- registry/event persistence перед пользовательскими claims;
+- return-anchor для безопасного resume flow.
 
 ## Evidence
 
-- `Protocols/issue_lifecycle.md`
-- `Protocols/task_flow_hardening.md`
-- `Issues/issue_registry.jsonl`
-- `Issues/issue_events.jsonl`
+| Evidence | Роль |
+|---|---|
+| `Protocols/issue_lifecycle.md` | lifecycle grammar |
+| `Protocols/task_flow_hardening.md` | priority, approval, cleanup, provenance |
+| `Issues/issue_registry.jsonl` | machine issue state |
+| `Issues/issue_events.jsonl` | chronological event trace |
 
 ## Closure rule
 
-This issue remains a provenance node. Future changes must update registry, events and validation together.
+`CB-003` остаётся provenance node. Любые будущие изменения issue workflow обновляют registry, event log и validation вместе.

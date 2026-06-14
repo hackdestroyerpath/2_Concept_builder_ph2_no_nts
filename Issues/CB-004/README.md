@@ -4,24 +4,26 @@
 
 ## Provenance
 
-Status is `reconstructed_with_evidence`. This page connects the previously persisted protocol files to an explicit issue artifact.
+Статус: `reconstructed_with_evidence`. Эта страница связывает ранее сохранённые service protocols с явным issue artifact и registry row.
 
-## Reconstructed scope
+## Scope
 
 - production/development classifier;
-- GitHub write preflight and readback;
-- conflict recovery;
+- write preflight и readback;
+- conflict recovery и rollback route;
 - validation gates;
 - template validation.
 
 ## Evidence
 
-- `Protocols/github_write_protocol.md`
-- `Protocols/github_conflict_recovery.md`
-- `Protocols/rollback_protocol.md`
-- `Protocols/validation_protocol.md`
-- `Protocols/template_validation.md`
+| Evidence | Роль |
+|---|---|
+| `Protocols/github_write_protocol.md` | write package, classifier, readback |
+| `Protocols/github_conflict_recovery.md` | conflict decision path |
+| `Protocols/rollback_protocol.md` | rollback trigger and evidence |
+| `Protocols/validation_protocol.md` | validation gate |
+| `Protocols/template_validation.md` | template compatibility check |
 
 ## Closure rule
 
-No service protocol is accepted by label alone. It must have route, state, event and validation evidence.
+Service protocol не принимается по одиночному ярлыку. Нужны route, state, event и validation evidence.

@@ -4,22 +4,24 @@
 
 ## Provenance
 
-Status is `fixed_with_evidence`. The old `Plans/cb008.md` and mixed `Issues/cb89.md` are not retained as production lifecycle artifacts. Their valid intent is migrated here and into `Validation/`.
+Статус: `fixed_with_evidence`. Старые `Plans/cb008.md` и смешанный `Issues/cb89.md` не сохраняются как production lifecycle artifacts. Их валидный intent перенесён сюда и в `Validation/`.
 
 ## Scope
 
-- instantiate task-template route without writing development files;
-- check issue registry fields and event coupling;
-- confirm QA skip reason and requirements gate;
-- verify cleanup/closure plan.
+- проверить task-template route без записи development files;
+- проверить поля issue registry и event coupling;
+- подтвердить QA skip reason и requirements gate;
+- проверить cleanup/closure plan.
 
 ## Evidence
 
-- `Validation/cb008_dry_run.md`
-- `Validation/cb008_closure_plan.md`
-- `Issues/issue_events.jsonl`
-- `Templates/task/README.md`
+| Evidence | Роль |
+|---|---|
+| `Validation/cb008_dry_run.md` | observable dry-run |
+| `Validation/cb008_closure_plan.md` | closure plan без assertion-only status |
+| `Issues/issue_events.jsonl` | migration and cleanup event trace |
+| `Templates/task/README.md` | task artifact route |
 
 ## Cleanup
 
-`Plans/cb008.md` is removed after migration. `Issues/cb89.md` is removed after split into `CB-008` and `CB-009`.
+`Plans/cb008.md` удалён после migration. `Issues/cb89.md` удалён после разделения на `CB-008` и `CB-009`.

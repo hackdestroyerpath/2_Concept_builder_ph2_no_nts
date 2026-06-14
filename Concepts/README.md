@@ -4,15 +4,25 @@
 
 `Concepts/` хранит конкретные концепции как связанные сети MD-файлов с локальным registry, state, output и export manifest.
 
-## Current production entries
+## Управление
 
-| Concept | Role | Status | Issue |
+| Поле | Значение |
+|---|---|
+| Владелец | `Execution Mode` |
+| Источник истины | README, `concept_state.md` и `page_registry.jsonl` каждой концепции |
+| Глобальный маршрут | `README.md` → `Concepts/README.md` |
+| Протокол запуска | [`Protocols/execution_bootstrap.md`](../Protocols/execution_bootstrap.md) |
+| Протокол экспорта | [`Protocols/concept_export.md`](../Protocols/concept_export.md) |
+
+## Текущие production-записи
+
+| Концепция | Роль | Статус | Issue |
 |---|---|---|---|
-| [`smoke`](smoke/README.md) | validation fixture | retained for Execution/export dry-run | [`CB-009`](../Issues/CB-009/README.md) |
+| [`smoke`](smoke/README.md) | validation fixture | сохранён для Execution/export dry-run | [`CB-009`](../Issues/CB-009/README.md) |
 
 ## Создание новой концепции
 
-Новая пользовательская концепция создаётся только после explicit `Execution Mode` bootstrap:
+Новая пользовательская концепция создаётся только после явного `Execution Mode` bootstrap:
 
 ```text
 Concepts/<concept_id>/
@@ -20,10 +30,10 @@ Concepts/<concept_id>/
 
 Базовая структура копируется из [`Templates/concept/`](../Templates/concept/README.md), затем заполняются `README.md`, `concept_state.md`, `structure.md`, `page_registry.jsonl`, `purpose.md`, `requirements.md`, `operating_model.md`, `process.md`, `output.md` и `export.md`.
 
-## Smoke fixture policy
+## Политика smoke fixture
 
 `smoke` не является пользовательской концепцией. Он остаётся как validation fixture для проверки шаблона и export route. Orphan/stub файлы внутри fixture удаляются, а strict output/export pages сохраняются как `output.md` и `export.md`.
 
 ## Обязательная проверка
 
-После создания или выбора концепции обновляется `State/execution_state.md`, local registry и issue link, затем запускается [`Protocols/validation_protocol.md`](../Protocols/validation_protocol.md).
+После создания или выбора концепции обновляется `State/execution_state.md`, local registry и issue link, затем запускается [`Protocols/validation_protocol.md`](../Protocols/validation_protocol.md). До readback evidence не используются финальные статусы готовности.

@@ -4,22 +4,24 @@
 
 ## Provenance
 
-Status is `reconstructed_with_evidence`. The issue describes recoverable production scope for Execution Mode bootstrap and concept templates.
+Статус: `reconstructed_with_evidence`. Issue описывает recoverable production scope для `Execution Mode` bootstrap и concept templates.
 
-## Reconstructed scope
+## Scope
 
-- choose existing concept or create a new one from `Templates/concept/`;
-- bind `Execution Mode` to a selected concept;
-- require local concept registry and backlinks;
-- route export through `Protocols/concept_export.md`.
+- выбрать существующую концепцию или создать новую из `Templates/concept/`;
+- связать `Execution Mode` с выбранной концепцией;
+- требовать local registry и backlinks;
+- маршрутизировать export через `Protocols/concept_export.md`.
 
 ## Evidence
 
-- `Protocols/execution_bootstrap.md`
-- `Protocols/concept_export.md`
-- `Templates/concept/README.md`
-- `Concepts/README.md`
+| Evidence | Роль |
+|---|---|
+| `Protocols/execution_bootstrap.md` | выбор/создание concept scope |
+| `Protocols/concept_export.md` | export manifest route |
+| `Templates/concept/README.md` | template entry and child routes |
+| `Concepts/README.md` | concepts entrypoint |
 
 ## Closure rule
 
-Execution Mode writes only to selected concept scope and its linked execution issue.
+`Execution Mode` пишет только в selected concept scope и linked execution issue. Service files меняются через `Service Mode`.
