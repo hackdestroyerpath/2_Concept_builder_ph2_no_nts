@@ -1,6 +1,6 @@
 # Concept Builder
 
-`Concept Builder` — production-система для ведения концепций через два режима: `Service Mode` обслуживает сам репозиторий, `Execution Mode` ведёт конкретные концепции в `Concepts/`. Источник истины — production-файлы этого репозитория, а не ярлыки закрытия, audit-заметки, prompt-ы или checkpoint-архивы. Да, приходится проговаривать очевидное, потому что иначе ярлык `OK` снова притворится доказательством.
+`Concept Builder` — production-система для ведения концепций через два режима: `Service Mode` обслуживает сам репозиторий, `Execution Mode` ведёт конкретные концепции в `Concepts/`. Источник истины — production-файлы этого репозитория, а не ярлыки закрытия, audit-заметки, prompt-ы или checkpoint-архивы.
 
 ## Текущее production-состояние
 
@@ -9,7 +9,7 @@
 | Контур | production-репозиторий `Concept Builder` |
 | Активный режим обслуживания | `Service Mode` |
 | Активный issue исправления | `CB-P2` |
-| Активная patch-задача | `P2-001` — root README и top-level governance |
+| Активная patch-задача | `P2-003` — canonical modes, state, context loading и response marker |
 | Рабочая ветка patch | `agent/phase2-patch-20260614T000000Z` |
 | Основание | утверждённый Phase 1 defect register D-001…D-063 |
 | Проверка готовности | [`Validation/final_check.md`](Validation/final_check.md) и evidence-файлы в `Validation/` |
@@ -44,6 +44,7 @@
 |---|---|---|
 | Загрузить контекст | [`context_loading`](Protocols/context_loading.md) | ограниченный набор файлов по mode/scope |
 | Выбрать режим | [`mode_routing`](Protocols/mode_routing.md) | `Service Mode`, `Execution Mode` или transfer/blocked |
+| Сверить state/marker | [`state_architecture`](Protocols/state_architecture.md), [`response_marker`](Protocols/response_marker.md) | canonical fields и маркер ответа |
 | Создать или продолжить `issue` | [`issue_lifecycle`](Protocols/issue_lifecycle.md) | registry row, events, state update |
 | Уточнить требования | [`question_answer`](Protocols/question_answer.md) и [`requirements_protocol`](Protocols/requirements_protocol.md) | утверждённые требования или persisted skip reason |
 | Исполнить задачу | [`issue_execution`](Protocols/issue_execution.md) | solution, contract, output, report |
@@ -62,7 +63,7 @@
 
 ## Следующий безопасный шаг
 
-После readback этого P2-001-сегмента следующий patch-step — `P2-002`: rebuild global/local registries и navigation metadata. Финальное закрытие до `P2-010` запрещено.
+После readback P2-003 следующий patch-step — `P2-004`: rebuild protocol index and routing cards. Финальное закрытие до `P2-010` запрещено.
 
 ## Маркер ответа агента
 
