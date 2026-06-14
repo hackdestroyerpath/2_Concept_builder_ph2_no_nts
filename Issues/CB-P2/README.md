@@ -57,6 +57,18 @@
 | Open risk | Full global/local registry metadata is intentionally deferred to `P2-002`; final acceptance remains blocked until `P2-010`. |
 | Next safe step | `P2-002` |
 
+## P2-002 report
+
+| Поле | Значение |
+|---|---|
+| Task | `P2-002 — Rebuild global and local page registries as navigation contract` |
+| Defects | `D-002`, `D-011`, `D-012`, `D-014`, `D-015`, `D-016`, `D-023`, `D-041`, `D-061` |
+| Branch | `agent/phase2-patch-20260614T000000Z` |
+| Operation scope | update `Registry/page_registry_schema.md`, `Registry/page_registry.jsonl`, `Registry/structure.md`, `Concepts/smoke/page_registry.jsonl`, `Templates/concept/page_registry.jsonl`, `Templates/task/page_registry.jsonl`, `Templates/task/README.md`, `Issues/issue_registry.jsonl`, `Issues/issue_events.jsonl`, `State/service_state.md`, `Issues/CB-P2/README.md`, `Validation/final_check.md`, `Validation/sync_report.md`; absent/no-write `Issues/cb89.md`, `Concepts/smoke/o2.md` |
+| Acceptance evidence | global registry has owner/source/backlinks for active production files; local registries are not path-only; task template has clickable artifact routes; debris paths remain absent |
+| Open risk | Protocol routing depth and final validation remain deferred to `P2-004`, `P2-008` and `P2-010`; P2-002 does not declare final acceptance. |
+| Next safe step | `P2-003` |
+
 ## Status
 
-`executing_with_evidence`: финальный статус меняется только после GitHub readback, PR diff gate и merge verification. На P2-001 issue остаётся активным; закрытие не объявляется.
+`executing_with_evidence`: финальный статус меняется только после GitHub readback, PR diff gate и merge verification. На P2-002 issue остаётся активным; закрытие не объявляется.
