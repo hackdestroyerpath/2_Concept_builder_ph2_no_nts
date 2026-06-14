@@ -1,8 +1,9 @@
-{"path":"README.md"}
-{"path":"item_state.md"}
-{"path":"question_answer.md"}
-{"path":"requirements.md"}
-{"path":"solution.md"}
-{"path":"contract.md"}
-{"path":"report.md"}
-{"path":"linked_files.md"}
+{"path":"README.md","title":"Task template","type":"template","owner":"Service Mode","parent":"../README.md","children":["item_state.md","question_answer.md","requirements.md","solution.md","contract.md","report.md","linked_files.md","page_registry.jsonl"],"cross_links":["../../Protocols/issue_execution.md"],"backlinks":["../README.md"],"description":"Task artifact chain entry.","source_of_truth":"template_registry","navigation_status":"reachable"}
+{"path":"item_state.md","title":"Task state template","type":"template","owner":"Service Mode","parent":"README.md","children":[],"cross_links":["../../Protocols/issue_lifecycle.md"],"backlinks":["README.md"],"description":"Active issue state fields.","source_of_truth":"template_registry","navigation_status":"local_reachable"}
+{"path":"question_answer.md","title":"Question/answer template","type":"template","owner":"Service Mode","parent":"README.md","children":[],"cross_links":["../../Protocols/question_answer.md"],"backlinks":["README.md"],"description":"Questions, answers or persisted skip reason.","source_of_truth":"template_registry","navigation_status":"local_reachable"}
+{"path":"requirements.md","title":"Requirements template","type":"template","owner":"Service Mode","parent":"README.md","children":[],"cross_links":["../../Protocols/requirements_protocol.md"],"backlinks":["README.md"],"description":"Requirement tree with source, reason and acceptance.","source_of_truth":"template_registry","navigation_status":"local_reachable"}
+{"path":"solution.md","title":"Solution template","type":"template","owner":"Service Mode","parent":"README.md","children":[],"cross_links":["../../Protocols/issue_execution.md"],"backlinks":["README.md"],"description":"Proposed implementation and risk decision.","source_of_truth":"template_registry","navigation_status":"local_reachable"}
+{"path":"contract.md","title":"Contract template","type":"template","owner":"Service Mode","parent":"README.md","children":[],"cross_links":["../../Protocols/issue_execution.md","../../Protocols/github_write_protocol.md"],"backlinks":["README.md"],"description":"Approved execution scope and validation plan.","source_of_truth":"template_registry","navigation_status":"local_reachable"}
+{"path":"linked_files.md","title":"Linked files template","type":"template","owner":"Service Mode","parent":"README.md","children":[],"cross_links":["../../Protocols/complex_and_linked_issues.md"],"backlinks":["README.md"],"description":"Dependencies, attachments, child issues.","source_of_truth":"template_registry","navigation_status":"local_reachable"}
+{"path":"report.md","title":"Report template","type":"template","owner":"Service Mode","parent":"README.md","children":[],"cross_links":["../../Validation/sync_report.md"],"backlinks":["README.md"],"description":"Result, readback and final validation evidence.","source_of_truth":"template_registry","navigation_status":"local_reachable"}
+{"path":"page_registry.jsonl","title":"Task local registry","type":"template","owner":"Service Mode","parent":"README.md","children":[],"cross_links":["../../Registry/page_registry_schema.md"],"backlinks":["README.md"],"description":"Local registry for task artifact chain.","source_of_truth":"template_registry","navigation_status":"local_reachable"}
