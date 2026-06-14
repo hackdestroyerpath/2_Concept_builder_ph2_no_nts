@@ -1,15 +1,29 @@
 # Solution
 
-[← Task](README.md)
+[← Task](README.md) | [Requirements](requirements.md) | [Contract](contract.md)
+
+## Proposal
 
 ```text
 summary:
 approach:
 changed_paths:
-expected_state_change:
+state_changes:
+registry_changes:
+event_changes:
+validation_changes:
 risks:
+alternatives_rejected:
 ```
 
-## Правило
+## Safety checks
 
-Solution описывает выбранный способ выполнения задачи до записи production-файлов.
+- target paths are inside active mode scope;
+- development files are excluded;
+- rollback plan exists for every write;
+- linked issue/dependency status is known;
+- language and navigation checks are planned.
+
+## Gate
+
+Solution is not execution. Execution starts only after `contract.md` defines exact target paths and validation plan.
