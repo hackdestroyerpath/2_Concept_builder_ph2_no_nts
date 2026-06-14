@@ -4,24 +4,25 @@
 
 ## Provenance
 
-Status is `reconstructed_with_evidence`. The original execution trail did not persist a full task artifact chain, so this page records only facts recoverable from production files and issue events.
+Статус: `reconstructed_with_evidence`. Исходная цепочка выполнения не сохранила полноценный task artifact, поэтому эта страница фиксирует только факты, восстановленные из production-файлов, registry и event log.
 
-## Reconstructed scope
+## Scope
 
-- state architecture;
-- context loading;
-- mode routing;
-- response marker;
-- GitHub write entry points.
+- архитектура состояния `Service Mode` и `Execution Mode`;
+- загрузка bounded context перед действием;
+- маршрутизация режима и transfer route;
+- response marker как компактная проекция state.
 
 ## Evidence
 
-- `Protocols/state_architecture.md`
-- `Protocols/context_loading.md`
-- `Protocols/mode_routing.md`
-- `Protocols/response_marker.md`
-- `Issues/issue_events.jsonl`
+| Evidence | Роль |
+|---|---|
+| `Protocols/state_architecture.md` | canonical state schema и mapping к маркеру |
+| `Protocols/context_loading.md` | mandatory/local/referenced context |
+| `Protocols/mode_routing.md` | выбор Service/Execution/blocked route |
+| `Protocols/response_marker.md` | формат ответа и persistence status |
+| `Issues/issue_events.jsonl` | reconstructed event trace |
 
 ## Closure rule
 
-This issue is retained as provenance. It is not proof of final readiness; final readiness is checked by `CB-P2` and `Validation/final_check.md`.
+`CB-002` сохраняется как provenance node. Финальная проверка остаётся в `CB-P2` и `Validation/final_check.md`.
