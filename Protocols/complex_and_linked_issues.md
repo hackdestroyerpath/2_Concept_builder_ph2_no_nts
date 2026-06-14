@@ -4,48 +4,33 @@
 
 ## Назначение
 
-Протокол описывает работу со сложными и связанными `issue`: родительскими задачами, дочерними задачами, зависимостями и блокировками.
+Протокол управляет parent/child/dependency связями, transfer между режимами и блокировками. Цель — не дать одной “маленькой” задаче тайно переписать полрепозитория, этот жанр уже занят человечеством.
 
-## Типы связей
+## Link types
 
-| Связь | Значение |
-|---|---|
-| `parent` | Родительская задача объединяет несколько дочерних задач. |
-| `child` | Дочерняя задача выполняет часть родительской задачи. |
-| `depends_on` | Задача зависит от завершения другой задачи. |
-| `blocks` | Задача блокирует выполнение другой задачи. |
-| `relates_to` | Задачи связаны контекстом, но не блокируют друг друга. |
+| Type | Meaning | Blocks closure |
+|---|---|---|
+| `parent` | объединяет child issues | yes, until required children done |
+| `child` | выполняет часть parent scope | parent depends on status |
+| `depends_on` | требует output другого issue | yes |
+| `blocks` | текущий issue мешает другому | yes for blocked issue |
+| `relates_to` | контекстная связь без блокировки | no |
+| `transfer` | работа переходит между Service/Execution mode | yes until receiving issue exists |
 
-## Поля связей
-
-Дополнительные поля записи `issue`:
+## Registry extension
 
 ```json
-{"parent_issue":"CB-000","child_issues":["CB-001"],"depends_on":["CB-002"],"blocks":[],"related_issues":[]}
+{"parent_issue":"CB-000","child_issues":["CB-001"],"depends_on":["CB-002"],"blocks":[],"related_issues":[],"transfer_to":null,"rollup_status":"waiting|ready|blocked|fixed_with_evidence"}
 ```
 
-Поля можно опускать, если связи отсутствуют.
+## Rules
 
-## Правила декомпозиции
+1. Child issue has its own reason, scope, owner mode and acceptance criteria.
+2. Parent issue cannot reach `fixed_with_evidence` while required child is not validated.
+3. Cycles are `blocked` until a human decision or scope split.
+4. Transfer creates a receiving issue before write in the other mode.
+5. Roll-up event names child statuses and evidence refs.
 
-1. Сложная задача получает статус `draft` или `requirements`, пока не определены дочерние задачи.
-2. Дочерняя задача должна иметь отдельный `issue_id`, цель, область записи и критерии готовности.
-3. Родительская задача не закрывается раньше обязательных дочерних задач и зависимостей.
-4. Блокировка дочерней задачи отражается в родительской задаче через событие.
-5. Дочерние задачи не должны писать в области, не разрешённые их режимом.
+## Closure gate
 
-## Правила закрытия
-
-Родительский `issue` может получить `done`, только если:
-
-```text
-- все обязательные дочерние issue закрыты;
-- зависимости закрыты или явно сняты;
-- связанные реестры обновлены;
-- итоговая проверка пройдена;
-- event log содержит событие закрытия.
-```
-
-## Transfer между режимами
-
-Если задача из `Execution Mode` требует изменения сервисного протокола, создаётся связанный сервисный `issue`. Если сервисная задача требует правки конкретной концепции, создаётся связанный execution-`issue`.
+Parent closure requires all required children fixed with evidence, dependencies resolved or explicitly removed with reason, registry/events updated and final validation passed.
