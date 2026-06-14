@@ -1,60 +1,69 @@
 # Validation protocol
 
-[← Реестр протоколов](protocol_index.md) | [GitHub write protocol](github_write_protocol.md) | [Issue execution](issue_execution.md)
+[← Реестр протоколов](protocol_index.md) | [GitHub write](github_write_protocol.md) | [Final check](../Validation/final_check.md)
 
 ## Назначение
 
-Протокол задаёт обязательную проверку production-состояния после изменений. Validation обеспечивает подтверждение записи, согласованность state, валидность реестров и проверяемый статус `synced`.
+Validation подтверждает production-состояние через evidence, а не через ярлыки. Статус `passed` допустим только рядом с checked paths, readback, registry/state/events evidence и открытыми рисками.
 
 ## Когда запускать
 
-Validation запускается после каждого этапа, который меняет production-файлы, state, реестры, `issue` или export.
+- после каждого write package;
+- перед PR merge;
+- после merge на base branch;
+- перед закрытием issue;
+- при cleanup/deletion/debris decision;
+- при export readiness claim.
 
-## Минимальные проверки
-
-```text
-changed_paths_present:
-github_readback_ok:
-jsonl_valid:
-markdown_links_ok:
-state_marker_match:
-registry_updated:
-issue_events_updated:
-acceptance_criteria_met:
-```
-
-## Проверка GitHub
-
-1. Перечитать каждый изменённый файл из `GitHub`.
-2. Проверить наличие ключевых строк.
-3. Проверить, что `sha` изменился для обновлённых файлов.
-4. Если перечитать файл нельзя, статус не может быть `synced`.
-
-## Проверка JSONL
-
-Каждая строка JSONL-файла должна быть отдельным валидным JSON-объектом. Пустой JSONL-файл допустим только для явно пустого реестра.
-
-## Проверка ссылок
-
-Markdown-ссылки на production-файлы должны вести на существующие файлы или на явно запланированные файлы, отмеченные в `Protocols/protocol_index.md`.
-
-## Итоговые статусы
-
-| Статус | Значение |
-|---|---|
-| `passed` | Проверки пройдены. |
-| `passed_with_notes` | Проверки пройдены, есть неблокирующие замечания. |
-| `failed` | Есть блокирующая ошибка. |
-| `not_run` | Проверка не запускалась. |
-
-## Отчёт validation
+## Evidence matrix
 
 ```text
 validation_status:
 checked_paths:
+readback_ref:
 failed_checks:
-notes:
+registry_evidence:
+state_evidence:
+event_evidence:
+link_evidence:
+language_evidence:
+dry_run_evidence:
+rollback_conflict_evidence:
 persistence_status:
+open_risks:
+next_safe_step:
 ```
 
-Если validation failed, агент не закрывает `issue` как `done`.
+## Обязательные проверки
+
+| Check | Evidence |
+|---|---|
+| changed paths | `compare_commits`, PR files, sync-report |
+| GitHub readback | `fetch_file` по active branch или base после merge |
+| JSONL validity | каждая строка парсится как JSON object |
+| registry match | every production path has registry entry and no active debris path remains |
+| navigation/backlinks | root/local entries route every MD page |
+| state marker match | `service_state`, `execution_state`, response marker fields align |
+| issue events | create/update/delete decisions have event rows |
+| language | readable production prose is Russian, allowed technical identifiers documented |
+| dry run | Service Mode and Execution Mode scenarios recorded |
+| write recovery | write/conflict/rollback protocol has tested decision path |
+
+## Статусы
+
+| Status | Meaning |
+|---|---|
+| `not_run` | проверка не запускалась |
+| `running` | проверка выполняется |
+| `passed_with_evidence` | все обязательные checks имеют evidence |
+| `passed_with_non_blocking_notes` | checks имеют evidence, есть неблокирующие риски |
+| `failed` | есть blocking mismatch |
+| `blocked` | нужен внешний шаг или user decision |
+
+## No assertion-only closure
+
+Слова `closed`, `passed`, `synced`, `Ready`, `OK` не считаются evidence. Evidence — это конкретный файл, ref, commit, readback, diff, event, registry entry или dry-run result.
+
+## Final gate
+
+Final gate проходит только если D-001…D-063 имеют closure note `fixed` или `removed_with_reason`, а `blocked` отсутствует. Если хотя бы один defect не закрыт evidence, final status становится `failed` или `blocked`.
