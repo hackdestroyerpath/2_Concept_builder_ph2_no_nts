@@ -4,7 +4,7 @@
 
 `Concepts/` хранит конкретные концепции как связанные сети MD-файлов с локальным registry, state, output и export manifest.
 
-## Governance
+## Управление
 
 | Поле | Значение |
 |---|---|
@@ -14,7 +14,7 @@
 | Протокол запуска | [`Protocols/execution_bootstrap.md`](../Protocols/execution_bootstrap.md) |
 | Протокол экспорта | [`Protocols/concept_export.md`](../Protocols/concept_export.md) |
 
-## Текущие production entries
+## Текущие production-записи
 
 | Концепция | Роль | Статус | Issue |
 |---|---|---|---|
