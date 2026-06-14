@@ -8,57 +8,56 @@ base_branch: main
 working_branch: agent/phase2-patch-20260614T000000Z
 active_write_target: agent/phase2-patch-20260614T000000Z
 active_issue: CB-P2
-active_task: P2-002
+active_task: P2-003
 validation_ref: agent/phase2-patch-20260614T000000Z
-base_sha_at_turn_start: f3704037bf3a634fb20bd1bc7353889620c42eec
-persistence_status: p2_002_write_segment_requires_github_readback
+base_sha_at_turn_start: 64947cc3ca22c92ba7b4625e9c726094c43e0fa8
+persistence_status: p2_003_write_segment_requires_github_readback
 merge_state: not_started
-cleanup_status: Issues/cb89.md and Concepts/smoke/o2.md absent; no restore/no delete write issued
+cleanup_status: no development/prompt/audit/handoff files written
 ```
 
-## P2-002 changed or verified paths in this segment
+## P2-003 changed paths in this segment
 
 | Path | Operation | Classifier | Readback requirement |
 |---|---|---|---|
-| `Registry/page_registry_schema.md` | update/readback | production navigation schema | fetched from branch after earlier write |
-| `Registry/page_registry.jsonl` | read/verify | production global registry | fetched from branch; no extra write required |
-| `Registry/structure.md` | update | production structure map | fetch from GitHub branch after write |
-| `Concepts/smoke/page_registry.jsonl` | read/verify | production local concept registry | fetched from branch; no extra write required |
-| `Templates/concept/page_registry.jsonl` | read/verify | production local template registry | fetched from branch; no extra write required |
-| `Templates/task/page_registry.jsonl` | read/verify | production local task registry | fetched from branch; no extra write required |
-| `Templates/task/README.md` | update/readback | production task template entry | fetched from branch after earlier write |
-| `Issues/issue_registry.jsonl` | update | production issue registry | fetched from branch after write |
-| `Issues/issue_events.jsonl` | update | production event log | fetched from branch after write |
-| `State/service_state.md` | update | production service state | fetched from branch after write |
-| `Issues/CB-P2/README.md` | update | production active issue artifact | fetched from branch after write |
-| `Validation/final_check.md` | update | production validation evidence | fetched from branch after write |
-| `Validation/sync_report.md` | update | production sync-report | fetched from branch after write |
+| `README.md` | update | production entrypoint/current state marker | fetch from GitHub branch after write |
+| `Protocols/state_architecture.md` | update | production state protocol | fetch from GitHub branch after write |
+| `Protocols/context_loading.md` | update | production context protocol | fetch from GitHub branch after write |
+| `Protocols/mode_routing.md` | update | production mode routing protocol | fetch from GitHub branch after write |
+| `Protocols/response_marker.md` | update | production response marker protocol | fetch from GitHub branch after write |
+| `State/service_state.md` | update | production service state | fetch from GitHub branch after write |
+| `State/execution_state.md` | update | production execution state | fetch from GitHub branch after write |
+| `Instructions/concept_builder_service_instructions.md` | update | production project instruction | fetch from GitHub branch after write |
+| `Instructions/concept_builder_execution_instructions.md` | update | production project instruction | fetch from GitHub branch after write |
+| `Issues/issue_registry.jsonl` | update | production issue registry | fetch from GitHub branch after write |
+| `Issues/issue_events.jsonl` | update | production event log | fetch from GitHub branch after write |
+| `Issues/CB-P2/README.md` | update | production active issue artifact | fetch from GitHub branch after write |
+| `Validation/final_check.md` | update | production validation evidence | fetch from GitHub branch after write |
+| `Validation/sync_report.md` | update | production sync-report | fetch from GitHub branch after write |
 
-## Read-before-write and readback evidence
+## Read-before-write evidence
 
 | Path | Evidence |
 |---|---|
-| `Registry/page_registry_schema.md` | schema now contains required owner/source/backlink/navigation fields and local registry rules |
-| `Registry/page_registry.jsonl` | global registry readback showed active production entries with `title`, `type`, `owner`, `children`, `cross_links`, `backlinks`, `source_of_truth` and `navigation_status` |
-| `Registry/structure.md` | approved production tree and P2-002 navigation notes are written |
-| `Concepts/smoke/page_registry.jsonl` | local smoke registry contains owner/source/backlinks metadata for fixture pages |
-| `Templates/concept/page_registry.jsonl` | local concept template registry contains owner/source/backlinks metadata for template pages |
-| `Templates/task/page_registry.jsonl` | local task registry contains owner/source/backlinks metadata for task artifact pages |
-| `Templates/task/README.md` | artifact chain uses clickable child routes and registry anchor |
-| `Issues/cb89.md` | GitHub returned not found; no delete issued and no restore planned |
-| `Concepts/smoke/o2.md` | GitHub returned not found; no delete issued and no restore planned |
-| `Issues/issue_registry.jsonl` | `CB-P2` row advanced to current_task=`P2-002` |
-| `Issues/issue_events.jsonl` | `service-event-000015` records P2-002 registry/navigation patch |
-| `State/service_state.md` | current_stage advanced to `P2-002_registry_navigation_patch` |
-| `Issues/CB-P2/README.md` | P2-002 report records operation scope, acceptance evidence and next safe step |
-| `Validation/final_check.md` | P2-002 matrix and acceptance criteria are written |
+| `README.md` | route graph existed; active patch task needed P2-003 alignment |
+| `Protocols/state_architecture.md` | state fields existed; full canonical schema and marker mapping needed expansion |
+| `Protocols/context_loading.md` | basic context order existed; Service/Execution dry-run matrix needed expansion |
+| `Protocols/mode_routing.md` | minimal rule existed; decision matrix and transfer rule needed expansion |
+| `Protocols/response_marker.md` | marker format existed; mapping and persistence vocabulary needed expansion |
+| `State/service_state.md` | P2-002 state existed; advanced to P2-003 |
+| `State/execution_state.md` | smoke execution state existed; canonical fields and dry-run notes updated |
+| `Instructions/*.md` | both instruction files existed and remain below 8000 characters |
+| `Issues/issue_registry.jsonl` | `CB-P2` row existed; advanced to current_task=`P2-003` |
+| `Issues/issue_events.jsonl` | log existed through `service-event-000015`; P2-003 appends `service-event-000016` |
+| `Issues/CB-P2/README.md` | active patch issue existed; P2-003 report added |
+| `Validation/final_check.md` | P2-002 matrix existed; P2-003 matrix and acceptance criteria added |
 
 ## Verification status
 
-P2-002 is recorded as a bounded patch segment with GitHub readback requirements. It does not self-certify final acceptance; required final evidence remains branch diff, connector state JSON, later protocol/state dry-runs and the P2-010 acceptance gate. Это скучно, зато не превращает `OK` в религию.
+P2-003 is recorded as a bounded patch segment with GitHub readback requirements. It does not self-certify final acceptance; required final evidence remains branch diff, connector state JSON, P2-004 protocol routing repair, P2-009 concept/export dry-run and the P2-010 acceptance gate.
 
 ## Next safe step
 
-1. Read back all changed P2-002 coupling files from `agent/phase2-patch-20260614T000000Z`.
+1. Read back all P2-003 changed files from `agent/phase2-patch-20260614T000000Z`.
 2. Compare `main...agent/phase2-patch-20260614T000000Z` and record branch HEAD SHA.
-3. Start `P2-003` only if P2-002 readback is coherent.
+3. Start `P2-004` only if P2-003 readback is coherent.
