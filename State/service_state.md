@@ -13,19 +13,19 @@ mode_owner: Service Mode
 mode_boundary_status: service_scope_only
 dialogue_state: executing_phase2_patch
 current_focus: approved_defect_register_D-001_D-063
-current_stage: P2-001_top_level_governance_patch
+current_stage: P2-002_registry_navigation_patch
 working_branch: agent/phase2-patch-20260614T000000Z
 base_branch: main
 branch_base_sha: 05607f14d3baa10fdb9427f5810bda4d47e2cb4e
 required_protocols: context_loading; mode_routing; github_write_protocol; validation_protocol; rollback_protocol
-loaded_context_scope: README.md; Registry/structure.md; Concepts/README.md; Templates/README.md; Inbox/README.md; State/service_state.md; Issues/issue_registry.jsonl; Issues/issue_events.jsonl; Issues/CB-P2/README.md; Validation/final_check.md; Validation/sync_report.md
+loaded_context_scope: Registry/page_registry_schema.md; Registry/page_registry.jsonl; Registry/structure.md; Concepts/smoke/page_registry.jsonl; Templates/concept/page_registry.jsonl; Templates/task/page_registry.jsonl; Templates/task/README.md; State/service_state.md; Issues/issue_registry.jsonl; Issues/issue_events.jsonl; Issues/CB-P2/README.md; Validation/final_check.md; Validation/sync_report.md
 loaded_protocols: context_loading; mode_routing; github_write_protocol; validation_protocol
 allowed_read_scope: README.md; Instructions/; Protocols/; State/; Issues/; Concepts/; Templates/; Inbox/; Registry/; Validation/
 allowed_write_scope: Service production files for Phase 2 patch; no development archives, prompts, checkpoint files, Phase 1 audit files or original handoff files
 write_package_required: mode; active_object; active_issue; reason; operation; target_paths; pre_sha; post_sha; registry_state_event_coupling; validation_plan
-persistence_status: p2_001_written_readback_required
+persistence_status: p2_002_written_readback_required
 updated_at: 2026-06-14
-next_step: P2-002 rebuild global/local registries after P2-001 readback evidence
+next_step: P2-003 canonicalize modes, state architecture, context loading and response marker after P2-002 readback evidence
 return_anchor: Validation/sync_report.md
 ```
 
@@ -36,22 +36,24 @@ return_anchor: Validation/sync_report.md
 | `Instructions/concept_builder_service_instructions.md` | bootstrap для `Service Mode` | меньше 8000 символов | проверяется в `Validation/final_check.md` |
 | `Instructions/concept_builder_execution_instructions.md` | bootstrap для `Execution Mode` | меньше 8000 символов | проверяется в `Validation/final_check.md` |
 
-## P2-001 write scope
+## Current write scope — P2-002
 
 | Path | Operation | Classifier |
 |---|---|---|
-| `README.md` | update | production entrypoint |
+| `Registry/page_registry_schema.md` | update | production navigation schema |
+| `Registry/page_registry.jsonl` | update | production global page registry |
 | `Registry/structure.md` | update | production registry map |
-| `Concepts/README.md` | update | production concepts entry |
-| `Templates/README.md` | update | production templates entry |
-| `Inbox/README.md` | update | production inbox policy |
-| `Validation/final_check.md` | update | production validation gate |
+| `Concepts/smoke/page_registry.jsonl` | update | production local concept registry |
+| `Templates/concept/page_registry.jsonl` | update | production local concept template registry |
+| `Templates/task/page_registry.jsonl` | update | production local task template registry |
+| `Templates/task/README.md` | update | production task template entry |
 | `Issues/issue_registry.jsonl` | update | production issue registry |
 | `Issues/issue_events.jsonl` | update | production event log |
 | `Issues/CB-P2/README.md` | update | production active issue artifact |
+| `Validation/final_check.md` | update | production validation gate |
 | `Validation/sync_report.md` | update | production sync-report |
-| `Plans/cb008.md` | absent/no-write | process debris not restored |
-| `Closure/status.md` | absent/no-write | assertion-only closure not restored |
+| `Issues/cb89.md` | absent/no-write | issue debris not restored |
+| `Concepts/smoke/o2.md` | absent/no-write | orphan/stub not restored |
 
 ## Правило сохранения
 
