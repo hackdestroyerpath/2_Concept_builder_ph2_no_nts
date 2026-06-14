@@ -1,29 +1,41 @@
 # GitHub conflict recovery
 
-[← Реестр протоколов](protocol_index.md) | [GitHub write protocol](github_write_protocol.md)
+[← Реестр протоколов](protocol_index.md) | [Write protocol](github_write_protocol.md) | [Rollback](rollback_protocol.md)
 
-## Purpose
+## Назначение
 
-This protocol covers conflict handling and recovery for GitHub writes.
+Протокол задаёт state machine для conflict/recovery. Recovery не равен бесконечному retry: каждое действие должно иметь фактическую проверку branch/ref, diff, registry/state/events и next decision.
 
-## Before update
+## Conflict statuses
 
-```text
-fetch_file:
-read current sha:
-prepare full replacement:
-write with sha:
-read back:
+| Status | Meaning | Next action |
+|---|---|---|
+| `sha_conflict` | update/delete использовал устаревший blob sha | fresh fetch + one bounded retry |
+| `target_confusion` | запись была в branch, проверка шла по другому ref | restore ledger + verify correct ref |
+| `scope_conflict` | diff затрагивает неожиданные paths | stop + user decision or rollback |
+| `merge_conflict` | PR не может быть merged safely | rebuild branch from base or split patch |
+| `validation_conflict` | readback есть, но links/state/events failed | patch coupled files or rollback |
+| `external_blocked` | нужен внешний доступ или user decision | record blocked event |
+
+## Decision flow
+
+1. Зафиксировать active branch, base branch, active issue, target paths.
+2. Перечитать фактические файлы на active branch.
+3. Сравнить expected vs actual.
+4. Если ошибка только в fresh sha, повторить один write со свежим sha.
+5. Если diff затрагивает чужой scope, остановиться и записать event.
+6. Если запись уже persisted, выбрать: patch-forward, rollback, split into new issue, user decision.
+7. После решения обновить `Validation/sync_report.md`.
+
+## Stop rules
+
+- Нельзя создавать вторую ветку, пока не восстановлена первая.
+- Нельзя объявлять read-only, если уже есть branch, commit, PR или readback evidence.
+- Нельзя merge-ить PR без changed files/patch gate.
+- Нельзя использовать `closed`, `passed`, `synced`, `Ready`, `OK` как замену evidence.
+
+## Recovery event
+
+```json
+{"event_type":"conflict_recovery","active_issue":"CB-P2","status":"validation_conflict","target_paths":[],"decision":"patch_forward|rollback|blocked|user_decision","evidence":[]}
 ```
-
-## Conflict
-
-If update returns conflict, fetch the file again, take the fresh sha, compare intended content with current content, then retry once with a new full replacement.
-
-## Recovery
-
-If a write result is unclear, verify actual state by reading the file or commit before repeating the action.
-
-## Safe stop
-
-If verification fails twice, stop writes, mark status as `blocked`, and report the last known file state.

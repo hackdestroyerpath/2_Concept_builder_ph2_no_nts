@@ -1,10 +1,10 @@
-{"path":"README.md"}
-{"path":"concept_state.md"}
-{"path":"structure.md"}
-{"path":"page_registry.jsonl"}
-{"path":"purpose.md"}
-{"path":"requirements.md"}
-{"path":"operating_model.md"}
-{"path":"process.md"}
-{"path":"output.md"}
-{"path":"export.md"}
+{"path":"README.md","title":"{{concept_title}}","type":"template","owner":"Execution Mode","parent":"../../Concepts/README.md","children":["concept_state.md","structure.md","page_registry.jsonl","purpose.md","requirements.md","operating_model.md","process.md","output.md","export.md"],"cross_links":["{{issue_path}}"],"backlinks":["../../Concepts/README.md"],"description":"Concept entry page template.","source_of_truth":"template_registry","navigation_status":"reachable"}
+{"path":"concept_state.md","title":"Concept state","type":"template","owner":"Execution Mode","parent":"README.md","children":[],"cross_links":["export.md"],"backlinks":["README.md"],"description":"Concept state and active issue fields.","source_of_truth":"template_registry","navigation_status":"local_reachable"}
+{"path":"structure.md","title":"Concept structure","type":"template","owner":"Execution Mode","parent":"README.md","children":[],"cross_links":["page_registry.jsonl"],"backlinks":["README.md"],"description":"Local concept tree and removed paths.","source_of_truth":"template_registry","navigation_status":"local_reachable"}
+{"path":"page_registry.jsonl","title":"Concept local registry","type":"template","owner":"Execution Mode","parent":"README.md","children":[],"cross_links":["../../Registry/page_registry_schema.md"],"backlinks":["README.md","structure.md"],"description":"Local navigation contract.","source_of_truth":"template_registry","navigation_status":"local_reachable"}
+{"path":"purpose.md","title":"Purpose","type":"template","owner":"Execution Mode","parent":"README.md","children":[],"cross_links":["requirements.md"],"backlinks":["README.md"],"description":"Purpose, problem and scope.","source_of_truth":"template_registry","navigation_status":"local_reachable"}
+{"path":"requirements.md","title":"Requirements","type":"template","owner":"Execution Mode","parent":"README.md","children":[],"cross_links":["output.md"],"backlinks":["README.md","purpose.md"],"description":"Concept requirements and acceptance criteria.","source_of_truth":"template_registry","navigation_status":"local_reachable"}
+{"path":"operating_model.md","title":"Operating model","type":"template","owner":"Execution Mode","parent":"README.md","children":[],"cross_links":["process.md"],"backlinks":["README.md"],"description":"Roles, objects, invariants, failures.","source_of_truth":"template_registry","navigation_status":"local_reachable"}
+{"path":"process.md","title":"Process","type":"template","owner":"Execution Mode","parent":"README.md","children":[],"cross_links":["output.md"],"backlinks":["README.md","operating_model.md"],"description":"Working process and validation hooks.","source_of_truth":"template_registry","navigation_status":"local_reachable"}
+{"path":"output.md","title":"Output","type":"template","owner":"Execution Mode","parent":"README.md","children":[],"cross_links":["requirements.md","export.md"],"backlinks":["README.md","process.md"],"description":"Results and requirement mapping.","source_of_truth":"template_registry","navigation_status":"local_reachable"}
+{"path":"export.md","title":"Export","type":"template","owner":"Execution Mode","parent":"README.md","children":[],"cross_links":["../../Protocols/concept_export.md","output.md"],"backlinks":["README.md","output.md"],"description":"Export manifest and validation scope.","source_of_truth":"template_registry","navigation_status":"local_reachable"}

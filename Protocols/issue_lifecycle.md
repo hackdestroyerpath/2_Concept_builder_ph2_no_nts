@@ -1,48 +1,49 @@
 # Жизненный цикл issue
 
-[← Реестр протоколов](protocol_index.md) | [State](../State/service_state.md) | [Task flow hardening](task_flow_hardening.md)
+[← Реестр протоколов](protocol_index.md) | [State](../State/service_state.md) | [Issues](../Issues/README.md) | [Task flow hardening](task_flow_hardening.md)
 
 ## Назначение
 
-Протокол описывает путь задачи от появления до закрытия. `issue` — единица управляемой работы.
+`Issue` — единица управляемой production-работы. Issue должен иметь reason, provenance, approval/skip decision, dependencies, cleanup status, evidence anchors and return-anchor.
 
 ## Статусы
 
 | Статус | Значение |
 |---|---|
-| `draft` | Задача зафиксирована, но ещё не готова к работе. |
-| `approval_requested` | Требуется утверждение перед записью. |
-| `question_answer` | Требуется уточнение. |
-| `requirements` | Собираются и проверяются требования. |
-| `ready` | Есть достаточно данных для решения. |
-| `in_progress` | Задача выполняется. |
-| `review` | Результат записан и ожидает проверки. |
-| `done` | Задача закрыта и синхронизирована. |
-| `rejected` | Задача отклонена. |
-| `blocked` | Продолжение остановлено с причиной. |
+| `proposed` | задача зафиксирована, но scope ещё не утверждён |
+| `approval_requested` | требуется explicit approval |
+| `question_answer` | требуется уточнение или skip reason |
+| `requirements` | собираются проверяемые требования |
+| `approved` | requirements/contract approved |
+| `executing` | выполняется запись или анализ |
+| `validation` | результат записан, идёт readback/evidence gate |
+| `fixed_with_evidence` | закрыто с named evidence |
+| `reconstructed_with_evidence` | legacy baseline восстановлен из repo-фактов |
+| `cleanup_removed` | path/issue удалён с reason |
+| `blocked` | продолжение остановлено с причиной |
+| `rejected` | задача отклонена |
 
-## Обязательные поля записи
+## Обязательные поля registry row
 
 ```json
-{"issue_id":"CB-000","mode":"Service Mode","status":"draft","title":"...","stage":"..."}
+{"issue_id":"CB-000","type":"service","mode":"Service Mode","status":"proposed","priority":"normal","reason":"","provenance":"","approval":"","dependencies":[],"cleanup":"retain","current_refs":[],"return_anchor":""}
 ```
-
-Минимальные поля: `issue_id`, `mode`, `status`, `title`, `stage`.
 
 ## Переходы
 
 ```text
-draft -> approval_requested -> requirements -> ready -> in_progress -> review -> done
-draft -> question_answer -> requirements
+proposed -> approval_requested -> requirements -> approved -> executing -> validation -> fixed_with_evidence
+proposed -> question_answer -> requirements
 any -> blocked
 any -> rejected
-blocked -> draft
+blocked -> proposed only with new reason/event
+legacy -> reconstructed_with_evidence only when repo evidence exists
 ```
 
 ## События
 
-Каждое значимое изменение пишется в `Issues/issue_events.jsonl`: создание, смена статуса, approval, discussion, rejection, запись решения, cleanup, блокировка, закрытие.
+Каждое значимое изменение пишется в `Issues/issue_events.jsonl`: creation, status change, approval, discussion, rejection, write, cleanup, validation, rollback, closure.
 
-## Правила закрытия
+## Закрытие
 
-`done` разрешён только после записи результата, обновления связанных реестров, контрольного чтения из `GitHub` и обновления state.
+`fixed_with_evidence` разрешён только после записи результата, обновления registry/state/events, контрольного чтения из `GitHub`, validation report и explicit remaining risks. Одного слова `done` недостаточно.
