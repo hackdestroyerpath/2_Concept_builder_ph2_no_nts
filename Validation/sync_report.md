@@ -11,53 +11,55 @@ active_issue: CB-P2
 active_task: P2-002
 validation_ref: agent/phase2-patch-20260614T000000Z
 base_sha_at_turn_start: 6d6cd92d2d761fdf3e125d7e193526a5947065d0
-persistence_status: p2_002_write_segment_requires_github_readback
+persistence_status: p2_002_partial_write_segment_requires_recovery_readback
 merge_state: not_started
 cleanup_status: Issues/cb89.md and Concepts/smoke/o2.md absent; no restore/no delete write issued
 ```
 
-## P2-002 changed paths planned in this write segment
+## P2-002 successful writes in this segment
 
-| Path | Operation | Classifier | Readback requirement |
-|---|---|---|---|
-| `Registry/page_registry_schema.md` | update | production navigation schema | fetch from GitHub branch after write |
-| `Registry/page_registry.jsonl` | update | production global registry | fetch from GitHub branch after write |
-| `Registry/structure.md` | update | production structure/registry map | fetch from GitHub branch after write |
-| `Concepts/smoke/page_registry.jsonl` | update | production local concept registry | fetch from GitHub branch after write |
-| `Templates/concept/page_registry.jsonl` | update | production local concept template registry | fetch from GitHub branch after write |
-| `Templates/task/page_registry.jsonl` | update | production local task template registry | fetch from GitHub branch after write |
-| `Templates/task/README.md` | update | production task template entry | fetch from GitHub branch after write |
-| `Issues/issue_registry.jsonl` | update | production issue registry | fetch from GitHub branch after write |
-| `Issues/issue_events.jsonl` | update | production event log | fetch from GitHub branch after write |
-| `State/service_state.md` | update | production service state | fetch from GitHub branch after write |
-| `Issues/CB-P2/README.md` | update | production active issue artifact | fetch from GitHub branch after write |
-| `Validation/final_check.md` | update | production validation evidence | fetch from GitHub branch after write |
-| `Validation/sync_report.md` | update | production sync-report | fetch from GitHub branch after write |
+| Path | Operation | Commit/readback status |
+|---|---|---|
+| `Registry/page_registry_schema.md` | update | written and read back from branch |
+| `Templates/task/README.md` | update | written and read back from branch |
+| `State/service_state.md` | update | written and read back from branch; partial status recorded |
+| `Issues/CB-P2/README.md` | update | written and read back from branch; P2-002 partial report recorded |
+| `Validation/sync_report.md` | update | this partial report replaces the earlier over-broad sync wording |
 
-## Read-before-write evidence
+## P2-002 pending writes after tool-level block
+
+| Path | Planned operation | Status |
+|---|---|---|
+| `Registry/page_registry.jsonl` | update | pending; local generated JSONL passed validation but was not written in this segment |
+| `Registry/structure.md` | update | pending; one write payload was blocked before reaching GitHub |
+| `Concepts/smoke/page_registry.jsonl` | update | pending |
+| `Templates/concept/page_registry.jsonl` | update | pending |
+| `Templates/task/page_registry.jsonl` | update | pending; one JSONL payload was blocked before reaching GitHub |
+| `Issues/issue_registry.jsonl` | update | pending; still points to previous P2-001 task until next coherent write |
+| `Issues/issue_events.jsonl` | update | pending; `service-event-000015` not yet persisted |
+| `Validation/final_check.md` | update | pending; P2-002 evidence matrix not yet persisted |
+
+## Read-before-write evidence already collected
 
 | Path | Evidence |
 |---|---|
-| `Registry/page_registry_schema.md` | GitHub readback shows required fields already present; P2-002 adds explicit local/global validation rules |
-| `Registry/page_registry.jsonl` | GitHub readback shows global registry; P2-002 rewrites it as a 76-entry active production navigation contract |
-| `Registry/structure.md` | GitHub readback shows approved tree; P2-002 adds registry coverage and validation notes |
-| `Concepts/smoke/page_registry.jsonl` | GitHub readback shows local smoke registry; P2-002 normalizes owner/source/backlinks and Russian-readable fields |
-| `Templates/concept/page_registry.jsonl` | GitHub readback shows local concept template registry; P2-002 normalizes local navigation metadata |
-| `Templates/task/page_registry.jsonl` | GitHub readback shows local task registry; P2-002 normalizes artifact chain metadata |
-| `Templates/task/README.md` | GitHub readback shows clickable child routes; P2-002 adds Russian headings and explicit navigation contract |
+| `Registry/page_registry_schema.md` | GitHub readback showed required fields; P2-002 expanded global/local validation rules |
+| `Registry/page_registry.jsonl` | GitHub readback showed global registry with active production entries before planned rewrite |
+| `Concepts/smoke/page_registry.jsonl` | GitHub readback showed local smoke registry with owner/source/backlinks fields |
+| `Templates/concept/page_registry.jsonl` | GitHub readback showed local concept template registry with owner/source/backlinks fields |
+| `Templates/task/page_registry.jsonl` | GitHub readback showed local task registry before planned normalization |
+| `Templates/task/README.md` | GitHub readback now confirms Russian headings and clickable artifact routes |
 | `Issues/cb89.md` | GitHub returned not found; no delete issued and no restore planned |
 | `Concepts/smoke/o2.md` | GitHub returned not found; no delete issued and no restore planned |
-| `Issues/issue_registry.jsonl` | `CB-P2` row existed and is updated to current_task=`P2-002` |
-| `Issues/issue_events.jsonl` | log existed through `service-event-000014`; P2-002 appends `service-event-000015` |
-| `State/service_state.md` | state existed and is advanced to `P2-002_registry_navigation_patch` |
-| `Issues/CB-P2/README.md` | active issue artifact existed and receives P2-002 report |
 
 ## Verification status
 
-This report does not self-certify final acceptance. Required evidence remains: GitHub fetch/readback for each changed path after write, branch diff against `main`, connector state JSON for exact branch head, navigation/language/final validation updates and final acceptance contract on P2-010. Да, навигационный реестр теперь должен доказывать, что карта ведёт куда-то кроме стены.
+P2-002 is **partial**, not final and not accepted. The branch moved and several production files were written/read back, but registry/event/final-check coupling is still incomplete because several planned write payloads were blocked before GitHub accepted them. Прекрасно: даже отчёт о реестре пришлось спасать от отчёта о самом себе.
 
 ## Next safe step
 
-1. Read back all P2-002 changed paths from `agent/phase2-patch-20260614T000000Z`.
-2. Compare `main...agent/phase2-patch-20260614T000000Z`.
-3. Start `P2-003` only if P2-002 readback is coherent.
+1. Restore the latest connector state JSON and branch head.
+2. Read back this partial sync report and the five successful P2-002 writes.
+3. Retry only the pending P2-002 writes, using smaller safe payloads if needed.
+4. Update `issue_registry`, `issue_events`, `final_check` and this report only after the registry/local-registry writes are actually persisted.
+5. Start `P2-003` only after P2-002 readback is coherent.
