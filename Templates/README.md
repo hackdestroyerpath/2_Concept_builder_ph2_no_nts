@@ -15,9 +15,9 @@
 
 ## Шаблоны
 
-| Шаблон | Назначение | Owner | Registry |
+| Шаблон | Назначение | Владелец | Локальный registry |
 |---|---|---|---|
-| [`concept/`](concept/README.md) | Структура новой концепции: state, local registry, purpose, requirements, operating model, process, output, export. | `Execution Mode` template owner under `Service Mode` governance | [`concept/page_registry.jsonl`](concept/page_registry.jsonl) |
+| [`concept/`](concept/README.md) | Структура новой концепции: state, local registry, purpose, requirements, operating model, process, output, export. | `Execution Mode` под управлением `Service Mode` | [`concept/page_registry.jsonl`](concept/page_registry.jsonl) |
 | [`task/`](task/README.md) | Артефакты управляемой задачи: state, QA, requirements, solution, contract, report, linked files. | `Service Mode` | [`task/page_registry.jsonl`](task/page_registry.jsonl) |
 
 ## Правила
