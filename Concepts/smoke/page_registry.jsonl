@@ -1,10 +1,10 @@
-{"path":"README.md"}
-{"path":"concept_state.md"}
-{"path":"structure.md"}
-{"path":"page_registry.jsonl"}
-{"path":"purpose.md"}
-{"path":"requirements.md"}
-{"path":"operating_model.md"}
-{"path":"process.md"}
-{"path":"output.md"}
-{"path":"export.md"}
+{"path":"README.md","title":"Smoke validation fixture","type":"markdown","owner":"Execution Mode","parent":"../README.md","children":["concept_state.md","structure.md","page_registry.jsonl","purpose.md","requirements.md","operating_model.md","process.md","output.md","export.md"],"cross_links":["../../Issues/CB-009/README.md"],"backlinks":["../README.md","../../State/execution_state.md"],"description":"Entry page for retained validation fixture.","source_of_truth":"concept_registry","navigation_status":"reachable"}
+{"path":"concept_state.md","title":"Smoke concept state","type":"state","owner":"Execution Mode","parent":"README.md","children":[],"cross_links":["export.md"],"backlinks":["README.md"],"description":"Fixture state and export readiness fields.","source_of_truth":"concept_registry","navigation_status":"local_reachable"}
+{"path":"structure.md","title":"Smoke structure","type":"markdown","owner":"Execution Mode","parent":"README.md","children":[],"cross_links":["page_registry.jsonl"],"backlinks":["README.md"],"description":"Local tree and removed path list.","source_of_truth":"concept_registry","navigation_status":"local_reachable"}
+{"path":"page_registry.jsonl","title":"Smoke local registry","type":"jsonl","owner":"Execution Mode","parent":"README.md","children":[],"cross_links":["../../Registry/page_registry_schema.md"],"backlinks":["README.md","structure.md"],"description":"Local navigation contract.","source_of_truth":"concept_registry","navigation_status":"local_reachable"}
+{"path":"purpose.md","title":"Smoke purpose","type":"markdown","owner":"Execution Mode","parent":"README.md","children":[],"cross_links":["requirements.md"],"backlinks":["README.md"],"description":"Purpose and scope for validation fixture.","source_of_truth":"concept_registry","navigation_status":"local_reachable"}
+{"path":"requirements.md","title":"Smoke requirements","type":"markdown","owner":"Execution Mode","parent":"README.md","children":[],"cross_links":["output.md","export.md"],"backlinks":["README.md","purpose.md"],"description":"Acceptance criteria for fixture.","source_of_truth":"concept_registry","navigation_status":"local_reachable"}
+{"path":"operating_model.md","title":"Smoke operating model","type":"markdown","owner":"Execution Mode","parent":"README.md","children":[],"cross_links":["process.md"],"backlinks":["README.md"],"description":"Objects, roles, invariants and failures.","source_of_truth":"concept_registry","navigation_status":"local_reachable"}
+{"path":"process.md","title":"Smoke process","type":"markdown","owner":"Execution Mode","parent":"README.md","children":[],"cross_links":["output.md"],"backlinks":["README.md","operating_model.md"],"description":"Executable dry-run scenario.","source_of_truth":"concept_registry","navigation_status":"local_reachable"}
+{"path":"output.md","title":"Smoke output","type":"markdown","owner":"Execution Mode","parent":"README.md","children":[],"cross_links":["requirements.md","export.md"],"backlinks":["README.md","process.md"],"description":"Output mapping and evidence.","source_of_truth":"concept_registry","navigation_status":"local_reachable"}
+{"path":"export.md","title":"Smoke export","type":"markdown","owner":"Execution Mode","parent":"README.md","children":[],"cross_links":["../../Protocols/concept_export.md","output.md"],"backlinks":["README.md","output.md"],"description":"Export manifest and validation scope.","source_of_truth":"concept_registry","navigation_status":"local_reachable"}
