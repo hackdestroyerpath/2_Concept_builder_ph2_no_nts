@@ -1,19 +1,26 @@
 # Purpose
 
-[← Smoke](README.md)
+[← Smoke](README.md) | [Requirements](requirements.md)
 
-## Problem
+## Проблема
 
-Проверить, что новая концепция может быть создана из production-шаблона без ручных догадок.
+Система должна доказывать, что новая концепция может быть создана из production-шаблона без ручных догадок, orphan-файлов и несвязанных registry rows.
 
-## Goal
+## Цель
 
-Подтвердить `Execution Mode bootstrap`, локальный state, registry и export readiness.
+Подтвердить, что `Execution Mode` поддерживает:
+
+- локальный state;
+- локальный page registry;
+- связанную структуру страниц;
+- output model;
+- export manifest;
+- обратную связь с `Issues/CB-009` и финальной validation.
 
 ## Scope
 
 ```text
-in_scope: template instantiation; local registry; validation readiness
-out_of_scope: business concept content
-assumptions: smoke concept is disposable production dry-run artifact
+in_scope: template instantiation; local registry; output/export; readback validation
+out_of_scope: real business concept content; development handoff; audit notes
+assumption: smoke fixture remains in production only as validation evidence
 ```
