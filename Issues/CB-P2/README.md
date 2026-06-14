@@ -81,6 +81,18 @@
 | Open risk | Protocol routing card depth continues in `P2-004`; concept state/output/export final repair continues in `P2-009`; final acceptance remains blocked until `P2-010`. |
 | Next safe step | `P2-004` |
 
+## P2-004 report
+
+| Поле | Значение |
+|---|---|
+| Task | `P2-004 — Rebuild protocol index and routing cards` |
+| Defects | `D-012`, `D-023`, `D-024`, `D-042` |
+| Branch | `agent/phase2-patch-20260614T000000Z` |
+| Operation scope | update `Protocols/protocol_index.md`, `Protocols/mode_routing.md`, `Protocols/context_loading.md`, `Protocols/execution_bootstrap.md`, `Issues/issue_registry.jsonl`, `Issues/issue_events.jsonl`, `State/service_state.md`, `Issues/CB-P2/README.md`, `Validation/final_check.md`, `Validation/sync_report.md` |
+| Acceptance evidence | route matrix covers common core, issue pipeline, GitHub write, validation, execution bootstrap and concept export; protocol cards include owner, trigger, inputs, required_context, outputs, write_scope, next_protocol and blocking conditions; existing issue resume flow is linked to state/registry/events |
+| Open risk | Full issue artifact model continues in `P2-005`; final acceptance remains blocked until `P2-010`. |
+| Next safe step | `P2-005` |
+
 ## Status
 
-`executing_with_evidence`: P2-003 state/context/marker contract is recorded with readback requirements. Финальный статус меняется только после GitHub readback, PR diff gate и merge verification. Закрытие не объявляется.
+`executing_with_evidence`: P2-004 protocol routing contract is recorded with readback requirements. Финальный статус меняется только после GitHub readback, PR diff gate и merge verification. Закрытие не объявляется.
