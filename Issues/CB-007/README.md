@@ -4,23 +4,25 @@
 
 ## Provenance
 
-Status is `reconstructed_with_evidence`. This artifact preserves the operational intent of priority, approval, cleanup and provenance controls.
+Статус: `reconstructed_with_evidence`. Artifact сохраняет operational intent для priority, approval, cleanup и provenance controls.
 
-## Reconstructed scope
+## Scope
 
-- priority and dependency fields in registry;
-- approval/rejection/discussion commands;
-- QA skip reason;
+- priority и dependency fields в registry;
+- approval, rejection и discussion commands;
+- persisted QA skip reason;
 - cleanup statuses;
-- return-anchor for resumed work.
+- return-anchor для resumed work.
 
 ## Evidence
 
-- `Protocols/task_flow_hardening.md`
-- `Protocols/complex_and_linked_issues.md`
-- `Templates/task/README.md`
-- `Issues/issue_registry.jsonl`
+| Evidence | Роль |
+|---|---|
+| `Protocols/task_flow_hardening.md` | lifecycle hardening |
+| `Protocols/complex_and_linked_issues.md` | dependency and child issue route |
+| `Templates/task/README.md` | task artifact chain |
+| `Issues/issue_registry.jsonl` | machine status and dependencies |
 
 ## Closure rule
 
-A task cannot move from contract to execution without persisted requirements and an approved contract.
+Task не переходит от contract к execution без persisted requirements, approved contract или documented bounded skip reason.
