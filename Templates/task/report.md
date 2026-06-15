@@ -8,7 +8,7 @@
 active_issue:
 contract_id:
 changed_paths:
-commit_sha:
+commit_sha_or_branch_head:
 readback_ref:
 readback_result:
 registry_result:
@@ -36,4 +36,4 @@ return_anchor:
 
 ## Gate
 
-Report cannot claim closure unless validation evidence names the checked files and readback ref.
+Report cannot claim final task acceptance unless validation evidence names the checked files, readback ref and unresolved risks.
