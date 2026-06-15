@@ -9,11 +9,13 @@
 | Контур | production-репозиторий `Concept Builder` |
 | Активный режим обслуживания | `Service Mode` |
 | Активный issue исправления | `CB-P2` |
-| Активная patch-задача | `P2-003` — canonical modes, state, context loading и response marker |
-| Рабочая ветка patch | `agent/phase2-patch-20260614T000000Z` |
-| Основание | утверждённый Phase 1 defect register D-001…D-063 |
+| Активный rework-сегмент | `P2R-000` — post-merge truth-source normalization |
+| Последний принятый checkpoint | PR `#5`, merge commit `79fabaefb8c03876078606bb02e4dbda6017f5bd`, scope through `P2-005` |
+| Рабочая ветка rework | `agent/phase2-rework-20260614T223441Z` |
+| Основание | утверждённый Phase 1 defect register D-001…D-063 и rejection handoff после checkpoint |
 | Проверка готовности | [`Validation/final_check.md`](Validation/final_check.md) и evidence-файлы в `Validation/` |
-| Статус финального закрытия | финальная приёмка не выполнена; закрытие разрешено только после evidence matrix D-001…D-063 |
+| Статус финального принятия | финальная приёмка не выполнена; полный D-001…D-063 matrix разрешён только после `P2-010` |
+| Следующий безопасный patch-step | `P2-006` после readback текущего `P2R-000` write-batch |
 
 ## Режимы
 
@@ -36,7 +38,7 @@
 | [`Registry/`](Registry/structure.md) | Глобальная карта страниц, владельцев, связей и navigation status. | `Service Mode` | [`Registry/page_registry_schema.md`](Registry/page_registry_schema.md), [`Registry/page_registry.jsonl`](Registry/page_registry.jsonl) | [`Registry/structure.md`](Registry/structure.md) |
 | [`Validation/`](Validation/final_check.md) | Evidence-проверки, dry-run, language/navigation check и sync-report. | `Service Mode` | [`Validation/final_check.md`](Validation/final_check.md), [`Validation/sync_report.md`](Validation/sync_report.md) | [`Validation/final_check.md`](Validation/final_check.md), [`Validation/sync_report.md`](Validation/sync_report.md) |
 
-`Plans/` и `Closure/` не являются активными production-зонами. Сведения из прежних process/debris-файлов мигрируются в `Issues/` и `Validation/`; отсутствующие `Plans/cb008.md` и `Closure/status.md` не восстанавливаются.
+`Plans/` и `Closure/` не являются активными production-зонами. Сведения из прежних process/debris-файлов мигрированы в `Issues/` и `Validation/`; отсутствующие `Plans/cb008.md` и `Closure/status.md` не восстанавливаются.
 
 ## Основные протоколы
 
@@ -58,12 +60,12 @@
 1. Перед записью классифицировать файл как production или development.
 2. Не загружать patch-handoff, Phase 1 audit, prompt-ы, checkpoint-и, временные отчёты и исходный handoff-архив.
 3. Писать только в разрешённый scope активного режима.
-4. После записи перечитать изменённые файлы из `GitHub`, проверить registry/state/events/links/language и обновить sync-report.
+4. После записи перечитать изменённые файлы из `GitHub`, проверить registry/state/events/links/language и обновить sync-report evidence.
 5. Статусы `closed`, `passed`, `synced`, `Ready`, `OK` не являются доказательством без evidence в `Validation/`.
 
 ## Следующий безопасный шаг
 
-После readback P2-003 следующий patch-step — `P2-004`: rebuild protocol index and routing cards. Финальное закрытие до `P2-010` запрещено.
+Текущий rework-сегмент — `P2R-000`. После write/readback этого normalization batch следующий patch-step — `P2-006`: task template / requirements / contract hardening. Финальное принятие до `P2-010` запрещено.
 
 ## Маркер ответа агента
 

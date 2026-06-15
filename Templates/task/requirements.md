@@ -4,9 +4,9 @@
 
 ## Requirement tree
 
-| ID | Requirement | Source | Reason | Acceptance criteria | Status |
-|---|---|---|---|---|---|
-| `REQ-001` |  | user/system/repo |  |  | proposed |
+| ID | Requirement | Source | Reason | Linked questions/inputs/issues | Acceptance criteria | Status |
+|---|---|---|---|---|---|---|
+| `REQ-001` |  | user/system/repo/event/protocol |  |  |  | proposed |
 
 ## Scope
 
@@ -24,12 +24,15 @@ risks:
 ## Approval
 
 ```text
-approval_status: proposed | approved | rejected | skipped_with_reason
+approval_status: proposed | approved_with_scope | rejected | skipped_with_reason | blocked
 approved_by:
 approved_at:
+approval_source:
 blocking_questions:
+scope_exclusions:
+validation_plan:
 ```
 
 ## Gate
 
-Execution cannot start until requirements are approved or the task has an explicit scoped skip reason.
+Execution cannot start until requirements are `approved_with_scope` or the task has an explicit scoped skip reason with source and validation criteria.

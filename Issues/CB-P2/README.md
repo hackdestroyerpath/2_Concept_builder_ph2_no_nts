@@ -41,19 +41,21 @@
 | `P2-002` | Global/local registries | `D-002`, `D-011`, `D-012`, `D-014`, `D-015`, `D-016`, `D-023`, `D-041`, `D-061` | registry schema, global/local registry metadata, debris exclusion | `P2-003` |
 | `P2-003` | State/context/mode/marker | `D-018`…`D-028` | canonical state schema, context dry-run, marker mapping, instruction counts | `P2-004` |
 | `P2-004` | Protocol index and routing cards | `D-012`, `D-023`, `D-024`, `D-042` | route matrix, protocol cards, existing issue resume flow | `P2-005` |
-| `P2-005` | Issue registry, events and per-issue artifacts | `D-029`…`D-037` | `Issues/README.md`, `CB-002`…`CB-009`, registry row, event `service-event-000018` | finish readback, then `P2-006` |
+| `P2-005` | Issue registry, events and per-issue artifacts | `D-029`…`D-037` | `Issues/README.md`, `CB-002`…`CB-009`, registry row, event `service-event-000018`; checkpoint PR #5 merged at `79fabaefb8c03876078606bb02e4dbda6017f5bd` | `P2R-000` |
+| `P2R-000` | Post-merge truth-source normalization | truth-source contradiction after rejected checkpoint | `README.md`, `State/service_state.md`, this issue, registry, events, `Validation/final_check.md`, `Validation/sync_report.md`; event `service-event-000019` | `P2R-001` |
+| `P2R-001` / `P2-006` | Task workflow gates | `D-038`…`D-045` | QA, requirements, execution, linked issue and task-template gates; event `service-event-000020` | readback this batch, then `P2-007` |
 
-## P2-005 report
+## P2R-001 / P2-006 report
 
 | Поле | Значение |
 |---|---|
-| Task | `P2-005 — Rebuild issue registry, event log and per-issue artifact model` |
-| Branch | `agent/phase2-patch-20260614T000000Z` |
-| Operation scope | update `Issues/README.md`, `Issues/CB-002/README.md`, `Issues/CB-003/README.md`, `Issues/CB-004/README.md`, `Issues/CB-005/README.md`, `Issues/CB-006/README.md`, `Issues/CB-007/README.md`, `Issues/CB-008/README.md`, `Issues/CB-009/README.md`, `Issues/issue_registry.jsonl`, `Issues/issue_events.jsonl`, `State/service_state.md`, `Issues/CB-P2/README.md`, `Validation/final_check.md`, `Validation/sync_report.md` |
-| Acceptance evidence | issue index contains required model fields; per-issue artifacts use Russian-readable evidence model; registry current refs match artifacts; event log records P2-005 |
-| Open risk | task/requirements/contract depth continues in `P2-006`; final acceptance remains blocked until `P2-010` |
-| Next safe step | finish P2-005 readback, then `P2-006` |
+| Task | `P2R-001 — Complete P2-006 task workflow gates` |
+| Branch | `agent/phase2-rework-20260614T223441Z` |
+| Base | `main` at merge commit `79fabaefb8c03876078606bb02e4dbda6017f5bd` |
+| Operation scope | update QA, requirements, issue execution, complex/linked issues, task flow hardening, `Templates/task/`, registry, event log, state, validation and sync report |
+| Acceptance evidence | protocols define blocking decisions, persisted skip reasons, requirement IDs, approved contract gates, dependency state machine, task artifacts and local registry metadata |
+| Open risk | P2R-001 changed-path readback is required before `P2-007`; P2-007…P2-010 are not executed yet |
 
 ## Status
 
-`executing_with_evidence`: P2-005 issue artifact model is recorded with readback requirements. Финальный статус меняется только после GitHub readback, PR diff gate и merge verification. Закрытие не объявляется.
+`executing_with_evidence`: P2R-001 records P2-006 task workflow gates and keeps final acceptance blocked until P2-010, full D-001…D-063 matrix, PR diff gate and merge verification.
