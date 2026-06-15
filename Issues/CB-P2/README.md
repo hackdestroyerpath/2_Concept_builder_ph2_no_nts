@@ -42,20 +42,20 @@
 | `P2-003` | State/context/mode/marker | `D-018`…`D-028` | canonical state schema, context dry-run, marker mapping, instruction counts | `P2-004` |
 | `P2-004` | Protocol index and routing cards | `D-012`, `D-023`, `D-024`, `D-042` | route matrix, protocol cards, existing issue resume flow | `P2-005` |
 | `P2-005` | Issue registry, events and per-issue artifacts | `D-029`…`D-037` | `Issues/README.md`, `CB-002`…`CB-009`, registry row, event `service-event-000018`; checkpoint PR #5 merged at `79fabaefb8c03876078606bb02e4dbda6017f5bd` | `P2R-000` |
-| `P2R-000` | Post-merge truth-source normalization | truth-source contradiction after rejected checkpoint | `README.md`, `State/service_state.md`, `Issues/CB-P2/README.md`, registry, events, `Validation/final_check.md`, `Validation/sync_report.md`; event `service-event-000019` | readback this batch, then `P2-006` |
+| `P2R-000` | Post-merge truth-source normalization | truth-source contradiction after rejected checkpoint | `README.md`, `State/service_state.md`, this issue, registry, events, `Validation/final_check.md`, `Validation/sync_report.md`; event `service-event-000019` | `P2R-001` |
+| `P2R-001` / `P2-006` | Task workflow gates | `D-038`…`D-045` | QA, requirements, execution, linked issue and task-template gates; event `service-event-000020` | readback this batch, then `P2-007` |
 
-## P2R-000 report
+## P2R-001 / P2-006 report
 
 | Поле | Значение |
 |---|---|
-| Task | `P2R-000 — Resume from merged checkpoint and normalize truth sources` |
+| Task | `P2R-001 — Complete P2-006 task workflow gates` |
 | Branch | `agent/phase2-rework-20260614T223441Z` |
 | Base | `main` at merge commit `79fabaefb8c03876078606bb02e4dbda6017f5bd` |
-| PR evidence | PR `#5` is merged; checkpoint body states scope through `P2-005` and explicitly not final |
-| Operation scope | update `README.md`, `State/service_state.md`, `Issues/CB-P2/README.md`, `Issues/issue_registry.jsonl`, `Issues/issue_events.jsonl`, `Validation/final_check.md`, `Validation/sync_report.md` |
-| Acceptance evidence | truth-source files agree on `P2R-000`; `merge_state` no longer says `not_started`; next safe patch-step is `P2-006` after readback |
-| Open risk | P2-006…P2-010 are not executed yet; final acceptance remains blocked |
+| Operation scope | update QA, requirements, issue execution, complex/linked issues, task flow hardening, `Templates/task/`, registry, event log, state, validation and sync report |
+| Acceptance evidence | protocols define blocking decisions, persisted skip reasons, requirement IDs, approved contract gates, dependency state machine, task artifacts and local registry metadata |
+| Open risk | P2R-001 changed-path readback is required before `P2-007`; P2-007…P2-010 are not executed yet |
 
 ## Status
 
-`executing_with_evidence`: P2R-000 records checkpoint merge/readback evidence and removes the P2-003/P2-005 truth-source contradiction. Финальный статус меняется только после P2-010, full D-001…D-063 matrix, PR diff gate and merge verification.
+`executing_with_evidence`: P2R-001 records P2-006 task workflow gates and keeps final acceptance blocked until P2-010, full D-001…D-063 matrix, PR diff gate and merge verification.
