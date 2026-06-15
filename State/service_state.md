@@ -3,7 +3,7 @@
 [← Точка входа](../README.md) | [Реестр протоколов](../Protocols/protocol_index.md) | [Issue registry](../Issues/issue_registry.jsonl) | [Sync report](../Validation/sync_report.md)
 
 ```text
-state_id: service-state-2026-06-15-p2r000
+state_id: service-state-2026-06-15-p2r001
 owner: Service Mode
 active_mode: Service Mode
 active_object: Concept Builder production repository
@@ -13,51 +13,40 @@ mode_owner: Service Mode
 mode_boundary_status: service_scope_only
 dialogue_state: executing_phase2_rework
 current_focus: approved_defect_register_D-001_D-063
-current_stage: P2R-000_post_merge_truth_source_normalization
+current_stage: P2R-001_p2_006_task_workflow_gates
 last_checkpoint_scope: P2-000...P2-005
 last_checkpoint_pr: #5
 last_checkpoint_merge_sha: 79fabaefb8c03876078606bb02e4dbda6017f5bd
 working_branch: agent/phase2-rework-20260614T223441Z
 base_branch: main
 branch_base_sha: 79fabaefb8c03876078606bb02e4dbda6017f5bd
-required_protocols: context_loading; mode_routing; issue_lifecycle; task_flow_hardening; github_write_protocol; validation_protocol
-loaded_context_scope: README.md; State/service_state.md; Issues/README.md; Issues/issue_registry.jsonl; Issues/issue_events.jsonl; Issues/CB-P2/README.md; Issues/CB-002/README.md; Issues/CB-003/README.md; Issues/CB-004/README.md; Issues/CB-005/README.md; Issues/CB-006/README.md; Issues/CB-007/README.md; Issues/CB-008/README.md; Issues/CB-009/README.md; Validation/final_check.md; Validation/sync_report.md
-loaded_protocols: context_loading; mode_routing; issue_lifecycle; task_flow_hardening; github_write_protocol; validation_protocol
+required_protocols: context_loading; mode_routing; issue_lifecycle; question_answer; requirements_protocol; issue_execution; complex_and_linked_issues; task_flow_hardening; github_write_protocol; validation_protocol
+loaded_context_scope: README.md; State/service_state.md; Issues/README.md; Issues/issue_registry.jsonl; Issues/issue_events.jsonl; Issues/CB-P2/README.md; Protocols/question_answer.md; Protocols/requirements_protocol.md; Protocols/issue_execution.md; Protocols/complex_and_linked_issues.md; Protocols/task_flow_hardening.md; Templates/task/; Validation/final_check.md; Validation/sync_report.md
+loaded_protocols: context_loading; mode_routing; issue_lifecycle; question_answer; requirements_protocol; issue_execution; complex_and_linked_issues; task_flow_hardening; github_write_protocol; validation_protocol
 allowed_read_scope: README.md; Instructions/; Protocols/; State/; Issues/; Concepts/; Templates/; Inbox/; Registry/; Validation/
 allowed_write_scope: Service production files for Phase 2 rework only
 write_package_required: mode; active_object; active_issue; reason; operation; target_paths; pre_sha; post_sha; registry_state_event_coupling; validation_plan
-persistence_status: p2r000_truth_source_normalization_written_requires_readback
+persistence_status: p2r001_task_workflow_gates_written_requires_readback
 updated_at: 2026-06-15
-next_step: read back P2R-000 changed files, then continue P2-006 task template / requirements / contract hardening
+next_step: read back P2R-001 changed files, then continue P2-007 write/conflict/rollback evidence
 return_anchor: Validation/sync_report.md
 ```
 
-## Инструкции проекта
-
-| Файл | Назначение | Символов | Ограничение | Evidence state |
-|---|---|---:|---:|---|
-| `Instructions/concept_builder_service_instructions.md` | bootstrap для `Service Mode` | 2179 | 8000 | checked in checkpoint through P2-003 |
-| `Instructions/concept_builder_execution_instructions.md` | bootstrap для `Execution Mode` | 2180 | 8000 | checked in checkpoint through P2-003 |
-
-## P2-005 readback scope recorded before P2R-000
+## P2R-001 write/readback scope
 
 | Path | Operation | Classifier | Evidence state |
 |---|---|---|---|
-| `Issues/README.md` | update | production issue index | readback observed on rework branch |
-| `Issues/CB-002/README.md` | update | production issue artifact | readback observed on rework branch |
-| `Issues/CB-003/README.md` | update | production issue artifact | readback observed on rework branch |
-| `Issues/CB-004/README.md` | update | production issue artifact | readback observed on rework branch |
-| `Issues/CB-005/README.md` | update | production issue artifact | readback observed on rework branch |
-| `Issues/CB-006/README.md` | update | production issue artifact | readback observed on rework branch |
-| `Issues/CB-007/README.md` | update | production issue artifact | readback observed on rework branch |
-| `Issues/CB-008/README.md` | update | production issue artifact | readback observed on rework branch |
-| `Issues/CB-009/README.md` | update | production issue artifact | readback observed on rework branch |
-| `Issues/issue_registry.jsonl` | update | production issue registry | `CB-P2` moved to P2R-000 normalization in this batch |
-| `Issues/issue_events.jsonl` | update | production event log | `service-event-000019` records post-merge normalization |
-| `State/service_state.md` | update | production service state | this state records P2R-000 |
-| `Issues/CB-P2/README.md` | update | production active issue artifact | P2R-000 report records checkpoint merge evidence |
-| `Validation/final_check.md` | update | production validation gate | P2R-000 matrix records merge/readback evidence without final claim |
-| `Validation/sync_report.md` | update | production sync-report | merge state no longer `not_started`; P2R-000 readback remains next verification |
+| `Protocols/question_answer.md` | update | production protocol | QA blocking and skip reason model hardened |
+| `Protocols/requirements_protocol.md` | update | production protocol | requirement IDs, sources, linked inputs/issues and approval model hardened |
+| `Protocols/issue_execution.md` | update | production protocol | execution blocked without requirements/contract evidence |
+| `Protocols/complex_and_linked_issues.md` | update | production protocol | dependency state machine, cycle prevention and roll-up evidence added |
+| `Protocols/task_flow_hardening.md` | update | production protocol | task transition, approval, cleanup and evidence gates hardened |
+| `Templates/task/` | update | production templates | artifact chain, local registry, QA/requirements/contract/report metadata hardened |
+| `Issues/issue_registry.jsonl` | update | production registry | `CB-P2` current task moved to `P2-006` / `P2R-001` |
+| `Issues/issue_events.jsonl` | update | production event log | `service-event-000020` records P2-006 task workflow gates |
+| `Issues/CB-P2/README.md` | update | production active issue artifact | P2R-001/P2-006 report records scope |
+| `Validation/final_check.md` | update | production validation gate | P2-006 evidence matrix records required readback |
+| `Validation/sync_report.md` | update | production sync-report | P2R-001 changed paths and pre-write SHAs recorded |
 
 ## Правило сохранения
 
