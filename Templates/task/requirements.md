@@ -1,8 +1,8 @@
 # Requirements
 
-[← Task](README.md) | [Question Answer](question_answer.md) | [Contract](contract.md) | [Protocol](../../Protocols/requirements_protocol.md)
+[← Задача](README.md) | [Question Answer](question_answer.md) | [Contract](contract.md) | [Протокол](../../Protocols/requirements_protocol.md)
 
-## Requirement tree
+## Дерево требований
 
 | ID | Requirement | Source | Reason | Linked questions/inputs/issues | Acceptance criteria | Status |
 |---|---|---|---|---|---|---|
@@ -35,4 +35,4 @@ validation_plan:
 
 ## Gate
 
-Execution cannot start until requirements are `approved_with_scope` or the task has an explicit scoped skip reason with source and validation criteria.
+Execution не может начаться, пока requirements не имеют статус `approved_with_scope` или пока задача не имеет явную причину scoped skip с source и validation criteria.
