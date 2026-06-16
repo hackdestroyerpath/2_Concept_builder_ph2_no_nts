@@ -4,20 +4,20 @@
 
 ## Цель проверки
 
-`CB-008` проверяет маршрут задачи в `Service Mode` после усиления Phase 2. Пробный прогон не создаёт служебные черновики и не добавляет внешние материалы проверки в production repo.
+`CB-008` проверяет маршрут задачи в `Service Mode` после усиления Phase 2. Пробный прогон не создаёт служебные черновики и не добавляет внешние материалы проверки в рабочий репозиторий.
 
 ## Сценарии
 
 | Сценарий | Доказательство | Статус |
 |---|---|---|
-| Маршрут задачи `Service Mode` | issue lifecycle, task flow, task template | passed_with_evidence |
-| Маршрут QA и причины пропуска | question answer protocol, QA template | passed_with_evidence |
-| Контроль требований | requirements protocol, requirements template | passed_with_evidence |
-| Цепочка решения, контракта и отчёта | solution, contract, report templates | passed_with_evidence |
-| Маршрут связанных issue | complex issue protocol, linked files template | passed_with_evidence |
-| Маршрут записи и восстановления | write, conflict, rollback protocols | passed_with_evidence |
-| Связь registry и event log | issue registry, event log, page registry | passed_with_evidence |
+| Маршрут задачи `Service Mode` | жизненный цикл задач, поток задач, шаблон задачи | passed_with_evidence |
+| Маршрут QA и причины пропуска | протокол вопросов и ответов, шаблон QA | passed_with_evidence |
+| Контроль требований | протокол требований, шаблон требований | passed_with_evidence |
+| Цепочка решения, контракта и отчёта | шаблоны решения, контракта и отчёта | passed_with_evidence |
+| Маршрут связанных задач | протокол сложных задач, шаблон связанных файлов | passed_with_evidence |
+| Маршрут записи и восстановления | протоколы записи, конфликта и отката | passed_with_evidence |
+| Связь реестра и журнала событий | реестр задач, журнал событий, реестр страниц | passed_with_evidence |
 
 ## Примечание
 
-Статус пробного прогона связан с branch readback в `Validation/sync_report.md` и финальными доказательствами в `Validation/final_check.md`.
+Статус пробного прогона связан с перечитыванием ветки в `Validation/sync_report.md` и финальными доказательствами в `Validation/final_check.md`.
