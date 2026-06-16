@@ -1,6 +1,6 @@
 # Решение
 
-[← Задача](README.md) | [Requirements](requirements.md) | [Contract](contract.md) | [Исполнение issue](../../Protocols/issue_execution.md)
+[← Задача](README.md) | [Требования](requirements.md) | [Контракт](contract.md) | [Исполнение задачи](../../Protocols/issue_execution.md)
 
 ## Предложение
 
@@ -18,13 +18,13 @@ alternatives_rejected:
 
 ## Проверки безопасности
 
-- target paths находятся внутри scope активного режима;
-- development files исключены;
-- rollback plan существует для каждой записи;
-- linked issue/dependency status известен;
-- language и navigation checks запланированы;
-- acceptance criteria сопоставлены с evidence paths или readback refs.
+- целевые пути находятся внутри области активного режима;
+- разработческие файлы исключены;
+- план отката существует для каждой записи;
+- статус связанной задачи или зависимости известен;
+- языковая и навигационная проверки запланированы;
+- критерии приёмки сопоставлены с путями доказательств или ссылками перечитывания.
 
-## Gate
+## Шлюз
 
-Solution не является исполнением. Execution начинается только после того, как `contract.md` или равнозначное issue event определяет точные target paths, operation и validation plan.
+Решение не является исполнением. Исполнение начинается только после того, как `contract.md` или равнозначное событие задачи определяет точные целевые пути, операцию и план проверки.
