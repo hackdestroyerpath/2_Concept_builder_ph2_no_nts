@@ -1,24 +1,24 @@
-# Complex and linked issues
+# Сложные и связанные задачи
 
-[← Реестр протоколов](protocol_index.md) | [Issue lifecycle](issue_lifecycle.md) | [Issue execution](issue_execution.md)
+[← Реестр протоколов](protocol_index.md) | [Жизненный цикл задачи](issue_lifecycle.md) | [Исполнение задачи](issue_execution.md)
 
 ## Назначение
 
-Протокол управляет parent/child/dependency связями, transfer между режимами, cleanup decisions и roll-up evidence. Цель — не дать одной “маленькой” задаче тайно переписать полрепозитория, этот жанр уже занят человечеством.
+Протокол управляет родительскими, дочерними и зависимыми задачами, передачей между режимами, решениями по очистке и свёрнутыми доказательствами. Цель — не дать одной “маленькой” задаче тайно переписать полрепозитория, этот жанр уже занят человечеством.
 
-## Link types
+## Типы связей
 
-| Type | Meaning | Blocks parent validation |
+| Тип | Значение | Блокирует проверку родителя |
 |---|---|---|
-| `parent` | объединяет child issues | yes, until required children resolved |
-| `child` | выполняет часть parent scope | parent depends on child state |
-| `depends_on` | требует output другого issue/path | yes |
-| `blocks` | текущий issue мешает другому | yes for blocked target |
-| `relates_to` | контекстная связь без блокировки | no |
-| `transfer` | работа переходит между `Service Mode` и `Execution Mode` | yes until receiver exists |
-| `cleanup` | path retained/migrated/removed with reason | yes if unsafe or unverified |
+| `parent` | объединяет дочерние задачи | да, пока обязательные дочерние задачи не решены |
+| `child` | выполняет часть области родителя | родитель зависит от состояния дочерней задачи |
+| `depends_on` | требует результата другой задачи или пути | да |
+| `blocks` | текущая задача мешает другой | да для заблокированной цели |
+| `relates_to` | контекстная связь без блокировки | нет |
+| `transfer` | работа переходит между `Service Mode` и `Execution Mode` | да, пока принимающая задача не существует |
+| `cleanup` | путь сохранён, мигрирован или удалён с причиной | да, если небезопасно или не проверено |
 
-## Dependency state machine
+## Машина состояний зависимостей
 
 ```text
 proposed -> required -> waiting_on_parent | waiting_on_child | waiting_on_external
@@ -30,23 +30,23 @@ cycle_detected -> blocked_until_scope_split
 transfer_required -> receiver_issue_created -> resolved_with_evidence
 ```
 
-## Registry extension
+## Расширение реестра
 
 ```json
 {"parent_issue":"CB-000","child_issues":["CB-001"],"depends_on":["CB-002"],"blocks":[],"related_issues":[],"transfer_to":null,"dependency_state":"required","rollup_status":"waiting|blocked|resolved_with_evidence|removed_with_reason","return_anchor":"Validation/sync_report.md"}
 ```
 
-## Rules
+## Правила
 
-1. Child issue has its own reason, scope, owner mode and acceptance criteria.
-2. Parent issue cannot reach `fixed_with_evidence` while required child or dependency is unresolved.
-3. Cycles are `blocked` until scope split, dependency removal with reason, or explicit human decision.
-4. Transfer creates a receiving issue before write in the other mode.
-5. Roll-up event names child statuses, evidence refs and unresolved risks.
-6. Cleanup decision names migrated target or absence evidence.
-7. Return anchor must survive every parent/child handoff.
+1. Дочерняя задача имеет собственную причину, область, режим-владелец и критерии приёмки.
+2. Родительская задача не может достичь `fixed_with_evidence`, пока обязательная дочерняя задача или зависимость не решена.
+3. Циклы получают `blocked` до разделения области, удаления зависимости с причиной или явного человеческого решения.
+4. Передача создаёт принимающую задачу до записи в другом режиме.
+5. Событие свёртки называет статусы дочерних задач, ссылки на доказательства и нерешённые риски.
+6. Решение по очистке называет цель миграции или доказательство отсутствия.
+7. Якорь возврата должен пережить каждую передачу между родителем и дочерней задачей.
 
-## Roll-up event format
+## Формат события свёртки
 
 ```text
 event_type: dependency_rollup | child_issue_rollup | transfer_rollup | cleanup_rollup
@@ -58,6 +58,6 @@ blocked_items:
 return_anchor:
 ```
 
-## Validation gate
+## Проверочный шлюз
 
-Parent validation requires all required children resolved with evidence, dependencies resolved or removed with reason, registry/events updated, and final validation evidence recorded.
+Проверка родителя требует, чтобы все обязательные дочерние задачи были решены с доказательствами, зависимости были решены или удалены с причиной, реестр и события были обновлены, а финальное проверочное доказательство было записано.
