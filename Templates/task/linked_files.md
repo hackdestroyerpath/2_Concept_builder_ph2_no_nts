@@ -1,8 +1,8 @@
 # Связанные файлы
 
-[← Задача](README.md) | [Complex issues](../../Protocols/complex_and_linked_issues.md)
+[← Задача](README.md) | [Сложные задачи](../../Protocols/complex_and_linked_issues.md)
 
-## Связанный item
+## Связанный элемент
 
 ```text
 link_id:
@@ -17,6 +17,6 @@ return_anchor:
 notes:
 ```
 
-## Правило dependency
+## Правило зависимости
 
-Blocking linked item должен быть resolved до исполнения contract. Cycles записываются как `blocked` и эскалируются в `complex_and_linked_issues.md`. Удалённые dependencies требуют reason и evidence.
+Блокирующий связанный элемент должен быть решён до исполнения контракта. Циклы записываются как `blocked` и передаются в `complex_and_linked_issues.md`. Удалённые зависимости требуют причины и доказательства.

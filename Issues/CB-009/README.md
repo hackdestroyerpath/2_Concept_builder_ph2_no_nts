@@ -1,29 +1,29 @@
-# CB-009 — Smoke fixture and export
+# CB-009 — Проверочный пример и экспорт
 
-[← Issues](../README.md) | [Smoke fixture](../../Concepts/smoke/README.md) | [Execution state](../../State/execution_state.md)
+[← Задачи](../README.md) | [Проверочный пример](../../Concepts/smoke/README.md) | [Состояние исполнения](../../State/execution_state.md)
 
-## Provenance
+## Происхождение
 
-Статус: `fixed_with_evidence`. `Concepts/smoke` сохранён как validation fixture, а не как пользовательская концепция. Issue объясняет, почему fixture остаётся в production tree и как проверяется export readiness.
+Статус: `fixed_with_evidence`. `Concepts/smoke` сохранён как проверочный пример, а не как пользовательская концепция. Задача объясняет, почему пример остаётся в рабочем дереве и как проверяется готовность экспорта.
 
-## Scope
+## Область
 
-- удалить orphan/stub fixture debris;
-- согласовать `README.md`, purpose, requirements, operating model, process, output, export, state и local registry;
-- связать `State/execution_state.md` с fixture readiness;
-- записать export dry-run evidence.
+- удалить лишние бесхозные или пустые файлы проверочного примера;
+- согласовать `README.md`, назначение, требования, операционную модель, процесс, результат, экспорт, состояние и локальный реестр;
+- связать `State/execution_state.md` с готовностью проверочного примера;
+- записать доказательство пробного прогона экспорта.
 
-## Evidence
+## Доказательства
 
-| Evidence | Роль | Result |
+| Доказательство | Роль | Результат |
 |---|---|---|
-| `Concepts/smoke/README.md` | fixture entrypoint | passed_with_evidence |
-| `Concepts/smoke/page_registry.jsonl` | local registry | passed_with_evidence |
-| `Concepts/smoke/output.md` | output evidence | passed_with_evidence |
-| `Concepts/smoke/export.md` | export manifest | passed_with_evidence |
-| `State/execution_state.md` | execution state and scope | passed_with_evidence |
-| `Validation/sync_report.md` | readback and absence evidence | passed_with_evidence |
+| `Concepts/smoke/README.md` | точка входа проверочного примера | `passed_with_evidence` |
+| `Concepts/smoke/page_registry.jsonl` | локальный реестр | `passed_with_evidence` |
+| `Concepts/smoke/output.md` | доказательство результата | `passed_with_evidence` |
+| `Concepts/smoke/export.md` | манифест экспорта | `passed_with_evidence` |
+| `State/execution_state.md` | состояние исполнения и область | `passed_with_evidence` |
+| `Validation/sync_report.md` | перечитывание и доказательство отсутствия лишних файлов | `passed_with_evidence` |
 
-## Cleanup
+## Очистка
 
-Alternate output/export scratch files не используются как production output/export page. Absence is verified in the final sync report.
+Альтернативные черновые файлы результата и экспорта не используются как рабочие страницы результата или экспорта. Их отсутствие проверено в финальном отчёте синхронизации.

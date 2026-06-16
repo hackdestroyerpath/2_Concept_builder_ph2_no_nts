@@ -1,16 +1,16 @@
-# Инструкция проекта: Concept Builder Service Mode
+# Инструкция проекта: `Concept Builder` в `Service Mode`
 
 [← К точке входа](../README.md)
 
 ## Роль
 
-Ты работаешь в `Service Mode`: обслуживаешь саму систему `Concept Builder`, её production-файлы, протоколы, state, реестры, validation, шаблоны и сервисные `issue`.
+Ты работаешь в `Service Mode`: обслуживаешь саму систему `Concept Builder`, её рабочие файлы, протоколы, состояние, реестры, проверку, шаблоны и сервисные задачи.
 
 ## Источник истины
 
-Источник истины — production-файлы репозитория `GitHub` `hackdestroyerpath/2_Concept_builder_ph2_no_nts`.
+Источник истины — рабочие файлы репозитория `GitHub` `hackdestroyerpath/2_Concept_builder_ph2_no_nts`.
 
-Не считай локальные черновики, вложенные архивы, prompt-ы, audit-материалы или checkpoint-и production-состоянием, пока соответствующие production-файлы не записаны и не перечитаны из `GitHub`.
+Локальные черновики, вложенные архивы, prompt-ы, аудиторские материалы и контрольные архивы не считаются рабочим состоянием, пока соответствующие рабочие файлы не записаны и не перечитаны из `GitHub`.
 
 ## Старт
 
@@ -19,17 +19,17 @@
 3. Прочитай [`../Protocols/protocol_index.md`](../Protocols/protocol_index.md).
 4. Примени [`../Protocols/context_loading.md`](../Protocols/context_loading.md) и [`../Protocols/mode_routing.md`](../Protocols/mode_routing.md).
 5. Определи `active_issue`, `current_stage`, разрешённые области чтения и записи.
-6. Загружай только контекст, нужный для текущего bounded step.
+6. Загружай только контекст, нужный для текущего ограниченного шага.
 
 ## Границы записи
 
-Разрешённая запись в этом режиме: `README.md`, `Instructions/`, `Protocols/`, `State/service_state.md`, service-часть `State/execution_state.md` только для repair/transfer patch, сервисные файлы `Issues/`, `Inbox/`, `Registry/`, `Validation/` и production-шаблоны, если они входят в активный `issue`.
+Разрешённая запись в этом режиме: `README.md`, `Instructions/`, `Protocols/`, `State/service_state.md`, сервисная часть `State/execution_state.md` только для исправления или передачи, сервисные файлы `Issues/`, `Inbox/`, `Registry/`, `Validation/` и рабочие шаблоны, если они входят в активную задачу.
 
-Запрещено менять содержимое конкретной пользовательской концепции как service-action. Для такой работы нужен `Execution Mode`, selected concept и linked execution issue.
+Содержимое конкретной пользовательской концепции меняется не как сервисное действие. Для такой работы нужен `Execution Mode`, выбранная концепция и связанная исполнительная задача.
 
 ## Запись в GitHub
 
-Перед записью подготовь пакет изменений: режим, active issue, reason, operation, target paths, pre-sha, validation plan и registry/state/event coupling. После записи перечитай изменённые файлы из `GitHub`, проверь expected content и обнови `Validation/sync_report.md`.
+Перед записью подготовь пакет изменений: режим, активная задача, причина, операция, целевые пути, исходный SHA, план проверки и связка реестра/состояния/событий. После записи перечитай изменённые файлы из `GitHub`, проверь ожидаемое содержимое и обнови `Validation/sync_report.md`.
 
 ## Маркер ответа
 
@@ -46,4 +46,4 @@ next_step:
 return_anchor:
 ```
 
-`stage` берётся из `current_stage`, `loaded_context` — из реально прочитанных файлов, `persistence_status` не может быть финальным без readback evidence.
+`stage` берётся из `current_stage`, `loaded_context` — из реально прочитанных файлов, `persistence_status` не может быть финальным без доказательств перечитывания.

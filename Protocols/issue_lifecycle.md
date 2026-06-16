@@ -1,29 +1,29 @@
-# Жизненный цикл issue
+# Жизненный цикл задачи
 
-[← Реестр протоколов](protocol_index.md) | [State](../State/service_state.md) | [Issues](../Issues/README.md) | [Task flow hardening](task_flow_hardening.md)
+[← Реестр протоколов](protocol_index.md) | [Состояние](../State/service_state.md) | [Задачи](../Issues/README.md) | [Усиление потока задач](task_flow_hardening.md)
 
 ## Назначение
 
-`Issue` — единица управляемой production-работы. Issue должен иметь reason, provenance, approval/skip decision, dependencies, cleanup status, evidence anchors and return-anchor.
+Задача (`issue`) — единица управляемой рабочей работы. Задача должна иметь причину, происхождение, решение об утверждении или пропуске, зависимости, статус очистки, якоря доказательств и якорь возврата.
 
 ## Статусы
 
 | Статус | Значение |
 |---|---|
-| `proposed` | задача зафиксирована, но scope ещё не утверждён |
-| `approval_requested` | требуется explicit approval |
-| `question_answer` | требуется уточнение или skip reason |
+| `proposed` | задача зафиксирована, но область ещё не утверждена |
+| `approval_requested` | требуется явное утверждение |
+| `question_answer` | требуется уточнение или причина пропуска |
 | `requirements` | собираются проверяемые требования |
-| `approved` | requirements/contract approved |
+| `approved` | требования или контракт утверждены |
 | `executing` | выполняется запись или анализ |
-| `validation` | результат записан, идёт readback/evidence gate |
-| `fixed_with_evidence` | закрыто с named evidence |
-| `reconstructed_with_evidence` | legacy baseline восстановлен из repo-фактов |
-| `cleanup_removed` | path/issue удалён с reason |
+| `validation` | результат записан, идёт шлюз перечитывания и доказательств |
+| `fixed_with_evidence` | закрыто с названными доказательствами |
+| `reconstructed_with_evidence` | старая база восстановлена из фактов репозитория |
+| `cleanup_removed` | путь или задача удалены с причиной |
 | `blocked` | продолжение остановлено с причиной |
 | `rejected` | задача отклонена |
 
-## Обязательные поля registry row
+## Обязательные поля строки реестра
 
 ```json
 {"issue_id":"CB-000","type":"service","mode":"Service Mode","status":"proposed","priority":"normal","reason":"","provenance":"","approval":"","dependencies":[],"cleanup":"retain","current_refs":[],"return_anchor":""}
@@ -40,10 +40,12 @@ blocked -> proposed only with new reason/event
 legacy -> reconstructed_with_evidence only when repo evidence exists
 ```
 
+Кодовый блок сохраняет машинные статусы. Читаемое правило: основная цепочка идёт от предложения через утверждение, требования, исполнение и проверку к закрытию с доказательствами; блокировка или отклонение возможны из любого состояния; восстановленная старая база допустима только при доказательствах репозитория.
+
 ## События
 
-Каждое значимое изменение пишется в `Issues/issue_events.jsonl`: creation, status change, approval, discussion, rejection, write, cleanup, validation, rollback, closure.
+Каждое значимое изменение пишется в `Issues/issue_events.jsonl`: создание, смена статуса, утверждение, обсуждение, отклонение, запись, очистка, проверка, откат, закрытие.
 
 ## Закрытие
 
-`fixed_with_evidence` разрешён только после записи результата, обновления registry/state/events, контрольного чтения из `GitHub`, validation report и explicit remaining risks. Одного слова `done` недостаточно.
+`fixed_with_evidence` разрешён только после записи результата, обновления реестра/состояния/событий, контрольного чтения из `GitHub`, проверочного отчёта и явного списка оставшихся рисков. Одного слова `done` недостаточно.

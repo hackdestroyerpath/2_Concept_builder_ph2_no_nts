@@ -1,28 +1,28 @@
-# CB-007 — Task flow hardening
+# CB-007 — Усиление потока задач
 
-[← Issues](../README.md) | [Task flow hardening](../../Protocols/task_flow_hardening.md) | [Task template](../../Templates/task/README.md)
+[← Задачи](../README.md) | [Усиление потока задач](../../Protocols/task_flow_hardening.md) | [Шаблон задачи](../../Templates/task/README.md)
 
-## Provenance
+## Происхождение
 
-Статус: `reconstructed_with_evidence`. Artifact сохраняет operational intent для priority, approval, cleanup и provenance controls.
+Статус: `reconstructed_with_evidence`. Артефакт сохраняет операционный замысел для управления приоритетом, утверждением, очисткой и происхождением.
 
-## Scope
+## Область
 
-- priority и dependency fields в registry;
-- approval, rejection и discussion commands;
-- persisted QA skip reason;
-- cleanup statuses;
-- return-anchor для resumed work.
+- поля приоритета и зависимостей в реестре;
+- команды утверждения, отклонения и обсуждения;
+- сохранённая причина пропуска вопросов и ответов;
+- статусы очистки;
+- якорь возврата для продолженной работы.
 
-## Evidence
+## Доказательства
 
-| Evidence | Роль |
+| Доказательство | Роль |
 |---|---|
-| `Protocols/task_flow_hardening.md` | lifecycle hardening |
-| `Protocols/complex_and_linked_issues.md` | dependency and child issue route |
-| `Templates/task/README.md` | task artifact chain |
-| `Issues/issue_registry.jsonl` | machine status and dependencies |
+| `Protocols/task_flow_hardening.md` | усиление жизненного цикла |
+| `Protocols/complex_and_linked_issues.md` | маршрут зависимостей и дочерних задач |
+| `Templates/task/README.md` | цепочка артефактов задачи |
+| `Issues/issue_registry.jsonl` | машинный статус и зависимости |
 
-## Closure rule
+## Правило закрытия
 
-Task не переходит от contract к execution без persisted requirements, approved contract или documented bounded skip reason.
+Задача не переходит от контракта к исполнению без сохранённых требований, утверждённого контракта или документированной ограниченной причины пропуска.

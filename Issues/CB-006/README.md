@@ -1,27 +1,27 @@
-# CB-006 — Templates
+# CB-006 — Шаблоны
 
-[← Issues](../README.md) | [Templates](../../Templates/README.md) | [Template validation](../../Protocols/template_validation.md)
+[← Задачи](../README.md) | [Шаблоны](../../Templates/README.md) | [Проверка шаблонов](../../Protocols/template_validation.md)
 
-## Provenance
+## Происхождение
 
-Статус: `reconstructed_with_evidence`. Эта страница фиксирует production template library как retained service artifact.
+Статус: `reconstructed_with_evidence`. Эта страница фиксирует рабочую библиотеку шаблонов как сохранённый сервисный артефакт.
 
-## Scope
+## Область
 
-- сеть concept template;
-- task artifact chain templates;
-- local page registries;
-- semantic compatibility check перед instantiation.
+- сеть шаблона концепции;
+- цепочка артефактов задачи;
+- локальные реестры страниц;
+- семантическая проверка совместимости перед созданием экземпляра.
 
-## Evidence
+## Доказательства
 
-| Evidence | Роль |
+| Доказательство | Роль |
 |---|---|
-| `Templates/README.md` | template library entrypoint |
-| `Templates/concept/README.md` | concept template route |
-| `Templates/task/README.md` | task template route |
-| `Protocols/template_validation.md` | semantic validation protocol |
+| `Templates/README.md` | точка входа библиотеки шаблонов |
+| `Templates/concept/README.md` | маршрут шаблона концепции |
+| `Templates/task/README.md` | маршрут шаблона задачи |
+| `Protocols/template_validation.md` | протокол семантической проверки |
 
-## Closure rule
+## Правило закрытия
 
-Template считается пригодным только если README ведёт ко всем child files, а local registry содержит owner, source, backlinks и navigation status.
+Шаблон считается пригодным только если `README.md` ведёт ко всем дочерним файлам, а локальный реестр содержит владельца, источник, обратные ссылки и статус навигации.

@@ -1,27 +1,27 @@
-# CB-008 — Dry-run validation
+# CB-008 — Проверка пробным прогоном
 
-[← Issues](../README.md) | [Dry run](../../Validation/cb008_dry_run.md) | [Closure plan](../../Validation/cb008_closure_plan.md)
+[← Задачи](../README.md) | [Пробный прогон](../../Validation/cb008_dry_run.md) | [План закрытия](../../Validation/cb008_closure_plan.md)
 
-## Provenance
+## Происхождение
 
-Статус: `fixed_with_evidence`. Старые `Plans/cb008.md` и смешанный `Issues/cb89.md` не сохраняются как production lifecycle artifacts. Их валидный intent перенесён сюда и в `Validation/`.
+Статус: `fixed_with_evidence`. Старые `Plans/cb008.md` и смешанный `Issues/cb89.md` не сохраняются как рабочие артефакты жизненного цикла. Их валидный замысел перенесён сюда и в `Validation/`.
 
-## Scope
+## Область
 
-- проверить task-template route без записи development files;
-- проверить поля issue registry и event coupling;
-- подтвердить QA skip reason и requirements gate;
-- проверить cleanup/closure plan.
+- проверить маршрут шаблона задачи без записи разработческих файлов;
+- проверить поля реестра задач и связь с событиями;
+- подтвердить причину пропуска вопросов и ответов и шлюз требований;
+- проверить план очистки и закрытия.
 
-## Evidence
+## Доказательства
 
-| Evidence | Роль |
+| Доказательство | Роль |
 |---|---|
-| `Validation/cb008_dry_run.md` | observable dry-run |
-| `Validation/cb008_closure_plan.md` | closure plan без assertion-only status |
-| `Issues/issue_events.jsonl` | migration and cleanup event trace |
-| `Templates/task/README.md` | task artifact route |
+| `Validation/cb008_dry_run.md` | наблюдаемый пробный прогон |
+| `Validation/cb008_closure_plan.md` | план закрытия без статуса, основанного только на утверждении |
+| `Issues/issue_events.jsonl` | трасса событий миграции и очистки |
+| `Templates/task/README.md` | маршрут артефактов задачи |
 
-## Cleanup
+## Очистка
 
-`Plans/cb008.md` удалён после migration. `Issues/cb89.md` удалён после разделения на `CB-008` и `CB-009`.
+`Plans/cb008.md` удалён после миграции. `Issues/cb89.md` удалён после разделения на `CB-008` и `CB-009`.

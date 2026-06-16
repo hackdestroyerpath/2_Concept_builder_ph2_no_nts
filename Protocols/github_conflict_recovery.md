@@ -1,49 +1,49 @@
-# GitHub conflict recovery
+# Восстановление после конфликта GitHub
 
-[← Реестр протоколов](protocol_index.md) | [Write protocol](github_write_protocol.md) | [Rollback](rollback_protocol.md)
+[← Реестр протоколов](protocol_index.md) | [Протокол записи](github_write_protocol.md) | [Откат](rollback_protocol.md)
 
 ## Назначение
 
-Протокол задаёт state machine для conflict/recovery. Recovery не равен бесконечному retry: каждое действие должно иметь фактическую проверку branch/ref, diff, registry/state/events и next decision.
+Протокол задаёт машину состояний для конфликта и восстановления. Восстановление не равно бесконечному повтору: каждое действие должно иметь фактическую проверку ветки или ссылки, различия, реестра, состояния, событий и следующего решения.
 
-## Conflict statuses
+## Статусы конфликта
 
-| Status | Meaning | Next action |
+| Статус | Значение | Следующее действие |
 |---|---|---|
-| `sha_conflict` | update/delete использовал устаревший blob sha | fresh fetch + new bounded request |
-| `target_confusion` | запись была в branch, проверка шла по другому ref | restore ledger + verify correct ref |
-| `scope_conflict` | diff затрагивает неожиданные paths | stop + user decision or rollback |
-| `merge_conflict` | PR не может быть merged safely | rebuild branch from base or split patch |
-| `validation_conflict` | readback есть, но links/state/events failed | patch coupled files or rollback |
-| `external_blocked` | нужен внешний доступ или user decision | record blocked event |
+| `sha_conflict` | update/delete использовал устаревший SHA blob | свежее чтение + новый ограниченный запрос |
+| `target_confusion` | запись была в ветку, а проверка шла по другой ссылке | восстановить журнал + проверить правильную ссылку |
+| `scope_conflict` | различие затрагивает неожиданные пути | остановка + решение пользователя или откат |
+| `merge_conflict` | PR нельзя безопасно слить | пересобрать ветку от базы или разделить исправление |
+| `validation_conflict` | перечитывание есть, но ссылки/состояние/события провалены | исправить связанные файлы вперёд или откатить |
+| `external_blocked` | нужен внешний доступ или решение пользователя | записать событие блокировки |
 
-## Decision flow
+## Поток решений
 
-1. Зафиксировать active branch, base branch, active issue, target paths.
-2. Перечитать фактические файлы на active branch.
-3. Сравнить expected vs actual.
-4. Если ошибка только в fresh sha, создать новый bounded request со свежим sha; старый request не переписывать.
-5. Если diff затрагивает чужой scope, остановиться и записать event.
-6. Если запись уже persisted, выбрать: patch-forward, rollback, split into new issue, user decision.
+1. Зафиксировать активную ветку, базовую ветку, активную задачу и целевые пути.
+2. Перечитать фактические файлы на активной ветке.
+3. Сравнить ожидаемое и фактическое состояние.
+4. Если ошибка только в свежем SHA, создать новый ограниченный запрос со свежим SHA; старый запрос не переписывать.
+5. Если различие затрагивает чужую область, остановиться и записать событие.
+6. Если запись уже сохранена, выбрать: исправление вперёд, откат, разделение в новую задачу или решение пользователя.
 7. После решения обновить `Validation/sync_report.md`.
 
-## P2-007 recovery dry-run evidence
+## Доказательство пробного восстановления P2-007
 
-| Case | Input evidence | Decision | Coupling evidence |
+| Случай | Входное доказательство | Решение | Доказательство связки |
 |---|---|---|---|
-| stale update SHA | stale blob sha + current blob sha from readback | mark `sha_conflict`; re-plan only with new request and fresh payload | `Issues/issue_events.jsonl`, `Validation/sync_report.md` |
-| target confusion | branch/ref mismatch between write and readback | restore ledger and verify correct ref before any status claim | `State/service_state.md`, sync report branch fields |
-| validation conflict | content written but registry/state/events disagree | patch-forward coupled files or rollback with event | final_check failed check row |
-| external block | rollback would require force/default-branch rewrite | record `blocked`; require user decision | rollback event and open risk |
+| устаревший SHA обновления | устаревший SHA blob + текущий SHA blob из перечитывания | отметить `sha_conflict`; перепланировать только с новым запросом и свежей нагрузкой | `Issues/issue_events.jsonl`, `Validation/sync_report.md` |
+| путаница цели | несовпадение ветки или ссылки между записью и перечитыванием | восстановить журнал и проверить правильную ссылку до любого статусного заявления | `State/service_state.md`, поля ветки в отчёте синхронизации |
+| конфликт проверки | содержимое записано, но реестр/состояние/события расходятся | исправить связанные файлы вперёд или откатить с событием | строка проваленной проверки в `final_check.md` |
+| внешний блок | откат потребовал бы принудительной перезаписи ветки по умолчанию | записать `blocked`; требуется решение пользователя | событие отката и открытый риск |
 
-## Stop rules
+## Правила остановки
 
 - Нельзя создавать вторую ветку, пока не восстановлена первая.
-- Нельзя объявлять read-only, если уже есть branch, commit, PR или readback evidence.
-- Нельзя merge-ить PR без changed files/patch gate, кроме explicitly documented direct-to-main rework write.
-- Нельзя использовать `closed`, `passed`, `synced`, `Ready`, `OK` как замену evidence.
+- Нельзя объявлять режим только чтения, если уже есть доказательства ветки, коммита, PR или перечитывания.
+- Нельзя сливать PR без проверки изменённых файлов и различия, кроме явно задокументированной прямой записи в `main` по контракту доработки.
+- Нельзя использовать `closed`, `passed`, `synced`, `Ready`, `OK` как замену доказательства.
 
-## Recovery event
+## Событие восстановления
 
 ```json
 {"event_type":"conflict_recovery","active_issue":"CB-P2","status":"validation_conflict","target_paths":[],"decision":"patch_forward|rollback|blocked|user_decision","evidence":[]}

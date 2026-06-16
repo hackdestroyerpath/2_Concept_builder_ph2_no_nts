@@ -1,36 +1,36 @@
-# Template validation
+# Проверка шаблонов
 
-[← Реестр протоколов](protocol_index.md) | [Templates](../Templates/README.md)
+[← Реестр протоколов](protocol_index.md) | [Шаблоны](../Templates/README.md)
 
-## Purpose
+## Назначение
 
-Проверка production-шаблонов перед использованием.
+Проверка рабочих шаблонов перед использованием.
 
-## Scope
+## Область
 
 - `Templates/concept/`
 - `Templates/task/`
 - `Registry/page_registry.jsonl`
 - `Registry/page_registry_schema.md`
 
-## Concept checks
+## Проверки концепции
 
 - обязательные файлы есть;
 - локальный `page_registry.jsonl` валиден;
 - внутренние ссылки рабочие;
 - placeholder-ы известны;
 - `concept_state.md` совместим с `Execution Mode`;
-- `export.md` совместим с validation.
+- `export.md` совместим с проверкой.
 
-## Task checks
+## Проверки задачи
 
 - обязательные файлы есть;
 - роли артефактов определены;
-- QA, requirements, solution, contract и report присутствуют;
-- linked files описаны;
-- шаблон совместим с lifecycle задачи.
+- вопросы/ответы, требования, решение, контракт и отчёт присутствуют;
+- связанные файлы описаны;
+- шаблон совместим с жизненным циклом задачи.
 
-## Result
+## Результат
 
 ```text
 template_valid
@@ -39,4 +39,4 @@ template_invalid
 not_checked
 ```
 
-Результат проверки фиксируется в отчёте агента, event log и state при необходимости.
+Результат проверки фиксируется в отчёте агента, журнале событий и состоянии при необходимости.

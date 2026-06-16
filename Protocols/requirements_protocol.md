@@ -1,10 +1,10 @@
-# Requirements protocol
+# Протокол требований
 
-[← Реестр протоколов](protocol_index.md) | [Жизненный цикл issue](issue_lifecycle.md) | [Question Answer](question_answer.md) | [Issue execution](issue_execution.md)
+[← Реестр протоколов](protocol_index.md) | [Жизненный цикл задачи](issue_lifecycle.md) | [Вопросы и ответы](question_answer.md) | [Исполнение задачи](issue_execution.md)
 
 ## Назначение
 
-Протокол описывает сбор и проверку требований перед выполнением `issue`. Требования нужны, чтобы результат проверялся фактами, а не восторженным “ну вроде похоже”.
+Протокол описывает сбор и проверку требований перед выполнением задачи. Требования нужны, чтобы результат проверялся фактами, а не восторженным “ну вроде похоже”.
 
 ## Минимальная запись требования
 
@@ -28,31 +28,31 @@ recorded_at:
 return_anchor:
 ```
 
-## Requirement tree
+## Дерево требований
 
-Requirement tree должен сохранять происхождение каждого требования:
+Дерево требований должно сохранять происхождение каждого требования:
 
 | Поле | Назначение |
 |---|---|
-| `requirement_id` | стабильный ID, пригодный для отчёта и matrix |
-| `source` | user, state, registry, event, protocol, validation finding |
+| `requirement_id` | стабильный ID, пригодный для отчёта и матрицы |
+| `source` | пользователь, состояние, реестр, событие, протокол, проверочная находка |
 | `reason` | почему требование существует |
-| `linked_questions` | QA records или skip reasons |
-| `linked_inputs` | входные файлы, prompts, artifacts, repo paths |
-| `linked_issues` | parent/child/dependency issue IDs |
+| `linked_questions` | записи вопросов/ответов или причины пропуска |
+| `linked_inputs` | входные файлы, prompt-ы, артефакты, пути репозитория |
+| `linked_issues` | идентификаторы родительских, дочерних или зависимых задач |
 | `acceptance_criteria` | проверяемое условие, не статусный ярлык |
-| `approval_status` | состояние scope decision |
+| `approval_status` | состояние решения по области |
 
 ## Правила
 
-1. Требование должно быть проверяемым по repo evidence, event log, state или validation file.
+1. Требование должно быть проверяемым по доказательствам репозитория, журналу событий, состоянию или проверочному файлу.
 2. Если требование двусмысленно, задача переходит в `question_answer`.
-3. Если задача маленькая и безопасная, отдельный QA artifact можно пропустить только с `skipped_with_reason`.
-4. Production write требует перечисления target paths и validation plan.
-5. Execution запрещён, пока requirements не имеют `approved_with_scope` или documented safe skip.
-6. Acceptance criteria должны описывать наблюдаемый факт: readback, JSONL validity, link reachability, state/event coupling.
+3. Если задача маленькая и безопасная, отдельный артефакт вопросов/ответов можно пропустить только с `skipped_with_reason`.
+4. Рабочая запись требует перечисления целевых путей и плана проверки.
+5. Исполнение запрещено, пока требования не имеют `approved_with_scope` или документированный безопасный пропуск.
+6. Критерии приёмки должны описывать наблюдаемый факт: перечитывание, валидность JSONL, достижимость ссылок, связку состояния и события.
 
-## Approval block
+## Блок утверждения
 
 ```text
 approval_status:
@@ -66,4 +66,4 @@ validation_plan:
 
 ## Выход
 
-После проверки требований `issue` получает `requirements_scoped` или `blocked`. Если scope достаточно определён, следующий протокол — `issue_execution`.
+После проверки требований задача получает `requirements_scoped` или `blocked`. Если область достаточно определена, следующий протокол — `issue_execution`.

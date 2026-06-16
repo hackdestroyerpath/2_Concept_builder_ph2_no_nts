@@ -4,11 +4,11 @@
 
 ## Назначение
 
-`Registry/page_registry.jsonl` — машинная карта production-файлов `Concept Builder`. Реестр является navigation contract: по нему проверяются достижимость страниц, владельцы, backlinks, источники истины, локальные registry и отсутствие orphan/debris файлов.
+`Registry/page_registry.jsonl` — машинная карта рабочих файлов `Concept Builder`. Реестр является навигационным контрактом: по нему проверяются достижимость страниц, владельцы, обратные ссылки, источники истины, локальные реестры и отсутствие несвязанных или лишних файлов.
 
 ## Формат JSONL
 
-Каждая строка — один JSON-объект. Порядок строк повторяет утверждённое production-дерево: root, top-level routes, вложенные узлы, validation.
+Каждая строка — один JSON-объект. Порядок строк повторяет утверждённое рабочее дерево: корень, маршруты верхнего уровня, вложенные узлы, проверка.
 
 ```json
 {"path":"README.md","title":"Точка входа Concept Builder","type":"markdown","owner":"Service Mode","parent":null,"children":["Protocols/protocol_index.md"],"cross_links":["Validation/final_check.md"],"backlinks":[],"description":"Главная карта системы и маршрутов.","source_of_truth":"production","navigation_status":"reachable"}
@@ -18,44 +18,44 @@
 
 | Поле | Тип | Смысл | Проверка P2-002 |
 |---|---|---|---|
-| `path` | string | Путь production-файла от корня репозитория или локальный путь внутри local registry. | существует в утверждённом дереве или описан как удалённое исключение вне active registry |
-| `title` | string | Человекочитаемое русское название страницы; technical identifiers допускаются. | не пустое, не является `OK`/`Ready`/`closed` |
-| `type` | string | Класс файла: `markdown`, `jsonl`, `template`, `state`, `validation`, `issue_artifact`. | соответствует роли файла |
-| `owner` | string | Владелец: `Service Mode`, `Execution Mode` или конкретный production-owner. | согласован с root README и state |
-| `parent` | string/null | Родительская reachable-страница. | `null` только у `README.md`; остальные родители должны существовать |
-| `children` | array | Дочерние страницы, достижимые из текущей страницы. | каждый child должен иметь registry entry или documented exception |
-| `cross_links` | array | Функциональные ссылки вне прямого дерева. | ссылки используются для протоколов, validation, state и issue anchors |
-| `backlinks` | array | Страницы, которые должны ссылаться назад или входить в маршрут. | проверяются по `Validation/navigation_check.md` |
-| `description` | string | Роль файла в системе. | описывает production-назначение, а не статус-ярлык |
-| `source_of_truth` | string | Источник актуальности: `production`, `state`, `issue_registry`, `validation`, `template_registry`, `concept_registry`. | согласован с владельцем и назначением |
-| `navigation_status` | string | `reachable`, `local_reachable`, `registered_exception`, `removed_with_reason`, `blocked`. | активные production-файлы должны быть `reachable` или `local_reachable` |
+| `path` | строка | путь рабочего файла от корня репозитория или локальный путь внутри локального реестра | существует в утверждённом дереве или описан как удалённое исключение вне активного реестра |
+| `title` | строка | человекочитаемое русское название страницы; технические идентификаторы допускаются | не пустое, не является `OK`/`Ready`/`closed` |
+| `type` | строка | класс файла: `markdown`, `jsonl`, `template`, `state`, `validation`, `issue_artifact` | соответствует роли файла |
+| `owner` | строка | владелец: `Service Mode`, `Execution Mode` или конкретный рабочий владелец | согласован с корневым `README.md` и состоянием |
+| `parent` | строка/null | родительская достижимая страница | `null` только у `README.md`; остальные родители должны существовать |
+| `children` | массив | дочерние страницы, достижимые из текущей страницы | каждый дочерний элемент должен иметь строку реестра или документированное исключение |
+| `cross_links` | массив | функциональные ссылки вне прямого дерева | ссылки используются для протоколов, проверки, состояния и якорей задач |
+| `backlinks` | массив | страницы, которые должны ссылаться назад или входить в маршрут | проверяются по `Validation/navigation_check.md` |
+| `description` | строка | роль файла в системе | описывает рабочее назначение, а не статус-ярлык |
+| `source_of_truth` | строка | источник актуальности: `production`, `state`, `issue_registry`, `validation`, `template_registry`, `concept_registry` | согласован с владельцем и назначением |
+| `navigation_status` | строка | `reachable`, `local_reachable`, `registered_exception`, `removed_with_reason`, `blocked` | активные рабочие файлы должны быть `reachable` или `local_reachable` |
 
 ## Правила для глобального реестра
 
-1. Глобальный `Registry/page_registry.jsonl` покрывает все активные production-файлы из `Registry/structure.md`.
-2. Любая MD-страница должна быть достижима от `README.md`, mode entry или local concept/template entry.
-3. `children`, `cross_links` и `backlinks` не заменяют actual links in files; они задают проверяемый контракт для readback.
-4. `source_of_truth` фиксирует, где находится authority для файла: state, issue registry, validation, template registry или concept registry.
-5. Строки global registry не должны регистрировать patch-handoff, Phase 1 audit, prompt-ы, checkpoint-и или исходный handoff-архив.
+1. Глобальный `Registry/page_registry.jsonl` покрывает все активные рабочие файлы из `Registry/structure.md`.
+2. Любая Markdown-страница должна быть достижима от `README.md`, входа режима или локальной точки входа концепции/шаблона.
+3. `children`, `cross_links` и `backlinks` не заменяют фактические ссылки в файлах; они задают проверяемый контракт для перечитывания.
+4. `source_of_truth` фиксирует, где находится авторитетный источник для файла: состояние, реестр задач, проверка, реестр шаблона или реестр концепции.
+5. Строки глобального реестра не должны регистрировать материалы передачи исправления, аудит Phase 1, prompt-ы, контрольные архивы или исходный архив передачи.
 
-## Правила для local registry
+## Правила для локального реестра
 
-| Local registry | Scope | Parent в global registry | Статус |
+| Локальный реестр | Область | Родитель в глобальном реестре | Статус |
 |---|---|---|---|
-| `Concepts/smoke/page_registry.jsonl` | локальная сеть smoke fixture | `Concepts/smoke/README.md` | `local_reachable` для child pages |
-| `Templates/concept/page_registry.jsonl` | шаблон новой концепции | `Templates/concept/README.md` | `local_reachable` для child templates |
-| `Templates/task/page_registry.jsonl` | шаблон управляемой задачи | `Templates/task/README.md` | `local_reachable` для child templates |
+| `Concepts/smoke/page_registry.jsonl` | локальная сеть проверочного примера `smoke` | `Concepts/smoke/README.md` | `local_reachable` для дочерних страниц |
+| `Templates/concept/page_registry.jsonl` | шаблон новой концепции | `Templates/concept/README.md` | `local_reachable` для дочерних шаблонов |
+| `Templates/task/page_registry.jsonl` | шаблон управляемой задачи | `Templates/task/README.md` | `local_reachable` для дочерних шаблонов |
 
-В local registry поле `path` пишется относительно локального root. Backlink `README.md` означает локальный README, а `../../...` используется только для выхода к global routes.
+В локальном реестре поле `path` пишется относительно локального корня. Обратная ссылка `README.md` означает локальный `README.md`, а `../../...` используется только для выхода к глобальным маршрутам.
 
-## Исключения и debris
+## Исключения и лишние материалы
 
-`Plans/`, `Closure/`, `Issues/cb89.md`, `Concepts/smoke/o2.md`, patch-handoff, Phase 1 audit, prompt-ы, checkpoint-и и исходный handoff-архив не имеют активных production-записей. Если путь удалён с причиной, причина фиксируется в `Registry/structure.md`, `Validation/final_check.md`, `Validation/sync_report.md` и `Issues/issue_events.jsonl`.
+`Plans/`, `Closure/`, `Issues/cb89.md`, `Concepts/smoke/o2.md`, материалы передачи исправления, аудит Phase 1, prompt-ы, контрольные архивы и исходный архив передачи не имеют активных рабочих записей. Если путь удалён с причиной, причина фиксируется в `Registry/structure.md`, `Validation/final_check.md`, `Validation/sync_report.md` и `Issues/issue_events.jsonl`.
 
 ## Проверки P2-002
 
-1. Все production MD/JSONL/state/template/validation/issue files имеют registry entry.
-2. Каждый parent/child/cross-link/backlink указывает существующий active production path или documented external/local route.
-3. Local registries не являются path-only: каждая строка содержит owner, parent, backlinks, source_of_truth и navigation_status.
-4. `Templates/task/README.md` содержит clickable routes к child artifacts.
-5. Финальный статус не объявляется до P2-010; P2-002 только фиксирует navigation contract и readback evidence.
+1. Все рабочие Markdown/JSONL/state/template/validation/issue-файлы имеют строку реестра.
+2. Каждый родитель, дочерний элемент, функциональная ссылка и обратная ссылка указывают на существующий активный рабочий путь или документированный внешний/локальный маршрут.
+3. Локальные реестры не состоят только из путей: каждая строка содержит владельца, родителя, обратные ссылки, `source_of_truth` и `navigation_status`.
+4. `Templates/task/README.md` содержит кликабельные маршруты к дочерним артефактам.
+5. Финальный статус не объявляется до финальной проверки; P2-002 только фиксирует навигационный контракт и доказательства перечитывания.

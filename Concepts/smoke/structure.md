@@ -1,6 +1,6 @@
-# Smoke structure
+# Структура `smoke`
 
-[← Smoke](README.md) | [Registry](page_registry.jsonl)
+[← Проверочный пример](README.md) | [Реестр](page_registry.jsonl)
 
 ```text
 smoke/
@@ -16,14 +16,14 @@ smoke/
 └── export.md
 ```
 
-## Removed paths
+## Удалённые пути
 
-| Path | Reason |
+| Путь | Причина |
 |---|---|
-| `o2.md` | orphan/stub, не входит в concept template и не имеет linked registry role |
-| `output.txt` | не является production markdown page |
-| `e.txt` | не является production export page |
+| `o2.md` | несвязанный или пустой файл; не входит в шаблон концепции и не имеет роли в локальном реестре |
+| `output.txt` | не является рабочей Markdown-страницей |
+| `e.txt` | не является рабочей страницей экспорта |
 
-## Integrity rule
+## Правило целостности
 
-Локальное дерево считается валидным только если `page_registry.jsonl` содержит те же production pages, backlinks и owner `Execution Mode`.
+Локальное дерево считается валидным только если `page_registry.jsonl` содержит те же рабочие страницы, обратные ссылки и владельца `Execution Mode`.

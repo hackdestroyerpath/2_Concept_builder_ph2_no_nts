@@ -1,28 +1,28 @@
-# CB-002 — Common core protocols
+# CB-002 — Общие базовые протоколы
 
-[← Issues](../README.md) | [Protocol index](../../Protocols/protocol_index.md) | [State architecture](../../Protocols/state_architecture.md) | [Context loading](../../Protocols/context_loading.md)
+[← Задачи](../README.md) | [Индекс протоколов](../../Protocols/protocol_index.md) | [Архитектура состояния](../../Protocols/state_architecture.md) | [Загрузка контекста](../../Protocols/context_loading.md)
 
-## Provenance
+## Происхождение
 
-Статус: `reconstructed_with_evidence`. Исходная цепочка выполнения не сохранила полноценный task artifact, поэтому эта страница фиксирует только факты, восстановленные из production-файлов, registry и event log.
+Статус: `reconstructed_with_evidence`. Исходная цепочка выполнения не сохранила полноценный артефакт задачи, поэтому эта страница фиксирует только факты, восстановленные из рабочих файлов, реестра и журнала событий.
 
-## Scope
+## Область
 
 - архитектура состояния `Service Mode` и `Execution Mode`;
-- загрузка bounded context перед действием;
-- маршрутизация режима и transfer route;
-- response marker как компактная проекция state.
+- загрузка ограниченного контекста перед действием;
+- маршрутизация режима и маршрут передачи;
+- маркер ответа как компактная проекция состояния.
 
-## Evidence
+## Доказательства
 
-| Evidence | Роль |
+| Доказательство | Роль |
 |---|---|
-| `Protocols/state_architecture.md` | canonical state schema и mapping к маркеру |
-| `Protocols/context_loading.md` | mandatory/local/referenced context |
-| `Protocols/mode_routing.md` | выбор Service/Execution/blocked route |
-| `Protocols/response_marker.md` | формат ответа и persistence status |
-| `Issues/issue_events.jsonl` | reconstructed event trace |
+| `Protocols/state_architecture.md` | каноническая схема состояния и связь с маркером |
+| `Protocols/context_loading.md` | обязательный, локальный и ссылочный контекст |
+| `Protocols/mode_routing.md` | выбор `Service Mode`, `Execution Mode` или заблокированного маршрута |
+| `Protocols/response_marker.md` | формат ответа и статус сохранения |
+| `Issues/issue_events.jsonl` | восстановленная трасса событий |
 
-## Closure rule
+## Правило закрытия
 
-`CB-002` сохраняется как provenance node. Финальная проверка остаётся в `CB-P2` и `Validation/final_check.md`.
+`CB-002` сохраняется как узел происхождения. Финальная проверка остаётся в `CB-P2` и `Validation/final_check.md`.

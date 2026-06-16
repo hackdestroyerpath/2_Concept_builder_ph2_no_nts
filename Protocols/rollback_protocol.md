@@ -1,59 +1,59 @@
-# Rollback protocol
+# Протокол отката
 
-[← Реестр протоколов](protocol_index.md) | [GitHub write](github_write_protocol.md) | [Conflict recovery](github_conflict_recovery.md) | [Sync report](../Validation/sync_report.md)
+[← Реестр протоколов](protocol_index.md) | [Запись в GitHub](github_write_protocol.md) | [Восстановление после конфликта](github_conflict_recovery.md) | [Отчёт синхронизации](../Validation/sync_report.md)
 
 ## Назначение
 
-Rollback нужен, когда production write уже выполнен, но последующая проверка показала неверный scope, broken links, language regression, registry/state/event drift, merge conflict или user-decision stop. Rollback не заменяет validation; он сам проходит validation.
+Откат нужен, когда рабочая запись уже выполнена, но последующая проверка показала неверную область, сломанные ссылки, языковой регресс, дрейф реестра/состояния/событий, конфликт слияния или пользовательскую остановку решения. Откат не заменяет проверку; он сам проходит проверку.
 
-## Trigger
+## Триггер
 
-Rollback запускается при одном из событий:
+Откат запускается при одном из событий:
 
-1. write затронул path вне `allowed_write_scope`;
-2. readback не совпадает с expected content;
-3. diff содержит неожиданные deletes/additions;
-4. registry/state/events расходятся после записи;
-5. PR diff gate нашёл небезопасный scratch-tree или unrelated files;
-6. пользователь отклонил patch или потребовал восстановление.
+1. запись затронула путь вне `allowed_write_scope`;
+2. перечитывание не совпадает с ожидаемым содержимым;
+3. различие содержит неожиданные удаления или добавления;
+4. реестр, состояние и события расходятся после записи;
+5. проверка различия PR нашла небезопасное черновое дерево или посторонние файлы;
+6. пользователь отклонил исправление или потребовал восстановление.
 
-## Scope
+## Область
 
-| Scope | Действие |
+| Область | Действие |
 |---|---|
-| один файл | восстановить предыдущий blob content или удалить новый файл |
-| несколько связанных файлов | создать rollback commit с registry/state/events coupling |
-| PR ещё не merged | закрыть PR или обновить branch rollback commit |
-| PR merged | создать новый service issue и rollback PR; direct force запрещён без явного user approval |
+| один файл | восстановить предыдущее содержимое blob или удалить новый файл |
+| несколько связанных файлов | создать коммит отката со связкой реестра, состояния и событий |
+| PR ещё не слит | закрыть PR или обновить ветку коммитом отката |
+| PR слит | создать новую сервисную задачу и PR отката; прямое принудительное обновление запрещено без явного утверждения пользователя |
 
 ## Защищённые файлы
 
-`Registry/page_registry.jsonl`, `State/service_state.md`, `Issues/issue_events.jsonl`, `Validation/sync_report.md` обновляются вместе с rollback или получают `blocked` event, если rollback остановлен внешним решением.
+`Registry/page_registry.jsonl`, `State/service_state.md`, `Issues/issue_events.jsonl`, `Validation/sync_report.md` обновляются вместе с откатом или получают событие `blocked`, если откат остановлен внешним решением.
 
-## P2-007 rollback dry-run matrix
+## Матрица пробного отката P2-007
 
-| Scenario | Trigger | Rollback decision | Expected validation |
+| Сценарий | Триггер | Решение отката | Ожидаемая проверка |
 |---|---|---|---|
-| single-file wrong content | readback mismatch on one bounded production file | restore previous blob with new write package | path readback and sync-report row |
-| coupled-file drift | primary file written, registry/state/event omitted | patch-forward coupling first; rollback only if coupling cannot be made truthful | final_check names failed field |
-| protected output risk | rollback would delete validated user output or force-update default branch | rollback blocked; event records external/user decision needed | open risk until decision |
-| debris restore attempt | rollback would reintroduce legacy scratch/debris paths | rollback blocked because debris removal has evidence | absent-path check remains authoritative |
+| неверное содержимое одного файла | перечитывание не совпало в одном ограниченном рабочем файле | восстановить предыдущий blob новым пакетом записи | перечитывание пути и строка отчёта синхронизации |
+| дрейф связанных файлов | основной файл записан, но реестр/состояние/событие пропущены | сначала исправить связку вперёд; откат только если связку нельзя сделать правдивой | `final_check.md` называет проваленное поле |
+| риск для защищённого результата | откат удалит проверенный пользовательский результат или принудительно обновит ветку по умолчанию | откат заблокирован; событие фиксирует необходимость внешнего решения | открытый риск до решения |
+| попытка вернуть удалённые лишние пути | откат повторно внесёт старые черновые или лишние пути | откат заблокирован, потому что удаление подтверждено доказательствами | проверка отсутствующего пути остаётся авторитетной |
 
-## Event schema
+## Схема события
 
 ```json
 {"event_type":"rollback","active_issue":"CB-P2","trigger":"scope_mismatch","affected_paths":[],"pre_sha":"","rollback_sha":"","validation_ref":"Validation/sync_report.md","status":"validated|blocked"}
 ```
 
-## Stop conditions
+## Условия остановки
 
-Rollback останавливается и создаёт `blocked` event, если восстановление удалит validated user output, затронет чужой режим, потребует force update default branch, либо конфликт требует человеческого выбора.
+Откат останавливается и создаёт событие `blocked`, если восстановление удалит проверенный пользовательский результат, затронет чужой режим, потребует принудительное обновление ветки по умолчанию либо конфликт требует человеческого выбора.
 
-## Validation
+## Проверка
 
-После rollback агент проверяет:
+После отката агент проверяет:
 
-- changed paths ровно соответствуют rollback scope;
-- registry/state/events снова согласованы;
-- readback проходит для затронутых файлов;
-- `Validation/sync_report.md` содержит branch, commit, rollback reason, remaining risk.
+- изменённые пути ровно соответствуют области отката;
+- реестр, состояние и события снова согласованы;
+- перечитывание проходит для затронутых файлов;
+- `Validation/sync_report.md` содержит ветку, коммит, причину отката и оставшийся риск.

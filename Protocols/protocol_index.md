@@ -1,78 +1,78 @@
 # Реестр протоколов
 
-[← Точка входа](../README.md) | [Service state](../State/service_state.md) | [Execution state](../State/execution_state.md) | [Validation](../Validation/final_check.md)
+[← Точка входа](../README.md) | [Сервисное состояние](../State/service_state.md) | [Состояние исполнения](../State/execution_state.md) | [Проверка](../Validation/final_check.md)
 
 ## Назначение
 
 `Protocols/protocol_index.md` — диспетчерская карта протоколов `Concept Builder`. Этот файл не является простым списком Markdown-страниц: он выбирает следующий исполнимый протокол по режиму, действию, входным данным, ожидаемому выходу и условию блокировки.
 
-## Базовая route matrix
+## Базовая матрица маршрутов
 
 | Контур | Входной сигнал | Первый протокол | Требуемый контекст | Выход | Следующий протокол |
 |---|---|---|---|---|---|
-| Общий core | любой новый запрос | [`context_loading.md`](context_loading.md) | `README.md`, active state, этот индекс | bounded context set | [`mode_routing.md`](mode_routing.md) |
-| Общий core | target path или user intent | [`mode_routing.md`](mode_routing.md) | command, active state, target paths | `Service Mode`, `Execution Mode`, transfer или `blocked` | target protocol |
-| Общий core | state/marker drift | [`state_architecture.md`](state_architecture.md) + [`response_marker.md`](response_marker.md) | state files, marker fields, sync report | canonical state and marker mapping | [`validation_protocol.md`](validation_protocol.md) |
-| Issue pipeline | новый или существующий service issue | [`issue_lifecycle.md`](issue_lifecycle.md) | registry, events, active issue artifact | issue row, event, state update | [`question_answer.md`](question_answer.md) или [`requirements_protocol.md`](requirements_protocol.md) |
-| Issue pipeline | неясные требования | [`question_answer.md`](question_answer.md) | user question, known facts, skip reason if any | questions/answers or persisted skip reason | [`requirements_protocol.md`](requirements_protocol.md) |
-| Issue pipeline | требования готовы | [`requirements_protocol.md`](requirements_protocol.md) | source, reason, acceptance criteria | approved/scoped requirements | [`issue_execution.md`](issue_execution.md) |
-| Issue pipeline | simple issue execution | [`issue_execution.md`](issue_execution.md) | requirements, solution, contract, target paths | output/report and validation plan | [`github_write_protocol.md`](github_write_protocol.md) |
-| Issue pipeline | linked issue or dependency | [`complex_and_linked_issues.md`](complex_and_linked_issues.md) | dependency graph, parent/child refs, return anchor | ready/waiting/roll-up state | [`issue_execution.md`](issue_execution.md) |
-| Issue pipeline | priority, approval, cleanup transition | [`task_flow_hardening.md`](task_flow_hardening.md) | priority, approval, provenance, cleanup decision | safe lifecycle transition | [`validation_protocol.md`](validation_protocol.md) |
-| GitHub write | production write package | [`github_write_protocol.md`](github_write_protocol.md) | classifier, pre-sha, target paths, validation plan | write/readback/sync-report | [`github_conflict_recovery.md`](github_conflict_recovery.md) или [`validation_protocol.md`](validation_protocol.md) |
-| GitHub write | conflict, 409, mismatched SHA | [`github_conflict_recovery.md`](github_conflict_recovery.md) | expected/actual SHA, branch diff, changed paths | retry, rebuild, rollback или blocked | [`rollback_protocol.md`](rollback_protocol.md) или write retry |
-| GitHub write | unsafe persisted write | [`rollback_protocol.md`](rollback_protocol.md) | pre/post SHA, changed paths, reason | rollback event and validation evidence | [`validation_protocol.md`](validation_protocol.md) |
-| Templates | template check or instantiation | [`template_validation.md`](template_validation.md) | template README, local registry, task/concept rules | compatibility result | issue pipeline or validation |
-| Execution | создать, выбрать или продолжить концепцию | [`execution_bootstrap.md`](execution_bootstrap.md) | execution state, `Concepts/README.md`, local registry | selected concept scope | [`concept_export.md`](concept_export.md) или concept work |
-| Execution | export readiness or production export | [`concept_export.md`](concept_export.md) | source paths, scope, audience, format, output evidence | export manifest | [`validation_protocol.md`](validation_protocol.md) |
-| Validation | closure, merge, acceptance, dry-run | [`validation_protocol.md`](validation_protocol.md) | changed paths, registry, state, events, language checks | evidence matrix and next safe step | [`response_marker.md`](response_marker.md) |
+| Общая основа | любой новый запрос | [`context_loading.md`](context_loading.md) | `README.md`, активное состояние, этот индекс | загруженный ограниченный контекст | [`mode_routing.md`](mode_routing.md) |
+| Общая основа | целевой путь или намерение пользователя | [`mode_routing.md`](mode_routing.md) | команда, активное состояние, целевые пути | `Service Mode`, `Execution Mode`, передача или `blocked` | целевой протокол |
+| Общая основа | дрейф состояния или маркера | [`state_architecture.md`](state_architecture.md) + [`response_marker.md`](response_marker.md) | файлы состояния, поля маркера, отчёт синхронизации | каноническая связь состояния и маркера | [`validation_protocol.md`](validation_protocol.md) |
+| Поток задач | новая или существующая сервисная задача | [`issue_lifecycle.md`](issue_lifecycle.md) | реестр, события, артефакт активной задачи | строка задачи, событие, обновление состояния | [`question_answer.md`](question_answer.md) или [`requirements_protocol.md`](requirements_protocol.md) |
+| Поток задач | неясные требования | [`question_answer.md`](question_answer.md) | вопрос пользователю, известные факты, причина пропуска при наличии | вопросы/ответы или сохранённая причина пропуска | [`requirements_protocol.md`](requirements_protocol.md) |
+| Поток задач | требования готовы | [`requirements_protocol.md`](requirements_protocol.md) | источник, причина, критерии приёмки | утверждённые или ограниченные требования | [`issue_execution.md`](issue_execution.md) |
+| Поток задач | исполнение простой задачи | [`issue_execution.md`](issue_execution.md) | требования, решение, контракт, целевые пути | результат/отчёт и план проверки | [`github_write_protocol.md`](github_write_protocol.md) |
+| Поток задач | связанная задача или зависимость | [`complex_and_linked_issues.md`](complex_and_linked_issues.md) | граф зависимостей, ссылки родителя и дочерних задач, якорь возврата | состояние готовности, ожидания или свёртки | [`issue_execution.md`](issue_execution.md) |
+| Поток задач | переход приоритета, утверждения или очистки | [`task_flow_hardening.md`](task_flow_hardening.md) | приоритет, утверждение, происхождение, решение по очистке | безопасный переход жизненного цикла | [`validation_protocol.md`](validation_protocol.md) |
+| Запись GitHub | рабочий пакет записи | [`github_write_protocol.md`](github_write_protocol.md) | классификатор, исходный SHA, целевые пути, план проверки | запись, перечитывание, отчёт синхронизации | [`github_conflict_recovery.md`](github_conflict_recovery.md) или [`validation_protocol.md`](validation_protocol.md) |
+| Запись GitHub | конфликт, `409`, несовпадающий SHA | [`github_conflict_recovery.md`](github_conflict_recovery.md) | ожидаемый/фактический SHA, различие ветки, изменённые пути | повтор, пересборка, откат или блокировка | [`rollback_protocol.md`](rollback_protocol.md) или повтор записи |
+| Запись GitHub | небезопасная сохранённая запись | [`rollback_protocol.md`](rollback_protocol.md) | SHA до/после, изменённые пути, причина | событие отката и доказательства проверки | [`validation_protocol.md`](validation_protocol.md) |
+| Шаблоны | проверка или создание по шаблону | [`template_validation.md`](template_validation.md) | `README.md` шаблона, локальный реестр, правила задачи или концепции | результат совместимости | поток задачи или проверка |
+| Исполнение | создать, выбрать или продолжить концепцию | [`execution_bootstrap.md`](execution_bootstrap.md) | состояние исполнения, `Concepts/README.md`, локальный реестр | область выбранной концепции | [`concept_export.md`](concept_export.md) или работа с концепцией |
+| Исполнение | готовность экспорта или рабочий экспорт | [`concept_export.md`](concept_export.md) | исходные пути, область, аудитория, формат, доказательство результата | манифест экспорта | [`validation_protocol.md`](validation_protocol.md) |
+| Проверка | закрытие, слияние, приёмка, пробный прогон | [`validation_protocol.md`](validation_protocol.md) | изменённые пути, реестр, состояние, события, языковые проверки | матрица доказательств и следующий безопасный шаг | [`response_marker.md`](response_marker.md) |
 
-## Existing issue focus/resume flow
+## Фокус и продолжение существующей задачи
 
-| Шаг | Проверка | Источник истины | Следующий route |
+| Шаг | Проверка | Источник истины | Следующий маршрут |
 |---|---|---|---|
-| 1 | Найти active issue в state | `State/service_state.md` или `State/execution_state.md` | `issue_lifecycle` |
-| 2 | Проверить registry row | `Issues/issue_registry.jsonl` | `task_flow_hardening` |
-| 3 | Проверить последний event | `Issues/issue_events.jsonl` | active task contract |
-| 4 | Открыть issue artifact | `Issues/<issue_id>/README.md` | target protocol |
-| 5 | Сверить return anchor | `Validation/sync_report.md` или issue artifact | продолжение bounded step |
-| 6 | Если focus расходится | state/registry/events mismatch | `state_architecture` + `validation_protocol`, без финального closure |
+| 1 | найти активную задачу в состоянии | `State/service_state.md` или `State/execution_state.md` | `issue_lifecycle` |
+| 2 | проверить строку реестра | `Issues/issue_registry.jsonl` | `task_flow_hardening` |
+| 3 | проверить последнее событие | `Issues/issue_events.jsonl` | активный контракт задачи |
+| 4 | открыть артефакт задачи | `Issues/<issue_id>/README.md` | целевой протокол |
+| 5 | сверить якорь возврата | `Validation/sync_report.md` или артефакт задачи | продолжение ограниченного шага |
+| 6 | если фокус расходится | несовпадение состояния, реестра или событий | `state_architecture` + `validation_protocol`, без финального закрытия |
 
-Existing issue не создаётся заново, если есть `issue_id`, registry row, event trace и return anchor. В этом случае агент продолжает текущий bounded step, а не открывает параллельный issue.
+Существующая задача не создаётся заново, если есть `issue_id`, строка реестра, трасса событий и якорь возврата. В этом случае агент продолжает текущий ограниченный шаг, а не открывает параллельную задачу.
 
-## Protocol cards
+## Карты протоколов
 
-| Protocol | Owner | Trigger | Inputs | Required context | Outputs | Write scope | Next protocol | Blocking conditions |
+| Протокол | Владелец | Триггер | Входы | Обязательный контекст | Выходы | Область записи | Следующий протокол | Условия блокировки |
 |---|---|---|---|---|---|---|---|---|
-| `context_loading` | Service Mode | любой запрос или recovery | command, active state, target paths | README, active state, protocol index | loaded context set | read-only, кроме state update через target task | `mode_routing` | mandatory context missing |
-| `mode_routing` | Service Mode | target path, user intent, mixed scope | active object, requested action, target paths | state, route matrix | selected mode or transfer | state/event only through active issue | target protocol | mixed service/execution write without transfer |
-| `state_architecture` | Service Mode | state drift, missing field, marker mismatch | state files, marker, issue refs | service/execution state, response marker | canonical field map | `State/` under approved repair scope | `response_marker` or validation | unresolved owner boundary |
-| `response_marker` | Service Mode | every response tail | canonical state fields | state and sync-report | compact marker | no production write unless active task updates state | validation or next turn | missing persistence status |
-| `github_write_protocol` | Service Mode | production write package | classifier, operation, pre-sha, paths | target files, state, issue, validation | post-sha, readback, sync-report | only active mode write scope | conflict recovery or validation | development file or missing validation plan |
-| `github_conflict_recovery` | Service Mode | 409, stale SHA, mismatched readback | expected/actual sha, branch diff | target file, branch diff, sync-report | retry/rebuild/blocked decision | no blind write | rollback or write retry | unsafe overwrite risk |
-| `rollback_protocol` | Service Mode | unsafe persisted write | pre/post sha, changed paths, reason | events, sync report, affected files | rollback event and validation | affected production paths only by approved rollback | validation | rollback would remove validated output |
-| `issue_lifecycle` | Service Mode | create/focus/approve/reject/cleanup | reason, priority, provenance | registry, events, issue artifact | issue row and event | `Issues/` and state | QA, requirements, or task flow | issue without reason or provenance |
-| `question_answer` | Service Mode | uncertainty affects execution | questions, known facts, skip reason | active issue and requirements context | persisted QA or skip reason | task artifact or event | requirements | unresolved blocker question |
-| `requirements_protocol` | Service Mode | before execution | sources, reasons, acceptance | issue artifact and QA | requirement tree | task artifact | issue execution | unapproved or unscoped requirement |
-| `issue_execution` | Service Mode | approved contract | requirements, solution, target paths | task templates, protocol refs | solution/contract/report | approved target paths | github write | contract absent |
-| `complex_and_linked_issues` | Service Mode | dependency or child issue | dependency graph, child refs | registry and linked files | waiting/ready/roll-up | issue artifacts only | issue execution | cycle or unresolved child output |
-| `task_flow_hardening` | Service Mode | status transition | priority, approval, cleanup | registry/events/issue | safe transition | registry/events/state | validation | missing approval or cleanup reason |
-| `template_validation` | Service Mode | template change or instantiation | template files, local registry | templates and validation protocol | compatibility result | `Templates/` under service issue | issue execution or validation | missing child route or placeholder leak |
-| `execution_bootstrap` | Execution Mode | create/select/continue concept | concept id, title, active issue | execution state, Concepts entry, local registry | selected concept scope | selected concept folder and linked execution issue | concept export or concept work | missing concept id, issue or local registry |
-| `concept_export` | Execution Mode | export readiness or user export | source paths, audience, format | concept files, output, local registry | export manifest | selected concept export file | validation | output/export readiness drift |
-| `validation_protocol` | Service Mode | before closure, merge, or next phase | changed paths, registry, state, events | final check, navigation/language checks, sync report | evidence matrix | `Validation/` and state/event coupling | response marker | assertion-only closure |
+| `context_loading` | `Service Mode` | любой запрос или восстановление | команда, активное состояние, целевые пути | `README.md`, активное состояние, индекс протоколов | загруженный набор контекста | только чтение, кроме обновления состояния через целевую задачу | `mode_routing` | отсутствует обязательный контекст |
+| `mode_routing` | `Service Mode` | целевой путь, намерение пользователя, смешанная область | активный объект, запрошенное действие, целевые пути | состояние, матрица маршрутов | выбранный режим или передача | состояние и событие только через активную задачу | целевой протокол | смешанная сервисная/исполнительная запись без передачи |
+| `state_architecture` | `Service Mode` | дрейф состояния, отсутствующее поле, несовпадение маркера | файлы состояния, маркер, ссылки задачи | сервисное и исполнительное состояние, маркер ответа | каноническая карта полей | `State/` в утверждённой области ремонта | `response_marker` или проверка | нерешённая граница владельца |
+| `response_marker` | `Service Mode` | хвост каждого ответа | канонические поля состояния | состояние и отчёт синхронизации | компактный маркер | без рабочей записи, кроме обновления состояния активной задачи | проверка или следующий ход | отсутствует статус сохранения |
+| `github_write_protocol` | `Service Mode` | рабочий пакет записи | классификатор, операция, исходный SHA, пути | целевые файлы, состояние, задача, проверка | итоговый SHA, перечитывание, отчёт синхронизации | только область записи активного режима | восстановление после конфликта или проверка | разработческий файл или нет плана проверки |
+| `github_conflict_recovery` | `Service Mode` | `409`, устаревший SHA, несовпадающее перечитывание | ожидаемый/фактический SHA, различие ветки | целевой файл, различие ветки, отчёт синхронизации | решение о повторе, пересборке или блокировке | без слепой записи | откат или повтор записи | риск небезопасной перезаписи |
+| `rollback_protocol` | `Service Mode` | небезопасная сохранённая запись | SHA до/после, изменённые пути, причина | события, отчёт синхронизации, затронутые файлы | событие отката и проверка | затронутые рабочие пути только по утверждённому откату | проверка | откат удалит проверенный результат |
+| `issue_lifecycle` | `Service Mode` | создать, сфокусировать, утвердить, отклонить или очистить | причина, приоритет, происхождение | реестр, события, артефакт задачи | строка задачи и событие | `Issues/` и состояние | вопросы, требования или поток задачи | задача без причины или происхождения |
+| `question_answer` | `Service Mode` | неопределённость влияет на исполнение | вопросы, известные факты, причина пропуска | активная задача и контекст требований | сохранённые вопросы/ответы или причина пропуска | артефакт задачи или событие | требования | нерешённый блокирующий вопрос |
+| `requirements_protocol` | `Service Mode` | перед исполнением | источники, причины, приёмка | артефакт задачи и вопросы/ответы | дерево требований | артефакт задачи | исполнение задачи | неутверждённое или неограниченное требование |
+| `issue_execution` | `Service Mode` | утверждённый контракт | требования, решение, целевые пути | шаблоны задачи, ссылки протоколов | решение, контракт, отчёт | утверждённые целевые пути | запись GitHub | отсутствует контракт |
+| `complex_and_linked_issues` | `Service Mode` | зависимость или дочерняя задача | граф зависимостей, ссылки дочерних задач | реестр и связанные файлы | ожидание, готовность или свёртка | только артефакты задач | исполнение задачи | цикл или нерешённый дочерний результат |
+| `task_flow_hardening` | `Service Mode` | переход статуса | приоритет, утверждение, очистка | реестр, события, задача | безопасный переход | реестр, события, состояние | проверка | нет утверждения или причины очистки |
+| `template_validation` | `Service Mode` | изменение или использование шаблона | файлы шаблона, локальный реестр | шаблоны и протокол проверки | результат совместимости | `Templates/` в рамках сервисной задачи | исполнение задачи или проверка | нет дочернего маршрута или утечка placeholder-а |
+| `execution_bootstrap` | `Execution Mode` | создать, выбрать или продолжить концепцию | идентификатор концепции, название, активная задача | состояние исполнения, точка входа концепций, локальный реестр | область выбранной концепции | папка выбранной концепции и связанная исполнительная задача | экспорт концепции или работа с концепцией | отсутствует идентификатор концепции, задача или локальный реестр |
+| `concept_export` | `Execution Mode` | готовность экспорта или пользовательский экспорт | исходные пути, аудитория, формат | файлы концепции, результат, локальный реестр | манифест экспорта | файл экспорта выбранной концепции | проверка | дрейф готовности результата или экспорта |
+| `validation_protocol` | `Service Mode` | перед закрытием, слиянием или следующей фазой | изменённые пути, реестр, состояние, события | финальная проверка, навигационная/языковая проверка, отчёт синхронизации | матрица доказательств | `Validation/` и связка состояние/событие | маркер ответа | закрытие только по утверждению |
 
-## Failure routes
+## Маршруты отказов
 
-| Failure | Immediate protocol | Required action |
+| Отказ | Немедленный протокол | Обязательное действие |
 |---|---|---|
-| Mandatory context missing | `context_loading` | mark `blocked`, record missing path, do not write |
-| Mode ambiguity | `mode_routing` | split into service/execution route or block mixed write |
-| State/marker mismatch | `state_architecture` | repair state/marker in active issue, then validate |
-| Existing issue cannot be resumed | `issue_lifecycle` | restore registry/event/issue artifact coupling before target write |
-| Write SHA conflict | `github_conflict_recovery` | read latest file, compare branch diff, retry only safe bounded payload |
-| Validation evidence absent | `validation_protocol` | keep status `partial` or `blocked`, do not claim closure |
+| Отсутствует обязательный контекст | `context_loading` | отметить `blocked`, записать отсутствующий путь, не писать |
+| Неоднозначный режим | `mode_routing` | разделить на сервисный/исполнительный маршрут или заблокировать смешанную запись |
+| Несовпадение состояния и маркера | `state_architecture` | исправить состояние/маркер в активной задаче, затем проверить |
+| Существующую задачу нельзя продолжить | `issue_lifecycle` | восстановить связку реестра, события и артефакта задачи перед целевой записью |
+| Конфликт SHA при записи | `github_conflict_recovery` | прочитать свежий файл, сравнить различие ветки, повторять только безопасный ограниченный пакет |
+| Нет проверочных доказательств | `validation_protocol` | держать статус `partial` или `blocked`, не заявлять закрытие |
 
-## P2-004 validation notes
+## Проверочные заметки P2-004
 
-P2-004 фиксирует route matrix и protocol cards для common core, issue pipeline, GitHub write, validation, execution bootstrap и concept export. Полная финальная приёмка остаётся за P2-010; этот индекс только задаёт исполнимую маршрутизацию.
+P2-004 фиксирует матрицу маршрутов и карты протоколов для общей основы, потока задач, записи GitHub, проверки, начальной загрузки исполнения и экспорта концепции. Полная финальная приёмка остаётся за P2-010; этот индекс только задаёт исполнимую маршрутизацию.

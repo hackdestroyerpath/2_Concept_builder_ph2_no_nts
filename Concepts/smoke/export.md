@@ -1,6 +1,6 @@
 # Экспорт
 
-[← Smoke](README.md) | [Результат](output.md) | [Протокол экспорта концепции](../../Protocols/concept_export.md)
+[← Проверочный пример](README.md) | [Результат](output.md) | [Протокол экспорта концепции](../../Protocols/concept_export.md)
 
 ## Манифест
 
@@ -22,12 +22,12 @@ validation_anchor: ../../Validation/final_check.md
 
 | Проверка | Доказательство | Результат |
 |---|---|---|
-| область экспорта явно указана | перечислены `export_scope` и `source_paths` | passed_with_evidence |
-| выходной файл существует | [`output.md`](output.md) | passed_with_evidence |
-| локальный реестр существует | [`page_registry.jsonl`](page_registry.jsonl) | passed_with_evidence |
-| исходные страницы связаны ссылками | [`README.md`](README.md) | passed_with_evidence |
-| осиротевшие файлы отсутствуют | финальная проверка фиксирует ожидаемое отсутствие | passed_with_evidence |
+| область экспорта явно указана | перечислены `export_scope` и `source_paths` | `passed_with_evidence` |
+| выходной файл существует | [`output.md`](output.md) | `passed_with_evidence` |
+| локальный реестр существует | [`page_registry.jsonl`](page_registry.jsonl) | `passed_with_evidence` |
+| исходные страницы связаны ссылками | [`README.md`](README.md) | `passed_with_evidence` |
+| осиротевшие файлы отсутствуют | финальная проверка фиксирует ожидаемое отсутствие | `passed_with_evidence` |
 
 ## Примечания
 
-Этот экспорт является фикстурой валидации, а не поставляемым результатом для внешнего заказчика.
+Этот экспорт является фикстурой валидации, а не поставляемым пользовательским результатом.

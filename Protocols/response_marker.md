@@ -4,7 +4,7 @@
 
 ## Назначение
 
-Маркер ответа — короткая человекочитаемая проекция state в конце ответа агента. Он не заменяет registry, event log, sync-report или validation evidence, а показывает, откуда продолжать.
+Маркер ответа — короткая человекочитаемая проекция состояния в конце ответа агента. Он не заменяет реестр, журнал событий, отчёт синхронизации или проверочные доказательства, а показывает, откуда продолжать.
 
 ## Канонический формат
 
@@ -19,42 +19,42 @@ next_step:
 return_anchor:
 ```
 
-## Mapping к state
+## Связь с состоянием
 
-| Marker field | State field | Правило |
+| Поле маркера | Поле состояния | Правило |
 |---|---|---|
-| `mode` | `active_mode` | `Service Mode` или `Execution Mode`. |
-| `active_object` | `active_object` | Production repo или выбранная концепция. |
-| `active_issue` | `active_issue` | Текущий issue ID или `none`. |
-| `stage` | `current_stage` | В state хранится canonical `current_stage`; в маркере — короткий alias `stage`. |
-| `loaded_context` | `loaded_context_scope` | Только реально прочитанные файлы. |
-| `persistence_status` | `persistence_status` | Read/write status без assertion-only финала. |
-| `next_step` | `next_step` | Один следующий bounded step. |
-| `return_anchor` | `return_anchor` | Существующий production-файл. |
+| `mode` | `active_mode` | `Service Mode` или `Execution Mode` |
+| `active_object` | `active_object` | рабочий репозиторий или выбранная концепция |
+| `active_issue` | `active_issue` | текущий идентификатор задачи или `none` |
+| `stage` | `current_stage` | в состоянии хранится каноническое `current_stage`; в маркере — короткий псевдоним `stage` |
+| `loaded_context` | `loaded_context_scope` | только реально прочитанные файлы |
+| `persistence_status` | `persistence_status` | статус чтения и записи без финала только по утверждению |
+| `next_step` | `next_step` | один следующий ограниченный шаг |
+| `return_anchor` | `return_anchor` | существующий рабочий файл |
 
-## Разрешённые persistence-status значения
+## Разрешённые значения `persistence_status`
 
 | Значение | Когда использовать |
 |---|---|
-| `not_written` | Действие только читало контекст. |
-| `written_unverified` | Запись выполнена, но GitHub readback ещё не прошёл. |
-| `readback_required` | Есть записанные файлы, которые нужно перечитать. |
-| `partial` | Часть acceptance criteria не закрыта evidence. |
-| `blocked` | Нельзя продолжать без условия, решения или контекста. |
-| `conflict` | Readback/SHA/API показали конфликт. |
-| `failed` | Действие завершилось ошибкой с evidence. |
+| `not_written` | действие только читало контекст |
+| `written_unverified` | запись выполнена, но перечитывание GitHub ещё не прошло |
+| `readback_required` | есть записанные файлы, которые нужно перечитать |
+| `partial` | часть критериев приёмки не закрыта доказательствами |
+| `blocked` | нельзя продолжать без условия, решения или контекста |
+| `conflict` | перечитывание, SHA или API показали конфликт |
+| `failed` | действие завершилось ошибкой с доказательством |
 
-Слова `closed`, `passed`, `synced`, `Ready`, `OK` не используются как доказательство. Если их нужно упомянуть как внешние tokens, рядом указывается русское значение и evidence.
+Слова `closed`, `passed`, `synced`, `Ready`, `OK` не используются как доказательство. Если их нужно упомянуть как внешние токены, рядом указывается русское значение и доказательство.
 
 ## Правила
 
-1. Маркер всегда согласован с active state.
+1. Маркер всегда согласован с активным состоянием.
 2. `stage` не должен расходиться с `current_stage`.
 3. `loaded_context` не должен включать файлы, которые не читались.
-4. `next_step` не должен перескакивать dependency.
-5. После записи в `GitHub` маркер должен ссылаться на `Validation/sync_report.md` или другой readback anchor.
-6. Если state менялся, response marker проверяется как часть P2-003/P2-010 validation.
+4. `next_step` не должен перескакивать зависимость.
+5. После записи в `GitHub` маркер должен ссылаться на `Validation/sync_report.md` или другой якорь перечитывания.
+6. Если состояние менялось, маркер ответа проверяется как часть проверки P2-003/P2-010.
 
-## P2-003 check
+## Проверка P2-003
 
-P2-003 закрепляет lossless mapping `state → marker → next turn`: state хранит подробный ledger, marker показывает компактный route, sync-report содержит readback evidence.
+P2-003 закрепляет без потерь связь `state → marker → next turn`: состояние хранит подробный журнал, маркер показывает компактный маршрут, отчёт синхронизации содержит доказательства перечитывания. Машинные идентификаторы сохранены как точные значения протокола.
