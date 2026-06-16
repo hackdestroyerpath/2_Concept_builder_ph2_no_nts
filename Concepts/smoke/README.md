@@ -1,6 +1,6 @@
-# Smoke validation fixture
+# Фикстура валидации smoke
 
-[← Concepts](../README.md) | [State](concept_state.md) | [Registry](page_registry.jsonl) | [Issue CB-009](../../Issues/CB-009/README.md)
+[← Концепции](../README.md) | [State](concept_state.md) | [Registry](page_registry.jsonl) | [Issue CB-009](../../Issues/CB-009/README.md)
 
 ```text
 concept_id: smoke
@@ -18,17 +18,17 @@ persistence_status: synced_with_final_readback_evidence
 
 ## Навигация
 
-| Файл | Роль | Состояние evidence |
+| Файл | Роль | Состояние доказательств |
 |---|---|---|
-| [`concept_state.md`](concept_state.md) | state фикстуры и готовность export | readback на `main` |
-| [`structure.md`](structure.md) | локальное дерево | readback на `main` |
-| [`page_registry.jsonl`](page_registry.jsonl) | локальный registry с владельцами и backlinks | readback на `main` |
-| [`purpose.md`](purpose.md) | цель и scope фикстуры | readback на `main` |
-| [`requirements.md`](requirements.md) | требования и acceptance criteria | readback на `main` |
-| [`operating_model.md`](operating_model.md) | объекты, роли, инварианты, failure modes | readback на `main` |
-| [`process.md`](process.md) | исполнимый dry-run scenario | readback на `main` |
-| [`output.md`](output.md) | mapping для output | readback на `main` |
-| [`export.md`](export.md) | манифест export | readback на `main` |
+| [`concept_state.md`](concept_state.md) | state фикстуры и готовность export | readback после P2R3 |
+| [`structure.md`](structure.md) | локальное дерево | readback после P2R3 |
+| [`page_registry.jsonl`](page_registry.jsonl) | локальный registry с владельцами и backlinks | readback после P2R3 |
+| [`purpose.md`](purpose.md) | цель и scope фикстуры | readback после P2R3 |
+| [`requirements.md`](requirements.md) | требования и критерии приёмки | readback после P2R3 |
+| [`operating_model.md`](operating_model.md) | объекты, роли, инварианты и failure modes | readback после P2R3 |
+| [`process.md`](process.md) | исполнимый сценарий проверки | readback после P2R3 |
+| [`output.md`](output.md) | mapping для output | readback после P2R3 |
+| [`export.md`](export.md) | манифест export | readback после P2R3 |
 
 ## Cleanup
 
