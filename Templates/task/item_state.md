@@ -1,6 +1,6 @@
-# Task state
+# State задачи
 
-[← Task](README.md) | [Issue lifecycle](../../Protocols/issue_lifecycle.md) | [Task flow](../../Protocols/task_flow_hardening.md)
+[← Задача](README.md) | [Issue lifecycle](../../Protocols/issue_lifecycle.md) | [Task flow](../../Protocols/task_flow_hardening.md)
 
 ```text
 task_id: {{issue_id}}

@@ -1,8 +1,8 @@
-# Report
+# Отчёт
 
-[← Task](README.md) | [Contract](contract.md) | [Sync report](../../Validation/sync_report.md)
+[← Задача](README.md) | [Contract](contract.md) | [Sync report](../../Validation/sync_report.md)
 
-## Result report
+## Отчёт о результате
 
 ```text
 active_issue:
@@ -23,9 +23,9 @@ next_step:
 return_anchor:
 ```
 
-## Evidence table
+## Таблица evidence
 
-| Check | Evidence path/ref | Status |
+| Проверка | Ссылка на evidence | Статус |
 |---|---|---|
 | GitHub readback |  | not_run |
 | Registry sync |  | not_run |
@@ -36,4 +36,4 @@ return_anchor:
 
 ## Gate
 
-Report cannot claim final task acceptance unless validation evidence names the checked files, readback ref and unresolved risks.
+Report не может заявлять финальную приёмку задачи, если validation evidence не называет проверенные файлы, readback ref и незакрытые риски.

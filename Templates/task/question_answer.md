@@ -1,6 +1,6 @@
-# Question Answer
+# Вопросы и ответы
 
-[← Task](README.md) | [Requirements](requirements.md) | [Protocol](../../Protocols/question_answer.md)
+[← Задача](README.md) | [Requirements](requirements.md) | [Протокол](../../Protocols/question_answer.md)
 
 ## Вопрос или skip reason
 

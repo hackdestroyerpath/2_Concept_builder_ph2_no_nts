@@ -1,8 +1,8 @@
-# Solution
+# Решение
 
-[← Task](README.md) | [Requirements](requirements.md) | [Contract](contract.md) | [Issue execution](../../Protocols/issue_execution.md)
+[← Задача](README.md) | [Requirements](requirements.md) | [Contract](contract.md) | [Исполнение issue](../../Protocols/issue_execution.md)
 
-## Proposal
+## Предложение
 
 ```text
 summary:
@@ -16,15 +16,15 @@ risks:
 alternatives_rejected:
 ```
 
-## Safety checks
+## Проверки безопасности
 
-- target paths are inside active mode scope;
-- development files are excluded;
-- rollback plan exists for every write;
-- linked issue/dependency status is known;
-- language and navigation checks are planned;
-- acceptance criteria map to evidence paths or readback refs.
+- target paths находятся внутри scope активного режима;
+- development files исключены;
+- rollback plan существует для каждой записи;
+- linked issue/dependency status известен;
+- language и navigation checks запланированы;
+- acceptance criteria сопоставлены с evidence paths или readback refs.
 
 ## Gate
 
-Solution is not execution. Execution starts only after `contract.md` or equivalent issue event defines exact target paths, operation and validation plan.
+Solution не является исполнением. Execution начинается только после того, как `contract.md` или равнозначное issue event определяет точные target paths, operation и validation plan.

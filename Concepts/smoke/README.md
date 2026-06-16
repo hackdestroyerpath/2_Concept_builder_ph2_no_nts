@@ -1,6 +1,6 @@
-# Smoke validation fixture
+# Фикстура валидации smoke
 
-[← Concepts](../README.md) | [State](concept_state.md) | [Registry](page_registry.jsonl) | [Issue CB-009](../../Issues/CB-009/README.md)
+[← Концепции](../README.md) | [State](concept_state.md) | [Registry](page_registry.jsonl) | [Issue CB-009](../../Issues/CB-009/README.md)
 
 ```text
 concept_id: smoke
@@ -14,22 +14,22 @@ persistence_status: synced_with_final_readback_evidence
 
 ## Назначение
 
-`Concepts/smoke` — production validation fixture. Это не пользовательская концепция и не пример бизнес-содержания. Папка сохранена, чтобы проверять создание концепции из шаблона, локальные ссылки, registry, output model и export manifest.
+`Concepts/smoke` — production-фикстура валидации. Это не пользовательская концепция и не пример бизнес-содержания. Папка сохранена, чтобы проверять создание концепции из шаблона, локальные ссылки, registry, модель output и манифест export.
 
 ## Навигация
 
-| Файл | Роль | Evidence state |
+| Файл | Роль | Состояние доказательств |
 |---|---|---|
-| [`concept_state.md`](concept_state.md) | state fixture и export readiness | read back on `main` |
-| [`structure.md`](structure.md) | локальное дерево | read back on `main` |
-| [`page_registry.jsonl`](page_registry.jsonl) | локальный registry с владельцами и backlinks | read back on `main` |
-| [`purpose.md`](purpose.md) | цель и scope fixture | read back on `main` |
-| [`requirements.md`](requirements.md) | требования и acceptance criteria | read back on `main` |
-| [`operating_model.md`](operating_model.md) | объекты, роли, инварианты, failure modes | read back on `main` |
-| [`process.md`](process.md) | executable dry-run scenario | read back on `main` |
-| [`output.md`](output.md) | output mapping | read back on `main` |
-| [`export.md`](export.md) | export manifest | read back on `main` |
+| [`concept_state.md`](concept_state.md) | state фикстуры и готовность export | readback после P2R3 |
+| [`structure.md`](structure.md) | локальное дерево | readback после P2R3 |
+| [`page_registry.jsonl`](page_registry.jsonl) | локальный registry с владельцами и backlinks | readback после P2R3 |
+| [`purpose.md`](purpose.md) | цель и scope фикстуры | readback после P2R3 |
+| [`requirements.md`](requirements.md) | требования и критерии приёмки | readback после P2R3 |
+| [`operating_model.md`](operating_model.md) | объекты, роли, инварианты и failure modes | readback после P2R3 |
+| [`process.md`](process.md) | исполнимый сценарий проверки | readback после P2R3 |
+| [`output.md`](output.md) | mapping для output | readback после P2R3 |
+| [`export.md`](export.md) | манифест export | readback после P2R3 |
 
 ## Cleanup
 
-Alternate output/export scratch files не являются production-страницами fixture. Strict production pages: `output.md` and `export.md`. Отсутствие orphan/stub debris проверено в `Validation/sync_report.md`.
+Альтернативные scratch-файлы output/export не являются production-страницами fixture. Строгие production pages: `output.md` и `export.md`. Отсутствие orphan/stub debris проверено в `Validation/sync_report.md`.

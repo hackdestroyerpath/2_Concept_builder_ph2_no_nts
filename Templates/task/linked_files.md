@@ -1,8 +1,8 @@
-# Linked files
+# Связанные файлы
 
-[← Task](README.md) | [Complex issues](../../Protocols/complex_and_linked_issues.md)
+[← Задача](README.md) | [Complex issues](../../Protocols/complex_and_linked_issues.md)
 
-## Linked item
+## Связанный item
 
 ```text
 link_id:
@@ -17,6 +17,6 @@ return_anchor:
 notes:
 ```
 
-## Dependency rule
+## Правило dependency
 
-A blocking linked item must be resolved before contract execution. Cycles are recorded as `blocked` and escalated to `complex_and_linked_issues.md`. Removed dependencies require reason and evidence.
+Blocking linked item должен быть resolved до исполнения contract. Cycles записываются как `blocked` и эскалируются в `complex_and_linked_issues.md`. Удалённые dependencies требуют reason и evidence.
