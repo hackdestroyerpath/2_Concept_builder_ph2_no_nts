@@ -9,7 +9,7 @@ Validation подтверждает production-состояние через evi
 ## Когда запускать
 
 - после каждого write package;
-- перед PR merge;
+- перед PR merge или documented direct-to-main финальным rework write;
 - после merge на base branch;
 - перед закрытием issue;
 - при cleanup/deletion/debris decision;
@@ -39,7 +39,7 @@ next_safe_step:
 | Check | Evidence |
 |---|---|
 | changed paths | `compare_commits`, PR files, sync-report |
-| GitHub readback | `fetch_file` по active branch или base после merge |
+| GitHub readback | `fetch_file` по active branch или base после merge/direct write |
 | JSONL validity | каждая строка парсится как JSON object |
 | registry match | every production path has registry entry and no active debris path remains |
 | navigation/backlinks | root/local entries route every MD page |
@@ -60,10 +60,21 @@ next_safe_step:
 | `failed` | есть blocking mismatch |
 | `blocked` | нужен внешний шаг или user decision |
 
+## P2-008 evidence replacement gate
+
+Generic labels are not enough. A final or segment check must name:
+
+1. checked paths or explicit absent paths;
+2. readback source (`fetch_file`, compare metadata, PR file list, or expected 404);
+3. failed checks as `[]` only when each check has evidence;
+4. registry/state/event coupling paths;
+5. language/navigation evidence paths;
+6. persistence status and next safe step.
+
 ## No assertion-only closure
 
 Слова `closed`, `passed`, `synced`, `Ready`, `OK` не считаются evidence. Evidence — это конкретный файл, ref, commit, readback, diff, event, registry entry или dry-run result.
 
 ## Final gate
 
-Final gate проходит только если D-001…D-063 имеют closure note `fixed` или `removed_with_reason`, а `blocked` отсутствует. Если хотя бы один defect не закрыт evidence, final status становится `failed` или `blocked`.
+Final gate проходит только если D-001…D-063 имеют closure note `fixed_or_resolved` или `removed_with_reason`, а `blocked` отсутствует. Если хотя бы один defect не закрыт evidence, final status становится `failed` или `blocked`.
