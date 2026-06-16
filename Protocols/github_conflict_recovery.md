@@ -10,7 +10,7 @@
 
 | Status | Meaning | Next action |
 |---|---|---|
-| `sha_conflict` | update/delete использовал устаревший blob sha | fresh fetch + one bounded retry |
+| `sha_conflict` | update/delete использовал устаревший blob sha | fresh fetch + new bounded request |
 | `target_confusion` | запись была в branch, проверка шла по другому ref | restore ledger + verify correct ref |
 | `scope_conflict` | diff затрагивает неожиданные paths | stop + user decision or rollback |
 | `merge_conflict` | PR не может быть merged safely | rebuild branch from base or split patch |
@@ -22,16 +22,25 @@
 1. Зафиксировать active branch, base branch, active issue, target paths.
 2. Перечитать фактические файлы на active branch.
 3. Сравнить expected vs actual.
-4. Если ошибка только в fresh sha, повторить один write со свежим sha.
+4. Если ошибка только в fresh sha, создать новый bounded request со свежим sha; старый request не переписывать.
 5. Если diff затрагивает чужой scope, остановиться и записать event.
 6. Если запись уже persisted, выбрать: patch-forward, rollback, split into new issue, user decision.
 7. После решения обновить `Validation/sync_report.md`.
+
+## P2-007 recovery dry-run evidence
+
+| Case | Input evidence | Decision | Coupling evidence |
+|---|---|---|---|
+| stale update SHA | stale blob sha + current blob sha from readback | mark `sha_conflict`; re-plan only with new request and fresh payload | `Issues/issue_events.jsonl`, `Validation/sync_report.md` |
+| target confusion | branch/ref mismatch between write and readback | restore ledger and verify correct ref before any status claim | `State/service_state.md`, sync report branch fields |
+| validation conflict | content written but registry/state/events disagree | patch-forward coupled files or rollback with event | final_check failed check row |
+| external block | rollback would require force/default-branch rewrite | record `blocked`; require user decision | rollback event and open risk |
 
 ## Stop rules
 
 - Нельзя создавать вторую ветку, пока не восстановлена первая.
 - Нельзя объявлять read-only, если уже есть branch, commit, PR или readback evidence.
-- Нельзя merge-ить PR без changed files/patch gate.
+- Нельзя merge-ить PR без changed files/patch gate, кроме explicitly documented direct-to-main rework write.
 - Нельзя использовать `closed`, `passed`, `synced`, `Ready`, `OK` как замену evidence.
 
 ## Recovery event
