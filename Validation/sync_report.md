@@ -5,66 +5,61 @@
 ```text
 repo: hackdestroyerpath/2_Concept_builder_ph2_no_nts
 base_branch: main
-working_branch: main_after_pr7_merge_and_final_polish
-base_head_before_p2r3: 1a4dc04dc4a72645bced97e3b00ea06096626c8b
-pr7_merge_commit: a464714180f05df955579c56cc34088d56aadfe2
+working_branch: agent/p2r4-language-cleanup-20260616-0413Z
+base_head_before_p2r4: afd5db147f5575372e1b1eddf33609898afc7c39
 active_issue: CB-P2
-active_rework_segment: P2R3
-active_task: P2R3-002
-validation_ref: main readback after PR #7 merge and final polish
-persistence_status: passed_after_readback
-final_validation_status: passed
+active_rework_segment: P2R4
+active_task: P2R4-001
+validation_ref: p2r4_branch_readback
+persistence_status: partial_after_readback
+final_validation_status: blocked_current_surface
 language_sweep_status: passed_after_readback
-not_final: false
-remaining: []
+not_final: true
+remaining: [Issues/issue_events.jsonl P2R4 event append]
 defect_closure_total: 63
 defect_closure_fixed_or_resolved: 63
 defect_closure_blocked: 0
-cleanup_status: excluded source files and final archive remain outside production repo
+cleanup_status: external_materials_kept_out_of_repo
 ```
 
-## Readback языкового sweep P2R3-000
+## Перечитывание языковой зачистки P2R4-000
 
-| Path | Состояние доказательств |
+| Путь | Состояние доказательств |
 |---|---|
-| `README.md` | root status readable prose обновлён после PR #7 merge |
-| `Concepts/smoke/README.md` | readable prose переведён или классифицирован как technical identifier |
-| `Concepts/smoke/output.md` | headings/prose переведены; status literals сохранены |
-| `Concepts/smoke/export.md` | note sentence и acceptance table переведены |
-| `Templates/task/contract.md` | gate и breach prose переведены |
-| `Templates/task/README.md` | navigation/control prose переведён; technical literals сохранены |
-| `Templates/concept/README.md` | table/control prose переведён; template literals сохранены |
-| `Templates/concept/export.md` | rule sentence переведён; manifest literals сохранены |
-| `Validation/cb008_closure_plan.md` | headings, table и closure steps переведены |
-| `Validation/cb008_dry_run.md` | validation prose и scenario labels переведены |
-| `Validation/navigation_check.md` | navigation prose и expected absent paths обновлены после main readback |
-| `Issues/CB-P2/README.md` | issue report prose обновлён после main readback |
+| `Concepts/smoke/README.md` | остаточные читаемые фразы переведены; машинные литералы сохранены |
+| `Concepts/smoke/output.md` | заголовки, подписи результата и таблица требований переведены |
+| `Concepts/smoke/export.md` | читаемые значения манифеста, строки проверок и примечание переведены |
+| `Templates/concept/export.md` | строки про исходные и исключённые пути, а также перечитывание валидации переведены |
+| `Templates/task/contract.md` | правила записи, контракта, события задачи, целевых путей и конфликта переведены |
+| `Validation/navigation_check.md` | строки навигационной проверки и причины отсутствующих путей переведены |
+| `Validation/cb008_closure_plan.md` | читаемые фразы плана закрытия переведены |
+| `Validation/cb008_dry_run.md` | сценарии пробного прогона и доказательства переведены |
 
-## Readback evidence refresh P2R3-001
+## Обновление доказательств P2R4-001
 
-| Path | Состояние доказательств |
+| Путь | Состояние доказательств |
 |---|---|
-| `Validation/language_check.md` | sweep table, translated fragments и `failed_checks: []` записаны |
-| `Validation/final_check.md` | `final_validation_status: passed`, `language_sweep_status: passed_after_readback`, `remaining: []` записаны |
-| `Validation/sync_report.md` | этот report фиксирует changed paths и main readback state |
-| `Issues/issue_events.jsonl` | event `service-event-000027` фиксирует third-pass language correction |
-| `Issues/issue_registry.jsonl` | `CB-P2` сохраняет 63/63/0 и P2R3 evidence refs |
-| `State/service_state.md` | state фиксирует P2R3 final acceptance archive regeneration |
-| `Issues/CB-P2/README.md` | issue artifact фиксирует P2R3 closure row |
+| `Validation/language_check.md` | таблица обхода, исправленные фрагменты и `failed_checks: []` записаны |
+| `Validation/final_check.md` | обновляется как non-final checkpoint из-за незаписанного события P2R4 |
+| `Validation/sync_report.md` | этот отчёт фиксирует изменённые пути, перечитывание и текущий blocker |
+| `Issues/issue_events.jsonl` | append события P2R4 заблокирован текущим tool payload filter; canonical event file не изменён |
+| `Issues/issue_registry.jsonl` | `CB-P2` сохраняет 63/63/0 и ссылки на P2R4 evidence |
+| `State/service_state.md` | состояние фиксирует P2R4 как финальный сегмент перед локальным архивом |
+| `Issues/CB-P2/README.md` | артефакт задачи фиксирует строки закрытия P2R4 |
 
-## Проверка ожидаемо отсутствующего debris
+## Проверка ожидаемо отсутствующего мусора
 
-| Path | Ожидаемый результат | Состояние доказательств |
+| Путь | Ожидаемый результат | Состояние доказательств |
 |---|---|---|
 | `Issues/cb89.md` | 404 / absent | absent_with_evidence |
 | `Plans/cb008.md` | 404 / absent | absent_with_evidence |
 | `Closure/status.md` | 404 / absent | absent_with_evidence |
 | `Concepts/smoke/o2.md` | 404 / absent | absent_with_evidence |
 
-## Проверка production-исключений
+## Проверка исключений рабочего контура
 
-Archive, handoff materials, audit notes, checkpoint archives и temporary reports остаются вне production repo.
+Внешние материалы передачи и финальный архив-кандидат остаются вне рабочего репозитория.
 
 ## Следующий безопасный шаг
 
-Вернуть локальный `concept_builder_phase2_final_acceptance_candidate_<UTC>.zip` verifier-у. Archive остаётся вне repo.
+Продолжить с обновления `Issues/issue_events.jsonl`, затем повторить финальный readback и только после этого создавать локальный финальный архив-кандидат.

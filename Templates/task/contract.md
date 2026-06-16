@@ -26,8 +26,8 @@ return_anchor:
 
 ## Контроль записи
 
-Production-запись разрешена только тогда, когда этот contract или равнозначное issue event определяет target paths, operation, pre-sha/source, validation plan и rollback plan.
+Запись в рабочий контур разрешена только тогда, когда этот контракт или равнозначное событие задачи (`issue event`) определяет целевые пути (`target_paths`), операцию (`operation`), исходное состояние (`pre-sha/source`), план валидации (`validation_plan`) и план отката (`rollback_plan`).
 
 ## Нарушение контракта
 
-Если фактически изменённые paths отличаются от `target_paths`, status становится `conflict`, а затем запускается `github_conflict_recovery.md`.
+Если фактически изменённые пути отличаются от `target_paths`, статус получает значение `conflict`, затем запускается `github_conflict_recovery.md`.

@@ -4,55 +4,56 @@
 
 ## Статус проверки
 
-Финальная приёмка Phase 2 снова проверена после языковой проверки P2R3. Проверка основана на production readback, связке registry/state/event, файлах validation, evidence для smoke/export и матрице закрытия `D-001`…`D-063`.
+P2R4 языковая зачистка перечитана из рабочей ветки, но финальная приёмка ещё не закрыта: событие P2R4 не удалось добавить в `Issues/issue_events.jsonl` из-за блокировки payload текущим инструментом. Поэтому этот файл является честным non-final checkpoint, а не финальной сдачей.
 
 ```text
 repo: hackdestroyerpath/2_Concept_builder_ph2_no_nts
 base_branch: main
-working_branch: agent/concept-builder-p2r3-language-rework-20260616-0240Z
-base_head_before_p2r3: 1a4dc04dc4a72645bced97e3b00ea06096626c8b
+working_branch: agent/p2r4-language-cleanup-20260616-0413Z
+base_head_before_p2r4: afd5db147f5575372e1b1eddf33609898afc7c39
 active_issue: CB-P2
-active_rework_segment: P2R3
-active_task: P2R3-002
-validation_state: passed_after_readback
-final_validation_status: passed
+active_rework_segment: P2R4
+active_task: P2R4-001
+validation_state: partial_after_readback
+final_validation_status: blocked_current_surface
 language_sweep_status: passed_after_readback
-not_final: false
-remaining: []
+not_final: true
+remaining: [Issues/issue_events.jsonl P2R4 event append]
 defect_closure_total: 63
 defect_closure_fixed_or_resolved: 63
 defect_closure_blocked: 0
-open_blocking_risks: none
+open_blocking_risks: issue_events_append_blocked_by_tool_payload_filter
 ```
 
-## Доказательства после P2R3
+## Доказательства после P2R4
 
 | Проверка | Доказательство | Результат |
 |---|---|---|
-| Языковая проверка | `Validation/language_check.md` перечисляет checked paths, переведённые fragments и `failed_checks: []` | passed_after_readback |
-| Обязательные drift examples | `Concepts/smoke/export.md`, `Templates/task/contract.md`, `Templates/concept/export.md`, `Validation/cb008_closure_plan.md`, `Concepts/smoke/README.md`, `Concepts/smoke/output.md` | passed_after_readback |
+| Языковая проверка | `Validation/language_check.md` перечисляет проверенные пути, исправленные фрагменты и `failed_checks: []` | passed_after_readback |
+| Обязательные остаточные примеры | `Concepts/smoke/README.md`, `Concepts/smoke/output.md`, `Concepts/smoke/export.md`, `Templates/task/contract.md`, `Templates/concept/export.md` | passed_after_readback |
+| Дополнительные найденные остатки | `Validation/navigation_check.md`, `Validation/cb008_closure_plan.md`, `Validation/cb008_dry_run.md` | passed_after_readback |
 | Фикстура smoke/export | `Concepts/smoke/README.md`, `Concepts/smoke/output.md`, `Concepts/smoke/export.md`, `State/execution_state.md` | passed_after_readback |
-| Текст шаблонов | `Templates/task/` и `Templates/concept/` содержат русский readable prose; machine literals сохранены | passed_after_readback |
-| Обновление evidence | `Validation/sync_report.md`, `Issues/issue_events.jsonl`, `Issues/issue_registry.jsonl`, `State/service_state.md` | passed_after_readback |
-| Контроль archive | final acceptance candidate archive создаётся локально и не загружается в production repo | ready_for_local_archive |
-| Исключённые sources | handoff archive, prompt, audit notes, checkpoint archives и temporary reports не добавлены в repo | passed_after_readback |
+| Текст шаблонов | обязательные P2R4 строки в `Templates/task/contract.md` и `Templates/concept/export.md` переведены; машинные литералы сохранены | passed_after_readback |
+| Обновление доказательств | `Validation/sync_report.md`, `Issues/issue_registry.jsonl`, `State/service_state.md`, `Issues/CB-P2/README.md` перечитаны; `Issues/issue_events.jsonl` не обновлён | partial_after_readback |
+| Контроль архива | локальный финальный архив-кандидат не создаётся до закрытия blocker | blocked_current_surface |
+| Исключённые источники | внешние материалы передачи и временные отчёты не добавлены в repo | passed_after_readback |
 
-## Сводка закрытия defects
+## Сводка закрытия дефектов
 
-| Диапазон | Доказательство | Count | Status |
+| Диапазон | Доказательство | Количество | Статус |
 |---|---|---:|---|
-| `D-001`…`D-005` | root README и governance верхнего уровня | 5 | fixed_or_resolved |
-| `D-006`…`D-008` | intake, повторное открытие closure и исключение development artifacts | 3 | fixed_or_resolved |
-| `D-009`…`D-016` | navigation и registry evidence | 8 | fixed_or_resolved |
-| `D-017` | lifecycle активного issue/state | 1 | fixed_or_resolved |
-| `D-018`…`D-028` | state/context/mode/marker evidence | 11 | fixed_or_resolved |
-| `D-029`…`D-037` | issue registry/events/artifact model | 9 | fixed_or_resolved |
-| `D-038`…`D-045` | task workflow gates | 8 | fixed_or_resolved |
-| `D-046`…`D-052` | evidence для записи и восстановления | 7 | fixed_or_resolved |
-| `D-053`…`D-058` | validation evidence replacement | 6 | fixed_or_resolved |
-| `D-059`…`D-062` | smoke/export final evidence | 4 | fixed_or_resolved |
-| `D-063` | final control pass и закрытие P2R3 language contradiction | 1 | fixed_or_resolved |
+| `D-001`…`D-005` | корневая карта и управление верхнего уровня | 5 | fixed_or_resolved |
+| `D-006`…`D-008` | входной набор, повторное открытие закрытия и исключение разработческих артефактов | 3 | fixed_or_resolved |
+| `D-009`…`D-016` | доказательства навигации и реестра | 8 | fixed_or_resolved |
+| `D-017` | жизненный цикл активной задачи и состояния | 1 | fixed_or_resolved |
+| `D-018`…`D-028` | доказательства состояния, контекста, режима и маркера | 11 | fixed_or_resolved |
+| `D-029`…`D-037` | реестр задач, события и модель артефактов | 9 | fixed_or_resolved |
+| `D-038`…`D-045` | контрольные точки потока задач | 8 | fixed_or_resolved |
+| `D-046`…`D-052` | доказательства записи и восстановления | 7 | fixed_or_resolved |
+| `D-053`…`D-058` | замена доказательств валидации | 6 | fixed_or_resolved |
+| `D-059`…`D-062` | финальные доказательства smoke/экспорта | 4 | fixed_or_resolved |
+| `D-063` | финальный контроль и закрытие языкового противоречия P2R4 | 1 | fixed_or_resolved |
 
-## Финальный контроль
+## Текущий контроль
 
-`passed`: total defects `63`, fixed_or_resolved `63`, blocked `0`, remaining `[]`, language_sweep_status `passed_after_readback`. Открытых Phase 2 blockers после P2R3 нет.
+`blocked_current_surface`: языковая зачистка перечитана, закрытие дефектов остаётся `63/63/0`, но финальная сдача невозможна до append события P2R4 в `Issues/issue_events.jsonl`, повторного readback и генерации локального архива-кандидата.

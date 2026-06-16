@@ -1,6 +1,6 @@
 # Экспорт
 
-[← Концепция](README.md) | [Output](output.md) | [Протокол экспорта концепции](../../Protocols/concept_export.md)
+[← Концепция](README.md) | [Результат](output.md) | [Протокол экспорта концепции](../../Protocols/concept_export.md)
 
 ## Манифест
 
@@ -27,13 +27,13 @@ validation_anchor:
 
 | Проверка | Доказательство |
 |---|---|
-| source paths перечислены |  |
-| страница output существует | output.md |
-| локальный registry существует | page_registry.jsonl |
+| исходные пути перечислены |  |
+| страница результата `output.md` существует | output.md |
+| локальный реестр существует | page_registry.jsonl |
 | целевая аудитория определена |  |
-| excluded paths задокументированы |  |
-| validation readback записан |  |
+| исключённые пути задокументированы |  |
+| перечитывание после валидации записано |  |
 
 ## Правило
 
-Export получает статус `export_ready` только после проверки через `Protocols/validation_protocol.md`. Одно слово вроде `ready` не является доказательством.
+Статус `export_ready` присваивается только после проверки через `Protocols/validation_protocol.md`. Одного слова `ready` недостаточно как доказательства.
