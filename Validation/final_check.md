@@ -1,62 +1,45 @@
-# Final check
+# Финальная проверка
 
-[← Точка входа](../README.md) | [CB-P2](../Issues/CB-P2/README.md) | [Sync report](sync_report.md) | [Validation protocol](../Protocols/validation_protocol.md)
+[← Точка входа](../README.md) | [CB-P2](../Issues/CB-P2/README.md) | [Sync report](sync_report.md) | [Протокол validation](../Protocols/validation_protocol.md)
 
 ## Статус проверки
 
-Финальная приёмка Phase 2 выполнена как `passed_with_evidence`. Проверка основана на production readback, registry/state/event coupling, validation files, smoke/export evidence и closure matrix `D-001`…`D-063`.
+Финальная приёмка Phase 2 снова проверена после P2R3 language sweep. Проверка основана на production readback, registry/state/event coupling, validation files, smoke/export evidence и closure matrix `D-001`…`D-063`.
 
 ```text
 repo: hackdestroyerpath/2_Concept_builder_ph2_no_nts
 base_branch: main
-working_branch: main direct-to-main final evidence writes
+working_branch: agent/concept-builder-p2r3-language-rework-20260616-0240Z
+base_head_before_p2r3: 1a4dc04dc4a72645bced97e3b00ea06096626c8b
 active_issue: CB-P2
-active_rework_segment: P2R-006
-active_task: P2-010
-last_checkpoint_pr: #6
-last_checkpoint_merge_sha: 276b893043cd6f21f1ecf0cd18afc9faa6c5d52d
-validation_state: passed_with_evidence
+active_rework_segment: P2R3
+active_task: P2R3-001
+validation_state: passed_after_readback
 final_validation_status: passed
+language_sweep_status: passed_after_readback
+not_final: false
+remaining: []
 defect_closure_total: 63
 defect_closure_fixed_or_resolved: 63
 defect_closure_blocked: 0
 open_blocking_risks: none
 ```
 
-## Segment evidence through final control
+## Доказательства после P2R3
 
-| Step | Evidence | Evidence state |
+| Проверка | Evidence | Результат |
 |---|---|---|
-| `P2-000` | active `CB-P2`, reopened validation gate, registry/state/event coupling | passed_with_evidence |
-| `P2-001` | root README and top-level governance restored | passed_with_evidence |
-| `P2-002` | global/local registry navigation contract recorded | passed_with_evidence |
-| `P2-003` | canonical state/context/mode/marker contract recorded | passed_with_evidence |
-| `P2-004` | route matrix and protocol cards recorded | passed_with_evidence |
-| `P2-005` | issue index, registry row, event log and per-issue artifacts | passed_with_evidence |
-| `P2R-000` | truth-source normalization across README/state/issue/registry/events/final/sync | passed_with_evidence |
-| `P2R-001` / `P2-006` | task workflow gates for QA, requirements, execution, linked issues and task templates | changed-path readback complete |
-| `P2R-002` / `P2-007` | write/conflict/rollback protocol evidence and dry-run matrix | passed_with_evidence |
-| `P2R-003` / `P2-008` | validation evidence replacement with checked paths and failed check arrays | passed_with_evidence |
-| `P2R-004` / `P2-009` | smoke/export fixture readback, output/export readiness and debris absence | passed_with_evidence |
-| `P2R-005` / `P2-010` | final D-001…D-063 closure matrix and control pass | passed_with_evidence |
-| `P2R-006` | final acceptance candidate archive generated locally outside repo | ready_for_verifier |
-
-## Final validation evidence matrix
-
-| Check | Evidence | Result |
-|---|---|---|
-| P2R-001 changed-path readback | `Validation/sync_report.md` lists protocol/template/state/issue/validation readback evidence | passed_with_evidence |
-| Write/conflict/rollback | `Protocols/github_write_protocol.md`, `Protocols/github_conflict_recovery.md`, `Protocols/rollback_protocol.md`, `Protocols/validation_protocol.md` | passed_with_evidence |
-| Validation evidence | this file, `Validation/navigation_check.md`, `Validation/language_check.md`, `Validation/sync_report.md` | passed_with_evidence |
-| Smoke/export | `Concepts/smoke/README.md`, `Concepts/smoke/concept_state.md`, `Concepts/smoke/output.md`, `Concepts/smoke/export.md`, `State/execution_state.md` | passed_with_evidence |
-| JSONL validity | `Issues/issue_registry.jsonl`, `Issues/issue_events.jsonl`, `Registry/page_registry.jsonl`, local registries | passed_with_evidence |
-| Expected absent debris | `Issues/cb89.md`, `Plans/cb008.md`, `Closure/status.md`, `Concepts/smoke/o2.md` | absent_with_evidence |
-| Language/navigation | `Validation/language_check.md`, `Validation/navigation_check.md` | passed_with_evidence |
-| Open blockers | none | passed_with_evidence |
+| Language sweep | `Validation/language_check.md` перечисляет checked paths, translated fragments и `failed_checks: []` | passed_after_readback |
+| Обязательные drift examples | `Concepts/smoke/export.md`, `Templates/task/contract.md`, `Templates/concept/export.md`, `Validation/cb008_closure_plan.md`, `Concepts/smoke/README.md`, `Concepts/smoke/output.md` | passed_after_readback |
+| Smoke/export fixture | `Concepts/smoke/README.md`, `Concepts/smoke/output.md`, `Concepts/smoke/export.md`, `State/execution_state.md` | passed_after_readback |
+| Template prose | `Templates/task/` и `Templates/concept/` содержат русский readable prose; machine literals сохранены | passed_after_readback |
+| Evidence refresh | `Validation/sync_report.md`, `Issues/issue_events.jsonl`, `Issues/issue_registry.jsonl`, `State/service_state.md` | passed_after_readback |
+| Archive gate | final acceptance candidate archive создаётся локально и не загружается в production repo | ready_for_local_archive |
+| Excluded sources | handoff archive, prompt, audit notes, checkpoint archives и temporary reports не добавлены в repo | passed_after_readback |
 
 ## Defect closure summary
 
-| Range | Task evidence | Count | Status |
+| Диапазон | Evidence | Count | Status |
 |---|---|---:|---|
 | `D-001`…`D-005` | root README and top-level governance | 5 | fixed_or_resolved |
 | `D-006`…`D-008` | intake/reopened closure/development artifact exclusion | 3 | fixed_or_resolved |
@@ -68,8 +51,8 @@ open_blocking_risks: none
 | `D-046`…`D-052` | write/conflict/rollback evidence | 7 | fixed_or_resolved |
 | `D-053`…`D-058` | validation evidence replacement | 6 | fixed_or_resolved |
 | `D-059`…`D-062` | smoke/export final evidence | 4 | fixed_or_resolved |
-| `D-063` | final control pass | 1 | fixed_or_resolved |
+| `D-063` | final control pass plus P2R3 language contradiction closure | 1 | fixed_or_resolved |
 
 ## Final gate
 
-`passed_with_evidence`: total defects `63`, fixed_or_resolved `63`, blocked `0`. No required Phase 2 task remains open. The final acceptance archive is produced outside the repository and must not be committed into production.
+`passed`: total defects `63`, fixed_or_resolved `63`, blocked `0`, remaining `[]`, language_sweep_status `passed_after_readback`. No Phase 2 blocker remains open after P2R3.
