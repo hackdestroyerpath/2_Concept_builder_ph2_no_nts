@@ -1,6 +1,6 @@
 # Экспорт
 
-[← Smoke](README.md) | [Output](output.md) | [Протокол экспорта концепции](../../Protocols/concept_export.md)
+[← Smoke](README.md) | [Результат](output.md) | [Протокол экспорта концепции](../../Protocols/concept_export.md)
 
 ## Манифест
 
@@ -11,9 +11,9 @@ active_issue: CB-009
 owner_mode: Execution Mode
 export_scope: validation_fixture
 source_paths: README.md; purpose.md; requirements.md; operating_model.md; process.md; output.md; concept_state.md; page_registry.jsonl
-excluded_paths: scratch output/export files; development handoff; audit notes
+excluded_paths: черновые файлы output/export; передаточные материалы разработки; аудиторские заметки
 format: markdown_bundle
-intended_audience: Service Mode validation and Execution Mode bootstrap test
+intended_audience: проверка Service Mode и bootstrap-тест Execution Mode
 readiness_status: passed_with_evidence
 validation_anchor: ../../Validation/final_check.md
 ```
@@ -26,8 +26,8 @@ validation_anchor: ../../Validation/final_check.md
 | выходной файл существует | [`output.md`](output.md) | passed_with_evidence |
 | локальный реестр существует | [`page_registry.jsonl`](page_registry.jsonl) | passed_with_evidence |
 | исходные страницы связаны ссылками | [`README.md`](README.md) | passed_with_evidence |
-| orphan-файлы отсутствуют | финальная проверка фиксирует ожидаемое отсутствие | passed_with_evidence |
+| осиротевшие файлы отсутствуют | финальная проверка фиксирует ожидаемое отсутствие | passed_with_evidence |
 
 ## Примечания
 
-Этот export является фикстурой валидации, а не поставляемым результатом для внешнего заказчика.
+Этот экспорт является фикстурой валидации, а не поставляемым результатом для внешнего заказчика.
