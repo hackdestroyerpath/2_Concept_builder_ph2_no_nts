@@ -1,4 +1,4 @@
-# Структура production-репозитория
+# Структура рабочего репозитория
 
 [← Точка входа](../README.md) | [Машинный реестр](page_registry.jsonl) | [Схема реестра](page_registry_schema.md) | [Навигационная проверка](../Validation/navigation_check.md)
 
@@ -98,38 +98,38 @@
 
 ## Удалённые или мигрированные зоны
 
-| Путь | Решение | Evidence |
+| Путь | Решение | Доказательство |
 |---|---|---|
 | `Plans/cb008.md` | сведения мигрированы в `Issues/CB-008/README.md` и `Validation/cb008_closure_plan.md`; файл не восстанавливается | `Validation/final_check.md`, `Validation/sync_report.md` |
-| `Closure/status.md` | assertion-only closure заменён evidence-backed финальной проверкой; файл не восстанавливается | `Validation/final_check.md` |
-| `Issues/cb89.md` | заменён proper issue folders `CB-008` и `CB-009`; файл-debris не восстанавливается | `Issues/issue_events.jsonl` |
-| `Concepts/smoke/o2.md` | удалён как orphan/stub; strict output page — `Concepts/smoke/output.md` | `Concepts/smoke/page_registry.jsonl` |
+| `Closure/status.md` | закрытие только по утверждению заменено финальной проверкой на доказательствах; файл не восстанавливается | `Validation/final_check.md` |
+| `Issues/cb89.md` | заменён корректными папками задач `CB-008` и `CB-009`; лишний файл не восстанавливается | `Issues/issue_events.jsonl` |
+| `Concepts/smoke/o2.md` | удалён как несвязанный или пустой файл; строгая страница результата — `Concepts/smoke/output.md` | `Concepts/smoke/page_registry.jsonl` |
 
-## Governance верхнего уровня
+## Управление верхнего уровня
 
-| Узел | Production-роль | Владелец | Источник истины | Маршрут |
+| Узел | Рабочая роль | Владелец | Источник истины | Маршрут |
 |---|---|---|---|---|
-| `Instructions/` | bootstrap-инструкции проекта `ChatGPT` | `Service Mode` / `Execution Mode` | state + validation | `README.md` → `Instructions/*.md` |
-| `Protocols/` | исполнимые правила mode/issue/write/export/validation | `Service Mode` | `Protocols/protocol_index.md` | `README.md` → `Protocols/protocol_index.md` |
-| `State/` | текущая state model | режим-владелец | state-файлы | `README.md` → `State/service_state.md` / `State/execution_state.md` |
-| `Issues/` | lifecycle, provenance, decisions, events | `Service Mode` | registry + events | `README.md` → `Issues/README.md` |
-| `Concepts/` | execution objects и validation fixture | `Execution Mode` | local concept registry | `README.md` → `Concepts/README.md` |
-| `Templates/` | production template library | `Service Mode` | local template registries | `README.md` → `Templates/README.md` |
-| `Inbox/` | input staging policy | `Service Mode` | `Issues/README.md` + events | `README.md` → `Inbox/README.md` |
-| `Registry/` | navigation contract | `Service Mode` | schema + JSONL | `README.md` → `Registry/structure.md` |
-| `Validation/` | evidence reports and final acceptance gates | `Service Mode` | final check + sync report | `README.md` → `Validation/final_check.md` |
+| `Instructions/` | начальные инструкции проекта `ChatGPT` | `Service Mode` / `Execution Mode` | состояние + проверка | `README.md` → `Instructions/*.md` |
+| `Protocols/` | исполнимые правила режима, задачи, записи, экспорта и проверки | `Service Mode` | `Protocols/protocol_index.md` | `README.md` → `Protocols/protocol_index.md` |
+| `State/` | текущая модель состояния | режим-владелец | файлы состояния | `README.md` → `State/service_state.md` / `State/execution_state.md` |
+| `Issues/` | жизненный цикл, происхождение, решения и события | `Service Mode` | реестр и события | `README.md` → `Issues/README.md` |
+| `Concepts/` | исполнительные объекты и проверочный пример | `Execution Mode` | локальный реестр концепции | `README.md` → `Concepts/README.md` |
+| `Templates/` | рабочая библиотека шаблонов | `Service Mode` | локальные реестры шаблонов | `README.md` → `Templates/README.md` |
+| `Inbox/` | политика входящих материалов | `Service Mode` | `Issues/README.md` + события | `README.md` → `Inbox/README.md` |
+| `Registry/` | навигационный контракт | `Service Mode` | схема + JSONL | `README.md` → `Registry/structure.md` |
+| `Validation/` | отчёты доказательств и финальные шлюзы приёмки | `Service Mode` | финальная проверка + отчёт синхронизации | `README.md` → `Validation/final_check.md` |
 
-## P2-001 validation notes
+## Проверочные заметки P2-001
 
-- Root README содержит route graph ко всем top-level узлам.
-- `Plans/` и `Closure/` не входят в утверждённое production-дерево.
-- `Concepts/smoke` сохранён только как validation fixture; orphan/stub `o2.md` не является частью дерева.
+- Корневой `README.md` содержит граф маршрутов ко всем узлам верхнего уровня.
+- `Plans/` и `Closure/` не входят в утверждённое рабочее дерево.
+- `Concepts/smoke` сохранён только как проверочный пример; `o2.md` не является частью дерева.
 
-## P2-002 navigation contract notes
+## Заметки навигационного контракта P2-002
 
 - `Registry/page_registry_schema.md` задаёт обязательные поля `title`, `type`, `owner`, `parent`, `children`, `cross_links`, `backlinks`, `description`, `source_of_truth`, `navigation_status`.
-- `Registry/page_registry.jsonl` является глобальным navigation contract для active production tree.
-- `Concepts/smoke/page_registry.jsonl`, `Templates/concept/page_registry.jsonl` и `Templates/task/page_registry.jsonl` являются local registry и используют локальные `README.md` как parent/root.
-- `Templates/task/README.md` содержит кликабельную цепочку task artifacts, а не path-only перечисление.
-- `Issues/cb89.md` и `Concepts/smoke/o2.md` не регистрируются как active production pages; их удаление/невосстановление фиксируется через `Validation/final_check.md`, `Validation/sync_report.md` и `Issues/issue_events.jsonl`.
-- Полная финальная приёмка остаётся заблокированной до P2-010; P2-002 фиксирует только registry/navigation evidence, потому что навигационная карта — это не магический талисман, как бы ни хотелось.
+- `Registry/page_registry.jsonl` является глобальным навигационным контрактом для активного рабочего дерева.
+- `Concepts/smoke/page_registry.jsonl`, `Templates/concept/page_registry.jsonl` и `Templates/task/page_registry.jsonl` являются локальными реестрами и используют локальные `README.md` как родительские или корневые страницы.
+- `Templates/task/README.md` содержит кликабельную цепочку артефактов задачи, а не перечисление только путей.
+- `Issues/cb89.md` и `Concepts/smoke/o2.md` не регистрируются как активные рабочие страницы; их удаление или невосстановление фиксируется через `Validation/final_check.md`, `Validation/sync_report.md` и `Issues/issue_events.jsonl`.
+- Полная финальная приёмка остаётся за P2R5/P2-010; P2-002 фиксирует только доказательства реестра и навигации, потому что навигационная карта — это не магический талисман, как бы ни хотелось.
