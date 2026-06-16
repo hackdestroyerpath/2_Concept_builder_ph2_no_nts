@@ -3,51 +3,52 @@
 [← Точка входа](../README.md) | [Реестр протоколов](../Protocols/protocol_index.md) | [Issue registry](../Issues/issue_registry.jsonl) | [Sync report](../Validation/sync_report.md)
 
 ```text
-state_id: service-state-2026-06-15-p2r001
+state_id: service-state-2026-06-16-p2-final
 owner: Service Mode
 active_mode: Service Mode
 active_object: Concept Builder production repository
 active_issue: CB-P2
-status: patch_rework_execution
+status: fixed_with_evidence
 mode_owner: Service Mode
 mode_boundary_status: service_scope_only
-dialogue_state: executing_phase2_rework
+dialogue_state: phase2_final_acceptance_candidate_ready
 current_focus: approved_defect_register_D-001_D-063
-current_stage: P2R-001_p2_006_task_workflow_gates
-last_checkpoint_scope: P2-000...P2-005
-last_checkpoint_pr: #5
-last_checkpoint_merge_sha: 79fabaefb8c03876078606bb02e4dbda6017f5bd
-working_branch: agent/phase2-rework-20260614T223441Z
+current_stage: P2R-006_final_acceptance_candidate
+last_checkpoint_scope: P2R-001 / P2-006
+last_checkpoint_pr: #6
+last_checkpoint_merge_sha: 276b893043cd6f21f1ecf0cd18afc9faa6c5d52d
+working_branch: main direct-to-main final evidence writes
 base_branch: main
-branch_base_sha: 79fabaefb8c03876078606bb02e4dbda6017f5bd
-required_protocols: context_loading; mode_routing; issue_lifecycle; question_answer; requirements_protocol; issue_execution; complex_and_linked_issues; task_flow_hardening; github_write_protocol; validation_protocol
-loaded_context_scope: README.md; State/service_state.md; Issues/README.md; Issues/issue_registry.jsonl; Issues/issue_events.jsonl; Issues/CB-P2/README.md; Protocols/question_answer.md; Protocols/requirements_protocol.md; Protocols/issue_execution.md; Protocols/complex_and_linked_issues.md; Protocols/task_flow_hardening.md; Templates/task/; Validation/final_check.md; Validation/sync_report.md
-loaded_protocols: context_loading; mode_routing; issue_lifecycle; question_answer; requirements_protocol; issue_execution; complex_and_linked_issues; task_flow_hardening; github_write_protocol; validation_protocol
+branch_base_sha: 276b893043cd6f21f1ecf0cd18afc9faa6c5d52d
+required_protocols: context_loading; mode_routing; issue_lifecycle; question_answer; requirements_protocol; issue_execution; complex_and_linked_issues; task_flow_hardening; github_write_protocol; github_conflict_recovery; rollback_protocol; validation_protocol
+loaded_context_scope: README.md; State/service_state.md; State/execution_state.md; Issues/README.md; Issues/issue_registry.jsonl; Issues/issue_events.jsonl; Issues/CB-P2/README.md; Protocols/; Templates/; Concepts/smoke/; Registry/; Validation/
+loaded_protocols: context_loading; mode_routing; issue_lifecycle; question_answer; requirements_protocol; issue_execution; complex_and_linked_issues; task_flow_hardening; github_write_protocol; github_conflict_recovery; rollback_protocol; validation_protocol
 allowed_read_scope: README.md; Instructions/; Protocols/; State/; Issues/; Concepts/; Templates/; Inbox/; Registry/; Validation/
 allowed_write_scope: Service production files for Phase 2 rework only
 write_package_required: mode; active_object; active_issue; reason; operation; target_paths; pre_sha; post_sha; registry_state_event_coupling; validation_plan
-persistence_status: p2r001_task_workflow_gates_written_requires_readback
-updated_at: 2026-06-15
-next_step: read back P2R-001 changed files, then continue P2-007 write/conflict/rollback evidence
-return_anchor: Validation/sync_report.md
+persistence_status: synced_with_final_readback_evidence
+updated_at: 2026-06-16
+next_step: return final acceptance candidate archive outside production repo
+return_anchor: Validation/final_check.md
 ```
 
-## P2R-001 write/readback scope
+## Phase 2 completion scope
 
-| Path | Operation | Classifier | Evidence state |
-|---|---|---|---|
-| `Protocols/question_answer.md` | update | production protocol | QA blocking and skip reason model hardened |
-| `Protocols/requirements_protocol.md` | update | production protocol | requirement IDs, sources, linked inputs/issues and approval model hardened |
-| `Protocols/issue_execution.md` | update | production protocol | execution blocked without requirements/contract evidence |
-| `Protocols/complex_and_linked_issues.md` | update | production protocol | dependency state machine, cycle prevention and roll-up evidence added |
-| `Protocols/task_flow_hardening.md` | update | production protocol | task transition, approval, cleanup and evidence gates hardened |
-| `Templates/task/` | update | production templates | artifact chain, local registry, QA/requirements/contract/report metadata hardened |
-| `Issues/issue_registry.jsonl` | update | production registry | `CB-P2` current task moved to `P2-006` / `P2R-001` |
-| `Issues/issue_events.jsonl` | update | production event log | `service-event-000020` records P2-006 task workflow gates |
-| `Issues/CB-P2/README.md` | update | production active issue artifact | P2R-001/P2-006 report records scope |
-| `Validation/final_check.md` | update | production validation gate | P2-006 evidence matrix records required readback |
-| `Validation/sync_report.md` | update | production sync-report | P2R-001 changed paths and pre-write SHAs recorded |
+| Segment | Task | Evidence state |
+|---|---|---|
+| `P2-000` | intake, freeze snapshot, reopen closure | evidence retained in issue/events/final/sync |
+| `P2-001` | root README and top-level governance | evidence retained in README and registry/navigation |
+| `P2-002` | global/local registries | evidence retained in registry schema/global/local registries |
+| `P2-003` | state/context/mode/marker | evidence retained in state/protocol files |
+| `P2-004` | protocol routing | evidence retained in protocol index and routing protocols |
+| `P2-005` | issue registry/events/artifacts | evidence retained in `Issues/` |
+| `P2-006` / `P2R-001` | task workflow gates | changed-path readback recorded as `passed_with_evidence` |
+| `P2-007` / `P2R-002` | write/conflict/rollback evidence | protocol-level dry-runs and recovery statuses recorded |
+| `P2-008` / `P2R-003` | validation evidence replacement | validation files name checked paths, failed checks and evidence |
+| `P2-009` / `P2R-004` | smoke/export final evidence | smoke fixture/export readiness and debris absence recorded |
+| `P2-010` / `P2R-005` | final control pass | D-001…D-063 closure summary: total 63, fixed_or_resolved 63, blocked 0 |
+| `P2R-006` | final acceptance archive | archive is generated locally, not uploaded to production repo |
 
 ## Правило сохранения
 
-Любой статус завершения считается действительным только вместе с readback evidence, registry entry, state/event update и ссылкой на проверку в `Validation/`. Если хотя бы один элемент отсутствует, используется статус `partial`, `failed`, `conflict` или `blocked`, а не закрывающее утверждение.
+Любой будущий статус завершения остаётся действительным только вместе с readback evidence, registry entry, state/event update и ссылкой на проверку в `Validation/`. Development handoff archives, prompts, audit notes and checkpoint archives remain excluded from the production repo.
