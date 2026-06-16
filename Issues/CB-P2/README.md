@@ -4,9 +4,9 @@
 
 ## Назначение
 
-`CB-P2` — service issue для исправления утверждённого реестра `D-001`…`D-063`. Issue хранит production-след patch-работы, route, cleanup decisions, readback evidence, validation anchors и P2R3 closure после language-gate rejection.
+`CB-P2` — service issue для исправления утверждённого реестра `D-001`…`D-063`. Issue хранит production-след patch-работы, route, cleanup decisions, readback evidence, validation anchors и закрытие P2R3 после language-gate rejection.
 
-## Scope
+## Область
 
 - восстановить root README как service map;
 - расширить registry schema и entries;
@@ -17,7 +17,7 @@
 - выполнить final control pass;
 - после P2R3 перевести readable English prose, обновить evidence и подготовить final acceptance candidate archive вне production repo.
 
-## Cleanup decisions
+## Решения по cleanup
 
 | Путь | Решение | Evidence |
 |---|---|---|
@@ -34,9 +34,9 @@
 - [`Validation/sync_report.md`](../../Validation/sync_report.md)
 - [`Issues/issue_events.jsonl`](../issue_events.jsonl)
 
-## Segment reports
+## Отчёты по сегментам
 
-| Step | Task | Defects | Evidence | Next |
+| Шаг | Задача | Defects | Evidence | Далее |
 |---|---|---|---|---|
 | `P2-000`…`P2-010` | основной Phase 2 repair chain | `D-001`…`D-063` | production evidence в README/state/issues/protocols/templates/validation | `P2R-000` |
 | `P2R-000`…`P2R-006` | prior rework chain до language rejection | truth-source normalization, task gates, write/rollback evidence, smoke/export, final control | production readback | `P2R3-000` |
@@ -44,7 +44,7 @@
 | `P2R3-001` | evidence refresh | language-check contradiction | `Validation/language_check.md`, `final_check.md`, `sync_report.md`, event `service-event-000027`, registry/state refresh | `P2R3-002` |
 | `P2R3-002` | final acceptance archive | archive contract | local archive only, not uploaded to production repo | complete |
 
-## Final control report
+## Финальный контроль
 
 | Поле | Значение |
 |---|---|
@@ -52,11 +52,11 @@
 | Language sweep status | `passed_after_readback` |
 | Final archive task | `P2R3-002 — final acceptance candidate archive` |
 | Base head before P2R3 | `1a4dc04dc4a72645bced97e3b00ea06096626c8b` |
-| Working branch | `agent/concept-builder-p2r3-language-rework-20260616-0240Z` |
+| Working branch | PR `#7` merged to `main`; final polish written directly to `main` after branch merge |
 | Defect closure | total `63`, fixed_or_resolved `63`, blocked `0` |
 | Remaining | `[]` |
 | Open blocking risks | `none` |
 
-## Status
+## Статус
 
-`fixed_with_evidence`: Phase 2 production evidence covers `P2-000`…`P2-010`, `P2R-000`…`P2R-006`, P2R3 language sweep/evidence refresh, and `D-001`…`D-063`. The final acceptance candidate archive is generated outside the production repository.
+`fixed_with_evidence`: Phase 2 production evidence covers `P2-000`…`P2-010`, `P2R-000`…`P2R-006`, P2R3 language sweep/evidence refresh и `D-001`…`D-063`. Final acceptance candidate archive создаётся вне production repository.
