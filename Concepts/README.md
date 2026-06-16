@@ -18,7 +18,7 @@
 
 | Концепция | Роль | Статус | Задача |
 |---|---|---|---|
-| [`smoke`](smoke/README.md) | проверочный пример | сохранён для пробного прогона Execution/export; доказательство перечитывания записано | [`CB-009`](../Issues/CB-009/README.md) |
+| [`smoke`](smoke/README.md) | проверочный пример | сохранён для пробного прогона исполнения и экспорта; доказательство перечитывания записано | [`CB-009`](../Issues/CB-009/README.md) |
 
 ## Создание новой концепции
 
@@ -30,10 +30,10 @@ Concepts/<concept_id>/
 
 Базовая структура копируется из [`Templates/concept/`](../Templates/concept/README.md), затем заполняются `README.md`, `concept_state.md`, `structure.md`, `page_registry.jsonl`, `purpose.md`, `requirements.md`, `operating_model.md`, `process.md`, `output.md` и `export.md`.
 
-## Политика проверочного примера smoke
+## Политика проверочного примера `smoke`
 
-`smoke` не является пользовательской концепцией. Он остаётся как проверочный пример для проверки шаблона и маршрута экспорта. Бесхозные или пустые файлы внутри примера удаляются, а строгие страницы результата и экспорта сохраняются как `output.md` и `export.md`.
+`smoke` не является пользовательской концепцией. Он остаётся как проверочный пример для проверки шаблона и маршрута экспорта. Несвязанные или пустые файлы внутри примера удаляются, а строгие страницы результата и экспорта сохраняются как `output.md` и `export.md`.
 
 ## Обязательная проверка
 
-После создания или выбора концепции обновляются `State/execution_state.md`, локальный реестр и связь задачи, затем запускается [`Protocols/validation_protocol.md`](../Protocols/validation_protocol.md). Для `smoke` финальное доказательство Phase 2 находится в [`Validation/final_check.md`](../Validation/final_check.md) и [`Validation/sync_report.md`](../Validation/sync_report.md).
+После создания или выбора концепции обновляются `State/execution_state.md`, локальный реестр и связь задачи, затем запускается [`Protocols/validation_protocol.md`](../Protocols/validation_protocol.md). Для `smoke` финальные доказательства Phase 2 находятся в [`Validation/final_check.md`](../Validation/final_check.md) и [`Validation/sync_report.md`](../Validation/sync_report.md).
