@@ -28,9 +28,9 @@ persistence_status: template_not_instantiated
 | [`requirements.md`](requirements.md) | requirements и критерии приёмки | approved или scoped |
 | [`operating_model.md`](operating_model.md) | роли, объекты и инварианты | failure modes перечислены |
 | [`process.md`](process.md) | рабочий process | validation hooks присутствуют |
-| [`output.md`](output.md) | expected results и mapping | requirements сопоставлены |
+| [`output.md`](output.md) | ожидаемые результаты и mapping | requirements сопоставлены |
 | [`export.md`](export.md) | export manifest | source paths и scope перечислены |
 
 ## Правило работы
 
-Все изменения этой концепции выполняются через `Execution Mode`, связанный `issue`, обновление local registry и `validation_protocol.md`. Orphan-файлы запрещены; любой удалённый path должен быть заранее записан в local registry/evidence.
+Все изменения этой концепции выполняются через `Execution Mode`, связанный `issue`, обновление local registry и `validation_protocol.md`. Orphan-файлы запрещены; удалённый path заранее записывается в local registry/evidence.
