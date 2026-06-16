@@ -1,10 +1,10 @@
-# Issue execution
+# Исполнение задачи
 
-[← Реестр протоколов](protocol_index.md) | [Жизненный цикл issue](issue_lifecycle.md) | [Requirements protocol](requirements_protocol.md) | [GitHub write protocol](github_write_protocol.md)
+[← Реестр протоколов](protocol_index.md) | [Жизненный цикл задачи](issue_lifecycle.md) | [Протокол требований](requirements_protocol.md) | [Протокол записи GitHub](github_write_protocol.md)
 
 ## Назначение
 
-Протокол описывает выполнение `issue` после того, как requirements и contract дают проверяемый scope. Execution не начинается из ощущения “и так понятно”; этот вид спорта уже слишком дорого обходился production-файлам.
+Протокол описывает выполнение задачи после того, как требования и контракт дают проверяемую область. Исполнение не начинается из ощущения “и так понятно”; этот вид спорта уже слишком дорого обходился рабочим файлам.
 
 ## Вход
 
@@ -25,28 +25,28 @@ rollback_plan:
 return_anchor:
 ```
 
-## Предварительные gates
+## Предварительные шлюзы
 
-| Gate | Требование | Блокировка |
+| Шлюз | Требование | Блокировка |
 |---|---|---|
-| Requirements | `approved_with_scope` или `skipped_with_reason` | unresolved question |
-| Solution | changed paths, risks and alternatives recorded | unsafe ambiguity |
-| Contract | target paths, operation, validation plan, rollback plan | contract absent |
-| Linked files | dependencies known and no unresolved cycle | dependency blocker |
-| Write package | pre-sha and classifier recorded | stale or unsafe write |
+| требования | `approved_with_scope` или `skipped_with_reason` | нерешённый вопрос |
+| решение | изменённые пути, риски и отклонённые альтернативы записаны | небезопасная неоднозначность |
+| контракт | целевые пути, операция, план проверки и план отката | контракт отсутствует |
+| связанные файлы | зависимости известны и нет нерешённого цикла | блокирующая зависимость |
+| пакет записи | SHA до записи и классификатор записаны | устаревшая или небезопасная запись |
 
 ## Этапы выполнения
 
-1. Перевести `issue` в `in_progress` через registry/state/event coupling.
-2. Сформировать solution: подход, target paths, state/registry/event/validation effects.
-3. Сформировать contract: exact paths, operation, validation plan, rollback plan.
-4. Выполнить только pre-registered writes в разрешённой области.
+1. Перевести задачу в `in_progress` через связку реестра, состояния и события.
+2. Сформировать решение: подход, целевые пути, изменения состояния/реестра/событий/проверки.
+3. Сформировать контракт: точные пути, операция, план проверки и план отката.
+4. Выполнить только заранее зарегистрированные записи в разрешённой области.
 5. Перечитать изменённые файлы из `GitHub`.
-6. Проверить acceptance criteria по evidence, а не по словам статуса.
-7. Обновить реестры, журнал событий, state и sync-report.
-8. Перевести `issue` в `review_required`, `fixed_with_evidence` или `blocked`.
+6. Проверить критерии приёмки по доказательствам, а не по словам статуса.
+7. Обновить реестры, журнал событий, состояние и отчёт синхронизации.
+8. Перевести задачу в `review_required`, `fixed_with_evidence` или `blocked`.
 
-## Report
+## Отчёт
 
 Отчёт по выполнению должен включать:
 
@@ -67,4 +67,4 @@ return_anchor:
 
 ## Блокировки
 
-Если запись, readback, registry/state/event coupling или validation не выполнены, `issue` получает `blocked` или `review_required`, но не финальный статус.
+Если запись, перечитывание, связка реестра/состояния/событий или проверка не выполнены, задача получает `blocked` или `review_required`, но не финальный статус.
