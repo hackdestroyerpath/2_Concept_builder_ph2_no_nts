@@ -30,6 +30,15 @@ Rollback запускается при одном из событий:
 
 `Registry/page_registry.jsonl`, `State/service_state.md`, `Issues/issue_events.jsonl`, `Validation/sync_report.md` обновляются вместе с rollback или получают `blocked` event, если rollback остановлен внешним решением.
 
+## P2-007 rollback dry-run matrix
+
+| Scenario | Trigger | Rollback decision | Expected validation |
+|---|---|---|---|
+| single-file wrong content | readback mismatch on one bounded production file | restore previous blob with new write package | path readback and sync-report row |
+| coupled-file drift | primary file written, registry/state/event omitted | patch-forward coupling first; rollback only if coupling cannot be made truthful | final_check names failed field |
+| protected output risk | rollback would delete validated user output or force-update default branch | rollback blocked; event records external/user decision needed | open risk until decision |
+| debris restore attempt | rollback would reintroduce legacy scratch/debris paths | rollback blocked because debris removal has evidence | absent-path check remains authoritative |
+
 ## Event schema
 
 ```json
