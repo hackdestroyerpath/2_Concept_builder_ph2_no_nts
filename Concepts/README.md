@@ -18,7 +18,7 @@
 
 | Концепция | Роль | Статус | Issue |
 |---|---|---|---|
-| [`smoke`](smoke/README.md) | validation fixture | сохранён для Execution/export dry-run | [`CB-009`](../Issues/CB-009/README.md) |
+| [`smoke`](smoke/README.md) | validation fixture | сохранён для Execution/export dry-run; readback evidence recorded | [`CB-009`](../Issues/CB-009/README.md) |
 
 ## Создание новой концепции
 
@@ -36,4 +36,4 @@ Concepts/<concept_id>/
 
 ## Обязательная проверка
 
-После создания или выбора концепции обновляется `State/execution_state.md`, local registry и issue link, затем запускается [`Protocols/validation_protocol.md`](../Protocols/validation_protocol.md). До readback evidence не используются финальные статусы готовности.
+После создания или выбора концепции обновляется `State/execution_state.md`, local registry и issue link, затем запускается [`Protocols/validation_protocol.md`](../Protocols/validation_protocol.md). Для `smoke` финальное Phase 2 evidence находится в [`Validation/final_check.md`](../Validation/final_check.md) и [`Validation/sync_report.md`](../Validation/sync_report.md).
