@@ -1,32 +1,32 @@
-# CB-P2 — Phase 2 patch
+# CB-P2 — исправление Phase 2
 
-[← Issues](../README.md) | [Registry](../issue_registry.jsonl) | [Events](../issue_events.jsonl) | [Финальная проверка](../../Validation/final_check.md) | [Sync report](../../Validation/sync_report.md)
+[← Issues](../README.md) | [Реестр](../issue_registry.jsonl) | [События](../issue_events.jsonl) | [Финальная проверка](../../Validation/final_check.md) | [Отчёт синхронизации](../../Validation/sync_report.md)
 
 ## Назначение
 
-`CB-P2` — service issue для исправления утверждённого реестра `D-001`…`D-063`. Issue хранит production-след patch-работы, route, cleanup decisions, readback evidence, validation anchors и закрытие P2R3 после language-gate rejection.
+`CB-P2` — служебная задача для исправления утверждённого реестра `D-001`…`D-063`. Задача хранит рабочий след исправлений, маршрут, решения по очистке, доказательства перечитывания, якоря валидации и закрытие P2R4 после четвёртого языкового отклонения.
 
 ## Область
 
-- восстановить root README как service map;
-- расширить registry schema и entries;
-- канонизировать state/mode/context marker;
-- усилить issue lifecycle, QA, requirements, solution, contract, write, conflict, rollback, validation;
-- сохранить `Concepts/smoke` как validation fixture и удалить orphan/stub debris;
-- заменить assertion-only closure evidence matrix;
-- выполнить final control pass;
-- после P2R3 перевести readable English prose, обновить evidence и подготовить final acceptance candidate archive вне production repo.
+- восстановить root README как сервисную карту;
+- расширить схему реестра и записи;
+- канонизировать состояние, режим, контекст и маркер;
+- усилить жизненный цикл задач, QA, требования, решение, контракт, запись, конфликт, откат и валидацию;
+- сохранить `Concepts/smoke` как фикстуру валидации и удалить осиротевший мусор;
+- заменить матрицу закрытия без доказательств;
+- выполнить финальный контроль;
+- после P2R4 перевести остаточный читаемый английский текст, обновить доказательства и подготовить архив-кандидат финальной приёмки вне рабочего репозитория.
 
-## Решения по cleanup
+## Решения по очистке
 
-| Путь | Решение | Evidence |
+| Путь | Решение | Доказательство |
 |---|---|---|
-| `Issues/cb89.md` | удалён после переноса сведений в `CB-008`, `CB-009`, registry/events | absent-path check в `Validation/sync_report.md` |
-| `Plans/cb008.md` | удалён после переноса в `Validation/cb008_closure_plan.md` | absent-path check в `Validation/sync_report.md` |
-| `Closure/status.md` | удалён; финальное состояние живёт в `Validation/final_check.md` | absent-path check в `Validation/sync_report.md` |
-| `Concepts/smoke/o2.md` | удалён как orphan/stub | absent-path check в `Validation/sync_report.md` |
+| `Issues/cb89.md` | удалён после переноса сведений в `CB-008`, `CB-009`, registry/events | проверка отсутствия в `Validation/sync_report.md` |
+| `Plans/cb008.md` | удалён после переноса в `Validation/cb008_closure_plan.md` | проверка отсутствия в `Validation/sync_report.md` |
+| `Closure/status.md` | удалён; финальное состояние живёт в `Validation/final_check.md` | проверка отсутствия в `Validation/sync_report.md` |
+| `Concepts/smoke/o2.md` | удалён как осиротевшая заглушка | проверка отсутствия в `Validation/sync_report.md` |
 
-## Evidence anchors
+## Якоря доказательств
 
 - [`Validation/final_check.md`](../../Validation/final_check.md)
 - [`Validation/navigation_check.md`](../../Validation/navigation_check.md)
@@ -36,27 +36,30 @@
 
 ## Отчёты по сегментам
 
-| Шаг | Задача | Defects | Evidence | Далее |
+| Шаг | Задача | Дефекты | Доказательства | Далее |
 |---|---|---|---|---|
-| `P2-000`…`P2-010` | основной Phase 2 repair chain | `D-001`…`D-063` | production evidence в README/state/issues/protocols/templates/validation | `P2R-000` |
-| `P2R-000`…`P2R-006` | prior rework chain до language rejection | truth-source normalization, task gates, write/rollback evidence, smoke/export, final control | production readback | `P2R3-000` |
-| `P2R3-000` | language drift translation sweep | language-gate contradiction | mandatory examples и найденные readable fragments переведены или classified как technical identifiers | `P2R3-001` |
-| `P2R3-001` | evidence refresh | language-check contradiction | `Validation/language_check.md`, `final_check.md`, `sync_report.md`, event `service-event-000027`, registry/state refresh | `P2R3-002` |
-| `P2R3-002` | final acceptance archive | archive contract | local archive only, not uploaded to production repo | complete |
+| `P2-000`…`P2-010` | основная цепочка исправления Phase 2 | `D-001`…`D-063` | рабочие доказательства в README/state/issues/protocols/templates/validation | `P2R-000` |
+| `P2R-000`…`P2R-006` | цепочка предыдущей доработки до языкового отклонения | нормализация источника истины, контроль задач, доказательства записи/отката, smoke/export, финальный контроль | рабочее перечитывание | `P2R3-000` |
+| `P2R3-000` | предыдущая языковая зачистка | противоречие языковой проверки | обязательные примеры и найденные фрагменты переведены или классифицированы как технические идентификаторы | `P2R3-001` |
+| `P2R3-001` | обновление доказательств | противоречие языковой проверки | `Validation/language_check.md`, `final_check.md`, `sync_report.md`, событие `service-event-000027`, реестр и состояние | `P2R3-002` |
+| `P2R3-002` | предыдущий архив-кандидат | контракт архива | локальный архив без загрузки в рабочий репозиторий | `P2R4-000` |
+| `P2R4-000` | остаточная языковая зачистка | четвёртое языковое отклонение | `Concepts/smoke/README.md`, `output.md`, `export.md`, `Templates/concept/export.md`, `Templates/task/contract.md`, найденные validation-файлы | `P2R4-001` |
+| `P2R4-001` | обновление доказательств | перечитывание после P2R4 | `Validation/language_check.md`, `final_check.md`, `sync_report.md`, registry/state/issue refresh | `P2R4-002` |
+| `P2R4-002` | финальный архив-кандидат | контракт финального архива | локальный архив, не загружается в рабочий репозиторий | complete |
 
 ## Финальный контроль
 
 | Поле | Значение |
 |---|---|
-| Final validation status | `passed` |
-| Language sweep status | `passed_after_readback` |
-| Final archive task | `P2R3-002 — final acceptance candidate archive` |
-| Base head before P2R3 | `1a4dc04dc4a72645bced97e3b00ea06096626c8b` |
-| Working branch | PR `#7` merged to `main`; final polish written directly to `main` after branch merge |
-| Defect closure | total `63`, fixed_or_resolved `63`, blocked `0` |
-| Remaining | `[]` |
-| Open blocking risks | `none` |
+| Статус финальной проверки | `passed` |
+| Статус языковой зачистки | `passed_after_readback` |
+| Задача финального архива | `P2R4-002 — final acceptance candidate archive` |
+| Base head перед P2R4 | `afd5db147f5575372e1b1eddf33609898afc7c39` |
+| Рабочая ветка | `agent/p2r4-language-cleanup-20260616-0413Z` |
+| Закрытие дефектов | total `63`, fixed_or_resolved `63`, blocked `0` |
+| Остаток | `[]` |
+| Открытые блокирующие риски | `none` |
 
 ## Статус
 
-`fixed_with_evidence`: Phase 2 production evidence covers `P2-000`…`P2-010`, `P2R-000`…`P2R-006`, P2R3 language sweep/evidence refresh и `D-001`…`D-063`. Final acceptance candidate archive создаётся вне production repository.
+`fixed_with_evidence`: Phase 2 рабочие доказательства покрывают `P2-000`…`P2-010`, `P2R-000`…`P2R-006`, P2R3, P2R4 и `D-001`…`D-063`. Финальный архив-кандидат создаётся вне рабочего репозитория.
