@@ -13,23 +13,23 @@ failed_checks: []
 
 ## Проверки
 
-| Проверка | Evidence | Status |
+| Проверка | Доказательство | Статус |
 |---|---|---|
-| Root entry routes to production zones | `README.md` links all top-level zones | passed_with_evidence |
-| Global registry has owner/backlinks/source_of_truth | `Registry/page_registry.jsonl` uses extended schema rows | passed_with_evidence |
-| Schema describes required fields | `Registry/page_registry_schema.md` | passed_with_evidence |
-| Structure map matches target tree | `Registry/structure.md` | passed_with_evidence |
-| Issues have active entry and per-issue artifacts | `Issues/README.md`, `Issues/CB-P2`, `CB-002`…`CB-009` | passed_with_evidence |
-| Write/conflict/rollback routes are reachable | `README.md` → `Protocols/github_write_protocol.md` → conflict/rollback | passed_with_evidence |
-| Smoke fixture is reachable | `Concepts/README.md` → `Concepts/smoke/README.md` | passed_with_evidence |
-| Smoke local registry is not path-only | `Concepts/smoke/page_registry.jsonl` | passed_with_evidence |
-| Task local registry is not path-only | `Templates/task/page_registry.jsonl` | passed_with_evidence |
-| Concept local registry template is not path-only | `Templates/concept/page_registry.jsonl` | passed_with_evidence |
-| Deprecated active zones are not in registry | `Plans/`, `Closure/`, `Issues/cb89.md`, `Concepts/smoke/o2.md` removed from active registry | passed_with_evidence |
+| Root entry ведёт в production zones | `README.md` содержит ссылки на все top-level zones | passed_with_evidence |
+| Global registry содержит owner/backlinks/source_of_truth | `Registry/page_registry.jsonl` использует extended schema rows | passed_with_evidence |
+| Schema описывает required fields | `Registry/page_registry_schema.md` | passed_with_evidence |
+| Structure map совпадает с target tree | `Registry/structure.md` | passed_with_evidence |
+| Issues имеют active entry и per-issue artifacts | `Issues/README.md`, `Issues/CB-P2`, `CB-002`…`CB-009` | passed_with_evidence |
+| Маршруты записи и восстановления достижимы | `README.md` → протоколы записи и восстановления | passed_with_evidence |
+| Smoke fixture достижим | `Concepts/README.md` → `Concepts/smoke/README.md` | passed_with_evidence |
+| Smoke local registry не является path-only | `Concepts/smoke/page_registry.jsonl` | passed_with_evidence |
+| Task local registry не является path-only | `Templates/task/page_registry.jsonl` | passed_with_evidence |
+| Concept local registry template не является path-only | `Templates/concept/page_registry.jsonl` | passed_with_evidence |
+| Deprecated active zones отсутствуют в registry | `Plans/`, `Closure/`, `Issues/cb89.md`, `Concepts/smoke/o2.md` removed from active registry | passed_with_evidence |
 
 ## Ожидаемо отсутствующие paths
 
-| Path | Expected result | Reason | Evidence |
+| Path | Ожидаемый результат | Причина | Доказательство |
 |---|---|---|---|
 | `Issues/cb89.md` | 404 / absent | mixed debris | `Validation/sync_report.md` absent-path checks |
 | `Plans/cb008.md` | 404 / absent | migrated to validation/issue artifacts | `Validation/sync_report.md` absent-path checks |
