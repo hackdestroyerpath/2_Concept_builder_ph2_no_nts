@@ -8,21 +8,22 @@
 
 ## Scope
 
-- удалить orphan/stub `Concepts/smoke/o2.md`;
+- удалить orphan/stub fixture debris;
 - согласовать `README.md`, purpose, requirements, operating model, process, output, export, state и local registry;
 - связать `State/execution_state.md` с fixture readiness;
 - записать export dry-run evidence.
 
 ## Evidence
 
-| Evidence | Роль |
-|---|---|
-| `Concepts/smoke/README.md` | fixture entrypoint |
-| `Concepts/smoke/page_registry.jsonl` | local registry |
-| `Concepts/smoke/output.md` | output evidence |
-| `Concepts/smoke/export.md` | export manifest |
-| `State/execution_state.md` | execution state and scope |
+| Evidence | Роль | Result |
+|---|---|---|
+| `Concepts/smoke/README.md` | fixture entrypoint | passed_with_evidence |
+| `Concepts/smoke/page_registry.jsonl` | local registry | passed_with_evidence |
+| `Concepts/smoke/output.md` | output evidence | passed_with_evidence |
+| `Concepts/smoke/export.md` | export manifest | passed_with_evidence |
+| `State/execution_state.md` | execution state and scope | passed_with_evidence |
+| `Validation/sync_report.md` | readback and absence evidence | passed_with_evidence |
 
 ## Cleanup
 
-`Concepts/smoke/o2.md` удалён. Alternative `output.txt` или `e.txt` не используются как production output/export page.
+Alternate output/export scratch files не используются как production output/export page. Absence is verified in the final sync report.
