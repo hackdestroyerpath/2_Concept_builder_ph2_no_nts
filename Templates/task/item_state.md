@@ -1,6 +1,6 @@
-# State задачи
+# Состояние задачи
 
-[← Задача](README.md) | [Issue lifecycle](../../Protocols/issue_lifecycle.md) | [Task flow](../../Protocols/task_flow_hardening.md)
+[← Задача](README.md) | [Жизненный цикл задачи](../../Protocols/issue_lifecycle.md) | [Поток задач](../../Protocols/task_flow_hardening.md)
 
 ```text
 task_id: {{issue_id}}
@@ -22,4 +22,4 @@ updated_at:
 
 ## Правило
 
-State задачи обновляется после каждого значимого перехода lifecycle и должен соответствовать `Issues/issue_registry.jsonl`, `Issues/issue_events.jsonl` и последнему report.
+Состояние задачи обновляется после каждого значимого перехода жизненного цикла и должно соответствовать `Issues/issue_registry.jsonl`, `Issues/issue_events.jsonl` и последнему отчёту.
