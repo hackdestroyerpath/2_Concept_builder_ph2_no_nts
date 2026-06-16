@@ -1,29 +1,29 @@
-# CB-004 — Final service protocols
+# CB-004 — Финальные сервисные протоколы
 
-[← Issues](../README.md) | [Write protocol](../../Protocols/github_write_protocol.md) | [Validation protocol](../../Protocols/validation_protocol.md)
+[← Задачи](../README.md) | [Протокол записи](../../Protocols/github_write_protocol.md) | [Протокол проверки](../../Protocols/validation_protocol.md)
 
-## Provenance
+## Происхождение
 
-Статус: `reconstructed_with_evidence`. Эта страница связывает ранее сохранённые service protocols с явным issue artifact и registry row.
+Статус: `reconstructed_with_evidence`. Эта страница связывает ранее сохранённые сервисные протоколы с явным артефактом задачи и строкой реестра.
 
-## Scope
+## Область
 
-- production/development classifier;
-- write preflight и readback;
-- conflict recovery и rollback route;
-- validation gates;
-- template validation.
+- классификатор рабочего и разработческого контуров;
+- предварительная проверка записи и перечитывание;
+- восстановление после конфликта и маршрут отката;
+- проверочные шлюзы;
+- проверка шаблонов.
 
-## Evidence
+## Доказательства
 
-| Evidence | Роль |
+| Доказательство | Роль |
 |---|---|
-| `Protocols/github_write_protocol.md` | write package, classifier, readback |
-| `Protocols/github_conflict_recovery.md` | conflict decision path |
-| `Protocols/rollback_protocol.md` | rollback trigger and evidence |
-| `Protocols/validation_protocol.md` | validation gate |
-| `Protocols/template_validation.md` | template compatibility check |
+| `Protocols/github_write_protocol.md` | пакет записи, классификатор и перечитывание |
+| `Protocols/github_conflict_recovery.md` | путь решения конфликта |
+| `Protocols/rollback_protocol.md` | триггер отката и доказательства |
+| `Protocols/validation_protocol.md` | проверочный шлюз |
+| `Protocols/template_validation.md` | проверка совместимости шаблонов |
 
-## Closure rule
+## Правило закрытия
 
-Service protocol не принимается по одиночному ярлыку. Нужны route, state, event и validation evidence.
+Сервисный протокол не принимается по одиночному ярлыку. Нужны маршрут, состояние, событие и доказательства проверки.
