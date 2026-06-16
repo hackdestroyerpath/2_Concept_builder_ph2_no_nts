@@ -5,59 +5,81 @@
 ```text
 repo: hackdestroyerpath/2_Concept_builder_ph2_no_nts
 base_branch: main
-working_branch: agent/phase2-rework-20260614T223441Z
+working_branch: main
 active_issue: CB-P2
-active_rework_segment: P2R-001
-active_task: P2-006
-validation_ref: agent/phase2-rework-20260614T223441Z
-base_sha_at_turn_start: fef1219fe374316b22a7039014cd4756304059ae
-persistence_status: p2r001_task_workflow_gates_requires_changed_path_readback
-merge_state: checkpoint_pr_5_merge_verified
-checkpoint_merge_sha: 79fabaefb8c03876078606bb02e4dbda6017f5bd
-cleanup_status: no excluded source files written
+active_rework_segment: P2R-005
+active_task: P2-010
+validation_ref: main
+post_pr6_anchor: 276b893043cd6f21f1ecf0cd18afc9faa6c5d52d
+persistence_status: synced_with_final_readback_evidence
+merge_state: checkpoint_pr_6_merge_verified_then_final_direct_evidence_writes
+checkpoint_pr: #6
+checkpoint_merge_sha: 276b893043cd6f21f1ecf0cd18afc9faa6c5d52d
+cleanup_status: no excluded source files written; debris paths absent
+final_validation_status: passed
+remaining: []
+defect_closure_total: 63
+defect_closure_fixed_or_resolved: 63
+defect_closure_blocked: 0
 ```
 
-## P2R-001 changed paths
+## P2R-001 changed-path readback from PR #6
 
-| Path | Operation | Pre-write SHA | Payload SHA-256 |
-|---|---|---|---|
-| `Protocols/question_answer.md` | update | `fbdd48d4b75227c20af24e7ea5b3512c06c2a3bf` | `49ef6682c1fab65c8d35bda01da7f0e062a29a59533250417828575d5a328b18` |
-| `Protocols/requirements_protocol.md` | update | `bdba5ca861aac6c7bb3cf6a46cbf9b46e7db1606` | `c3c2172b5fe64db5996c6db941e43de5450589c434cc0c3c4d1898dc92b41b41` |
-| `Protocols/issue_execution.md` | update | `916c11349c5cbbce54d3d703eb6ca48a100452d6` | `97cbf9c4add7abb329b2e96de94da463e725a4f4bd8a1d81e270e057c3bf2e48` |
-| `Protocols/complex_and_linked_issues.md` | update | `84b1c97347c4b98dfac694aab91fc31952e595c2` | `0d9da0d56f3866e3ff7cceabad6b2bd3d583f909d3e5d24dd717c54169293196` |
-| `Protocols/task_flow_hardening.md` | update | `39e42a5f82cce703f436e9183122754f1673934a` | `ab160684f264aa5abf983a80916ad5b36c0a6efdbde9cbc4c5259ba498f10183` |
-| `Templates/task/README.md` | update | `9157850bcd2767c9810ac53cb73e2ba7d2113638` | `16505b96f14866a5fe01735716b0385c6b4ec532a31e91785d8a71d7a1095896` |
-| `Templates/task/item_state.md` | update | `c099653d9b757f0b3238b721db705c9e7b54ead4` | `38e8364e63ad5220d10b597bd089b381a520f0327760274b730e6a5e9cd8093e` |
-| `Templates/task/question_answer.md` | update | `9ade65078ac08aa4abfec86e5bfcc3ba1520469a` | `158f1add210aad20414a2c9d7fbc2a137a3eb9924752da696b1bac4ad8bb2845` |
-| `Templates/task/requirements.md` | update | `c0765d65fd4678cabc80a7cecae44ba63d373589` | `2754a7074a25adfc234b38929cc0185a41a14ca9c6fc262327f789b0bebbb33b` |
-| `Templates/task/solution.md` | update | `2545ac739c62cffe223f150918987340dbd3eecf` | `451e9cc5f8880a3cb25b909f995d9c193fa065a2011355c684fa00e4bc6d1447` |
-| `Templates/task/contract.md` | update | `fd03026570059cee586b5af42c926ffb38d4ed98` | `59d045416bcf95145be9ccd989c37e659dfcd9a37a7f29640db0245950ba88d8` |
-| `Templates/task/linked_files.md` | update | `5446468e5739a9482bc6eaff1f04e50aceb50f0d` | `fbcb32ea342374af990186aa54f888973aa7d22160a38967c08ba5a5dd292229` |
-| `Templates/task/report.md` | update | `43fdec6f24e5509a1008275a3de2db662194f224` | `7b94db1726bfac36b93995fb81270d5ed561afd1af6adc71a111a1cbd1c7f0a9` |
-| `Templates/task/page_registry.jsonl` | update | `1bbd4a63c9a65469a61bf8761d9ee97a77e00cf0` | `3945a38a76f320768ece6332e432fa7f95a21b77732e0c341b387224183a0cb1` |
-| `State/service_state.md` | update | `c5b9099e83880efad59f2089801588f473c0df8e` | `3baf2eed317614f3e0c12ccf4ac7206ea92683fd1fb29b6454dc765b563fac02` |
-| `Issues/CB-P2/README.md` | update | `9f082c473bbc5d4a66723ebb1cbcb230f2d5d01a` | `7c90a154ce4dcd6f66894ac1bacface1232cb29034d797125bc3eeebbdc5e6a8` |
-| `Issues/issue_registry.jsonl` | update | `d29400de65504bb414c76a7c54c2586644f48e4c` | `bd9f1081e4a1e9839fe64dbb2bf939ca2b83c29b1bc13a98bd8ae39b0830a1df` |
-| `Issues/issue_events.jsonl` | update | `8cdbd60ff189c4a7f0db26c696c32b45471d6678` | `6c1acc9d50e6f180cebcf18b038dec502e18de6d2ab1318890ee5720feda4879` |
-| `Validation/final_check.md` | update | `e7e1074319e3f07ae5dc3351957e031f5ce113f0` | `c2261e8e6dc47fa7fedd5a54835266e1b20b962fb6a31a63eebc18f42d438b2e` |
-| `Validation/sync_report.md` | update | `bc70b14ec0ff7765103c2522c4b9c15eb130cebe` | `eb0a0bba976693980214d095a1e02cb5588e400463f797b377489667a33e6f5f` |
+| Area | Evidence | Result |
+|---|---|---|
+| task workflow protocols | `Protocols/question_answer.md`, `requirements_protocol.md`, `issue_execution.md`, `complex_and_linked_issues.md`, `task_flow_hardening.md` | read back on `main` |
+| task templates | `Templates/task/README.md`, `item_state.md`, QA/requirements/solution/contract/linked/report and local registry | read back on `main` |
+| state/issue coupling | `State/service_state.md`, `Issues/CB-P2/README.md`, issue registry/events | read back on `main` |
+| validation coupling | `Validation/final_check.md`, `Validation/sync_report.md` | read back on `main` |
 
-## Evidence intention
+## P2R-002 / P2-007 write-conflict-rollback evidence
 
-| Area | Evidence state |
-|---|---|
-| QA / requirements | blocking questions, scoped skip reasons, requirement IDs and approval status are encoded in protocols and templates |
-| Execution contract | execution is blocked unless target paths, validation plan and rollback plan are recorded |
-| Linked issue handling | dependency state machine, cycle block, transfer and roll-up event rules are encoded |
-| Task template | all artifact pages are linked and registered in local JSONL registry |
-| Registry/state/events | `CB-P2` is advanced to `P2-006` / `P2R-001`, event `service-event-000020` records the segment |
+| Scenario | Evidence | Result |
+|---|---|---|
+| success write/readback | `Protocols/github_write_protocol.md` dry-run matrix | passed_with_evidence |
+| partial write / missing coupling | `Protocols/github_write_protocol.md` and `Validation/final_check.md` failed-check rule | passed_with_evidence |
+| SHA conflict | `Protocols/github_conflict_recovery.md` recovery dry-run | passed_with_evidence |
+| blocked rollback | `Protocols/rollback_protocol.md` rollback dry-run matrix | passed_with_evidence |
 
-## Verification status
+## P2R-003 / P2-008 validation evidence
 
-P2R-001 is a bounded task workflow gates segment. The branch is prepared for readback after write dispatch. Final acceptance remains blocked until the final validation step.
+| Check | Evidence | Result |
+|---|---|---|
+| checked paths named | `Validation/final_check.md`, `Validation/navigation_check.md`, `Validation/language_check.md` | passed_with_evidence |
+| failed checks explicit | `Validation/final_check.md` has `[]` with evidence rows | passed_with_evidence |
+| JSONL validity | `Issues/issue_registry.jsonl`, `Issues/issue_events.jsonl`, `Concepts/smoke/page_registry.jsonl` | passed_with_evidence |
+| no assertion-only closure | D-001…D-063 matrix names evidence paths | passed_with_evidence |
+
+## P2R-004 / P2-009 smoke/export evidence
+
+| Path | Evidence | Result |
+|---|---|---|
+| `Concepts/smoke/README.md` | fixture role, strict pages and cleanup decision | passed_with_evidence |
+| `Concepts/smoke/concept_state.md` | final state/export fields | passed_with_evidence |
+| `Concepts/smoke/output.md` | output mapping to requirements | passed_with_evidence |
+| `Concepts/smoke/export.md` | manifest and acceptance gates | passed_with_evidence |
+| `State/execution_state.md` | Execution Mode boundary and export readiness | passed_with_evidence |
+| `Issues/CB-009/README.md` | issue artifact for smoke fixture/export | passed_with_evidence |
+
+## Absent debris checks
+
+| Path | Expected result | Result |
+|---|---|---|
+| `Issues/cb89.md` | 404 / absent | passed_with_evidence |
+| `Plans/cb008.md` | 404 / absent | passed_with_evidence |
+| `Closure/status.md` | 404 / absent | passed_with_evidence |
+| `Concepts/smoke/o2.md` | 404 / absent | passed_with_evidence |
+
+## Final coupling
+
+| Coupling | Evidence | Result |
+|---|---|---|
+| Registry | `Issues/issue_registry.jsonl` row `CB-P2` has `fixed_with_evidence`, completed tasks, remaining `[]` | passed_with_evidence |
+| Events | `Issues/issue_events.jsonl` contains `service-event-000021`…`service-event-000025` | passed_with_evidence |
+| State | `State/service_state.md` and `State/execution_state.md` contain final synced/readback fields | passed_with_evidence |
+| Validation | `Validation/final_check.md` says final validation passed and closure 63/63 | passed_with_evidence |
+| Archive gate | final candidate archive must include required snapshots and `review_manifest.json` | ready |
 
 ## Next safe step
 
-1. Dispatch only the reserved P2R-001 writes if pre-write SHAs still match.
-2. Read back every changed path from `agent/phase2-rework-20260614T223441Z`.
-3. Start `P2-007` only if P2R-001 readback is coherent.
+No remaining Phase 2 task exists. The safe next step is only verifier review of the final acceptance candidate archive or a new issue for unrelated future work.
