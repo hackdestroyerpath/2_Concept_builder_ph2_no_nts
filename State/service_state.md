@@ -3,7 +3,7 @@
 [← Точка входа](../README.md) | [Реестр протоколов](../Protocols/protocol_index.md) | [Issue registry](../Issues/issue_registry.jsonl) | [Sync report](../Validation/sync_report.md)
 
 ```text
-state_id: service-state-2026-06-16-p2r3-language-rework
+state_id: service-state-2026-06-16-p2r3-language-final
 owner: Service Mode
 active_mode: Service Mode
 active_object: Concept Builder production repository
@@ -12,16 +12,15 @@ status: fixed_with_evidence
 mode_owner: Service Mode
 mode_boundary_status: service_scope_only
 dialogue_state: phase2_final_acceptance_candidate_ready_after_p2r3
-current_focus: P2R3 language-gate contradiction closure
-current_stage: P2R3_evidence_refresh
+current_focus: P2R3 language gate contradiction closure
+current_stage: P2R3-002_final_acceptance_archive_regeneration
 base_branch: main
 working_branch: agent/concept-builder-p2r3-language-rework-20260616-0240Z
 branch_base_sha: 1a4dc04dc4a72645bced97e3b00ea06096626c8b
-required_protocols: context_loading; mode_routing; issue_lifecycle; question_answer; requirements_protocol; issue_execution; complex_and_linked_issues; task_flow_hardening; github_write_protocol; github_conflict_recovery; rollback_protocol; validation_protocol
-loaded_context_scope: README.md; State/service_state.md; State/execution_state.md; Issues/README.md; Issues/issue_registry.jsonl; Issues/issue_events.jsonl; Issues/CB-P2/README.md; Protocols/; Templates/; Concepts/smoke/; Registry/; Validation/
+required_protocols: context_loading; mode_routing; issue_lifecycle; validation_protocol; language_check
+loaded_context_scope: README.md; State/service_state.md; State/execution_state.md; Issues/README.md; Issues/issue_registry.jsonl; Issues/issue_events.jsonl; Issues/CB-P2/README.md; Templates/; Concepts/smoke/; Registry/; Validation/
 allowed_read_scope: README.md; Instructions/; Protocols/; State/; Issues/; Concepts/; Templates/; Inbox/; Registry/; Validation/
-allowed_write_scope: Service production files for Phase 2 P2R3 language/evidence rework only
-write_package_required: mode; active_object; active_issue; reason; operation; target_paths; pre_sha; post_sha; registry_state_event_coupling; validation_plan
+allowed_write_scope: Service production files for P2R3 language/evidence rework only
 persistence_status: passed_after_readback
 final_validation_status: passed
 language_sweep_status: passed_after_readback
