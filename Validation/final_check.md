@@ -36,24 +36,24 @@ open_blocking_risks: none
 | Текст шаблонов | обязательные P2R4 строки в `Templates/task/contract.md` и `Templates/concept/export.md` переведены; машинные литералы сохранены | passed_after_readback |
 | Обновление доказательств | `Validation/sync_report.md`, `Issues/issue_events.jsonl`, `Issues/issue_registry.jsonl`, `State/service_state.md`, `Issues/CB-P2/README.md` | passed_after_readback |
 | Контроль архива | локальный архив-кандидат финальной приёмки создаётся вне рабочего репозитория | ready_for_local_archive |
-| Исключённые sources | handoff archive, prompt, audit notes, checkpoint archives и temporary reports не добавлены в repo | passed_after_readback |
+| Исключённые источники | handoff archive, prompt, audit notes, checkpoint archives и temporary reports не добавлены в repo | passed_after_readback |
 
-## Сводка закрытия defects
+## Сводка закрытия дефектов
 
-| Диапазон | Доказательство | Count | Status |
+| Диапазон | Доказательство | Количество | Статус |
 |---|---|---:|---|
-| `D-001`…`D-005` | root README и governance верхнего уровня | 5 | fixed_or_resolved |
-| `D-006`…`D-008` | intake, повторное открытие closure и исключение development artifacts | 3 | fixed_or_resolved |
-| `D-009`…`D-016` | navigation и registry evidence | 8 | fixed_or_resolved |
-| `D-017` | lifecycle активного issue/state | 1 | fixed_or_resolved |
-| `D-018`…`D-028` | state/context/mode/marker evidence | 11 | fixed_or_resolved |
-| `D-029`…`D-037` | issue registry/events/artifact model | 9 | fixed_or_resolved |
-| `D-038`…`D-045` | task workflow gates | 8 | fixed_or_resolved |
-| `D-046`…`D-052` | evidence для записи и восстановления | 7 | fixed_or_resolved |
-| `D-053`…`D-058` | validation evidence replacement | 6 | fixed_or_resolved |
-| `D-059`…`D-062` | smoke/export final evidence | 4 | fixed_or_resolved |
-| `D-063` | final control pass и закрытие P2R4 language contradiction | 1 | fixed_or_resolved |
+| `D-001`…`D-005` | корневая карта и управление верхнего уровня | 5 | fixed_or_resolved |
+| `D-006`…`D-008` | входной набор, повторное открытие закрытия и исключение разработческих артефактов | 3 | fixed_or_resolved |
+| `D-009`…`D-016` | доказательства навигации и реестра | 8 | fixed_or_resolved |
+| `D-017` | жизненный цикл активной задачи и состояния | 1 | fixed_or_resolved |
+| `D-018`…`D-028` | доказательства состояния, контекста, режима и маркера | 11 | fixed_or_resolved |
+| `D-029`…`D-037` | реестр задач, события и модель артефактов | 9 | fixed_or_resolved |
+| `D-038`…`D-045` | контрольные точки потока задач | 8 | fixed_or_resolved |
+| `D-046`…`D-052` | доказательства записи и восстановления | 7 | fixed_or_resolved |
+| `D-053`…`D-058` | замена доказательств валидации | 6 | fixed_or_resolved |
+| `D-059`…`D-062` | финальные доказательства smoke/экспорта | 4 | fixed_or_resolved |
+| `D-063` | финальный контроль и закрытие языкового противоречия P2R4 | 1 | fixed_or_resolved |
 
 ## Финальный контроль
 
-`passed`: total defects `63`, fixed_or_resolved `63`, blocked `0`, remaining `[]`, language_sweep_status `passed_after_readback`. Открытых Phase 2 blockers после P2R4 нет.
+`passed`: всего дефектов `63`, fixed_or_resolved `63`, blocked `0`, remaining `[]`, language_sweep_status `passed_after_readback`. Открытых блокеров Phase 2 после P2R4 нет.
