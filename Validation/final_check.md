@@ -9,8 +9,9 @@
 ```text
 repo: hackdestroyerpath/2_Concept_builder_ph2_no_nts
 base_branch: main
-working_branch: agent/concept-builder-p2r5-language-sweep-20260616-0514Z
+working_branch: agent/concept-builder-p2r5-cont2-20260616-0619Z
 base_head_before_p2r5: b8e07583a4a3adaa435d1c940f11a7058f47f23f
+continuation_base_head: 0a33ec15d2dfdeabe8a0e7b9b06f9f2214ba926a
 active_issue: CB-P2
 active_rework_segment: P2R5
 active_task: P2R5-002
@@ -36,9 +37,9 @@ open_blocking_risks: none
 | Задачи | `Issues/README.md`, `Issues/CB-P2/README.md`, `Issues/CB-002/README.md` … `Issues/CB-009/README.md`, `Issues/issue_registry.jsonl`, `Issues/issue_events.jsonl` согласованы | `passed_after_readback` |
 | Шаблоны и проверочный пример | `Templates/`, `Concepts/README.md`, все зарегистрированные `Concepts/smoke/*.md` перечитаны после P2R5 | `passed_after_readback` |
 | Состояние | `State/service_state.md` и `State/execution_state.md` обновлены для P2R5 и не заявляют P2R4 как последний сегмент | `passed_after_readback` |
-| Отчёт синхронизации | `Validation/sync_report.md` фиксирует ветку, changed paths, readback, отсутствие лишних материалов и следующий безопасный шаг | `passed_after_readback` |
+| Отчёт синхронизации | `Validation/sync_report.md` фиксирует финальную продолженную ветку, изменённые пути, перечитывание, отсутствие лишних материалов и следующий безопасный шаг | `passed_after_readback` |
 | Контроль архива | локальный архив-кандидат финальной приёмки создаётся вне рабочего репозитория | `ready_for_local_archive` |
-| Исключённые источники | handoff archive, executor prompt, audit notes, checkpoint archives и temporary reports не добавлены в рабочий репозиторий | `passed_after_readback` |
+| Исключённые источники | архив передачи, исполнительный prompt, аудиторские заметки, контрольные архивы и временные отчёты не добавлены в рабочий репозиторий | `passed_after_readback` |
 
 ## Сводка закрытия дефектов
 
