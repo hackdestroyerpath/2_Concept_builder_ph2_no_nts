@@ -15,8 +15,8 @@ dialogue_state: phase2_final_acceptance_candidate_ready_after_p2r5
 current_focus: полная языковая зачистка зарегистрированных Markdown-файлов и обновление финальных доказательств
 current_stage: P2R5-002_final_acceptance_archive_regeneration
 base_branch: main
-working_branch: agent/concept-builder-p2r5-language-sweep-20260616-0514Z
-branch_base_sha: b8e07583a4a3adaa435d1c940f11a7058f47f23f
+working_branch: agent/concept-builder-p2r5-language-sweep-continuation-20260616-0608Z
+branch_base_sha: 8b638a2be658df3e776638d0e47866d3292b01df
 required_protocols: context_loading; mode_routing; issue_lifecycle; validation_protocol; language_check
 allowed_read_scope: README.md; Instructions/; Protocols/; State/; Issues/; Concepts/; Templates/; Inbox/; Registry/; Validation/
 allowed_write_scope: P2R5 registered Markdown language sweep and evidence refresh files only
