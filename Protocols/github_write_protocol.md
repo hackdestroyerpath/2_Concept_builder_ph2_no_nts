@@ -4,7 +4,7 @@
 
 ## Назначение
 
-Протокол описывает безопасную запись production-файлов в `GitHub`. Любая запись должна иметь classifier, preflight, fresh read, write package, readback, registry/state/events coupling и sync-report.
+Протокол описывает безопасную запись production-файлов в `GitHub`. Любая запись должна иметь classifier, preflight, fresh read, write package, readback, registry/state/events coupling и sync-report. Запись без readback — это не подвиг, а просто способ оставить следующему человеку мину в Markdown.
 
 ## Production/development classifier
 
@@ -13,7 +13,7 @@
 | production | `README.md`, `Protocols/`, `State/`, `Issues/`, `Concepts/`, `Templates/`, `Registry/`, `Validation/`, `Inbox/` | можно писать в пределах active mode scope |
 | development | patch-handoff, Phase 1 audit, prompt, original handoff, checkpoint, временный отчёт | не загружать в production repo |
 | conditional | scripts, generated archive, attachment | нужен отдельный issue/contract |
-| debris | `Issues/cb89.md`, `Concepts/smoke/o2.md`, `Plans/cb008.md`, assertion-only `Closure/status.md` | удалить или мигрировать с evidence |
+| debris | legacy scratch/debris paths and assertion-only closure files | удалить или мигрировать с evidence |
 
 ## Write package
 
@@ -61,15 +61,28 @@ rollback_plan:
 1. Перечитать каждый changed path из `GitHub` на active branch.
 2. Проверить ключевые строки, links, registry entries, state fields, issue events.
 3. Обновить `Validation/sync_report.md`.
-4. Перед merge создать PR, проверить changed files и representative patch.
-5. После merge проверить changed paths на base branch.
+4. Перед merge создать PR, проверить changed files и representative patch. Если работа идёт direct-to-main по явному rework-контракту, sync-report должен назвать это вместо PR.
+5. После merge или direct write проверить changed paths на base branch.
+
+## P2-007 protocol-level dry-run scenarios
+
+| Scenario | Trigger | Required evidence | Expected status |
+|---|---|---|---|
+| success write/readback | fresh SHA, bounded production path, target content matches after fetch | pre-sha, response commit/ref, readback sha, sync-report row | `synced` |
+| partial write / coupling missing | file write succeeds but registry/state/event/final/sync coupling is incomplete | changed path list plus failed coupling field | `partial` until coupling patch or rollback decision |
+| SHA conflict | update/delete uses stale blob SHA | stale sha, current readback sha, conflict event, no same-request blind retry | `conflict` then recovery re-plan |
+| blocked rollback | rollback would require force update or remove validated user output | rollback trigger, protected path, blocked reason, event row | `blocked` with user decision required |
+
+## P2-007 acceptance gate
+
+`P2-007` считается выполненным только если `github_write_protocol.md`, `github_conflict_recovery.md`, `rollback_protocol.md`, `validation_protocol.md`, `Issues/issue_events.jsonl`, `State/service_state.md`, `Validation/final_check.md` и `Validation/sync_report.md` согласованы. Dry-run scenarios являются protocol-level evidence; они не симулируют запись в чужой production path.
 
 ## Ошибки
 
 | Ситуация | Действие |
 |---|---|
 | duplicate create | перейти на update flow со свежим `sha` |
-| stale sha | перечитать файл и повторить один bounded write |
+| stale sha | перечитать файл и повторить только новый bounded request с новым request id/ledger entry |
 | safety/payload block | убрать optional fields, сократить message/content или разбить patch |
 | unexpected diff | остановиться, записать event, вызвать `github_conflict_recovery` |
 | wrong target branch | восстановить ledger, проверить branch и diff |
@@ -80,3 +93,4 @@ rollback_plan:
 - Не проверять branch write по `main` до merge.
 - Не загружать development материалы.
 - Не использовать closure labels как evidence.
+- Не считать `synced` без `fetch_file` readback и sync-report row.
