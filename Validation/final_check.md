@@ -37,22 +37,22 @@ open_blocking_risks: none
 | Archive gate | final acceptance candidate archive создаётся локально и не загружается в production repo | ready_for_local_archive |
 | Excluded sources | handoff archive, prompt, audit notes, checkpoint archives и temporary reports не добавлены в repo | passed_after_readback |
 
-## Defect closure summary
+## Сводка закрытия defects
 
 | Диапазон | Evidence | Count | Status |
 |---|---|---:|---|
-| `D-001`…`D-005` | root README and top-level governance | 5 | fixed_or_resolved |
-| `D-006`…`D-008` | intake/reopened closure/development artifact exclusion | 3 | fixed_or_resolved |
-| `D-009`…`D-016` | navigation and registry evidence | 8 | fixed_or_resolved |
-| `D-017` | active issue/state lifecycle | 1 | fixed_or_resolved |
+| `D-001`…`D-005` | root README и governance верхнего уровня | 5 | fixed_or_resolved |
+| `D-006`…`D-008` | intake, повторное открытие closure и исключение development artifacts | 3 | fixed_or_resolved |
+| `D-009`…`D-016` | navigation и registry evidence | 8 | fixed_or_resolved |
+| `D-017` | lifecycle активного issue/state | 1 | fixed_or_resolved |
 | `D-018`…`D-028` | state/context/mode/marker evidence | 11 | fixed_or_resolved |
 | `D-029`…`D-037` | issue registry/events/artifact model | 9 | fixed_or_resolved |
 | `D-038`…`D-045` | task workflow gates | 8 | fixed_or_resolved |
 | `D-046`…`D-052` | write/conflict/rollback evidence | 7 | fixed_or_resolved |
 | `D-053`…`D-058` | validation evidence replacement | 6 | fixed_or_resolved |
 | `D-059`…`D-062` | smoke/export final evidence | 4 | fixed_or_resolved |
-| `D-063` | final control pass plus P2R3 language contradiction closure | 1 | fixed_or_resolved |
+| `D-063` | final control pass и закрытие P2R3 language contradiction | 1 | fixed_or_resolved |
 
 ## Final gate
 
-`passed`: total defects `63`, fixed_or_resolved `63`, blocked `0`, remaining `[]`, language_sweep_status `passed_after_readback`. No Phase 2 blocker remains open after P2R3.
+`passed`: total defects `63`, fixed_or_resolved `63`, blocked `0`, remaining `[]`, language_sweep_status `passed_after_readback`. Открытых Phase 2 blockers после P2R3 нет.
