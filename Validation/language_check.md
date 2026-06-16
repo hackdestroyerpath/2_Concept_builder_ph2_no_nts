@@ -4,35 +4,39 @@
 
 ## Правило
 
-Читаемый production-текст ведётся на русском языке. Разрешены только технические идентификаторы: имена файлов и папок, имена machine fields, status literals, protocol IDs, `Service Mode`, `Execution Mode`, `GitHub`, `JSONL`, `README`, `export`, `registry`, `state`, `issue`, а также точные code/status literals внутри code blocks, где перевод сломал бы machine meaning.
+Читаемый текст рабочего контура ведётся на русском языке. Разрешены только технические идентификаторы: имена файлов и папок, имена машинных полей, статусные литералы, идентификаторы протоколов, `Service Mode`, `Execution Mode`, `GitHub`, `JSONL`, `README`, `export`, `registry`, `state`, `issue`, а также точные литералы кода или статуса внутри блоков кода, где перевод сломал бы машинное значение.
 
-## Обход и readback
+## Обход и перечитывание
 
-| Зона | Проверенные paths | Результат |
+| Зона | Проверенные пути | Результат |
 |---|---|---|
-| `Concepts/smoke/` | `README.md`, `output.md`, `export.md`, связанные fixture pages | passed_after_readback |
-| `Templates/task/` | `README.md`, `item_state.md`, `question_answer.md`, `requirements.md`, `solution.md`, `contract.md`, `linked_files.md`, `report.md` | passed_after_readback |
-| `Templates/concept/` | `README.md`, `export.md`, route/table prose | passed_after_readback |
-| `Validation/` | `cb008_closure_plan.md`, `cb008_dry_run.md`, `language_check.md`, `final_check.md`, `sync_report.md`, `navigation_check.md` | passed_after_readback |
+| `Concepts/smoke/` | `README.md`, `output.md`, `export.md`, связанные страницы фикстуры | passed_after_readback |
+| `Templates/task/` | `contract.md` и ранее проверенные страницы шаблона | passed_after_readback |
+| `Templates/concept/` | `export.md` и ранее проверенные страницы шаблона | passed_after_readback |
+| `Validation/` | `cb008_closure_plan.md`, `cb008_dry_run.md`, `navigation_check.md`, `language_check.md`, `final_check.md`, `sync_report.md` | passed_after_readback |
 | `Issues/` и `State/` | `Issues/CB-P2/README.md`, `Issues/issue_events.jsonl`, `Issues/issue_registry.jsonl`, `State/service_state.md` | passed_after_readback |
 
-## Исправленные фрагменты
+## Исправленные фрагменты P2R4
 
-| Path | Исправление |
+| Путь | Исправление |
 |---|---|
-| `Concepts/smoke/export.md` | примечание переведено на русский. |
-| `Templates/task/contract.md` | текст gate/breach переведён на русский. |
-| `Templates/concept/export.md` | правило готовности export переведено на русский. |
-| `Validation/cb008_closure_plan.md` | заголовки, table labels и closure steps переведены на русский. |
-| `Validation/cb008_dry_run.md` | заголовки, scenario labels и notes переведены на русский. |
-| `Concepts/smoke/README.md` | mixed prose в status/notes/navigation переведён или оставлен только как technical identifier. |
-| `Concepts/smoke/output.md` | headings/prose переведены; status literals сохранены. |
-| `Templates/task/` и `Templates/concept/` | найденные template fragments переведены; schema literals сохранены. |
+| `Concepts/smoke/README.md` | заголовок `Cleanup`, читаемые `readback`, `failure modes`, `mapping`, `production pages`, `fixture`, `orphan/stub debris` переведены или оставлены только как точные литералы. |
+| `Concepts/smoke/output.md` | заголовок `Output`, подписи результата, карта связей, поля манифеста, отсутствующие цели и валидационная фраза переведены. |
+| `Concepts/smoke/export.md` | читаемые значения манифеста, строки приёмочных проверок и примечание переведены; машинные поля сохранены. |
+| `Templates/concept/export.md` | строки `source paths`, `excluded paths`, `validation readback` переведены как читаемые подписи; поля схемы сохранены. |
+| `Templates/task/contract.md` | фразы про запись в рабочий контур, контракт, событие задачи, целевые пути и статус конфликта получили русские эквиваленты. |
+| `Validation/navigation_check.md` | читаемые строки навигационной проверки и причины отсутствующих путей переведены. |
+| `Validation/cb008_closure_plan.md` | остаточные читаемые фразы про пробный прогон, реестр, доказательства и блокеры переведены. |
+| `Validation/cb008_dry_run.md` | сценарии пробного прогона, доказательства и примечание переведены. |
 
 ## Проваленные проверки
 
 `[]`
 
-## Примечание
+## Статус
 
-Предыдущая проверка языка была неполной: она заявляла `failed_checks: []`, хотя production Markdown ещё содержал readable prose не на русском. В этом pass такие fragments переведены, а оставшийся English классифицирован только как technical identifier или machine literal.
+```text
+language_sweep_status: passed_after_readback
+failed_checks: []
+remaining: []
+```
