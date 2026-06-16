@@ -1,14 +1,14 @@
-# Requirements
+# Требования
 
-[← Задача](README.md) | [Question Answer](question_answer.md) | [Contract](contract.md) | [Протокол](../../Protocols/requirements_protocol.md)
+[← Задача](README.md) | [Вопросы и ответы](question_answer.md) | [Контракт](contract.md) | [Протокол](../../Protocols/requirements_protocol.md)
 
 ## Дерево требований
 
-| ID | Requirement | Source | Reason | Linked questions/inputs/issues | Acceptance criteria | Status |
+| ID | Требование | Источник | Причина | Связанные вопросы, входы или задачи | Критерии приёмки | Статус |
 |---|---|---|---|---|---|---|
-| `REQ-001` |  | user/system/repo/event/protocol |  |  |  | proposed |
+| `REQ-001` |  | пользователь/система/репозиторий/событие/протокол |  |  |  | `proposed` |
 
-## Scope
+## Область
 
 ```text
 goal:
@@ -21,7 +21,7 @@ constraints:
 risks:
 ```
 
-## Approval
+## Утверждение
 
 ```text
 approval_status: proposed | approved_with_scope | rejected | skipped_with_reason | blocked
@@ -33,6 +33,6 @@ scope_exclusions:
 validation_plan:
 ```
 
-## Gate
+## Шлюз
 
-Execution не может начаться, пока requirements не имеют статус `approved_with_scope` или пока задача не имеет явную причину scoped skip с source и validation criteria.
+Исполнение не может начаться, пока требования не имеют статус `approved_with_scope` или пока задача не имеет явную причину ограниченного пропуска с источником и критериями проверки.
