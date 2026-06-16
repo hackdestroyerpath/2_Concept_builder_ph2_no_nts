@@ -1,21 +1,23 @@
-# Requirements
+# Требования
 
-[← Smoke](README.md) | [Purpose](purpose.md) | [Output](output.md) | [Export](export.md)
+[← Проверочный пример](README.md) | [Назначение](purpose.md) | [Результат](output.md) | [Экспорт](export.md)
 
-## Requirement tree
+## Дерево требований
 
-| ID | Requirement | Acceptance evidence |
+| ID | Требование | Доказательство приёмки |
 |---|---|---|
-| `SMK-R-001` | Fixture содержит все страницы concept template. | `structure.md` и `page_registry.jsonl` перечисляют одинаковые pages. |
-| `SMK-R-002` | Local registry не path-only. | Каждая строка содержит owner, parent, children, links, source_of_truth. |
-| `SMK-R-003` | Output page описывает результат и связь с требованиями. | `output.md` содержит mapping `SMK-R-*`. |
-| `SMK-R-004` | Export page является manifest, а не одиночной декларацией. | `export.md` содержит source paths, audience, format, validation gates. |
-| `SMK-R-005` | Orphan/stub pages отсутствуют. | `o2.md`, `output.txt`, `e.txt` удалены или отсутствуют. |
+| `SMK-R-001` | Фикстура содержит все страницы шаблона концепции. | `structure.md` и `page_registry.jsonl` перечисляют одинаковые страницы. |
+| `SMK-R-002` | Локальный реестр не состоит только из путей. | Каждая строка содержит владельца, родителя, дочерние страницы, ссылки и источник истины. |
+| `SMK-R-003` | Страница результата описывает результат и связь с требованиями. | `output.md` содержит сопоставление `SMK-R-*`. |
+| `SMK-R-004` | Страница экспорта является манифестом, а не одиночной декларацией. | `export.md` содержит исходные пути, аудиторию, формат и проверочные шлюзы. |
+| `SMK-R-005` | Бесхозные или заглушечные страницы отсутствуют. | `o2.md`, `output.txt`, `e.txt` удалены или отсутствуют. |
 
-## Inputs and outputs
+## Входы и выходы
 
 ```text
 inputs: Templates/concept; Protocols/execution_bootstrap.md; Protocols/concept_export.md
 outputs: Concepts/smoke/output.md; Concepts/smoke/export.md; Concepts/smoke/page_registry.jsonl
 criteria_status: pending_final_readback
 ```
+
+Кодовый блок сохраняет технические ключи и пути. Читаемый смысл: входами являются шаблон концепции и протоколы исполнения/экспорта, выходами — страницы результата, экспорта и локального реестра проверочного примера.
