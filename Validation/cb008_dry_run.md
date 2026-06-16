@@ -1,23 +1,23 @@
-# CB-008 dry run
+# Пробный прогон CB-008
 
-[← Final check](final_check.md) | [Closure plan](cb008_closure_plan.md) | [Issue CB-008](../Issues/CB-008/README.md)
+[← Финальная проверка](final_check.md) | [План закрытия](cb008_closure_plan.md) | [Issue CB-008](../Issues/CB-008/README.md)
 
-## Validation target
+## Цель проверки
 
-`CB-008` checks Service Mode task flow after Phase 2 hardening. The dry run does not create development artifacts and does not upload handoff/audit files.
+`CB-008` проверяет маршрут задачи в `Service Mode` после усиления Phase 2. Пробный прогон не создаёт служебные черновики и не добавляет внешние материалы проверки в production repo.
 
-## Scenarios
+## Сценарии
 
-| Scenario | Evidence | Status |
+| Сценарий | Доказательство | Статус |
 |---|---|---|
-| Service Mode task route | `Protocols/issue_lifecycle.md`, `Protocols/task_flow_hardening.md`, `Templates/task/README.md` | passed_with_evidence |
-| QA skip/answer route | `Protocols/question_answer.md`, `Templates/task/question_answer.md` | passed_with_evidence |
-| Requirements gate | `Protocols/requirements_protocol.md`, `Templates/task/requirements.md` | passed_with_evidence |
-| Solution/contract/report chain | `Templates/task/solution.md`, `Templates/task/contract.md`, `Templates/task/report.md` | passed_with_evidence |
-| Linked issue route | `Protocols/complex_and_linked_issues.md`, `Templates/task/linked_files.md` | passed_with_evidence |
-| GitHub write/recovery route | `Protocols/github_write_protocol.md`, `Protocols/github_conflict_recovery.md`, `Protocols/rollback_protocol.md` | passed_with_evidence |
-| Registry/event coupling | `Issues/issue_registry.jsonl`, `Issues/issue_events.jsonl`, `Registry/page_registry.jsonl` | passed_with_evidence |
+| Маршрут задачи `Service Mode` | issue lifecycle, task flow, task template | passed_with_evidence |
+| Маршрут QA и причины пропуска | question answer protocol, QA template | passed_with_evidence |
+| Контроль требований | requirements protocol, requirements template | passed_with_evidence |
+| Цепочка решения, контракта и отчёта | solution, contract, report templates | passed_with_evidence |
+| Маршрут связанных issue | complex issue protocol, linked files template | passed_with_evidence |
+| Маршрут записи и восстановления | write, conflict, rollback protocols | passed_with_evidence |
+| Связь registry и event log | issue registry, event log, page registry | passed_with_evidence |
 
-## Notes
+## Примечание
 
-Dry-run status is tied to branch readback in `Validation/sync_report.md` and final evidence in `Validation/final_check.md`.
+Статус пробного прогона связан с branch readback в `Validation/sync_report.md` и финальными доказательствами в `Validation/final_check.md`.
