@@ -4,43 +4,43 @@
 
 ## Назначение
 
-Протокол задаёт исполнимый порядок чтения файлов перед действием агента. Цель — загрузить достаточный контекст для текущего bounded step, не читать весь репозиторий и не смешивать `Service Mode` с `Execution Mode`.
+Протокол задаёт исполнимый порядок чтения файлов перед действием агента. Цель — загрузить достаточный контекст для текущего ограниченного шага, не читать весь репозиторий и не смешивать `Service Mode` с `Execution Mode`.
 
 ## Базовый порядок
 
 1. Прочитать `README.md` как глобальную карту маршрутов.
-2. Прочитать state активного режима.
+2. Прочитать состояние активного режима.
 3. Прочитать `Protocols/protocol_index.md`.
-4. Применить `Protocols/mode_routing.md`, если команда или target path могут относиться к другому режиму.
+4. Применить `Protocols/mode_routing.md`, если команда или целевой путь могут относиться к другому режиму.
 5. Прочитать только протоколы, нужные текущему действию.
-6. Прочитать active issue, registry/events и validation anchors, если действие меняет production-файлы.
-7. После write перечитать изменённые файлы из `GitHub` и зафиксировать evidence в `Validation/sync_report.md`.
+6. Прочитать активную задачу, реестр, события и проверочные якоря, если действие меняет рабочие файлы.
+7. После записи перечитать изменённые файлы из `GitHub` и зафиксировать доказательства в `Validation/sync_report.md`.
 
 ## Уровни контекста
 
-| Уровень | Загружать | Примеры | Запрет |
+| Уровень | Когда загружать | Примеры | Запрет |
 |---|---|---|---|
-| `mandatory` | Всегда для текущего действия. | `README.md`, state активного режима, `Protocols/protocol_index.md`. | Нельзя пропустить без `blocked`. |
-| `local` | Локальный объект работы. | Active issue, selected concept, local registry. | Не читать чужой объект без ссылки. |
-| `referenced` | Только по ссылке из state/contract/registry. | Зависимый issue, validation anchor, output. | Не расширять scope молча. |
-| `optional` | Только если повышает качество и есть причина. | Дополнительный протокол или concept detail. | Не подменяет mandatory. |
-| `excluded` | Не загружать без отдельной причины. | Внешние handoff/audit/checkpoint материалы. | Не писать в production repo. |
+| `mandatory` | всегда для текущего действия | `README.md`, состояние активного режима, `Protocols/protocol_index.md` | нельзя пропустить без `blocked` |
+| `local` | локальный объект работы | активная задача, выбранная концепция, локальный реестр | не читать чужой объект без ссылки |
+| `referenced` | только по ссылке из состояния, контракта или реестра | зависимая задача, проверочный якорь, результат | не расширять область молча |
+| `optional` | только если повышает качество и есть причина | дополнительный протокол или деталь концепции | не заменяет `mandatory` |
+| `excluded` | не загружать без отдельной причины | внешние материалы передачи, аудита и контрольных архивов | не писать в рабочий репозиторий |
 
-## Context route matrix
+## Матрица маршрутов контекста
 
-| Действие | Mandatory context | Local context | Referenced context | Next protocol |
+| Действие | Обязательный контекст | Локальный контекст | Ссылочный контекст | Следующий протокол |
 |---|---|---|---|---|
-| Service write | `README.md`; `State/service_state.md`; `Protocols/protocol_index.md`; `mode_routing`; `github_write_protocol` | active issue, registry/events, target files | validation anchors, dependent protocols | target service protocol |
-| State repair | `README.md`; relevant state; `state_architecture`; `response_marker` | active issue, sync-report | other mode state if explicitly referenced | validation |
-| Existing issue resume | `README.md`; active state; issue registry; event log | `Issues/<active_issue>/README.md` | sync-report return anchor | target task protocol |
-| GitHub conflict | active state; target file; branch diff; sync-report | active issue/event trace | rollback protocol if unsafe | conflict recovery |
-| Execution concept selection | `README.md`; `State/execution_state.md`; `Concepts/README.md`; `execution_bootstrap` | selected concept README and local registry | linked execution issue | concept work |
-| Concept export | execution state; selected concept local registry; `concept_export` | output/export/source pages | validation protocol | validation |
-| Final validation | root README; active state; registry; events; final/sync reports | changed paths and issue artifact | language/navigation checks | response marker |
+| Сервисная запись | `README.md`; `State/service_state.md`; `Protocols/protocol_index.md`; `mode_routing`; `github_write_protocol` | активная задача, реестр, события, целевые файлы | проверочные якоря, зависимые протоколы | целевой сервисный протокол |
+| Ремонт состояния | `README.md`; релевантное состояние; `state_architecture`; `response_marker` | активная задача, отчёт синхронизации | состояние другого режима, если оно явно указано | проверка |
+| Продолжение существующей задачи | `README.md`; активное состояние; реестр задач; журнал событий | `Issues/<active_issue>/README.md` | якорь возврата из отчёта синхронизации | целевой протокол задачи |
+| Конфликт GitHub | активное состояние; целевой файл; различие ветки; отчёт синхронизации | активная задача и трасса событий | протокол отката, если небезопасно | восстановление после конфликта |
+| Выбор исполнительной концепции | `README.md`; `State/execution_state.md`; `Concepts/README.md`; `execution_bootstrap` | `README.md` выбранной концепции и локальный реестр | связанная исполнительная задача | работа с концепцией |
+| Экспорт концепции | состояние исполнения; локальный реестр выбранной концепции; `concept_export` | страницы результата, экспорта и источников | протокол проверки | проверка |
+| Финальная проверка | корневой `README.md`; активное состояние; реестр; события; финальный отчёт и отчёт синхронизации | изменённые пути и артефакт задачи | языковые и навигационные проверки | маркер ответа |
 
-## Service Mode context
+## Контекст `Service Mode`
 
-Минимальный набор перед service-write:
+Минимальный набор перед сервисной записью:
 
 ```text
 README.md
@@ -56,9 +56,9 @@ Validation/final_check.md
 Validation/sync_report.md
 ```
 
-Дополнительно читаются target protocols, registry/schema, templates, inbox или validation files, если они входят в текущий contract.
+Дополнительно читаются целевые протоколы, реестр, схема, шаблоны, входящие материалы или проверочные файлы, если они входят в текущий контракт.
 
-## Execution Mode context
+## Контекст `Execution Mode`
 
 Минимальный набор перед работой с выбранной концепцией:
 
@@ -75,40 +75,40 @@ Protocols/concept_export.md
 
 Файлы конкретной концепции читаются только после выбора `active_object` и проверки `allowed_write_scope`.
 
-## Existing issue resume context
+## Контекст продолжения существующей задачи
 
-| Evidence | Обязательность | Причина |
+| Доказательство | Обязательность | Причина |
 |---|---|---|
-| active issue в state | обязательно | определяет mode и target task |
-| registry row | обязательно | хранит status/current_task/return_anchor |
-| latest event | обязательно | подтверждает последний persisted action |
-| issue artifact | обязательно | хранит scoped report и next step |
-| sync-report | обязательно после GitHub write | даёт branch, changed paths and readback status |
+| активная задача в состоянии | обязательно | определяет режим и целевую задачу |
+| строка реестра | обязательно | хранит статус, текущую задачу и якорь возврата |
+| последнее событие | обязательно | подтверждает последнее сохранённое действие |
+| артефакт задачи | обязательно | хранит ограниченный отчёт и следующий шаг |
+| отчёт синхронизации | обязательно после записи в `GitHub` | даёт ветку, изменённые пути и статус перечитывания |
 
-Если любой элемент отсутствует или противоречит остальным, action переходит в `partial`/`blocked`, а запись target files не выполняется до восстановления focus.
+Если любой элемент отсутствует или противоречит остальным, действие переходит в `partial` или `blocked`, а запись целевых файлов не выполняется до восстановления фокуса.
 
-## Protocol card
+## Карта протокола
 
 | Поле | Значение |
 |---|---|
-| Owner | `Service Mode` |
-| Trigger | новый запрос, recovery, existing issue resume, pre-write read |
-| Inputs | command, active state, target paths, active issue, changed paths |
-| Required context | root README, active state, protocol index, mode routing, target protocol |
-| Outputs | loaded context set, skipped context with reason, blocked state if mandatory context missing |
-| Write scope | read-only; state updates выполняются только через target task |
-| Next protocol | `mode_routing`, active target protocol, `validation_protocol` |
-| Blocking conditions | missing mandatory file, stale state/registry focus, mixed scope without transfer |
+| Владелец | `Service Mode` |
+| Триггер | новый запрос, восстановление, продолжение существующей задачи, чтение перед записью |
+| Входы | команда, активное состояние, целевые пути, активная задача, изменённые пути |
+| Обязательный контекст | корневой `README.md`, активное состояние, индекс протоколов, маршрутизация режимов, целевой протокол |
+| Выходы | загруженный набор контекста, пропущенный контекст с причиной, заблокированное состояние при отсутствии обязательного контекста |
+| Область записи | только чтение; обновления состояния выполняются только через целевую задачу |
+| Следующий протокол | `mode_routing`, активный целевой протокол, `validation_protocol` |
+| Условия блокировки | отсутствует обязательный файл, устаревший фокус состояния или реестра, смешанная область без передачи |
 
-## Dry-run P2-004
+## Пробный прогон P2-004
 
-| Scenario | Вход | Ожидаемый context set | Результат P2-004 |
+| Сценарий | Вход | Ожидаемый набор контекста | Результат P2-004 |
 |---|---|---|---|
-| Service patch | `CB-P2`, target `Protocols/protocol_index.md` | README, service state, protocol index, context/mode/write protocols, issue registry/events, CB-P2, final/sync | route подтверждён; scope остаётся `Service Mode` |
-| Existing issue resume | `CB-P2`, current_task=`P2-004` | state + registry row + event + issue artifact + sync-report | продолжение P2-004 без нового issue |
-| Execution fixture read | `Concepts/smoke`, export readiness | README, execution state, Concepts entry, smoke README/local registry, execution bootstrap, concept export | route подтверждён; service write запрещён без transfer |
-| Mixed request | service protocol + selected concept content | сначала `mode_routing.md`, затем split/transfer | смешанный write без transfer блокируется |
+| Сервисное исправление | `CB-P2`, цель `Protocols/protocol_index.md` | `README.md`, сервисное состояние, индекс протоколов, протоколы контекста, режима и записи, реестр задач, события, `CB-P2`, финальный отчёт и отчёт синхронизации | маршрут подтверждён; область остаётся `Service Mode` |
+| Продолжение существующей задачи | `CB-P2`, `current_task=P2-004` | состояние + строка реестра + событие + артефакт задачи + отчёт синхронизации | продолжение P2-004 без новой задачи |
+| Чтение проверочного примера исполнения | `Concepts/smoke`, готовность экспорта | `README.md`, состояние исполнения, точка входа концепций, `README.md` и локальный реестр `smoke`, начальная загрузка исполнения, экспорт концепции | маршрут подтверждён; сервисная запись запрещена без передачи |
+| Смешанный запрос | сервисный протокол + содержимое выбранной концепции | сначала `mode_routing.md`, затем разделение или передача | смешанная запись без передачи блокируется |
 
 ## Ограничение объёма
 
-Если файл не нужен для решения текущей задачи, он не загружается. Если без него нельзя проверить запись, файл загружается после записи для readback evidence. Отсутствующий mandatory file фиксируется как `blocked`; агент не заменяет его догадкой.
+Если файл не нужен для решения текущей задачи, он не загружается. Если без него нельзя проверить запись, файл загружается после записи для перечитывания. Отсутствующий обязательный файл фиксируется как `blocked`; агент не заменяет его догадкой.
