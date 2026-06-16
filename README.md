@@ -63,7 +63,7 @@
 
 ## Финальный результат Phase 2
 
-`CB-P2` завершён как `fixed_with_evidence` после P2R5 full sweep и финального перечитывания. Цепочка доказательств: `README.md`, `State/service_state.md`, `Issues/CB-P2/README.md`, `Issues/issue_registry.jsonl`, `Issues/issue_events.jsonl`, `Protocols/`, `Templates/`, `Concepts/smoke/`, `Registry/`, `Validation/final_check.md`, `Validation/sync_report.md`, `Validation/navigation_check.md`, `Validation/language_check.md`.
+`CB-P2` завершён как `fixed_with_evidence` после полной зачистки P2R5 и финального перечитывания. Цепочка доказательств: `README.md`, `State/service_state.md`, `Issues/CB-P2/README.md`, `Issues/issue_registry.jsonl`, `Issues/issue_events.jsonl`, `Protocols/`, `Templates/`, `Concepts/smoke/`, `Registry/`, `Validation/final_check.md`, `Validation/sync_report.md`, `Validation/navigation_check.md`, `Validation/language_check.md`.
 
 ## Маркер ответа агента
 
