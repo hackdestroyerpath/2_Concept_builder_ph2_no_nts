@@ -1,6 +1,6 @@
 # Отчёт
 
-[← Задача](README.md) | [Contract](contract.md) | [Sync report](../../Validation/sync_report.md)
+[← Задача](README.md) | [Контракт](contract.md) | [Отчёт синхронизации](../../Validation/sync_report.md)
 
 ## Отчёт о результате
 
@@ -23,17 +23,17 @@ next_step:
 return_anchor:
 ```
 
-## Таблица evidence
+## Таблица доказательств
 
-| Проверка | Ссылка на evidence | Статус |
+| Проверка | Ссылка на доказательство | Статус |
 |---|---|---|
-| GitHub readback |  | not_run |
-| Registry sync |  | not_run |
-| State sync |  | not_run |
-| Event log sync |  | not_run |
-| Links/navigation |  | not_run |
-| Language |  | not_run |
+| перечитывание GitHub |  | not_run |
+| синхронизация реестра |  | not_run |
+| синхронизация состояния |  | not_run |
+| синхронизация журнала событий |  | not_run |
+| ссылки и навигация |  | not_run |
+| язык |  | not_run |
 
-## Gate
+## Шлюз
 
-Report не может заявлять финальную приёмку задачи, если validation evidence не называет проверенные файлы, readback ref и незакрытые риски.
+Отчёт не может заявлять финальную приёмку задачи, если проверочные доказательства не называют проверенные файлы, ссылку перечитывания и незакрытые риски.
