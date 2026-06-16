@@ -14,7 +14,7 @@ persistence_status: synced_with_final_readback_evidence
 
 ## Назначение
 
-`Concepts/smoke` — production-фикстура валидации. Это не пользовательская концепция и не пример бизнес-содержания. Папка сохранена, чтобы проверять создание концепции из шаблона, локальные ссылки, registry, output model и export manifest.
+`Concepts/smoke` — production-фикстура валидации. Это не пользовательская концепция и не пример бизнес-содержания. Папка сохранена, чтобы проверять создание концепции из шаблона, локальные ссылки, registry, модель output и манифест export.
 
 ## Навигация
 
@@ -27,9 +27,9 @@ persistence_status: synced_with_final_readback_evidence
 | [`requirements.md`](requirements.md) | требования и acceptance criteria | readback на `main` |
 | [`operating_model.md`](operating_model.md) | объекты, роли, инварианты, failure modes | readback на `main` |
 | [`process.md`](process.md) | исполнимый dry-run scenario | readback на `main` |
-| [`output.md`](output.md) | output mapping | readback на `main` |
-| [`export.md`](export.md) | export manifest | readback на `main` |
+| [`output.md`](output.md) | mapping для output | readback на `main` |
+| [`export.md`](export.md) | манифест export | readback на `main` |
 
 ## Cleanup
 
-Alternate output/export scratch files не являются production-страницами fixture. Строгие production pages: `output.md` и `export.md`. Отсутствие orphan/stub debris проверено в `Validation/sync_report.md`.
+Альтернативные scratch-файлы output/export не являются production-страницами fixture. Строгие production pages: `output.md` и `export.md`. Отсутствие orphan/stub debris проверено в `Validation/sync_report.md`.
