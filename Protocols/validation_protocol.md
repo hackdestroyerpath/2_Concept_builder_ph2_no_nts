@@ -1,21 +1,21 @@
-# Validation protocol
+# Протокол проверки
 
-[← Реестр протоколов](protocol_index.md) | [GitHub write](github_write_protocol.md) | [Final check](../Validation/final_check.md)
+[← Реестр протоколов](protocol_index.md) | [Запись в GitHub](github_write_protocol.md) | [Финальная проверка](../Validation/final_check.md)
 
 ## Назначение
 
-Validation подтверждает production-состояние через evidence, а не через ярлыки. Статус `passed` допустим только рядом с checked paths, readback, registry/state/events evidence и открытыми рисками.
+Проверка подтверждает рабочее состояние через доказательства, а не через ярлыки. Статус `passed` допустим только рядом с проверенными путями, перечитыванием, доказательствами реестра/состояния/событий и открытыми рисками.
 
 ## Когда запускать
 
-- после каждого write package;
-- перед PR merge или documented direct-to-main финальным rework write;
-- после merge на base branch;
-- перед закрытием issue;
-- при cleanup/deletion/debris decision;
-- при export readiness claim.
+- после каждого пакета записи;
+- перед слиянием PR или документированной прямой финальной записью доработки в `main`;
+- после слияния в базовую ветку;
+- перед закрытием задачи;
+- при решении об очистке, удалении или лишних путях;
+- при заявлении готовности экспорта.
 
-## Evidence matrix
+## Матрица доказательств
 
 ```text
 validation_status:
@@ -36,45 +36,45 @@ next_safe_step:
 
 ## Обязательные проверки
 
-| Check | Evidence |
+| Проверка | Доказательство |
 |---|---|
-| changed paths | `compare_commits`, PR files, sync-report |
-| GitHub readback | `fetch_file` по active branch или base после merge/direct write |
-| JSONL validity | каждая строка парсится как JSON object |
-| registry match | every production path has registry entry and no active debris path remains |
-| navigation/backlinks | root/local entries route every MD page |
-| state marker match | `service_state`, `execution_state`, response marker fields align |
-| issue events | create/update/delete decisions have event rows |
-| language | readable production prose is Russian, allowed technical identifiers documented |
-| dry run | Service Mode and Execution Mode scenarios recorded |
-| write recovery | write/conflict/rollback protocol has tested decision path |
+| изменённые пути | `compare_commits`, файлы PR, отчёт синхронизации |
+| перечитывание GitHub | `fetch_file` по активной ветке или по базовой ветке после слияния/прямой записи |
+| валидность JSONL | каждая строка парсится как JSON-объект |
+| совпадение реестра | каждый рабочий путь имеет строку реестра, активных лишних путей не осталось |
+| навигация и обратные ссылки | корневые и локальные записи ведут к каждой Markdown-странице |
+| совпадение состояния и маркера | `service_state`, `execution_state` и поля маркера ответа согласованы |
+| события задач | решения создания, обновления и удаления имеют строки событий |
+| язык | читаемая рабочая проза на русском; допустимые технические идентификаторы задокументированы |
+| пробный прогон | сценарии `Service Mode` и `Execution Mode` записаны |
+| восстановление записи | протоколы записи, конфликта и отката имеют проверенный путь решения |
 
 ## Статусы
 
-| Status | Meaning |
+| Статус | Значение |
 |---|---|
 | `not_run` | проверка не запускалась |
 | `running` | проверка выполняется |
-| `passed_with_evidence` | все обязательные checks имеют evidence |
-| `passed_with_non_blocking_notes` | checks имеют evidence, есть неблокирующие риски |
-| `failed` | есть blocking mismatch |
-| `blocked` | нужен внешний шаг или user decision |
+| `passed_with_evidence` | все обязательные проверки имеют доказательства |
+| `passed_with_non_blocking_notes` | проверки имеют доказательства, есть неблокирующие риски |
+| `failed` | есть блокирующее несовпадение |
+| `blocked` | нужен внешний шаг или решение пользователя |
 
-## P2-008 evidence replacement gate
+## Шлюз замены доказательств P2-008
 
-Generic labels are not enough. A final or segment check must name:
+Общие ярлыки недостаточны. Финальная или сегментная проверка должна назвать:
 
-1. checked paths or explicit absent paths;
-2. readback source (`fetch_file`, compare metadata, PR file list, or expected 404);
-3. failed checks as `[]` only when each check has evidence;
-4. registry/state/event coupling paths;
-5. language/navigation evidence paths;
-6. persistence status and next safe step.
+1. проверенные пути или явно отсутствующие пути;
+2. источник перечитывания (`fetch_file`, метаданные сравнения, список файлов PR или ожидаемый `404`);
+3. проваленные проверки как `[]` только когда каждая проверка имеет доказательство;
+4. пути связки реестра, состояния и событий;
+5. пути языковых и навигационных доказательств;
+6. статус сохранения и следующий безопасный шаг.
 
-## No assertion-only closure
+## Закрытие без одних утверждений запрещено
 
-Слова `closed`, `passed`, `synced`, `Ready`, `OK` не считаются evidence. Evidence — это конкретный файл, ref, commit, readback, diff, event, registry entry или dry-run result.
+Слова `closed`, `passed`, `synced`, `Ready`, `OK` не считаются доказательствами. Доказательство — это конкретный файл, ссылка, коммит, перечитывание, различие, событие, строка реестра или результат пробного прогона.
 
-## Final gate
+## Финальный шлюз
 
-Final gate проходит только если D-001…D-063 имеют closure note `fixed_or_resolved` или `removed_with_reason`, а `blocked` отсутствует. Если хотя бы один defect не закрыт evidence, final status становится `failed` или `blocked`.
+Финальный шлюз проходит только если `D-001`…`D-063` имеют заметку закрытия `fixed_or_resolved` или `removed_with_reason`, а `blocked` отсутствует. Если хотя бы один дефект не закрыт доказательством, финальный статус становится `failed` или `blocked`.
