@@ -1,6 +1,6 @@
 # {{concept_title}}
 
-[← Concepts](../../Concepts/README.md) | [Структура](structure.md) | [State](concept_state.md) | [Local registry](page_registry.jsonl) | [Export](export.md)
+[← Concepts](../../Concepts/README.md) | [Структура](structure.md) | [State](concept_state.md) | [Локальный registry](page_registry.jsonl) | [Export](export.md)
 
 ## Идентификаторы
 
@@ -22,15 +22,15 @@ persistence_status: template_not_instantiated
 | Страница | Назначение | Gate |
 |---|---|---|
 | [`concept_state.md`](concept_state.md) | текущий state концепции | active issue selected |
-| [`structure.md`](structure.md) | локальное дерево | matches local registry |
-| [`page_registry.jsonl`](page_registry.jsonl) | local registry with metadata | no path-only rows |
+| [`structure.md`](structure.md) | локальное дерево | совпадает с local registry |
+| [`page_registry.jsonl`](page_registry.jsonl) | local registry с metadata | без path-only rows |
 | [`purpose.md`](purpose.md) | цель, проблема, границы | scope defined |
 | [`requirements.md`](requirements.md) | requirements and acceptance criteria | approved or scoped |
 | [`operating_model.md`](operating_model.md) | roles, objects, invariants | failure modes listed |
-| [`process.md`](process.md) | working process | validation hooks present |
+| [`process.md`](process.md) | рабочий process | validation hooks present |
 | [`output.md`](output.md) | expected results and mapping | requirements mapped |
 | [`export.md`](export.md) | export manifest | source paths and scope listed |
 
 ## Правило работы
 
-Все изменения этой концепции выполняются через `Execution Mode`, связанный `issue`, local registry update и `validation_protocol.md`. Orphan files are not allowed; any removed path must be recorded in the local registry/evidence before deletion.
+Все изменения этой концепции выполняются через `Execution Mode`, связанный `issue`, local registry update и `validation_protocol.md`. Orphan-файлы запрещены; любой удалённый path должен быть заранее записан в local registry/evidence.
