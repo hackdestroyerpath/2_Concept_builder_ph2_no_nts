@@ -1,8 +1,8 @@
-# Export
+# Экспорт
 
-[← Концепция](README.md) | [Output](output.md) | [Concept export protocol](../../Protocols/concept_export.md)
+[← Концепция](README.md) | [Output](output.md) | [Протокол экспорта концепции](../../Protocols/concept_export.md)
 
-## Manifest
+## Манифест
 
 ```text
 export_id:
@@ -19,21 +19,21 @@ readiness_status: draft | evidence_pending_final_readback | export_ready | block
 validation_anchor:
 ```
 
-## Export result
+## Результат экспорта
 
 {{export_result}}
 
-## Acceptance gates
+## Приёмочные проверки
 
-| Gate | Evidence |
+| Проверка | Доказательство |
 |---|---|
-| source paths listed |  |
-| output page exists | output.md |
-| local registry exists | page_registry.jsonl |
-| target audience defined |  |
-| excluded paths documented |  |
-| validation readback recorded |  |
+| source paths перечислены |  |
+| страница output существует | output.md |
+| локальный registry существует | page_registry.jsonl |
+| целевая аудитория определена |  |
+| excluded paths задокументированы |  |
+| validation readback записан |  |
 
 ## Правило
 
-Export получает статус `export_ready` только после проверки через `Protocols/validation_protocol.md`. A single word such as `ready` is not evidence.
+Export получает статус `export_ready` только после проверки через `Protocols/validation_protocol.md`. Одно слово вроде `ready` не является доказательством.
