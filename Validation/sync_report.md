@@ -9,13 +9,13 @@ working_branch: agent/p2r4-language-cleanup-20260616-0413Z
 base_head_before_p2r4: afd5db147f5575372e1b1eddf33609898afc7c39
 active_issue: CB-P2
 active_rework_segment: P2R4
-active_task: P2R4-002
-validation_ref: p2r4_branch_readback_then_main_readback_after_merge
-persistence_status: passed_after_readback
-final_validation_status: passed
+active_task: P2R4-001
+validation_ref: p2r4_branch_readback
+persistence_status: partial_after_readback
+final_validation_status: blocked_current_surface
 language_sweep_status: passed_after_readback
-not_final: false
-remaining: []
+not_final: true
+remaining: [Issues/issue_events.jsonl P2R4 event append]
 defect_closure_total: 63
 defect_closure_fixed_or_resolved: 63
 defect_closure_blocked: 0
@@ -40,9 +40,9 @@ cleanup_status: external_materials_kept_out_of_repo
 | Путь | Состояние доказательств |
 |---|---|
 | `Validation/language_check.md` | таблица обхода, исправленные фрагменты и `failed_checks: []` записаны |
-| `Validation/final_check.md` | `final_validation_status: passed`, `language_sweep_status: passed_after_readback`, `remaining: []` записаны |
-| `Validation/sync_report.md` | этот отчёт фиксирует изменённые пути и состояние перечитывания |
-| `Issues/issue_events.jsonl` | событие `service-event-000028` фиксирует P2R4 языковую зачистку |
+| `Validation/final_check.md` | обновляется как non-final checkpoint из-за незаписанного события P2R4 |
+| `Validation/sync_report.md` | этот отчёт фиксирует изменённые пути, перечитывание и текущий blocker |
+| `Issues/issue_events.jsonl` | append события P2R4 заблокирован текущим tool payload filter; canonical event file не изменён |
 | `Issues/issue_registry.jsonl` | `CB-P2` сохраняет 63/63/0 и ссылки на P2R4 evidence |
 | `State/service_state.md` | состояние фиксирует P2R4 как финальный сегмент перед локальным архивом |
 | `Issues/CB-P2/README.md` | артефакт задачи фиксирует строки закрытия P2R4 |
@@ -62,4 +62,4 @@ cleanup_status: external_materials_kept_out_of_repo
 
 ## Следующий безопасный шаг
 
-Вернуть локальный `concept_builder_phase2_final_acceptance_candidate_<UTC>.zip`. Архив остаётся вне репозитория.
+Продолжить с обновления `Issues/issue_events.jsonl`, затем повторить финальный readback и только после этого создавать локальный финальный архив-кандидат.
