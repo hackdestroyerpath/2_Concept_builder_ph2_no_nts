@@ -4,11 +4,11 @@
 
 ## Сводка output
 
-`Smoke validation fixture` подтверждает, что concept template можно представить как связанную production-сеть с локальным state, registry, process, output и export manifest.
+Фикстура `smoke` подтверждает, что concept template можно представить как связанную production-сеть с локальным state, registry, process, output и export manifest.
 
 ## Связь с требованиями
 
-| Requirement | Доказательство output | Результат |
+| Требование | Доказательство output | Результат |
 |---|---|---|
 | `SMK-R-001` | `structure.md` и `page_registry.jsonl` описывают одинаковый набор strict pages. | passed_with_evidence |
 | `SMK-R-002` | local registry содержит metadata, а не только path. | passed_with_evidence |
