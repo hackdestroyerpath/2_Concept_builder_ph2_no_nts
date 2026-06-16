@@ -1,27 +1,27 @@
-# CB-005 — Execution bootstrap and concept template
+# CB-005 — Начальная загрузка исполнения и шаблон концепции
 
-[← Issues](../README.md) | [Execution bootstrap](../../Protocols/execution_bootstrap.md) | [Concept template](../../Templates/concept/README.md)
+[← Задачи](../README.md) | [Начальная загрузка исполнения](../../Protocols/execution_bootstrap.md) | [Шаблон концепции](../../Templates/concept/README.md)
 
-## Provenance
+## Происхождение
 
-Статус: `reconstructed_with_evidence`. Issue описывает recoverable production scope для `Execution Mode` bootstrap и concept templates.
+Статус: `reconstructed_with_evidence`. Задача описывает восстанавливаемую рабочую область для начальной загрузки `Execution Mode` и шаблонов концепций.
 
-## Scope
+## Область
 
 - выбрать существующую концепцию или создать новую из `Templates/concept/`;
 - связать `Execution Mode` с выбранной концепцией;
-- требовать local registry и backlinks;
-- маршрутизировать export через `Protocols/concept_export.md`.
+- требовать локальный реестр и обратные ссылки;
+- маршрутизировать экспорт через `Protocols/concept_export.md`.
 
-## Evidence
+## Доказательства
 
-| Evidence | Роль |
+| Доказательство | Роль |
 |---|---|
-| `Protocols/execution_bootstrap.md` | выбор/создание concept scope |
-| `Protocols/concept_export.md` | export manifest route |
-| `Templates/concept/README.md` | template entry and child routes |
-| `Concepts/README.md` | concepts entrypoint |
+| `Protocols/execution_bootstrap.md` | выбор или создание области концепции |
+| `Protocols/concept_export.md` | маршрут манифеста экспорта |
+| `Templates/concept/README.md` | точка входа шаблона и дочерние маршруты |
+| `Concepts/README.md` | точка входа концепций |
 
-## Closure rule
+## Правило закрытия
 
-`Execution Mode` пишет только в selected concept scope и linked execution issue. Service files меняются через `Service Mode`.
+`Execution Mode` пишет только в область выбранной концепции и связанную исполнительную задачу. Сервисные файлы меняются через `Service Mode`.
