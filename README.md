@@ -9,13 +9,13 @@
 | Контур | production-репозиторий `Concept Builder` |
 | Активный режим обслуживания | `Service Mode` |
 | Активный issue исправления | `CB-P2` |
-| Активный rework-сегмент | `P2R-000` — post-merge truth-source normalization |
-| Последний принятый checkpoint | PR `#5`, merge commit `79fabaefb8c03876078606bb02e4dbda6017f5bd`, scope through `P2-005` |
-| Рабочая ветка rework | `agent/phase2-rework-20260614T223441Z` |
-| Основание | утверждённый Phase 1 defect register D-001…D-063 и rejection handoff после checkpoint |
-| Проверка готовности | [`Validation/final_check.md`](Validation/final_check.md) и evidence-файлы в `Validation/` |
-| Статус финального принятия | финальная приёмка не выполнена; полный D-001…D-063 matrix разрешён только после `P2-010` |
-| Следующий безопасный patch-step | `P2-006` после readback текущего `P2R-000` write-batch |
+| Активный rework-сегмент | `P2R-006` — final acceptance candidate archive prepared from production evidence |
+| Последний checkpoint merge | PR `#6`, merge commit `276b893043cd6f21f1ecf0cd18afc9faa6c5d52d`, scope through `P2R-001` / `P2-006` |
+| Финальные direct-to-main evidence writes | post-PR6 writes on `main`, latest observed head before final control `6ecb13e2c2726899ff3162b18deadf52fffad1af` |
+| Основание | утверждённый Phase 1 defect register `D-001`…`D-063` и second rejection handoff |
+| Проверка готовности | [`Validation/final_check.md`](Validation/final_check.md), [`Validation/sync_report.md`](Validation/sync_report.md), [`Validation/navigation_check.md`](Validation/navigation_check.md), [`Validation/language_check.md`](Validation/language_check.md) |
+| Статус финального принятия | `passed_with_evidence`: `D-001`…`D-063` имеют closure evidence, blockers `0` |
+| Следующий безопасный шаг | отправить локальный final acceptance candidate archive; новых Phase 2 patch-step нет |
 
 ## Режимы
 
@@ -63,9 +63,9 @@
 4. После записи перечитать изменённые файлы из `GitHub`, проверить registry/state/events/links/language и обновить sync-report evidence.
 5. Статусы `closed`, `passed`, `synced`, `Ready`, `OK` не являются доказательством без evidence в `Validation/`.
 
-## Следующий безопасный шаг
+## Финальный Phase 2 результат
 
-Текущий rework-сегмент — `P2R-000`. После write/readback этого normalization batch следующий patch-step — `P2-006`: task template / requirements / contract hardening. Финальное принятие до `P2-010` запрещено.
+`CB-P2` завершён как `fixed_with_evidence`. Evidence chain: `README.md`, `State/service_state.md`, `Issues/CB-P2/README.md`, `Issues/issue_registry.jsonl`, `Issues/issue_events.jsonl`, `Protocols/`, `Templates/`, `Concepts/smoke/`, `Registry/`, `Validation/final_check.md`, `Validation/sync_report.md`, `Validation/navigation_check.md`, `Validation/language_check.md`.
 
 ## Маркер ответа агента
 
