@@ -1,21 +1,21 @@
 # Шаблон задачи
 
-[← Templates](../README.md) | [State](item_state.md) | [Registry](page_registry.jsonl) | [Исполнение issue](../../Protocols/issue_execution.md)
+[← Шаблоны](../README.md) | [Состояние](item_state.md) | [Реестр](page_registry.jsonl) | [Исполнение задачи](../../Protocols/issue_execution.md)
 
-`Templates/task/` хранит артефактную цепочку управляемой задачи. Шаблон не означает, что все шаги обязательны для каждой задачи; он означает, что пропуск шага должен иметь сохранённую reason в артефакте issue, event log или отчёте.
+`Templates/task/` хранит цепочку артефактов управляемой задачи. Шаблон не означает, что все шаги обязательны для каждой задачи; он означает, что пропуск шага должен иметь сохранённую причину в артефакте задачи, журнале событий или отчёте.
 
 ## Цепочка артефактов
 
 | Порядок | Файл | Роль | Контроль |
 |---|---|---|---|
-| 1 | [`item_state.md`](item_state.md) | state активной задачи | issue существует в registry |
-| 2 | [`question_answer.md`](question_answer.md) | вопросы, ответы или skip reason | неизвестности классифицированы |
-| 3 | [`requirements.md`](requirements.md) | дерево требований, источники и критерии приёмки | область requirements определена или причина пропуска записана |
-| 4 | [`solution.md`](solution.md) | предложенный подход, риски и changed paths | risks и target paths определены |
-| 5 | [`contract.md`](contract.md) | contract исполнения | target paths, validation plan и rollback plan записаны |
-| 6 | [`linked_files.md`](linked_files.md) | dependencies, attachments и дочерние issue | нет нерешённого цикла или блокирующего дочернего issue |
-| 7 | [`report.md`](report.md) | результат и validation evidence | readback и sync report evidence присутствуют |
-| 8 | [`page_registry.jsonl`](page_registry.jsonl) | local navigation contract | все task artifacts зарегистрированы |
+| 1 | [`item_state.md`](item_state.md) | состояние активной задачи | задача существует в реестре |
+| 2 | [`question_answer.md`](question_answer.md) | вопросы, ответы или причина пропуска | неизвестности классифицированы |
+| 3 | [`requirements.md`](requirements.md) | дерево требований, источники и критерии приёмки | область требований определена или причина пропуска записана |
+| 4 | [`solution.md`](solution.md) | предложенный подход, риски и изменённые пути | риски и целевые пути определены |
+| 5 | [`contract.md`](contract.md) | контракт исполнения | целевые пути, план проверки и план отката записаны |
+| 6 | [`linked_files.md`](linked_files.md) | зависимости, вложения и дочерние задачи | нет нерешённого цикла или блокирующей дочерней задачи |
+| 7 | [`report.md`](report.md) | результат и проверочные доказательства | перечитывание и доказательства отчёта синхронизации присутствуют |
+| 8 | [`page_registry.jsonl`](page_registry.jsonl) | локальный навигационный контракт | все артефакты задачи зарегистрированы |
 
 ## Обязательный маршрут
 
@@ -27,12 +27,12 @@ issue_lifecycle -> question_answer -> requirements_protocol -> issue_execution -
 
 | Объект | Проверка |
 |---|---|
-| README template | содержит маршруты ко всем дочерним artifacts |
-| `page_registry.jsonl` | содержит owner/source/backlinks для всей artifact chain |
-| дочерний artifact | имеет backlink через parent `README.md` и protocol cross-link, если применимо |
-| пропущенный artifact | требует persisted reason, иначе статус задачи остаётся `partial` или `blocked` |
-| report | указывает readback ref, registry/state/event result и next step |
+| шаблон README | содержит маршруты ко всем дочерним артефактам |
+| `page_registry.jsonl` | содержит owner/source/backlinks для всей цепочки артефактов |
+| дочерний артефакт | имеет обратную ссылку через родительский `README.md` и cross-link протокола, если применимо |
+| пропущенный артефакт | требует сохранённой причины, иначе статус задачи остаётся `partial` или `blocked` |
+| отчёт | указывает ссылку перечитывания, результаты реестра/состояния/события и следующий шаг |
 
 ## Правило ограниченного пропуска
 
-Если задача достаточно мала и отдельный QA, solution или contract документ не нужен, причина пропуска записывается в task artifact или issue event. Молчание не является процессом.
+Если задача достаточно мала и отдельный документ вопросов/ответов, решения или контракта не нужен, причина пропуска записывается в артефакт задачи или событие задачи. Молчание не является процессом.
