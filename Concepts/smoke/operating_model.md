@@ -1,37 +1,37 @@
-# Operating model
+# Операционная модель
 
-[← Smoke](README.md) | [Process](process.md)
+[← Проверочный пример](README.md) | [Процесс](process.md)
 
 ## Объекты
 
-| Object | Role |
+| Объект | Роль |
 |---|---|
-| concept pages | production-pages fixture |
-| local registry | navigation and ownership contract |
-| concept state | Execution Mode state snapshot |
-| output page | result mapping |
-| export manifest | export readiness evidence |
-| linked issue `CB-009` | service/execution provenance bridge |
+| страницы концепции | рабочие страницы проверочного примера |
+| локальный реестр | навигационный контракт и контракт владения |
+| состояние концепции | снимок состояния `Execution Mode` |
+| страница результата | сопоставление результата |
+| манифест экспорта | доказательство готовности экспорта |
+| связанная задача `CB-009` | мост происхождения между сервисным и исполнительным режимами |
 
 ## Роли
 
-| Role | Responsibility |
+| Роль | Ответственность |
 |---|---|
-| `Execution Mode` | владеет содержимым fixture и export readiness |
-| `Service Mode` | валидирует registry, cleanup и final evidence |
+| `Execution Mode` | владеет содержимым проверочного примера и готовностью экспорта |
+| `Service Mode` | проверяет реестр, очистку и финальные доказательства |
 
 ## Инварианты
 
-1. Каждая production-page fixture имеет registry entry.
-2. `README.md` route-доступен из `Concepts/README.md`.
-3. `output.md` и `export.md` существуют как strict markdown pages.
-4. Orphan/stub files не остаются в active tree.
+1. Каждая рабочая страница проверочного примера имеет строку реестра.
+2. `README.md` достижим маршрутом из `Concepts/README.md`.
+3. `output.md` и `export.md` существуют как строгие Markdown-страницы.
+4. Бесхозные или заглушечные файлы не остаются в активном дереве.
 
-## Failure modes
+## Режимы отказа
 
-| Failure | Response |
+| Отказ | Реакция |
 |---|---|
-| missing page | validation failed |
-| path-only registry | validation failed |
-| English-only user prose | language check failed |
-| orphan file | cleanup required |
+| страница отсутствует | проверка провалена |
+| реестр содержит только пути | проверка провалена |
+| читаемая проза остаётся только на английском | языковая проверка провалена |
+| бесхозный файл | требуется очистка |
