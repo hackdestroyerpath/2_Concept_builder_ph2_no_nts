@@ -1,21 +1,21 @@
 # Протокол записи в GitHub
 
-[← Реестр протоколов](protocol_index.md) | [Загрузка контекста](context_loading.md) | [Conflict recovery](github_conflict_recovery.md) | [Rollback](rollback_protocol.md)
+[← Реестр протоколов](protocol_index.md) | [Загрузка контекста](context_loading.md) | [Восстановление после конфликта](github_conflict_recovery.md) | [Откат](rollback_protocol.md)
 
 ## Назначение
 
-Протокол описывает безопасную запись production-файлов в `GitHub`. Любая запись должна иметь classifier, preflight, fresh read, write package, readback, registry/state/events coupling и sync-report. Запись без readback — это не подвиг, а просто способ оставить следующему человеку мину в Markdown.
+Протокол описывает безопасную запись рабочих файлов в `GitHub`. Любая запись должна иметь классификатор, предварительную проверку, свежее чтение, пакет записи, перечитывание, связку реестра/состояния/событий и отчёт синхронизации. Запись без перечитывания — это не подвиг, а просто способ оставить следующему человеку мину в Markdown.
 
-## Production/development classifier
+## Классификатор рабочих и разработческих файлов
 
 | Класс | Примеры | Решение |
 |---|---|---|
-| production | `README.md`, `Protocols/`, `State/`, `Issues/`, `Concepts/`, `Templates/`, `Registry/`, `Validation/`, `Inbox/` | можно писать в пределах active mode scope |
-| development | patch-handoff, Phase 1 audit, prompt, original handoff, checkpoint, временный отчёт | не загружать в production repo |
-| conditional | scripts, generated archive, attachment | нужен отдельный issue/contract |
-| debris | legacy scratch/debris paths and assertion-only closure files | удалить или мигрировать с evidence |
+| production | `README.md`, `Protocols/`, `State/`, `Issues/`, `Concepts/`, `Templates/`, `Registry/`, `Validation/`, `Inbox/` | можно писать в пределах области активного режима |
+| development | материалы передачи исправления, аудит Phase 1, prompt, исходная передача, checkpoint, временный отчёт | не загружать в рабочий репозиторий |
+| conditional | scripts, generated archive, attachment | нужен отдельный `issue` или контракт |
+| debris | старые черновые или лишние пути и закрытия только по ярлыку | удалить или мигрировать с доказательством |
 
-## Write package
+## Пакет записи
 
 Перед записью агент фиксирует:
 
@@ -36,61 +36,61 @@ validation_plan:
 rollback_plan:
 ```
 
-## Preflight
+## Предварительная проверка
 
-1. Проверить, что `target_paths` входят в `allowed_write_scope` active mode.
+1. Проверить, что `target_paths` входят в `allowed_write_scope` активного режима.
 2. Для update/delete перечитать файл и взять свежий `sha`.
-3. Для create проверить отсутствие production-дубликата.
-4. Для delete убедиться, что причина зафиксирована в registry/events/validation.
-5. Подготовить связанное обновление registry, state, events и validation.
+3. Для create проверить отсутствие рабочего дубликата.
+4. Для delete убедиться, что причина зафиксирована в реестре, событиях и проверке.
+5. Подготовить связанное обновление реестра, состояния, событий и проверки.
 
-## Persistence statuses
+## Статусы сохранения
 
 | Статус | Значение |
 |---|---|
 | `not_written` | запись не выполнялась |
-| `written_unverified` | запись выполнена, readback ещё не пройден |
+| `written_unverified` | запись выполнена, перечитывание ещё не пройдено |
 | `synced` | запись выполнена и перечитана из `GitHub` |
-| `partial` | часть write package записана, часть требует продолжения |
-| `failed` | запись не выполнена или readback не совпал |
-| `conflict` | GitHub/version/diff conflict требует recovery |
-| `blocked` | остановлено внешним решением или scope-ограничением |
+| `partial` | часть пакета записи сохранена, часть требует продолжения |
+| `failed` | запись не выполнена или перечитывание не совпало |
+| `conflict` | конфликт версии, различия или `GitHub` требует восстановления |
+| `blocked` | остановлено внешним решением или ограничением области |
 
 ## После записи
 
-1. Перечитать каждый changed path из `GitHub` на active branch.
-2. Проверить ключевые строки, links, registry entries, state fields, issue events.
+1. Перечитать каждый изменённый путь из `GitHub` на активной ветке.
+2. Проверить ключевые строки, ссылки, записи реестра, поля состояния и события задачи.
 3. Обновить `Validation/sync_report.md`.
-4. Перед merge создать PR, проверить changed files и representative patch. Если работа идёт direct-to-main по явному rework-контракту, sync-report должен назвать это вместо PR.
-5. После merge или direct write проверить changed paths на base branch.
+4. Перед слиянием создать PR, проверить изменённые файлы и репрезентативное различие. Если работа идёт прямой записью в `main` по явному контракту доработки, отчёт синхронизации должен назвать это вместо PR.
+5. После слияния или прямой записи проверить изменённые пути на базовой ветке.
 
-## P2-007 protocol-level dry-run scenarios
+## Сценарии пробного прогона P2-007 на уровне протокола
 
-| Scenario | Trigger | Required evidence | Expected status |
+| Сценарий | Триггер | Обязательное доказательство | Ожидаемый статус |
 |---|---|---|---|
-| success write/readback | fresh SHA, bounded production path, target content matches after fetch | pre-sha, response commit/ref, readback sha, sync-report row | `synced` |
-| partial write / coupling missing | file write succeeds but registry/state/event/final/sync coupling is incomplete | changed path list plus failed coupling field | `partial` until coupling patch or rollback decision |
-| SHA conflict | update/delete uses stale blob SHA | stale sha, current readback sha, conflict event, no same-request blind retry | `conflict` then recovery re-plan |
-| blocked rollback | rollback would require force update or remove validated user output | rollback trigger, protected path, blocked reason, event row | `blocked` with user decision required |
+| успешная запись и перечитывание | свежий SHA, ограниченный рабочий путь, целевое содержимое совпадает после чтения | SHA до записи, ответ с коммитом или ссылкой, SHA перечитывания, строка отчёта синхронизации | `synced` |
+| частичная запись или отсутствующая связка | запись файла успешна, но связка с реестром/состоянием/событием/финальной проверкой/отчётом синхронизации неполная | список изменённых путей и поле проваленной связки | `partial` до исправления связки или решения об откате |
+| конфликт SHA | update/delete использует устаревший SHA blob | устаревший SHA, текущее перечитывание SHA, событие конфликта, без слепого повтора тем же запросом | `conflict`, затем перепланирование восстановления |
+| заблокированный откат | откат потребовал бы принудительного обновления или удалил проверенный пользовательский результат | триггер отката, защищённый путь, причина блокировки, строка события | `blocked` с требованием решения пользователя |
 
-## P2-007 acceptance gate
+## Шлюз приёмки P2-007
 
-`P2-007` считается выполненным только если `github_write_protocol.md`, `github_conflict_recovery.md`, `rollback_protocol.md`, `validation_protocol.md`, `Issues/issue_events.jsonl`, `State/service_state.md`, `Validation/final_check.md` и `Validation/sync_report.md` согласованы. Dry-run scenarios являются protocol-level evidence; они не симулируют запись в чужой production path.
+`P2-007` считается выполненным только если `github_write_protocol.md`, `github_conflict_recovery.md`, `rollback_protocol.md`, `validation_protocol.md`, `Issues/issue_events.jsonl`, `State/service_state.md`, `Validation/final_check.md` и `Validation/sync_report.md` согласованы. Сценарии пробного прогона — это доказательство на уровне протокола; они не имитируют запись в чужой рабочий путь.
 
 ## Ошибки
 
 | Ситуация | Действие |
 |---|---|
-| duplicate create | перейти на update flow со свежим `sha` |
-| stale sha | перечитать файл и повторить только новый bounded request с новым request id/ledger entry |
-| safety/payload block | убрать optional fields, сократить message/content или разбить patch |
-| unexpected diff | остановиться, записать event, вызвать `github_conflict_recovery` |
-| wrong target branch | восстановить ledger, проверить branch и diff |
+| дублирующее создание | перейти на поток обновления со свежим `sha` |
+| устаревший `sha` | перечитать файл и повторить только новый ограниченный запрос с новым идентификатором запроса или записью журнала |
+| блокировка безопасности или payload | убрать optional fields, сократить message/content или разбить исправление |
+| неожиданное различие | остановиться, записать событие, вызвать `github_conflict_recovery` |
+| неверная целевая ветка | восстановить журнал, проверить ветку и различие |
 
 ## Запреты
 
-- Не объявлять write unavailable при наличии branch/commit/readback фактов.
-- Не проверять branch write по `main` до merge.
-- Не загружать development материалы.
-- Не использовать closure labels как evidence.
-- Не считать `synced` без `fetch_file` readback и sync-report row.
+- Не объявлять запись недоступной при наличии фактов ветки, коммита или перечитывания.
+- Не проверять запись ветки по `main` до слияния.
+- Не загружать разработческие материалы.
+- Не использовать ярлыки закрытия как доказательство.
+- Не считать `synced` действительным без перечитывания `fetch_file` и строки отчёта синхронизации.
