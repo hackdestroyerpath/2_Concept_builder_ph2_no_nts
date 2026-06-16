@@ -1,12 +1,12 @@
-# Task flow hardening
+# Усиление потока задач
 
-[← Реестр протоколов](protocol_index.md) | [Issue lifecycle](issue_lifecycle.md) | [Complex issues](complex_and_linked_issues.md) | [Task template](../Templates/task/README.md)
+[← Реестр протоколов](protocol_index.md) | [Жизненный цикл задачи](issue_lifecycle.md) | [Сложные задачи](complex_and_linked_issues.md) | [Шаблон задачи](../Templates/task/README.md)
 
 ## Назначение
 
-Протокол усиливает task flow так, чтобы задача не теряла priority, approval, provenance, dependencies, cleanup и evidence. Ничто не принимается по настроению, даже если настроение у Markdown сегодня солнечное.
+Протокол усиливает поток задач так, чтобы задача не теряла приоритет, утверждение, происхождение, зависимости, очистку и доказательства. Ничто не принимается по настроению, даже если настроение у Markdown сегодня солнечное.
 
-## Registry fields
+## Поля реестра
 
 ```text
 priority: normal | major | blocker
@@ -20,40 +20,40 @@ next_task:
 return_anchor:
 ```
 
-## Decision events
+## События решений
 
-| Event | Required fields |
+| Событие | Обязательные поля |
 |---|---|
-| `approval_requested` | approver, reason, target scope |
-| `approved` | approver, requirements, contract/evidence |
-| `rejected` | reason, affected paths |
-| `qa_skipped_with_reason` | reason, source, why safe |
-| `requirements_scoped` | requirement IDs, source refs, acceptance criteria |
-| `contract_approved` | target paths, operation, validation plan, rollback plan |
-| `cleanup_required` | path, reason, migration target |
-| `cleanup_removed` | path, absence evidence, validation anchor |
-| `validation_verified` | checked paths, ref, evidence matrix |
-| `rollback` | trigger, affected paths, rollback sha |
+| `approval_requested` | утверждающий, причина, целевая область |
+| `approved` | утверждающий, требования, контракт или доказательства |
+| `rejected` | причина, затронутые пути |
+| `qa_skipped_with_reason` | причина, источник, почему пропуск безопасен |
+| `requirements_scoped` | идентификаторы требований, ссылки на источники, критерии приёмки |
+| `contract_approved` | целевые пути, операция, план проверки, план отката |
+| `cleanup_required` | путь, причина, цель миграции |
+| `cleanup_removed` | путь, доказательство отсутствия, якорь проверки |
+| `validation_verified` | проверенные пути, ссылка, матрица доказательств |
+| `rollback` | триггер, затронутые пути, SHA отката |
 
-## Priority policy
+## Политика приоритетов
 
-| Priority | Meaning |
+| Приоритет | Значение |
 |---|---|
-| `blocker` | blocks final validation or core operation |
-| `major` | required for reliable production use |
-| `normal` | useful hardening, does not block final validation by itself |
+| `blocker` | блокирует финальную проверку или основную операцию |
+| `major` | требуется для надёжного рабочего использования |
+| `normal` | полезное усиление, само по себе не блокирует финальную проверку |
 
-## Transition matrix
+## Матрица переходов
 
-| From | Required evidence | To |
+| Из | Обязательное доказательство | В |
 |---|---|---|
-| `proposed` | reason, provenance, priority | `requirements` |
-| `requirements` | QA answer or skip reason + requirement IDs | `contract` |
-| `contract` | target paths + validation/rollback plan | `in_progress` |
-| `in_progress` | write/readback or documented no-write result | `review_required` |
-| `review_required` | registry/state/event/validation agree | `fixed_with_evidence` |
-| any | unresolved dependency, conflict, missing evidence | `blocked` |
+| `proposed` | причина, происхождение, приоритет | `requirements` |
+| `requirements` | ответ на вопросы или причина пропуска + идентификаторы требований | `contract` |
+| `contract` | целевые пути + план проверки и отката | `in_progress` |
+| `in_progress` | запись и перечитывание либо документированный результат без записи | `review_required` |
+| `review_required` | реестр, состояние, событие и проверка согласованы | `fixed_with_evidence` |
+| любое состояние | нерешённая зависимость, конфликт или недостающее доказательство | `blocked` |
 
-## Closure gate
+## Шлюз закрытия
 
-A task reaches `fixed_with_evidence` only if registry, events, state, readback and validation agree. If a child issue or dependency is unresolved, parent stays `blocked` or `review_required`.
+Задача достигает `fixed_with_evidence` только если реестр, события, состояние, перечитывание и проверка согласованы. Если дочерняя задача или зависимость не решена, родитель остаётся в `blocked` или `review_required`.
