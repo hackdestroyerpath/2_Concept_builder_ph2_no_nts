@@ -1,8 +1,8 @@
-# Export
+# Экспорт
 
-[← Smoke](README.md) | [Output](output.md) | [Concept export protocol](../../Protocols/concept_export.md)
+[← Smoke](README.md) | [Output](output.md) | [Протокол экспорта концепции](../../Protocols/concept_export.md)
 
-## Manifest
+## Манифест
 
 ```text
 export_id: smoke-export-2026-06-16-final
@@ -18,16 +18,16 @@ readiness_status: passed_with_evidence
 validation_anchor: ../../Validation/final_check.md
 ```
 
-## Acceptance gates
+## Приёмочные проверки
 
-| Gate | Evidence | Result |
+| Проверка | Доказательство | Результат |
 |---|---|---|
-| scope is explicit | `export_scope` and `source_paths` are listed | passed_with_evidence |
-| output exists | [`output.md`](output.md) | passed_with_evidence |
-| local registry exists | [`page_registry.jsonl`](page_registry.jsonl) | passed_with_evidence |
-| source pages are linked | [`README.md`](README.md) | passed_with_evidence |
-| orphan files absent | final validation checks expected 404/absence | passed_with_evidence |
+| область экспорта явно указана | перечислены `export_scope` и `source_paths` | passed_with_evidence |
+| выходной файл существует | [`output.md`](output.md) | passed_with_evidence |
+| локальный реестр существует | [`page_registry.jsonl`](page_registry.jsonl) | passed_with_evidence |
+| исходные страницы связаны ссылками | [`README.md`](README.md) | passed_with_evidence |
+| orphan-файлы отсутствуют | финальная проверка фиксирует ожидаемое отсутствие | passed_with_evidence |
 
-## Notes
+## Примечания
 
-This export is a validation fixture export, not a deliverable for an external customer.
+Этот export является фикстурой валидации, а не deliverable для внешнего заказчика.
