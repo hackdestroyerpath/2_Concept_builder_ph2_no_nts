@@ -1,6 +1,6 @@
-# Smoke concept state
+# Состояние концепции `smoke`
 
-[← Smoke](README.md) | [Structure](structure.md) | [Export](export.md)
+[← Проверочный пример](README.md) | [Структура](structure.md) | [Экспорт](export.md)
 
 ```text
 concept_id: smoke
@@ -20,4 +20,4 @@ return_anchor: Concepts/smoke/README.md
 
 ## Правило
 
-Файл обновляется только в `Execution Mode` после явного выбора `Concepts/smoke` как validation fixture или в `Service Mode` при validation patch с issue `CB-009`/`CB-P2`.
+Файл обновляется только в `Execution Mode` после явного выбора `Concepts/smoke` как проверочного примера или в `Service Mode` при проверочном исправлении с задачей `CB-009`/`CB-P2`. Кодовый блок сохраняет технические поля и статусные литералы; читаемое значение: пример выбран, экспорт проверен, лишние пути отсутствуют, якорь возврата — `Concepts/smoke/README.md`.
