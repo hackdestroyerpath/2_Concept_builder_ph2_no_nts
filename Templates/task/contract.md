@@ -1,8 +1,8 @@
-# Contract
+# Контракт
 
-[← Task](README.md) | [Solution](solution.md) | [Report](report.md) | [Write protocol](../../Protocols/github_write_protocol.md)
+[← Задача](README.md) | [Решение](solution.md) | [Отчёт](report.md) | [Протокол записи](../../Protocols/github_write_protocol.md)
 
-## Execution contract
+## Контракт исполнения
 
 ```text
 contract_id:
@@ -24,10 +24,10 @@ approved_at:
 return_anchor:
 ```
 
-## Gate
+## Контроль записи
 
-A production write is allowed only when this contract or equivalent issue event defines target paths, operation, pre-sha/source, validation plan and rollback plan.
+Production-запись разрешена только тогда, когда этот contract или равнозначное issue event определяет target paths, operation, pre-sha/source, validation plan и rollback plan.
 
-## Contract breach
+## Нарушение контракта
 
-If actual changed paths differ from `target_paths`, status becomes `conflict` and `github_conflict_recovery.md` starts.
+Если фактически изменённые paths отличаются от `target_paths`, status становится `conflict`, а затем запускается `github_conflict_recovery.md`.
