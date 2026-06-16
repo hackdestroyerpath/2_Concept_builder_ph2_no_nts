@@ -1,27 +1,27 @@
-# CB-003 — Issue workflow protocols
+# CB-003 — Протоколы рабочего цикла задач
 
-[← Issues](../README.md) | [Issue lifecycle](../../Protocols/issue_lifecycle.md) | [Issue registry](../issue_registry.jsonl)
+[← Задачи](../README.md) | [Жизненный цикл задачи](../../Protocols/issue_lifecycle.md) | [Реестр задач](../issue_registry.jsonl)
 
-## Provenance
+## Происхождение
 
-Статус: `reconstructed_with_evidence`. Persisted evidence — текущие production-файлы issue workflow, registry и event log, а не выдуманная историческая approval-цепочка.
+Статус: `reconstructed_with_evidence`. Сохранённые доказательства — текущие рабочие файлы цикла задач, реестр и журнал событий, а не выдуманная историческая цепочка утверждения.
 
-## Scope
+## Область
 
-- создание, фокусировка и продолжение issue;
-- approval, discussion, rejection и cleanup decisions;
-- registry/event persistence перед пользовательскими claims;
-- return-anchor для безопасного resume flow.
+- создание, фокусировка и продолжение задачи;
+- утверждение, обсуждение, отклонение и решения по очистке;
+- сохранение реестра и событий перед пользовательскими заявлениями;
+- якорь возврата для безопасного продолжения.
 
-## Evidence
+## Доказательства
 
-| Evidence | Роль |
+| Доказательство | Роль |
 |---|---|
-| `Protocols/issue_lifecycle.md` | lifecycle grammar |
-| `Protocols/task_flow_hardening.md` | priority, approval, cleanup, provenance |
-| `Issues/issue_registry.jsonl` | machine issue state |
-| `Issues/issue_events.jsonl` | chronological event trace |
+| `Protocols/issue_lifecycle.md` | грамматика жизненного цикла |
+| `Protocols/task_flow_hardening.md` | приоритет, утверждение, очистка и происхождение |
+| `Issues/issue_registry.jsonl` | машинное состояние задач |
+| `Issues/issue_events.jsonl` | хронологическая трасса событий |
 
-## Closure rule
+## Правило закрытия
 
-`CB-003` остаётся provenance node. Любые будущие изменения issue workflow обновляют registry, event log и validation вместе.
+`CB-003` остаётся узлом происхождения. Любые будущие изменения рабочего цикла задач обновляют реестр, журнал событий и проверку вместе.
